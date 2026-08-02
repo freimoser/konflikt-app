@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { categories } from '../../data/conflicts.js';
+---
+
+<BaseLayout title="Konflikte" description="Alle Alltagskonflikte auf einen Blick. Wähle die Person, mit der du einen Konflikt hast.">
+  <section>
+    <h1>Alle Konflikte</h1>
+    <p class="page-desc">
+      Wähle, mit wem du einen Konflikt hast, und finde Schritt für Schritt eine Lösung.
+    </p>
+
+    <div class="category-list">
+      {
+        categories.map(cat => (
+          <div class="cat-block">
+            <a href={`/konflikt-app/konflikt/${cat.id}/`} class="cat-block-header">
+              <span class="cat-block-icon">{cat.icon}</span>
+              <span class="cat-block-name">{cat.name}</span>
+              <span class="cat-block-arrow">→</span>
+            </a>
+            <p class="cat-block-desc">{cat.summary}</p>
+            <div class="conflict-list">
+              {
+                cat.conflicts.map(con => (
+                  <a href={`/konflikt-app/konflikt/${cat.id}/${con.slug}/`} class="conflict-link">
+                    <span>{con.icon}</span>
+                    <span>{con.title}</span>
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-desc {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+  }
+  .category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .cat-block {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .cat-block-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text);
+    transition: background 0.15s;
+  }
+  .cat-block-header:hover {
+    background: #E8F5E9;
+  }
+  .cat-block-icon {
+    font-size: 1.5rem;
+  }
+  .cat-block-arrow {
+    margin-left: auto;
+    color: var(--text-light);
+  }
+  .cat-block-desc {
+    padding: 0.75rem 1.25rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+  .conflict-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .conflict-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--border);
+    color: var(--text);
+    font-size: 0.95rem;
+    transition: background 0.15s;
+  }
+  .conflict-link:last-child {
+    border-bottom: none;
+  }
+  .conflict-link:hover {
+    background: var(--bg);
+    color: var(--primary);
+  }
+</style>

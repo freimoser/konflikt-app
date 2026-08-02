@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Seite nicht gefunden" description="Die angeforderte Seite existiert nicht.">
+  <div class="not-found">
+    <span class="nf-icon">🕊️</span>
+    <h1>Seite nicht gefunden</h1>
+    <p>Diese Seite existiert (noch) nicht – aber vielleicht ist dein Konflikt ja woanders.</p>
+    <a href="/konflikt-app/konflikt/" class="btn btn-primary">Alle Konflikte durchsuchen</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .not-found {
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+  .nf-icon { font-size: 4rem; display: block; margin-bottom: 1rem; }
+  .not-found h1 { margin-bottom: 0.75rem; }
+  .not-found p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

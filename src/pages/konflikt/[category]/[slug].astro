@@ -1,0 +1,379 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { categories, getCategory, getConflict } from '../../../data/conflicts.js';
+
+export function getStaticPaths() {
+  const paths = [];
+  for (const cat of categories) {
+    for (const con of cat.conflicts) {
+      paths.push({
+        params: { category: cat.id, slug: con.slug },
+        props: { conflict: con, category: cat },
+      });
+    }
+  }
+  return paths;
+}
+
+const { conflict, category } = Astro.props;
+const mode = Astro.url.searchParams.get('mode') || 'overview';
+---
+
+<BaseLayout title={`${conflict.title} – mit ${category.name}`} description={conflict.summary}>
+  <section>
+    <a href={`/konflikt-app/konflikt/${category.id}/`} class="back-link">← Konflikte mit {category.name}</a>
+
+    <div class="conflict-header">
+      <span class="conflict-icon">{conflict.icon}</span>
+      <h1>{conflict.title}</h1>
+    </div>
+    <p class="conflict-with">{category.icon} mit {category.name}</p>
+
+    <!-- Mode selector tabs -->
+    {
+      mode === 'overview' && (
+        <>
+          <div class="section-card problem-box">
+            <h2>Das Problem</h2>
+            <p>{conflict.problem}</p>
+          </div>
+
+          <div class="section-card why-box">
+            <h2>Warum passiert das?</h2>
+            <p>{conflict.why_happens}</p>
+          </div>
+
+          <h2 class="mode-heading">Wie willst du lösen?</h2>
+          <div class="mode-cards">
+            <a href={`?mode=one-party`} class="mode-card">
+              <span class="mode-icon">🧑</span>
+              <span class="mode-title">Nur ich (allein)</span>
+              <span class="mode-desc">Ich will den Konflikt ansprechen, aber mein Gegenüber ist nicht aktiv dabei.</span>
+            </a>
+            <a href={`?mode=two-party`} class="mode-card mode-card-accent">
+              <span class="mode-icon">👫</span>
+              <span class="mode-title">Beide Seiten</span>
+              <span class="mode-desc">Wir wollen den Konflikt gemeinsam lösen – mit moderierten Fragen und einem Plan.</span>
+            </a>
+          </div>
+
+          <div class="related-section">
+            <h3>Ähnliche Konflikte</h3>
+            <div class="related-links">
+              {
+                conflict.related.map(slug => {
+                  const rel = category.conflicts.find(c => c.slug === slug);
+                  return rel ? (
+                    <a href={`/konflikt-app/konflikt/${category.id}/${slug}/`} class="related-link">
+                      <span>{rel.icon}</span>
+                      <span>{rel.title}</span>
+                    </a>
+                  ) : null;
+                })
+              }
+            </div>
+          </div>
+        </>
+      )
+    }
+
+    {
+      mode === 'one-party' && (
+        <div class="solution-view">
+          <a href={`/konflikt-app/konflikt/${category.id}/${conflict.slug}/`} class="back-link">← Übersicht</a>
+          <div class="solution-header">
+            <span class="badge badge-one">🧑 Nur ich – Allein lösen</span>
+            <h2>Dein Gesprächsplan</h2>
+          </div>
+
+          <div class="section-card script-box">
+            <h3>Sprich genau so:</h3>
+            <div class="script-text">
+              <p>„{conflict.one_party.script}"</p>
+            </div>
+          </div>
+
+          <h3>Schritt für Schritt:</h3>
+          <ol class="steps-list">
+            {
+              conflict.one_party.steps.map(step => (
+                <li class="step-item">{step}</li>
+              ))
+            }
+          </ol>
+
+          <div class="next-actions">
+            <h3>Weiter helfen:</h3>
+            <div class="related-links">
+              {
+                conflict.related.map(slug => {
+                  const rel = category.conflicts.find(c => c.slug === slug);
+                  return rel ? (
+                    <a href={`/konflikt-app/konflikt/${category.id}/${rel.slug}/`} class="related-link">
+                      <span>{rel.icon}</span>
+                      <span>{rel.title}</span>
+                    </a>
+                  ) : null;
+                })
+              }
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    {
+      mode === 'two-party' && (
+        <div class="solution-view">
+          <a href={`/konflikt-app/konflikt/${category.id}/${conflict.slug}/`} class="back-link">← Übersicht</a>
+          <div class="solution-header">
+            <span class="badge badge-two">👫 Beide Seiten – Gemeinsam lösen</span>
+            <h2>Gemeinsamer Dialog</h2>
+          </div>
+
+          <div class="section-card goal-box">
+            <h3>🎯 Ziel</h3>
+            <p>{conflict.two_party.goal}</p>
+          </div>
+
+          <h3>Fragen für das Gespräch:</h3>
+          <div class="questions-list">
+            {
+              conflict.two_party.questions.map(q => (
+                <div class="question-item">
+                  <span class="q-marker">?</span>
+                  <span>{q}</span>
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="tip-box">
+            <strong>💡 Tipp für beide Seiten:</strong>
+            <p>Setzt euch bewusst zusammen – ohne Handys, ohne Zeitdruck. Jeder bekommt 5 Minuten, um seine Sicht zu teilen, ohne unterbrochen zu werden. Dann wechselt die Seite.</p>
+          </div>
+
+          <div class="next-actions">
+            <h3>Verwandte Konflikte:</h3>
+            <div class="related-links">
+              {
+                conflict.related.map(slug => {
+                  const rel = category.conflicts.find(c => c.slug === slug);
+                  return rel ? (
+                    <a href={`/konflikt-app/konflikt/${category.id}/${rel.slug}/`} class="related-link">
+                      <span>{rel.icon}</span>
+                      <span>{rel.title}</span>
+                    </a>
+                  ) : null;
+                })
+              }
+            </div>
+          </div>
+        </div>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  .back-link {
+    display: inline-block;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .back-link:hover { color: var(--primary); }
+  .conflict-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+  .conflict-icon { font-size: 2.2rem; }
+  .conflict-header h1 { margin: 0; }
+  .conflict-with {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  .section-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .section-card h2, .section-card h3 {
+    margin-bottom: 0.75rem;
+  }
+  .section-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  .problem-box { border-left: 4px solid var(--accent); }
+  .why-box { border-left: 4px solid var(--primary-light); }
+  .script-box { border-left: 4px solid var(--accent); }
+  .goal-box { border-left: 4px solid var(--primary); }
+  .script-text {
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem;
+  }
+  .script-text p {
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .mode-heading {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .mode-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 500px) {
+    .mode-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+  .mode-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--bg-white);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    transition: all 0.15s;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .mode-card:hover {
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  .mode-card-accent {
+    border-color: var(--primary-light);
+    background: #F0F7F4;
+  }
+  .mode-card-accent:hover {
+    border-color: var(--primary);
+  }
+  .mode-icon { font-size: 2rem; }
+  .mode-title { font-weight: 700; font-size: 1.05rem; }
+  .mode-desc { font-size: 0.85rem; color: var(--text-light); }
+  .solution-header {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .badge {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    width: fit-content;
+  }
+  .badge-one {
+    background: #FFF3E0;
+    color: #E65100;
+  }
+  .badge-two {
+    background: #E8F5E9;
+    color: var(--primary-dark);
+  }
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-left: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .step-item {
+    color: var(--text-light);
+    line-height: 1.6;
+    padding-left: 0.5rem;
+  }
+  .step-item::marker {
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .question-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+    color: var(--text-light);
+  }
+  .q-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .tip-box {
+    background: #E8F5E9;
+    border: 1px solid var(--primary-light);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .tip-box p {
+    color: var(--text-light);
+    margin-top: 0.5rem;
+  }
+  .related-section {
+    margin-top: 2rem;
+  }
+  .related-section h3, .next-actions h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+  .related-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .related-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+    color: var(--text);
+    transition: all 0.15s;
+  }
+  .related-link:hover {
+    border-color: var(--primary-light);
+    background: #F0F7F4;
+  }
+  .next-actions {
+    margin-top: 1.5rem;
+  }
+</style>

@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { categories, getCategory } from '../../data/conflicts.js';
+
+export function getStaticPaths() {
+  return categories.map(cat => ({
+    params: { category: cat.id },
+    props: { category: cat },
+  }));
+}
+
+const { category } = Astro.props;
+---
+
+<BaseLayout
+  title={`Konflikte mit ${category.name}`}
+  description={category.summary}
+>
+  <section>
+    <a href="/konflikt-app/konflikt/" class="back-link">← Alle Kategorien</a>
+    <div class="cat-header">
+      <span class="cat-icon">{category.icon}</span>
+      <h1>Konflikte mit {category.name}</h1>
+    </div>
+    <p class="cat-desc">{category.summary}</p>
+
+    <p class="section-label">Wähle dein Problem:</p>
+
+    <div class="conflict-grid">
+      {
+        category.conflicts.map(con => (
+          <a href={`/konflikt-app/konflikt/${category.id}/${con.slug}/`} class="conflict-card">
+            <span class="con-icon">{con.icon}</span>
+            <span class="con-title">{con.title}</span>
+            <span class="con-summary">{con.summary}</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .back-link {
+    display: inline-block;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .back-link:hover {
+    color: var(--primary);
+  }
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .cat-icon {
+    font-size: 2.2rem;
+  }
+  .cat-header h1 {
+    margin: 0;
+  }
+  .cat-desc {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+  }
+  .section-label {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: var(--text-light);
+  }
+  .conflict-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .conflict-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    transition: all 0.15s;
+    color: var(--text);
+  }
+  .conflict-card:hover {
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow);
+    transform: translateY(-1px);
+  }
+  .con-icon {
+    font-size: 1.5rem;
+  }
+  .con-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .con-summary {
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+</style>
