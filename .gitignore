@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local strategy and diagram artifacts
+OPENROUTER-*.md
+struktur-alltagskonflikte.*

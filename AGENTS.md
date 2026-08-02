@@ -1,22 +1,27 @@
+# Konfliktlotse Project Instructions
+
+Die vollständige und verbindliche Aufgabenbeschreibung steht in [`CHALLENGE.md`](./CHALLENGE.md). Lies sie vor jeder Änderung vollständig. Alle darin genannten Qualitäts-, SEO-, Legal-, Sicherheits-, Content- und GitHub-Pages-Anforderungen sind verpflichtend.
+
+## Arbeitsregeln
+
+- Bestehendes Astro-Projekt direkt bearbeiten; kein neues Unterprojekt anlegen.
+- Nicht committen und nicht pushen. Hermes übernimmt Review und Deployment.
+- Keine Secrets oder API-Keys in Dateien schreiben.
+- Produktionsdomain ist `https://konfliktlotse.app/`; interne Links müssen am Domain-Root funktionieren.
+- Vor Abschluss `npm run build`, Linkprüfung und `npm audit` ausführen.
+
 ## Development
 
-When starting the dev server, use background mode:
+Wenn ein Dev-Server nötig ist, im Hintergrund starten:
 
-```
+```bash
 astro dev --background
 ```
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+Verwaltung:
 
-## Documentation
-
-Full documentation: https://docs.astro.build
-
-Consult these guides before working on related tasks:
-
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+```bash
+astro dev status
+astro dev logs
+astro dev stop
+```

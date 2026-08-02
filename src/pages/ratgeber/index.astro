@@ -5,29 +5,28 @@ import { categories } from '../../data/categories/index.js';
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<BaseLayout title="Konflikte" description="Alle Alltagskonflikte auf einen Blick. Wähle die Person, mit der du einen Konflikt hast.">
+<BaseLayout title="Ratgeber" description="Tiefgründiges Wissen, psychologische Hintergründe und langfristige Lösungen für Alltagskonflikte.">
   <section>
-    <h1>Alle Konflikte</h1>
+    <h1>Alle Ratgeber</h1>
     <p class="page-desc">
-      Wähle, mit wem du einen Konflikt hast, und finde Schritt für Schritt eine Lösung.
+      Verstehe die Dynamik hinter deinen Konflikten und finde langfristige Lösungen.
     </p>
 
     <div class="category-list">
       {
         categories.map(cat => (
           <div class="cat-block">
-            <a href={`${baseUrl}/konflikt/${cat.id}/`} class="cat-block-header">
+            <a href={`${baseUrl}/ratgeber/${cat.id}/`} class="cat-block-header">
               <span class="cat-block-icon">{cat.icon}</span>
               <span class="cat-block-name">{cat.name}</span>
               <span class="cat-block-arrow">→</span>
             </a>
-            <p class="cat-block-desc">{cat.summary}</p>
             <div class="conflict-list">
               {
                 cat.conflicts.map(con => (
-                  <a href={`${baseUrl}/konflikt/${cat.id}/${con.slug}/`} class="conflict-link">
+                  <a href={`${baseUrl}/ratgeber/${cat.id}/${con.slug}/`} class="conflict-link">
                     <span>{con.icon}</span>
-                    <span>{con.title}</span>
+                    <span>{con.article?.title || con.title}</span>
                   </a>
                 ))
               }
@@ -77,11 +76,6 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     margin-left: auto;
     color: var(--text-light);
   }
-  .cat-block-desc {
-    padding: 0.75rem 1.25rem;
-    color: var(--text-light);
-    font-size: 0.9rem;
-  }
   .conflict-list {
     display: flex;
     flex-direction: column;
@@ -95,9 +89,10 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     color: var(--text);
     font-size: 0.95rem;
     transition: background 0.15s;
+    text-decoration: none;
   }
-  .conflict-link:last-child {
-    border-bottom: none;
+  .conflict-link:first-child {
+    border-top: none;
   }
   .conflict-link:hover {
     background: var(--bg);

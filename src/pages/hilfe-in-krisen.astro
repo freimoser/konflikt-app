@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout 
+  title="Hilfe in Krisen" 
+  description="Wichtige Adressen und Telefonnummern für Hilfe bei akuter Gefahr, Gewalt oder seelischen Krisen."
+>
+  <h1>Hilfe in Krisen</h1>
+  <p>Konfliktlotse bietet Tipps für alltägliche Konflikte. Wenn du jedoch Angst hast, bedroht wirst, Gewalt (physisch oder psychisch) erlebst oder dich in einer akuten seelischen Notlage befindest, helfen keine Gesprächsregeln. In diesen Fällen wende dich bitte an professionelle und geschulte Stellen.</p>
+  
+  <div class="emergency-contacts">
+    <h2>Akute Gefahr</h2>
+    <ul>
+      <li><strong>Polizei:</strong> 110</li>
+      <li><strong>Rettungsdienst/Feuerwehr:</strong> 112</li>
+    </ul>
+
+    <h2>TelefonSeelsorge</h2>
+    <p>Kostenlos, anonym und rund um die Uhr erreichbar.</p>
+    <ul>
+      <li><strong>Telefon:</strong> 0800 1110111 oder 0800 1110222 oder 116 123</li>
+      <li><strong>Online:</strong> <a href="https://www.telefonseelsorge.de/" target="_blank" rel="noopener noreferrer">www.telefonseelsorge.de</a></li>
+    </ul>
+
+    <h2>Hilfetelefon „Gewalt gegen Frauen“</h2>
+    <p>Rund um die Uhr erreichbar, kostenlos und anonym.</p>
+    <ul>
+      <li><strong>Telefon:</strong> 116 016</li>
+      <li><strong>Online:</strong> <a href="https://www.hilfetelefon.de/" target="_blank" rel="noopener noreferrer">www.hilfetelefon.de</a></li>
+    </ul>
+
+    <h2>Hilfetelefon „Gewalt an Männern“</h2>
+    <p>Unterstützung für Männer, die von Gewalt betroffen sind.</p>
+    <ul>
+      <li><strong>Telefon:</strong> 0800 1239900</li>
+      <li><strong>Online:</strong> <a href="https://www.maennerhilfetelefon.de/" target="_blank" rel="noopener noreferrer">www.maennerhilfetelefon.de</a></li>
+    </ul>
+
+    <h2>WEISSER RING Opfer-Telefon</h2>
+    <p>Hilfe für Kriminalitätsopfer.</p>
+    <ul>
+      <li><strong>Telefon:</strong> 116 006</li>
+      <li><strong>Online:</strong> <a href="https://weisser-ring.de/hilfe-fuer-opfer/opfer-telefon" target="_blank" rel="noopener noreferrer">weisser-ring.de/hilfe-fuer-opfer/opfer-telefon</a></li>
+    </ul>
+  </div>
+
+  <style>
+    .emergency-contacts {
+      margin-top: 2rem;
+    }
+    .emergency-contacts h2 {
+      margin-top: 1.5rem;
+      color: #b32d2d;
+    }
+    .emergency-contacts ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .emergency-contacts li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</BaseLayout>

@@ -1,28 +1,60 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const startUrl = `${base}/`.replace(/\/\/+/g, '/');
+const konfliktUrl = `${base}/konflikt/`.replace(/\/\/+/g, '/');
 ---
-
-<BaseLayout title="Seite nicht gefunden" description="Die angeforderte Seite existiert nicht.">
+<BaseLayout
+  title="Seite nicht gefunden"
+  description="Die gesuchte Seite konnte nicht gefunden werden (Fehler 404)."
+  canonical="/404.html"
+  noindex={true}
+>
   <div class="not-found">
-    <span class="nf-icon">🕊️</span>
-    <h1>Seite nicht gefunden</h1>
-    <p>Diese Seite existiert (noch) nicht – aber vielleicht ist dein Konflikt ja woanders.</p>
-    <a href="/konflikt-app/konflikt/" class="btn btn-primary">Alle Konflikte durchsuchen</a>
+    <h1>404 – Seite nicht gefunden</h1>
+    <p>Entschuldigung, die von dir gesuchte Seite existiert nicht oder wurde verschoben.</p>
+    <p>Vielleicht helfen dir diese Links weiter:</p>
+    <div class="not-found-links">
+      <a href={startUrl} class="btn">Zur Startseite</a>
+      <a href={konfliktUrl} class="btn btn-outline">Alle Konflikte ansehen</a>
+    </div>
   </div>
-</BaseLayout>
 
-<style>
-  .not-found {
-    text-align: center;
-    padding: 4rem 1rem;
-  }
-  .nf-icon { font-size: 4rem; display: block; margin-bottom: 1rem; }
-  .not-found h1 { margin-bottom: 0.75rem; }
-  .not-found p {
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-</style>
+  <style>
+    .not-found {
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+    .not-found-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: var(--bg-white);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: var(--primary-dark);
+      color: var(--bg-white);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--bg-white);
+    }
+  </style>
+</BaseLayout>

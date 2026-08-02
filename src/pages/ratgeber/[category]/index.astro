@@ -1,6 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { categories, getCategory } from '../../data/categories/index.js';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { categories } from '../../../data/categories/index.js';
 
 export function getStaticPaths() {
   return categories.map(cat => ({
@@ -11,29 +12,36 @@ export function getStaticPaths() {
 
 const { category } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const breadcrumbs = [
+  { label: 'Start', url: '/' },
+  { label: 'Ratgeber', url: '/ratgeber/' },
+  { label: category.name }
+];
 ---
 
 <BaseLayout
-  title={`Konflikte mit ${category.name}`}
-  description={category.summary}
+  title={`Ratgeber: Konflikte mit ${category.name}`}
+  description={`Hintergründe und psychologische Dynamiken zu Konflikten mit ${category.name}.`}
 >
+  <Breadcrumbs crumbs={breadcrumbs} />
+
   <section>
-    <a href={`${baseUrl}/konflikt/`} class="back-link">← Alle Kategorien</a>
     <div class="cat-header">
       <span class="cat-icon">{category.icon}</span>
-      <h1>Konflikte mit {category.name}</h1>
+      <h1>Ratgeber: {category.name}</h1>
     </div>
-    <p class="cat-desc">{category.summary}</p>
-
-    <p class="section-label">Wähle dein Problem:</p>
+    <p class="cat-desc">Hintergründe und psychologische Dynamiken zu typischen Konflikten mit {category.name}.</p>
 
     <div class="conflict-grid">
       {
         category.conflicts.map(con => (
-          <a href={`${baseUrl}/konflikt/${category.id}/${con.slug}/`} class="conflict-card">
+          <a href={`${baseUrl}/ratgeber/${category.id}/${con.slug}/`} class="conflict-card">
             <span class="con-icon">{con.icon}</span>
-            <span class="con-title">{con.title}</span>
-            <span class="con-summary">{con.summary}</span>
+            <div class="con-content">
+              <span class="con-title">{con.article?.title || con.title}</span>
+              <span class="con-summary">{con.summary}</span>
+            </div>
           </a>
         ))
       }
@@ -42,15 +50,6 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 </BaseLayout>
 
 <style>
-  .back-link {
-    display: inline-block;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-  }
-  .back-link:hover {
-    color: var(--primary);
-  }
   .cat-header {
     display: flex;
     align-items: center;
@@ -65,13 +64,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
   .cat-desc {
     color: var(--text-light);
-    margin-bottom: 1.5rem;
-  }
-  .section-label {
-    font-weight: 600;
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
-    color: var(--text-light);
+    margin-bottom: 2rem;
   }
   .conflict-grid {
     display: flex;
@@ -80,14 +73,15 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
   .conflict-card {
     display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+    align-items: flex-start;
+    gap: 1rem;
     background: var(--bg-white);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.25rem;
     transition: all 0.15s;
     color: var(--text);
+    text-decoration: none;
   }
   .conflict-card:hover {
     border-color: var(--primary-light);
@@ -96,13 +90,21 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
   .con-icon {
     font-size: 1.5rem;
+    margin-top: 0.1rem;
+  }
+  .con-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
   }
   .con-title {
     font-weight: 600;
     font-size: 1.05rem;
+    color: var(--text);
   }
   .con-summary {
     font-size: 0.85rem;
     color: var(--text-light);
+    line-height: 1.5;
   }
 </style>

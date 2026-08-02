@@ -1,15 +1,15 @@
-# 🕊️ Alltagskonflikte lösen
+# 🕊️ Konfliktlotse
 
 **Dein digitaler Lotse für schwierige Gespräche.**
 
 Kleine Konflikte. Große Wirkung. Finde deinen Weg.
 
-👉 [alltagskonflikte-lösen.de](https://freemoser.github.io/konflikt-app/)
+👉 [konfliktlotse.app](https://konfliktlotse.app/)
 
 ## So funktioniert's
 
 1. **Wähle die Person** – Partner:in, Chef:in, Freund:in, Kolleg:in, Nachbar:in, Eltern
-2. **Wähle das Problem** – aus über 20 Alltagskonflikten
+2. **Wähle das Problem** – aus über 30 Alltagskonflikten
 3. **Wähle den Weg** – allein lösen oder beide Seiten einbeziehen
 
 Jeder Konflikt bekommt:

@@ -1,0 +1,40 @@
+---
+export interface Props {
+  context?: string;
+}
+
+const { context } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const hilfeUrl = `${baseUrl}/hilfe-in-krisen/`.replace(/\/\/+/g, '/');
+---
+<div class="crisis-notice">
+  <strong>Wichtig:</strong> Ist das noch ein normaler Konflikt? 
+  {context && <span>Besonders bei Themen wie {context} gilt: </span>}
+  Bei Gewalt, Bedrohung oder Angst helfen keine Gesprächsregeln. Wende dich an Profis.
+  <a href={hilfeUrl}>Finde sofort Hilfe in Krisen.</a>
+</div>
+
+<style>
+  .crisis-notice {
+    background: #FFF3CD;
+    border-left: 4px solid #FFC107;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    color: #664D03;
+    line-height: 1.5;
+  }
+  .crisis-notice a {
+    color: #997404;
+    font-weight: 600;
+    text-decoration: underline;
+    margin-left: 0.25rem;
+  }
+  .crisis-notice a:hover {
+    color: #664D03;
+  }
+  .crisis-notice strong {
+    color: #997404;
+  }
+</style>

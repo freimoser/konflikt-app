@@ -1,0 +1,382 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CrisisNotice from '../../../components/CrisisNotice.astro';
+import { categories } from '../../../data/categories/index.js';
+import { normalizeConflict } from '../../../data/schema.js';
+
+export function getStaticPaths() {
+  const paths = [];
+  for (const cat of categories) {
+    for (const rawCon of cat.conflicts) {
+      paths.push({
+        params: { category: cat.id, slug: rawCon.slug },
+        props: { conflict: normalizeConflict(rawCon, cat.id), category: cat },
+      });
+    }
+  }
+  return paths;
+}
+
+const { conflict, category } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const pageUrl = `${baseUrl}/ratgeber/${category.id}/${conflict.slug}/`;
+const toolUrl = `${baseUrl}/konflikt/${category.id}/${conflict.slug}/`;
+
+const relatedConflicts = conflict.related
+  .map(rel => {
+    const cat = categories.find(c => c.id === rel.category);
+    if (!cat) return null;
+    const con = cat.conflicts.find(c => c.slug === rel.slug);
+    if (!con) return null;
+    return { ...con, category: cat };
+  })
+  .filter(Boolean);
+
+const breadcrumbs = [
+  { label: 'Start', url: '/' },
+  { label: 'Ratgeber', url: '/ratgeber/' },
+  { label: category.name, url: `/ratgeber/${category.id}/` },
+  { label: conflict.title }
+];
+
+const article = conflict.article || {};
+const title = article.title || `Ratgeber: ${conflict.title}`;
+const description = article.meta || conflict.summary;
+
+// JSON-LD Generation
+const schemas = [];
+
+// Article Schema
+schemas.push({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "author": {
+    "@type": "Person",
+    "name": "Serdar Thomas Freimoser"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Konfliktlotse",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${Astro.site.origin}${baseUrl}/favicon.svg`
+    }
+  }
+});
+
+// FAQ Schema
+if (article.faqs && article.faqs.length > 0) {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": article.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  });
+}
+
+const jsonLd = JSON.stringify(schemas);
+---
+
+<BaseLayout 
+  title={title} 
+  description={description}
+  canonical={pageUrl}
+  jsonLd={jsonLd}
+>
+  <Breadcrumbs crumbs={breadcrumbs} />
+
+  <article class="ratgeber-article">
+    <div class="article-header">
+      <div class="meta-tag">{category.icon} Konflikte mit {category.name}</div>
+      <h1>{title}</h1>
+    </div>
+
+    {article.intro && (
+      <div class="lead-text">
+        <p>{article.intro}</p>
+      </div>
+    )}
+    {!article.intro && (
+      <div class="lead-text">
+        <p>Erfahre mehr über die Hintergründe von "{conflict.title}" und entdecke Wege zu einer langfristigen Lösung.</p>
+      </div>
+    )}
+
+    {conflict.safety && <CrisisNotice context={conflict.safety} />}
+
+    <div class="tool-promo">
+      <div class="tool-promo-content">
+        <h3>Akuter Konflikt?</h3>
+        <p>Finde die richtigen Worte mit unserem Gesprächsleitfaden.</p>
+      </div>
+      <a href={toolUrl} class="btn-primary">Zum Gesprächsplan</a>
+    </div>
+
+    <div class="content-body">
+      {article.situation && (
+        <section>
+          <h2>Die Situation</h2>
+          <p>{article.situation}</p>
+        </section>
+      )}
+
+      {article.causes && article.causes.length > 0 && (
+        <section>
+          <h2>Warum passiert das? (Ursachen & Dynamiken)</h2>
+          <ul>
+            {article.causes.map(cause => <li>{cause}</li>)}
+          </ul>
+        </section>
+      )}
+
+      {article.mistakes && article.mistakes.length > 0 && (
+        <section>
+          <h2>Häufige Fehler</h2>
+          <ul>
+            {article.mistakes.map(mistake => <li>{mistake}</li>)}
+          </ul>
+        </section>
+      )}
+
+      {article.strategy && (
+        <section>
+          <h2>Langfristige Lösungsstrategie</h2>
+          <p>{article.strategy}</p>
+        </section>
+      )}
+
+      {article.examples && article.examples.length > 0 && (
+        <section>
+          <h2>Beispiele & Perspektiven</h2>
+          <ul>
+            {article.examples.map(ex => <li>{ex}</li>)}
+          </ul>
+        </section>
+      )}
+
+      {article.help && (
+        <section>
+          <h2>Wann Abstand oder Hilfe sinnvoll ist</h2>
+          <p>{article.help}</p>
+        </section>
+      )}
+
+      {article.faqs && article.faqs.length > 0 && (
+        <section class="faq-section">
+          <h2>Häufige Fragen (FAQ)</h2>
+          <div class="faq-list">
+            {article.faqs.map(faq => (
+              <details class="faq-item">
+                <summary class="faq-question">{faq.question}</summary>
+                <div class="faq-answer">
+                  <p>{faq.answer}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+
+    <hr class="separator" />
+
+    {relatedConflicts.length > 0 && (
+      <div class="related-section">
+        <h3>Verwandte Artikel</h3>
+        <div class="related-links">
+          {relatedConflicts.map(rel => (
+            <a href={`${baseUrl}/ratgeber/${rel.category.id}/${rel.slug}/`} class="related-link">
+              <span>{rel.icon}</span>
+              <span>{rel.article?.title || rel.title}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+  </article>
+</BaseLayout>
+
+<style>
+  .ratgeber-article {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+  }
+  @media (max-width: 600px) {
+    .ratgeber-article {
+      padding: 1.5rem;
+      border: none;
+      background: transparent;
+    }
+  }
+
+  .article-header {
+    margin-bottom: 2rem;
+  }
+  .meta-tag {
+    display: inline-block;
+    background: var(--bg);
+    color: var(--text-light);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .article-header h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .lead-text {
+    font-size: 1.15rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+
+  .tool-promo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #E8F5E9;
+    border: 1px solid var(--primary-light);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 2.5rem 0;
+    gap: 1.5rem;
+  }
+  @media (max-width: 600px) {
+    .tool-promo {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+    }
+  }
+  .tool-promo-content h3 {
+    margin: 0 0 0.25rem 0;
+    color: var(--primary-dark);
+  }
+  .tool-promo-content p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.95rem;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .btn-primary:hover {
+    background: var(--primary-dark);
+  }
+
+  .content-body section {
+    margin-bottom: 2.5rem;
+  }
+  .content-body h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .content-body p, .content-body li {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-light);
+  }
+  .content-body ul {
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-section {
+    margin-top: 3rem;
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .faq-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .faq-question {
+    padding: 1.25rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    color: var(--text);
+    background: var(--bg-white);
+  }
+  .faq-question:hover {
+    background: #F8F9FA;
+  }
+  .faq-answer {
+    padding: 0 1.25rem 1.25rem 1.25rem;
+    background: var(--bg-white);
+  }
+  .faq-answer p {
+    margin: 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .separator {
+    border: 0;
+    height: 1px;
+    background: var(--border);
+    margin: 3rem 0;
+  }
+
+  .related-section h3 {
+    margin-bottom: 1rem;
+  }
+  .related-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .related-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: var(--text);
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+  .related-link:hover {
+    border-color: var(--primary-light);
+    background: #E8F5E9;
+  }
+</style>
