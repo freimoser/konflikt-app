@@ -17,6 +17,7 @@ export function getStaticPaths() {
 
 const { conflict, category } = Astro.props;
 const mode = Astro.url.searchParams.get('mode') || 'overview';
+const pageUrl = `/konflikt-app/konflikt/${category.id}/${conflict.slug}/`;
 ---
 
 <BaseLayout title={`${conflict.title} – mit ${category.name}`} description={conflict.summary}>
@@ -29,151 +30,155 @@ const mode = Astro.url.searchParams.get('mode') || 'overview';
     </div>
     <p class="conflict-with">{category.icon} mit {category.name}</p>
 
-    <!-- Mode selector tabs -->
-    {
-      mode === 'overview' && (
-        <>
-          <div class="section-card problem-box">
-            <h2>Das Problem</h2>
-            <p>{conflict.problem}</p>
-          </div>
+    <div id="mode-view">
+      <!-- Übersicht (default) -->
+      <div id="view-overview">
+        <div class="section-card problem-box">
+          <h2>Das Problem</h2>
+          <p>{conflict.problem}</p>
+        </div>
+        <div class="section-card why-box">
+          <h2>Warum passiert das?</h2>
+          <p>{conflict.why_happens}</p>
+        </div>
+        <h2 class="mode-heading">Wie willst du lösen?</h2>
+        <div class="mode-cards">
+          <a href={`${pageUrl}?mode=one-party`} class="mode-card">
+            <span class="mode-icon">🧑</span>
+            <span class="mode-title">Nur ich (allein)</span>
+            <span class="mode-desc">Ich will den Konflikt ansprechen, aber mein Gegenüber ist nicht aktiv dabei.</span>
+          </a>
+          <a href={`${pageUrl}?mode=two-party`} class="mode-card mode-card-accent">
+            <span class="mode-icon">👫</span>
+            <span class="mode-title">Beide Seiten</span>
+            <span class="mode-desc">Wir wollen den Konflikt gemeinsam lösen – mit moderierten Fragen und einem Plan.</span>
+          </a>
+        </div>
+        <div class="related-section">
+          <h3>Ähnliche Konflikte</h3>
+          <div class="related-links">{
+            conflict.related.map(slug => {
+              const rel = category.conflicts.find(c => c.slug === slug);
+              return rel ? (
+                <a href={`/konflikt-app/konflikt/${category.id}/${slug}/`} class="related-link">
+                  <span>{rel.icon}</span>
+                  <span>{rel.title}</span>
+                </a>
+              ) : null;
+            })
+          }</div>
+        </div>
+      </div>
 
-          <div class="section-card why-box">
-            <h2>Warum passiert das?</h2>
-            <p>{conflict.why_happens}</p>
-          </div>
-
-          <h2 class="mode-heading">Wie willst du lösen?</h2>
-          <div class="mode-cards">
-            <a href={`?mode=one-party`} class="mode-card">
-              <span class="mode-icon">🧑</span>
-              <span class="mode-title">Nur ich (allein)</span>
-              <span class="mode-desc">Ich will den Konflikt ansprechen, aber mein Gegenüber ist nicht aktiv dabei.</span>
-            </a>
-            <a href={`?mode=two-party`} class="mode-card mode-card-accent">
-              <span class="mode-icon">👫</span>
-              <span class="mode-title">Beide Seiten</span>
-              <span class="mode-desc">Wir wollen den Konflikt gemeinsam lösen – mit moderierten Fragen und einem Plan.</span>
-            </a>
-          </div>
-
-          <div class="related-section">
-            <h3>Ähnliche Konflikte</h3>
-            <div class="related-links">
-              {
-                conflict.related.map(slug => {
-                  const rel = category.conflicts.find(c => c.slug === slug);
-                  return rel ? (
-                    <a href={`/konflikt-app/konflikt/${category.id}/${slug}/`} class="related-link">
-                      <span>{rel.icon}</span>
-                      <span>{rel.title}</span>
-                    </a>
-                  ) : null;
-                })
-              }
-            </div>
-          </div>
-        </>
-      )
-    }
-
-    {
-      mode === 'one-party' && (
-        <div class="solution-view">
-          <a href={`/konflikt-app/konflikt/${category.id}/${conflict.slug}/`} class="back-link">← Übersicht</a>
-          <div class="solution-header">
-            <span class="badge badge-one">🧑 Nur ich – Allein lösen</span>
-            <h2>Dein Gesprächsplan</h2>
-          </div>
-
-          <div class="section-card script-box">
-            <h3>Sprich genau so:</h3>
-            <div class="script-text">
-              <p>„{conflict.one_party.script}"</p>
-            </div>
-          </div>
-
-          <h3>Schritt für Schritt:</h3>
-          <ol class="steps-list">
-            {
-              conflict.one_party.steps.map(step => (
-                <li class="step-item">{step}</li>
-              ))
-            }
-          </ol>
-
-          <div class="next-actions">
-            <h3>Weiter helfen:</h3>
-            <div class="related-links">
-              {
-                conflict.related.map(slug => {
-                  const rel = category.conflicts.find(c => c.slug === slug);
-                  return rel ? (
-                    <a href={`/konflikt-app/konflikt/${category.id}/${rel.slug}/`} class="related-link">
-                      <span>{rel.icon}</span>
-                      <span>{rel.title}</span>
-                    </a>
-                  ) : null;
-                })
-              }
-            </div>
+      <!-- Ein-Parteien-Lösung -->
+      <div id="view-one-party" style="display:none">
+        <a href={`${pageUrl}`} class="back-link">← Übersicht</a>
+        <div class="solution-header">
+          <span class="badge badge-one">🧑 Nur ich – Allein lösen</span>
+          <h2>Dein Gesprächsplan</h2>
+        </div>
+        <div class="section-card script-box">
+          <h3>Sprich genau so:</h3>
+          <div class="script-text">
+            <p>„{conflict.one_party.script}"</p>
           </div>
         </div>
-      )
-    }
-
-    {
-      mode === 'two-party' && (
-        <div class="solution-view">
-          <a href={`/konflikt-app/konflikt/${category.id}/${conflict.slug}/`} class="back-link">← Übersicht</a>
-          <div class="solution-header">
-            <span class="badge badge-two">👫 Beide Seiten – Gemeinsam lösen</span>
-            <h2>Gemeinsamer Dialog</h2>
-          </div>
-
-          <div class="section-card goal-box">
-            <h3>🎯 Ziel</h3>
-            <p>{conflict.two_party.goal}</p>
-          </div>
-
-          <h3>Fragen für das Gespräch:</h3>
-          <div class="questions-list">
-            {
-              conflict.two_party.questions.map(q => (
-                <div class="question-item">
-                  <span class="q-marker">?</span>
-                  <span>{q}</span>
-                </div>
-              ))
-            }
-          </div>
-
-          <div class="tip-box">
-            <strong>💡 Tipp für beide Seiten:</strong>
-            <p>Setzt euch bewusst zusammen – ohne Handys, ohne Zeitdruck. Jeder bekommt 5 Minuten, um seine Sicht zu teilen, ohne unterbrochen zu werden. Dann wechselt die Seite.</p>
-          </div>
-
-          <div class="next-actions">
-            <h3>Verwandte Konflikte:</h3>
-            <div class="related-links">
-              {
-                conflict.related.map(slug => {
-                  const rel = category.conflicts.find(c => c.slug === slug);
-                  return rel ? (
-                    <a href={`/konflikt-app/konflikt/${category.id}/${rel.slug}/`} class="related-link">
-                      <span>{rel.icon}</span>
-                      <span>{rel.title}</span>
-                    </a>
-                  ) : null;
-                })
-              }
-            </div>
-          </div>
+        <h3>Schritt für Schritt:</h3>
+        <ol class="steps-list">{
+          conflict.one_party.steps.map(step => (
+            <li class="step-item">{step}</li>
+          ))
+        }</ol>
+        <div class="next-actions">
+          <h3>Weiter helfen:</h3>
+          <div class="related-links">{
+            conflict.related.map(slug => {
+              const rel = category.conflicts.find(c => c.slug === slug);
+              return rel ? (
+                <a href={`/konflikt-app/konflikt/${category.id}/${rel.slug}/`} class="related-link">
+                  <span>{rel.icon}</span>
+                  <span>{rel.title}</span>
+                </a>
+              ) : null;
+            })
+          }</div>
         </div>
-      )
-    }
+      </div>
+
+      <!-- Zwei-Parteien-Lösung -->
+      <div id="view-two-party" style="display:none">
+        <a href={`${pageUrl}`} class="back-link">← Übersicht</a>
+        <div class="solution-header">
+          <span class="badge badge-two">👫 Beide Seiten – Gemeinsam lösen</span>
+          <h2>Gemeinsamer Dialog</h2>
+        </div>
+        <div class="section-card goal-box">
+          <h3>🎯 Ziel</h3>
+          <p>{conflict.two_party.goal}</p>
+        </div>
+        <h3>Fragen für das Gespräch:</h3>
+        <div class="questions-list">{
+          conflict.two_party.questions.map(q => (
+            <div class="question-item">
+              <span class="q-marker">?</span>
+              <span>{q}</span>
+            </div>
+          ))
+        }</div>
+        <div class="tip-box">
+          <strong>💡 Tipp für beide Seiten:</strong>
+          <p>Setzt euch bewusst zusammen – ohne Handys, ohne Zeitdruck. Jeder bekommt 5 Minuten, um seine Sicht zu teilen, ohne unterbrochen zu werden. Dann wechselt die Seite.</p>
+        </div>
+        <div class="next-actions">
+          <h3>Verwandte Konflikte:</h3>
+          <div class="related-links">{
+            conflict.related.map(slug => {
+              const rel = category.conflicts.find(c => c.slug === slug);
+              return rel ? (
+                <a href={`/konflikt-app/konflikt/${category.id}/${rel.slug}/`} class="related-link">
+                  <span>{rel.icon}</span>
+                  <span>{rel.title}</span>
+                </a>
+              ) : null;
+            })
+          }</div>
+        </div>
+      </div>
+    </div>
   </section>
 </BaseLayout>
+
+<script>
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const mode = params.get('mode');
+    const overview = document.getElementById('view-overview');
+    const oneParty = document.getElementById('view-one-party');
+    const twoParty = document.getElementById('view-two-party');
+    if (mode === 'one-party' && oneParty) {
+      overview.style.display = 'none';
+      oneParty.style.display = '';
+      twoParty.style.display = 'none';
+    } else if (mode === 'two-party' && twoParty) {
+      overview.style.display = 'none';
+      oneParty.style.display = 'none';
+      twoParty.style.display = '';
+    }
+    // Intercept mode-card clicks for smooth switching
+    document.querySelectorAll('.mode-card').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var href = this.getAttribute('href');
+        var m = href.match(/[?&]mode=([^&]+)/);
+        if (m) {
+          var url = new URL(window.location.href);
+          url.searchParams.set('mode', m[1]);
+          window.location.href = url.toString();
+        }
+      });
+    });
+  })();
+</script>
 
 <style>
   .back-link {
