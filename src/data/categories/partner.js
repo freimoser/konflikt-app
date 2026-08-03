@@ -1061,6 +1061,138 @@ export const partnerCategory = {
           }
         ]
       }
+    },
+    {
+      slug: 'pinkeln-in-der-dusche',
+      title: 'Pinkeln in der Dusche',
+      icon: '🚿',
+      summary: 'Eine Person pinkelt beim Duschen in die Dusche, die andere empfindet das als unhygienisch, respektlos oder unattraktiv. Hinter dem scheinbar kleinen Badthema stehen persönliche Ekelgrenzen, Rücksicht und gemeinsame Regeln.',
+      problem: 'Vielleicht ist es eine langjährige Gewohnheit, über die nie gesprochen wurde, oder du hast sie zufällig bemerkt. Für eine Person scheint das Pinkeln unter laufendem Wasser praktisch und belanglos; für die andere verändert es das Gefühl, eine saubere gemeinsame Dusche zu betreten. Der Streit wird schnell persönlich, weil Ekel schwer wegzudiskutieren ist und Heimlichkeit wie fehlender Respekt wirken kann. Eine faire Klärung unterscheidet die persönliche Ekelgrenze von konkreten Hygienefragen, berücksichtigt Nachspülen und Reinigen und nimmt ernst, dass die Dusche von beiden genutzt wird.',
+      causes: [
+        'Ihr habt unterschiedliche gelernte Badgewohnheiten und Hygienevorstellungen. Was im früheren Haushalt selbstverständlich oder tabu war, wurde möglicherweise nie als gemeinsame Regel ausgesprochen.',
+        'Ekel ist eine persönliche Schutzreaktion und kein objektiver Charaktertest. Eine Person verbindet die Handlung mit Unsauberkeit oder fehlender Intimität, während die andere vor allem laufendes Wasser und schnelles Nachspülen wahrnimmt.',
+        'Der eigentliche Konflikt kann sich um Rücksicht und Privatsphäre drehen: Wurde die Gewohnheit verschwiegen, bleibt die Dusche sichtbar ungepflegt oder wird eine klare Bitte ignoriert, geht es nicht mehr nur um den Vorgang selbst.'
+      ],
+      safety: 'Das ist normalerweise ein lösbarer Alltagskonflikt. Besondere Vorsicht ist sinnvoll, wenn eine Infektion, offene Hautverletzungen oder ärztliche Hinweise eine Rolle spielen; dann gelten medizinische Vorgaben und eine besonders sorgfältige Reinigung, ohne dass dieser Text individuelle Beratung ersetzt. Wenn Grenzen absichtlich missachtet, Ekelgefühle zur Demütigung benutzt oder Gespräche einschüchternd werden, steht respektvoller Abstand vor einer Badregel.',
+      one_party: {
+        preparation: 'Kläre vorab, was dich konkret belastet: die Handlung überhaupt, Heimlichkeit, Geruch, sichtbare Rückstände, fehlendes Nachspülen oder die Vorstellung, dieselbe Fläche zu nutzen. Entscheide, ob du ein vollständiges Unterlassen in der gemeinsamen Dusche brauchst oder unter welchen klaren Bedingungen du dich wohlfühlen könntest. Sprich das Thema außerhalb des Badezimmers und nicht direkt nach einer überraschenden Entdeckung an.',
+        scripts: {
+          sanft: 'Ich muss ein etwas unbeholfenes Badthema ansprechen. Wenn du beim Duschen in die Dusche pinkelst, löst das bei mir Ekel aus und ich fühle mich dort nicht mehr wohl. Können wir eine Regel finden, die unsere unterschiedlichen Grenzen respektiert?',
+          direkt: 'Ich möchte nicht, dass in unsere gemeinsam genutzte Dusche gepinkelt wird. Für mich ist das eine klare Hygiene- und Wohlfühlgrenze. Bitte nutze dafür die Toilette und nimm meine Bitte ernst.',
+          sachlich: 'Wir nutzen dieselbe Dusche barfuß und reinigen sie gemeinsam. Beim Pinkeln unter der Dusche bewerten wir Hygiene und Ekel unterschiedlich. Ich möchte festlegen, ob wir es unterlassen oder welche verbindlichen Regeln für sofortiges gründliches Nachspülen und Reinigen gelten.'
+        },
+        steps: [
+          'Wähle einen ruhigen Moment außerhalb des Bads, in dem niemand nackt, in Eile oder bereits angewidert ist.',
+          'Benenne die konkrete Beobachtung, ohne aus ihr Eigenschaften wie schmutzig, rücksichtslos oder abstoßend abzuleiten.',
+          'Beschreibe deine Reaktion als eigene Grenze: Ekel, Unbehagen, verlorene Attraktivität oder Unsicherheit bei der gemeinsamen Nutzung.',
+          'Frage, welche Gewohnheit oder Überlegung hinter dem Verhalten steht, und höre die Antwort an, ohne deine Grenze aufzugeben.',
+          'Unterscheidet zwischen persönlichem Ekel und konkreter Sauberkeit wie Rückständen, Geruch, Abflussbereich, Nachspülen und Reinigungsroutine.',
+          'Formuliere eine eindeutige Bitte und vereinbart, was in der gemeinsamen Dusche ab sofort gilt.',
+          'Prüft nach einer Woche kurz, ob die Regel eingehalten wird und sich beide wieder selbstverständlich im Bad wohlfühlen.'
+        ],
+        reactions: [
+          {
+            trigger: 'Das Wasser läuft doch, stell dich nicht so an.',
+            reaction: 'Laufendes Wasser ändert nicht meine persönliche Ekelgrenze. Du musst sie nicht teilen, aber in unserem gemeinsamen Bad möchte ich, dass sie berücksichtigt wird.'
+          },
+          {
+            trigger: 'Das ist doch hygienisch völlig egal.',
+            reaction: 'Ich möchte keine pauschale Hygienedebatte gewinnen. Mir geht es um unsere gemeinsam genutzte Dusche, gründliches Nachspülen und Reinigen und darum, dass ich mich dort wohlfühle.'
+          },
+          {
+            trigger: 'Jetzt findest du mich bestimmt unattraktiv.',
+            reaction: 'Die Gewohnheit irritiert mich, aber ich will dich nicht beschämen. Gerade deshalb spreche ich konkret darüber, statt daraus ein Urteil über dich oder unsere ganze Beziehung zu machen.'
+          }
+        ],
+        boundary: 'Wenn du nicht möchtest, dass in die gemeinsame Dusche gepinkelt wird, darfst du das klar als Nutzungsregel benennen. Wird die Grenze wiederholt heimlich oder demonstrativ missachtet, beende die Diskussion über Rechtfertigungen und sprich über getrennte Nutzung beziehungsweise verbindliche Reinigung. Bei Infektionen, Hautverletzungen oder einschlägigen ärztlichen Hinweisen gilt besondere Vorsicht und die medizinische Vorgabe hat Vorrang.'
+      },
+      two_party: {
+        goal: 'Eine verbindliche Badregel vereinbaren, die persönliche Ekelgrenzen, Privatsphäre und konkrete Sauberkeit respektiert, ohne eine Person zu beschämen oder die andere zum Aushalten zu verpflichten.',
+        rules: [
+          'Ihr verwendet keine abwertenden Etiketten wie eklig, prüde, schmutzig oder lächerlich.',
+          'Persönlicher Ekel muss nicht objektiv bewiesen werden, um bei einer gemeinsam genutzten Fläche berücksichtigt zu werden.',
+          'Konkrete Hygienefragen werden praktisch besprochen: Nachspülen, Abfluss, Rückstände, Lüften und regelmäßige Reinigung.',
+          'Bei Infektionen, offenen Hautverletzungen oder ärztlichen Hinweisen entscheidet ihr vorsichtig und folgt professionellen Vorgaben.'
+        ],
+        questions: [
+          'Was genau stört dich an der Situation: der Vorgang, mögliche Rückstände, Heimlichkeit oder das Gefühl fehlender Rücksicht?',
+          'Welche Bedeutung hat die Gewohnheit für dich, und warum möchtest du sie beibehalten oder beenden?',
+          'Welche persönliche Ekel- oder Privatsphäregrenze soll im gemeinsam genutzten Bad gelten?',
+          'Welche konkrete Routine für Nachspülen und Reinigen brauchen wir unabhängig von dieser Gewohnheit?',
+          'Woran merken wir beim Review, dass sich beide respektiert fühlen und die Dusche verlässlich sauber ist?'
+        ],
+        steps: [
+          'Jede Person schildert ihre Sicht und Wirkung zwei Minuten lang, ohne unterbrochen oder korrigiert zu werden.',
+          'Ihr trennt subjektive Ekel- und Attraktivitätsreaktionen von beobachtbaren Fragen zu Rückständen und Reinigung.',
+          'Ihr entscheidet ausdrücklich, ob Pinkeln in der gemeinsamen Dusche unterbleibt oder nur unter gemeinsam akzeptierten Bedingungen möglich ist.',
+          'Ihr legt zusätzlich fest, wie lange nachgespült wird, wer sichtbare Rückstände sofort entfernt und wann die Dusche regulär gereinigt wird.',
+          'Ihr testet die Vereinbarung sieben Tage und besprecht beim festgelegten Termin knapp, ob sie eingehalten wurde und beide sich wohlfühlen.'
+        ],
+        agreement: 'Ab heute nutzen wir für das Pinkeln grundsätzlich die Toilette und halten die gemeinsam genutzte Dusche davon frei. Nach jedem Duschen spülen wir Boden und Abflussbereich gründlich mit klarem Wasser nach; sichtbare Rückstände entfernt die verursachende Person sofort. Die reguläre Badreinigung bleibt sonntags im Wechsel. Am kommenden Sonntag um 18 Uhr prüfen wir zehn Minuten lang, ob die Regel eingehalten wurde und sich beide damit wohlfühlen.'
+      },
+      dos: [
+        'Ekel als persönliche Grenze anerkennen, ohne daraus eine allgemeine Wahrheit zu machen.',
+        'Über beobachtbares Verhalten und eine konkrete gemeinsame Badregel sprechen.',
+        'Gründliches Nachspülen, sichtbare Sauberkeit und regelmäßige Reinigung verbindlich klären.',
+        'Bei gesundheitlichen Besonderheiten vorsichtig sein und fachliche Hinweise befolgen.'
+      ],
+      donts: [
+        'Die andere Person als schmutzig, widerlich oder sexuell unattraktiv abwerten.',
+        'Urin pauschal als steril bezeichnen oder mit unbelegten Gesundheits- und Umweltbehauptungen argumentieren.',
+        'Eine persönliche Ekelgrenze mit Spott oder vermeintlicher Sachlogik wegdiskutieren.',
+        'Die Gewohnheit heimlich fortsetzen oder Reinigung als Strafe bei der anderen Person abladen.'
+      ],
+      next_step: 'Wenn die erste Vereinbarung nicht trägt, vereinfacht sie auf eine klare Regel ohne Ausnahmen und dokumentiert die Reinigungszuständigkeit. Wird die Grenze weiterhin missachtet oder kippt das Thema in Beschämung und Attraktivitätsangriffe, sprecht über den zugrunde liegenden Respektkonflikt; bei festgefahrenen Mustern kann eine freiwillige Paarberatung moderieren.',
+      related: [
+        { category: 'partner', slug: 'waesche-liegen-lassen' },
+        { category: 'partner', slug: 'unterschiedliche-naehebeduerfnisse' },
+        { category: 'partner', slug: 'hoert-nicht-zu' },
+        { category: 'partner', slug: 'streit-um-geld' }
+      ],
+      article: {
+        title: 'Pinkeln in der Dusche als Beziehungskonflikt: Hygienegrenzen respektvoll klären',
+        meta: 'Pinkeln in der Dusche sorgt für Streit? So trennt ihr Ekel und konkrete Hygiene, besprecht Rücksicht und findet faire Regeln für das gemeinsame Bad.',
+        intro: 'Manche Beziehungsthemen wirken klein und werden im Badezimmer erstaunlich groß. Für eine Person ist Pinkeln beim Duschen eine beiläufige Gewohnheit unter laufendem Wasser. Für die andere verändert schon das Wissen darum das Gefühl beim nächsten Betreten der Dusche. Plötzlich geht es um Sauberkeit, Rücksicht und vielleicht Attraktivität. Weil das Thema intim ist, reagieren viele Paare mit Witzen, Abwehr oder Schweigen. Hilfreicher ist eine klare Trennung: Eine persönliche Ekelgrenze ist real, obwohl sie nicht alle teilen. Konkrete Hygiene lässt sich an Rückständen, Nachspülen und Reinigung besprechen. Beides braucht eine faire Regel, weil die Dusche gemeinsam genutzt wird.',
+        situation: 'Die Gewohnheit wird offen erwähnt, zufällig bemerkt oder erst nach Jahren entdeckt. Entsprechend verschieden ist der Streit: Eine Person stört die Handlung selbst, eine andere fehlendes Nachspülen, Geruch oder ein ungepflegter Abfluss. Heimlichkeit kann zusätzlich verletzen, weil die erwartbare Reaktion umgangen wurde. Was jemand allein im eigenen Bad tut, wird zur gemeinsamen Frage, sobald beide dieselbe Duschfläche nutzen und reinigen. Ekel kann auch die Lust auf Nähe beeinflussen, ohne ein Urteil über den ganzen Menschen zu sein. Deshalb sollte das Gespräch weder eine Gerichtsverhandlung über universelle Hygiene noch eine Beschämung intimer Gewohnheiten werden.',
+        causes: [
+          'Badregeln sind oft im früheren Haushalt gelernt. Für manche gehören Körperausscheidungen ausschließlich zur Toilette, andere kennen die Gewohnheit unter laufendem Duschwasser. Sichtbar wird der Unterschied erst im gemeinsamen Bad. Entscheidend ist weniger seine Herkunft als der Umgang mit einer ausgesprochenen Grenze.',
+          'Ekel folgt keiner einheitlichen Logik. Körperflüssigkeiten und gemeinsam berührte Flächen lösen verschiedene Reaktionen aus. Wer weniger Ekel empfindet, kann die stärkere Reaktion trotzdem ernst nehmen. Umgekehrt ist das eigene Empfinden weder wissenschaftlicher Beweis noch moralische Überlegenheit.',
+          'Oft steckt ein älterer Konflikt über Gemeinschaft darin: Wer bemerkt Rückstände, wer putzt und wessen Standard gilt? Lebt eine Person die Gewohnheit aus und die andere reinigt, entsteht ungleich verteilte Arbeit. Wird eine Bitte ignoriert, wird daraus vor allem ein Respektproblem.'
+        ],
+        mistakes: [
+          'Der erste Fehler ist Beschämung. Wörter wie widerlich oder schmutzig greifen die Person an und können Körpergefühl und Sexualität belasten. Sage stattdessen klar, dass dich die Handlung abstößt und du sie in der gemeinsamen Dusche nicht möchtest.',
+          'Der zweite Fehler sind pauschale Behauptungen. Urin sollte nicht allgemein als steril bezeichnet werden. Erfundenen Gesundheitsvorteilen, Gefahren oder Umweltbilanzen braucht es ebenfalls nicht: Gemeinsame Nutzung und beiderseitiges Wohlbefinden begründen bereits eine Badregel.',
+          'Der dritte Fehler ist eine vage Abmachung. Dann mach es sauber lässt offen, ob die Gewohnheit akzeptiert ist, was gründlich bedeutet und wer regulär putzt. Eine Vereinbarung muss Unterlassen oder Bedingungen sowie Nachspülen und Reinigung ausdrücklich benennen.'
+        ],
+        strategy: 'Beginne das Gespräch bekleidet, außerhalb des Bads und ohne Publikum. Beschreibe, was du beobachtet hast, und dann deine Reaktion: Ekel, Unsicherheit oder fehlende Rücksicht. Danach klärt ihr die betroffene Ebene. Geht es um die Handlung selbst, sichtbare Sauberkeit, Heimlichkeit, Putzverteilung oder eine gesundheitliche Besonderheit? Für konkrete Hygiene betrachtet ihr die gemeinsam berührte Fläche: gründliches Nachspülen mit klarem Wasser, sofortiges Entfernen sichtbarer Rückstände und regelmäßige Reinigung gehören in die Badordnung. Bei Infektionen, offenen Hautverletzungen oder ärztlichen Hinweisen ist besondere Vorsicht angebracht; folgt professionellen Vorgaben, statt aus einem Ratgeber individuelle Medizin abzuleiten. Anschließend braucht ihr eine eindeutige Entscheidung. Akzeptiert eine Person die Handlung in der gemeinsamen Dusche nicht, ist die Toilette die einfachste Regel. Tolerieren beide sie, vereinbart ausdrückliche Bedingungen für Nachspülen und Reinigen. Prüft nach einer Woche, ob die Absprache verlässlich ist, das Bad sauber bleibt und beide Grenzen berücksichtigt werden.',
+        examples: [
+          'Eine Person könnte das Thema so eröffnen: "Seit ich weiß, dass du beim Duschen manchmal pinkelst, fühle ich mich in unserer Dusche unwohl. Ich will dich nicht bloßstellen, aber ich möchte, dass wir dafür die Toilette benutzen und unsere gemeinsame Duschfläche davon freihalten." Die Formulierung benennt Wirkung und Wunsch, ohne über den Charakter zu urteilen.',
+          'Wenn beide vor allem über Reinigung streiten, kann die Antwort lauten: "Wir müssen nicht dasselbe Ekelgefühl haben. Lass uns trotzdem festhalten, dass Boden und Abfluss nach jeder Nutzung mit klarem Wasser nachgespült werden, sichtbare Rückstände sofort verschwinden und wir die Dusche sonntags abwechselnd reinigen." Damit wird aus einer Grundsatzdebatte eine überprüfbare Alltagsregel.'
+        ],
+        help: 'Professionelle Hilfe ist wegen eines einzelnen Badthemas selten nötig. Moderation kann aber helfen, wenn Ekel stets als Angriff gilt, eine Grenze demonstrativ gebrochen wird oder Beschimpfungen die körperliche und sexuelle Selbstsicherheit treffen. Paarberatung setzt freiwillige Teilnahme voraus. Medizinische Fragen gehören zu Fachpersonen: Bei Infektionen, Hautverletzungen oder ärztlichen Hinweisen folgt den jeweiligen Empfehlungen und behandelt gemeinschaftliche Flächen besonders vorsichtig. Wird das Gespräch einschüchternd oder dient die Grenzverletzung der Demütigung, sorge zuerst für Abstand und Unterstützung.',
+        faqs: [
+          {
+            question: 'Ist Urin grundsätzlich steril?',
+            answer: 'Nein, diese pauschale Aussage ist nicht verlässlich. Für eure Badregel braucht ihr ohnehin keinen Sterilitätsbeweis, sondern Rücksicht, gründliches Nachspülen und eine passende Reinigung.'
+          },
+          {
+            question: 'Ist meine Ekelreaktion übertrieben?',
+            answer: 'Ekelgrenzen sind individuell und müssen nicht von beiden gleich empfunden werden. Wichtig ist, die Grenze klar zu benennen, ohne die andere Person zu beschämen oder daraus allgemeine Wahrheiten abzuleiten.'
+          },
+          {
+            question: 'Darf ich verlangen, dass mein:e Partner:in damit aufhört?',
+            answer: 'In einer gemeinsam genutzten Dusche dürft ihr Nutzungsregeln aushandeln. Wenn du dich sonst dort nicht wohlfühlst, ist die Bitte, stattdessen die Toilette zu nutzen, konkret und nachvollziehbar.'
+          },
+          {
+            question: 'Was gehört zu einer klaren Reinigungsregel?',
+            answer: 'Legt fest, dass gründlich mit klarem Wasser nachgespült wird, sichtbare Rückstände sofort entfernt werden und die reguläre Duschreinigung einen festen Rhythmus und eine Zuständigkeit hat.'
+          },
+          {
+            question: 'Wann sollten wir besonders vorsichtig sein?',
+            answer: 'Bei Infektionen, offenen Hautverletzungen oder konkreten ärztlichen Hinweisen solltet ihr fachliche Vorgaben beachten und gemeinschaftlich genutzte Flächen besonders sorgfältig behandeln.'
+          }
+        ]
+      }
     }
   ]
 };
