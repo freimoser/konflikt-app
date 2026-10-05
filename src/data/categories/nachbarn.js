@@ -1,3 +1,6 @@
+import grundstuecksgrenzen from '../conflicts/nachbarn/grundstuecksgrenzen.js';
+import beschwertSichStaendig from '../conflicts/nachbarn/beschwert-sich-staendig.js';
+
 export const nachbarnCategory = {
   id: 'nachbarn',
   name: 'Nachbar:in',
@@ -527,6 +530,7 @@ export const nachbarnCategory = {
           }
         ]
       }
-    }
+    },
+    grundstuecksgrenzen, beschwertSichStaendig,
   ]
 };

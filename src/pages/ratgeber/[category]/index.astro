@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import AdSlot from '../../../components/AdSlot.astro';
 import { categories } from '../../../data/categories/index.js';
+import { getHub } from '../../../data/hubs/index.js';
 
 export function getStaticPaths() {
   return categories.map(cat => ({
@@ -18,21 +20,39 @@ const breadcrumbs = [
   { label: 'Ratgeber', url: '/ratgeber/' },
   { label: category.name }
 ];
+const hub = getHub(category.id);
+const h1 = hub?.ratgeberTitle || `Ratgeber: ${category.name}`;
+const jsonLd = hub?.faqs?.length
+  ? JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: hub.faqs.map((f: { question: string; answer: string }) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    })
+  : undefined;
 ---
 
 <BaseLayout
-  title={`Ratgeber: Konflikte mit ${category.name}`}
-  description={`Hintergründe und psychologische Dynamiken zu Konflikten mit ${category.name}.`}
+  title={h1}
+  fullTitle={`${h1.split(':')[0]}${h1.split(':')[0].length > 36 ? '' : ' – Ratgeber'} | Konfliktlotse`}
+  description={hub?.ratgeberMeta || `Hintergründe und langfristige Lösungen für typische Konflikte mit ${category.name}: Ursachen, häufige Fehler und Antworten auf die wichtigsten Fragen.`}
+  jsonLd={jsonLd}
 >
   <Breadcrumbs crumbs={breadcrumbs} />
 
   <section>
     <div class="cat-header">
       <span class="cat-icon">{category.icon}</span>
-      <h1>Ratgeber: {category.name}</h1>
+      <h1>{h1}</h1>
     </div>
-    <p class="cat-desc">Hintergründe und psychologische Dynamiken zu typischen Konflikten mit {category.name}.</p>
+    {hub
+      ? hub.ratgeberIntro.map((para: string) => <p class="cat-desc">{para}</p>)
+      : <p class="cat-desc">Hintergründe und psychologische Dynamiken zu typischen Konflikten mit {category.name}.</p>}
 
+    <h2 class="list-heading">Alle Ratgeber zu {category.name}</h2>
     <div class="conflict-grid">
       {
         category.conflicts.map(con => (
@@ -46,18 +66,44 @@ const breadcrumbs = [
         ))
       }
     </div>
+
+    <AdSlot placement="list" />
+
+    {hub?.faqs?.length > 0 && (
+      <section class="hub-faq">
+        <h2>Häufige Fragen</h2>
+        {hub.faqs.map((f: { question: string; answer: string }) => (
+          <details class="faq">
+            <summary>{f.question}</summary>
+            <p>{f.answer}</p>
+          </details>
+        ))}
+      </section>
+    )}
+
+    <p class="hub-crosslink">
+      Akuter Konflikt? <a href={`${baseUrl}/konflikt/${category.id}/`}>Gesprächspläne für {category.name} →</a>
+    </p>
   </section>
 </BaseLayout>
 
 <style>
+  .list-heading { font-size: 1.15rem; }
+  .hub-faq { margin-top: 2rem; }
+  .faq { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; margin-bottom: 0.5rem; }
+  .faq summary { cursor: pointer; font-weight: 600; }
+  .faq p { margin: 0.75rem 0 0; color: var(--text-light); }
+  .hub-crosslink { margin-top: 1.5rem; color: var(--text-light); }
+  .hub-crosslink a { font-weight: 600; text-decoration: underline; }
   .cat-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.75rem;
     margin-bottom: 0.5rem;
   }
   .cat-icon {
-    font-size: 2.2rem;
+    font-size: 1.9rem;
+    line-height: 1.2;
   }
   .cat-header h1 {
     margin: 0;

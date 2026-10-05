@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { styles, questions } from '../../data/quiz.js';
+import { getMethod } from '../../data/methods/index.js';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const styleEntries = Object.entries(styles) as [string, any][];
+const pageUrl = `${Astro.site!.origin}${baseUrl}/spiel/konflikttyp/`;
+
+const breadcrumbs = [
+  { label: 'Start', url: '/' },
+  { label: 'Spiel', url: '/spiel/' },
+  { label: 'Konflikttyp-Test' },
+];
+---
+<BaseLayout
+  title="Wie streitest du? Dein Konfliktstil"
+  fullTitle="Konflikttyp-Test: Wie streitest du? | Konfliktlotse"
+  description={`Kostenloser Selbsttest mit ${questions.length} Alltagssituationen: Erfahre, welcher Konfliktstil dich prägt – Rückzug, Harmonie, Klarheit, Kompromiss oder Team – mit Stärken, Risiken und Tipps.`}
+>
+  <Breadcrumbs crumbs={breadcrumbs} />
+
+  <header>
+    <p class="kicker">🧩 Selbsttest</p>
+    <h1>Wie streitest du? Finde deinen Konfliktstil</h1>
+    <p class="lead">
+      {questions.length} Alltagssituationen, drei Minuten. Wähle jeweils die Reaktion, die deiner spontanen am nächsten
+      kommt – nicht die, die du für richtig hältst. Es gibt keine guten oder schlechten Stile, nur passende und
+      unpassende Momente. Deine Antworten bleiben in deinem Browser.
+    </p>
+  </header>
+
+  <form class="quiz" data-quiz novalidate>
+    {questions.map((q: any, i: number) => (
+      <fieldset class="q">
+        <legend><span class="q-num">{i + 1}/{questions.length}</span> {q.text}</legend>
+        {q.answers.map((a: any, j: number) => (
+          <label class="answer">
+            <input type="radio" name={q.id} value={a.style} required={j === 0} />
+            <span>{a.text}</span>
+          </label>
+        ))}
+      </fieldset>
+    ))}
+    <p class="hint" data-hint hidden>Bitte beantworte alle Situationen – so wird dein Ergebnis aussagekräftiger.</p>
+    <button type="submit" class="btn-submit" data-submit hidden>Ergebnis anzeigen</button>
+    <noscript>
+      <p class="hint">Ohne JavaScript kannst du dich selbst einordnen: Zähle, welcher Stil bei dir am häufigsten vorkommt, und lies unten nach.</p>
+    </noscript>
+  </form>
+
+  <section class="result" data-result tabindex="-1" hidden aria-live="polite">
+    <p class="result-kicker">Dein Konfliktstil</p>
+    <h2 data-result-title></h2>
+    <p data-result-short></p>
+    <p class="result-mix" data-result-mix></p>
+    <div class="result-actions">
+      <a class="btn-link" data-result-anchor href="#stile">Stärken, Risiken und Tipps lesen</a>
+      <button type="button" class="btn-ghost" data-share hidden>Ergebnis teilen</button>
+      <button type="button" class="btn-ghost" data-reset>Noch einmal</button>
+    </div>
+    <p class="share-note" data-share-note hidden></p>
+  </section>
+
+  <section id="stile" class="styles">
+    <h2>Die fünf Konfliktstile</h2>
+    <p class="styles-intro">
+      Die Einteilung beschreibt, wie stark jemand im Streit die eigenen Anliegen verfolgt und wie viel Rücksicht er
+      oder sie auf die andere Seite nimmt. Die meisten Menschen nutzen mehrere Stile – je nach Person und Situation.
+      Der Test ist eine Anregung zur Selbstreflexion, keine psychologische Diagnose.
+    </p>
+    {styleEntries.map(([key, st]) => (
+      <article class="style" id={`stil-${key}`} data-style={key}>
+        <h3>{st.icon} {st.name}</h3>
+        <p class="style-short">{st.short}</p>
+        <div class="style-cols">
+          <div>
+            <h4>Stärken</h4>
+            <ul>{st.strengths.map((x: string) => <li>{x}</li>)}</ul>
+          </div>
+          <div>
+            <h4>Risiken</h4>
+            <ul>{st.risks.map((x: string) => <li>{x}</li>)}</ul>
+          </div>
+        </div>
+        <h4>Das hilft dir</h4>
+        <ul>{st.tips.map((x: string) => <li>{x}</li>)}</ul>
+        <p class="style-methods">
+          Passende Methoden:{' '}
+          {st.methods.map(getMethod).filter(Boolean).map((m: any, i: number) => (
+            <>{i > 0 && ' · '}<a href={`${baseUrl}/methoden/${m.slug}/`}>{m.title}</a></>
+          ))}
+        </p>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
+
+<script define:vars={{ pageUrl, styleNames: Object.fromEntries(styleEntries.map(([k, s]) => [k, s.name])) }}>
+  (function () {
+    var form = document.querySelector('[data-quiz]');
+    var result = document.querySelector('[data-result]');
+    if (!form || !result) return;
+    var submit = form.querySelector('[data-submit]');
+    var hint = form.querySelector('[data-hint]');
+    var share = result.querySelector('[data-share]');
+    var shareNote = result.querySelector('[data-share-note]');
+    submit.hidden = false;
+
+    var names = Array.from(new Set(Array.from(form.querySelectorAll('input[type=radio]')).map(function (i) { return i.name; })));
+    var lastText = '';
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      var missing = names.filter(function (n) { return !data.get(n); });
+      if (missing.length) {
+        hint.hidden = false;
+        var first = form.querySelector('input[name="' + missing[0] + '"]');
+        if (first) first.focus();
+        return;
+      }
+      hint.hidden = true;
+      var counts = {};
+      names.forEach(function (n) { var v = data.get(n); counts[v] = (counts[v] || 0) + 1; });
+      var ranked = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
+      var top = ranked[0];
+      var ties = ranked.filter(function (k) { return counts[k] === counts[top]; });
+      var card = document.querySelector('[data-style="' + top + '"]');
+
+      result.querySelector('[data-result-title]').textContent = ties.map(function (k) { return styleNames[k]; }).join(' & ');
+      result.querySelector('[data-result-short]').textContent = card ? card.querySelector('.style-short').textContent : '';
+      result.querySelector('[data-result-mix]').textContent = 'Deine Verteilung: ' + ranked.map(function (k) {
+        return styleNames[k] + ' ' + counts[k] + '×';
+      }).join(', ');
+      result.querySelector('[data-result-anchor]').setAttribute('href', '#stil-' + top);
+      document.querySelectorAll('[data-style]').forEach(function (el) {
+        el.classList.toggle('is-mine', ties.indexOf(el.getAttribute('data-style')) !== -1);
+      });
+      lastText = 'Mein Konfliktstil: ' + ties.map(function (k) { return styleNames[k]; }).join(' & ') + '. Wie streitest du?';
+      if (share) share.hidden = false;
+      result.hidden = false;
+      result.focus({ preventScroll: true });
+      result.scrollIntoView({ block: 'start' });
+    });
+
+    // Teilen: nur Text + Link zur Testseite, keine Antworten, kein Tracking.
+    if (share) share.addEventListener('click', function () {
+      if (navigator.share) {
+        navigator.share({ title: 'Konflikttyp-Test', text: lastText, url: pageUrl }).catch(function () {});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(lastText + ' ' + pageUrl).then(function () {
+          shareNote.textContent = 'Text und Link kopiert – du kannst ihn jetzt einfügen.';
+          shareNote.hidden = false;
+        });
+      }
+    });
+
+    result.querySelector('[data-reset]').addEventListener('click', function () {
+      form.reset();
+      result.hidden = true;
+      shareNote.hidden = true;
+      document.querySelectorAll('[data-style]').forEach(function (el) { el.classList.remove('is-mine'); });
+      window.scrollTo({ top: 0 });
+    });
+  })();
+</script>
+
+<style>
+  .kicker { font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; }
+  .lead { color: var(--text-light); font-size: 1.05rem; }
+  .q { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-white); padding: 1rem 1.1rem; margin: 1rem 0; }
+  .q legend { font-weight: 700; padding: 0 0.3rem; line-height: 1.45; }
+  .q-num { display: inline-block; font-size: 0.75rem; font-weight: 700; color: var(--primary); background: #F0F7F4; border-radius: 10px; padding: 0.05rem 0.5rem; margin-right: 0.25rem; }
+  .answer { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.6rem 0.75rem; margin-top: 0.4rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); cursor: pointer; min-height: 44px; }
+  .answer:has(input:checked) { border-color: var(--primary); background: #F0F7F4; }
+  .answer input { margin-top: 0.3rem; accent-color: var(--primary); width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+  .hint { color: #9C6500; font-weight: 600; }
+  .btn-submit { font: inherit; font-weight: 700; background: var(--accent); color: var(--text); border: none; border-radius: var(--radius-sm); padding: 0.85rem 1.6rem; cursor: pointer; min-height: 44px; }
+  .btn-submit:hover { background: var(--accent-light); }
+  .result { background: var(--bg-white); border: 2px solid var(--primary-light); border-radius: var(--radius); padding: 1.5rem; margin: 1.5rem 0; outline: none; }
+  .result-kicker { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-light); margin: 0; }
+  .result h2 { margin-top: 0.2rem; }
+  .result-mix { font-size: 0.85rem; color: var(--text-light); }
+  .result-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+  .btn-link { font-weight: 700; background: var(--accent); color: var(--text); border-radius: var(--radius-sm); padding: 0.7rem 1.2rem; }
+  .btn-ghost { font: inherit; font-weight: 600; background: transparent; border: 2px solid var(--primary-light); color: var(--primary-dark); border-radius: var(--radius-sm); padding: 0.6rem 1rem; cursor: pointer; min-height: 44px; }
+  .share-note { font-size: 0.85rem; color: var(--primary-dark); margin-top: 0.5rem; }
+  .styles { margin-top: 2.5rem; }
+  .styles-intro { color: var(--text-light); }
+  .style { background: var(--bg-white); border: 1px solid var(--border); border-left: 4px solid var(--primary-light); border-radius: var(--radius-sm); padding: 1rem 1.2rem; margin: 1rem 0; scroll-margin-top: 70px; }
+  .style.is-mine { border-left-color: var(--accent); background: #FFF8F1; }
+  .style h3 { margin-top: 0; }
+  .style h4 { font-size: 0.9rem; margin: 0.75rem 0 0.3rem; }
+  .style ul { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.3rem; }
+  .style li, .style p { color: var(--text-light); }
+  .style-short { font-weight: 600; color: var(--text) !important; }
+  .style-cols { display: grid; grid-template-columns: 1fr; gap: 0 1rem; }
+  @media (min-width: 600px) { .style-cols { grid-template-columns: 1fr 1fr; } }
+  .style-methods a { text-decoration: underline; font-weight: 600; }
+</style>

@@ -2,7 +2,12 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CrisisNotice from '../../../components/CrisisNotice.astro';
-import { categories } from '../../../data/categories/index.js';
+import { categories, getRelatedConflicts } from '../../../data/categories/index.js';
+import { getMethodsForConflict } from '../../../data/methods/index.js';
+import { getTopicsForConflict } from '../../../data/topics/index.js';
+import AdSlot from '../../../components/AdSlot.astro';
+import { seoTitles } from '../../../data/seo-titles.js';
+import MethodLinks from '../../../components/MethodLinks.astro';
 import { normalizeConflict } from '../../../data/schema.js';
 
 export function getStaticPaths() {
@@ -23,15 +28,10 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 const pageUrl = `${baseUrl}/ratgeber/${category.id}/${conflict.slug}/`;
 const toolUrl = `${baseUrl}/konflikt/${category.id}/${conflict.slug}/`;
 
-const relatedConflicts = conflict.related
-  .map(rel => {
-    const cat = categories.find(c => c.id === rel.category);
-    if (!cat) return null;
-    const con = cat.conflicts.find(c => c.slug === rel.slug);
-    if (!con) return null;
-    return { ...con, category: cat };
-  })
-  .filter(Boolean);
+const relatedConflicts = getRelatedConflicts(category.id, conflict.slug, 4);
+const relatedMethods = getMethodsForConflict(category.id, conflict.slug, 3);
+const relatedTopics = getTopicsForConflict(category.id, conflict.slug, 2);
+const adsSensitive = Boolean(conflict.adsSensitive);
 
 const breadcrumbs = [
   { label: 'Start', url: '/' },
@@ -42,10 +42,30 @@ const breadcrumbs = [
 
 const article = conflict.article || {};
 const title = article.title || `Ratgeber: ${conflict.title}`;
+// <title>: der Teil vor dem Doppelpunkt ist meist die Suchphrase und passt in ~60 Zeichen.
+// Fallback: Suchphrase aus der kurzen Titel-Liste der Tool-Seiten + Ratgeber-Zusatz.
+const titleHead = title.split(':')[0].trim();
+const seoHead = (seoTitles[`${category.id}/${conflict.slug}`] || conflict.title).split(':')[0].trim();
+const pageTitle = conflict.article?.seoTitle
+  ? `${conflict.article.seoTitle} | Konfliktlotse`
+  : titleHead.length >= 18 && titleHead.length <= 46
+    ? `${titleHead} | Konfliktlotse`
+    : seoHead.length <= 30
+      ? `${seoHead}: Warum & was hilft | Konfliktlotse`
+      : `${seoHead} – Ratgeber | Konfliktlotse`;
+// Nie denselben Titel wie die Tool-Seite: sonst konkurrieren beide Seiten um dieselbe Suchanfrage.
+const toolTitle = seoTitles[`${category.id}/${conflict.slug}`];
+const ratgeberTitle = toolTitle && pageTitle.startsWith(`${toolTitle} |`) ? `${seoHead}: Ursachen & Lösungen | Konfliktlotse` : pageTitle;
 const description = article.meta || conflict.summary;
 
 // JSON-LD Generation
 const schemas = [];
+
+// Veröffentlichungsdaten: pro Konflikt pflegbar (`published`/`updated`),
+// Standard ist die Erstveröffentlichung der Website.
+const published = conflict.published || '2026-08-03';
+const updated = conflict.updated || published;
+const updatedLabel = new Date(updated).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
 
 // Article Schema
 schemas.push({
@@ -53,6 +73,10 @@ schemas.push({
   "@type": "Article",
   "headline": title,
   "description": description,
+  "inLanguage": "de-DE",
+  "datePublished": published,
+  "dateModified": updated,
+  "mainEntityOfPage": `${Astro.site.origin}${pageUrl}`,
   "author": {
     "@type": "Person",
     "name": "Serdar Thomas Freimoser"
@@ -86,11 +110,14 @@ if (article.faqs && article.faqs.length > 0) {
 const jsonLd = JSON.stringify(schemas);
 ---
 
-<BaseLayout 
-  title={title} 
+<BaseLayout
+  title={title}
+  fullTitle={ratgeberTitle}
   description={description}
   canonical={pageUrl}
   jsonLd={jsonLd}
+  ogType="article"
+  noAds={adsSensitive}
 >
   <Breadcrumbs crumbs={breadcrumbs} />
 
@@ -98,6 +125,7 @@ const jsonLd = JSON.stringify(schemas);
     <div class="article-header">
       <div class="meta-tag">{category.icon} Konflikte mit {category.name}</div>
       <h1>{title}</h1>
+      <p class="article-date">Aktualisiert am <time datetime={updated}>{updatedLabel}</time></p>
     </div>
 
     {article.intro && (
@@ -138,6 +166,8 @@ const jsonLd = JSON.stringify(schemas);
         </section>
       )}
 
+      <AdSlot placement="in-article" sensitive={adsSensitive} />
+
       {article.mistakes && article.mistakes.length > 0 && (
         <section>
           <h2>Häufige Fehler</h2>
@@ -153,6 +183,8 @@ const jsonLd = JSON.stringify(schemas);
           <p>{article.strategy}</p>
         </section>
       )}
+
+      <MethodLinks methods={relatedMethods} topics={relatedTopics} />
 
       {article.examples && article.examples.length > 0 && (
         <section>
@@ -187,6 +219,19 @@ const jsonLd = JSON.stringify(schemas);
       )}
     </div>
 
+    <div class="tool-promo tool-promo-end">
+      <div class="tool-promo-content">
+        <h3>Bereit für das Gespräch?</h3>
+        <p>Im Gesprächsplan findest du drei fertige Formulierungen, den Ablauf Schritt für Schritt und Antworten auf typische Reaktionen.</p>
+      </div>
+      <a href={toolUrl} class="btn-primary">Gesprächsplan öffnen</a>
+    </div>
+
+    <p class="editorial-note">
+      Wie dieser Ratgeber entsteht und geprüft wird, erklären wir unter <a href={`${baseUrl}/ueber-uns/`}>Über Konfliktlotse</a>.
+      Fachbegriffe findest du im <a href={`${baseUrl}/glossar/`}>Glossar</a>.
+    </p>
+
     <hr class="separator" />
 
     {relatedConflicts.length > 0 && (
@@ -207,6 +252,9 @@ const jsonLd = JSON.stringify(schemas);
 </BaseLayout>
 
 <style>
+  .editorial-note { font-size: 0.85rem; color: var(--text-light); margin-top: 1.5rem; }
+  .editorial-note a { text-decoration: underline; }
+  .article-date { font-size: 0.85rem; color: var(--text-light); margin: -0.5rem 0 0; }
   .ratgeber-article {
     max-width: var(--max-width);
     margin: 0 auto;

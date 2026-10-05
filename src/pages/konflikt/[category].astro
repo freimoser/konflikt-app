@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { categories, getCategory } from '../../data/categories/index.js';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { categories } from '../../data/categories/index.js';
+import { getHub } from '../../data/hubs/index.js';
+import { scenarios } from '../../data/trainer.js';
 
 export function getStaticPaths() {
   return categories.map(cat => ({
@@ -11,19 +15,28 @@ export function getStaticPaths() {
 
 const { category } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const hub = getHub(category.id);
+const trainerCount = scenarios.filter(sc => sc.conflict.category === category.id).length;
+const h1 = hub?.toolTitle || `Konflikte mit ${category.name}`;
+const breadcrumbs = [
+  { label: 'Start', url: '/' },
+  { label: 'Konflikte', url: '/konflikt/' },
+  { label: category.name },
+];
 ---
 
 <BaseLayout
-  title={`Konflikte mit ${category.name}`}
-  description={category.summary}
+  title={h1}
+  fullTitle={`${h1.split(':')[0]} | Konfliktlotse`}
+  description={hub?.toolMeta || category.summary}
 >
+  <Breadcrumbs crumbs={breadcrumbs} />
   <section>
-    <a href={`${baseUrl}/konflikt/`} class="back-link">← Alle Kategorien</a>
     <div class="cat-header">
       <span class="cat-icon">{category.icon}</span>
-      <h1>Konflikte mit {category.name}</h1>
+      <h1>{h1}</h1>
     </div>
-    <p class="cat-desc">{category.summary}</p>
+    {hub ? hub.toolIntro.map((para: string) => <p class="cat-desc">{para}</p>) : <p class="cat-desc">{category.summary}</p>}
 
     <p class="section-label">Wähle dein Problem:</p>
 
@@ -38,10 +51,38 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
         ))
       }
     </div>
+
+    {hub?.quickTips?.length > 0 && (
+      <aside class="quick-tips">
+        <h2>Drei Sofort-Tipps</h2>
+        <ol>{hub.quickTips.map((t: string) => <li>{t}</li>)}</ol>
+      </aside>
+    )}
+
+    {trainerCount > 0 && (
+      <a class="trainer-link" href={`${baseUrl}/spiel/gespraechstrainer/#bereich-${category.id}`}>
+        🎯 <strong>Üben:</strong> {trainerCount} typische Situationen mit {category.name} im Gesprächs-Trainer
+      </a>
+    )}
+
+    <AdSlot placement="list" />
+
+    <p class="hub-crosslink">
+      Du willst verstehen, warum diese Konflikte entstehen?
+      <a href={`${baseUrl}/ratgeber/${category.id}/`}>Zum Ratgeber {category.name} →</a>
+    </p>
   </section>
 </BaseLayout>
 
 <style>
+  .quick-tips { background: #F0F7F4; border-radius: var(--radius); padding: 1.1rem 1.4rem; margin: 2rem 0 1rem; }
+  .quick-tips h2 { margin-top: 0; font-size: 1.1rem; }
+  .quick-tips ol { padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .quick-tips li { color: var(--text-light); }
+  .trainer-link { display: block; background: #FFF3E0; border: 1px solid #FFE0B2; border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; color: var(--text); margin: 1rem 0; }
+  .trainer-link:hover { border-color: var(--accent); color: var(--text); }
+  .hub-crosslink { margin-top: 1.5rem; color: var(--text-light); }
+  .hub-crosslink a { font-weight: 600; text-decoration: underline; }
   .back-link {
     display: inline-block;
     color: var(--text-light);
@@ -53,12 +94,13 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
   .cat-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.75rem;
     margin-bottom: 0.5rem;
   }
   .cat-icon {
-    font-size: 2.2rem;
+    font-size: 1.9rem;
+    line-height: 1.2;
   }
   .cat-header h1 {
     margin: 0;

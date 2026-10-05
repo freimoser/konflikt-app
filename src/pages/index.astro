@@ -1,15 +1,81 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { categories } from '../data/categories/index.js';
+import { categories, getAllConflicts } from '../data/categories/index.js';
+import { scenarios } from '../data/trainer.js';
+import { methods } from '../data/methods/index.js';
+import { getSeasonalTopics } from '../data/topics/index.js';
+const seasonTopic = getSeasonalTopics()[0];
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const allConflicts = getAllConflicts();
+
+// Häufig gesuchte Alltagskonflikte als Direkteinstieg (Reihenfolge = Priorität).
+const featuredKeys = [
+  'partner/eifersucht',
+  'partner/streit-um-geld',
+  'nachbarn/zu-laut',
+  'chef/mikromanagement',
+  'eltern/mischt-sich-ein',
+  'freunde/vertrauen-gebrochen',
+  'kollegen/klaut-ideen',
+  'partner/keine-zeit',
+  'kinder/handyzeit',
+  'schwiegereltern/feiertage-aufteilen',
+];
+const featured = featuredKeys
+  .map(key => allConflicts.find(c => `${c.category}/${c.slug}` === key))
+  .filter(Boolean);
+
+const faqs = [
+  {
+    question: 'Ist Konfliktlotse kostenlos?',
+    answer: 'Ja. Alle Gesprächspläne, Formulierungshilfen und Ratgeber sind frei zugänglich, ohne Anmeldung und ohne dass du deinen Konflikt irgendwo eingeben musst.',
+  },
+  {
+    question: 'Was ist der Unterschied zwischen Tool und Ratgeber?',
+    answer: 'Das Tool hilft dir akut: Was sage ich jetzt, in welcher Reihenfolge, und was antworte ich auf typische Gegenreaktionen? Der Ratgeber erklärt, warum der Konflikt entsteht und was langfristig hilft.',
+  },
+  {
+    question: 'Kann ich einen Konflikt auch allein lösen, wenn die andere Person nicht mitmacht?',
+    answer: 'Ja. Jeder Konflikt hat einen Weg „Nur ich“: Du bereitest dich vor, sprichst das Thema klar an und weißt, wo deine Grenze liegt – auch wenn dein Gegenüber nicht aktiv mitarbeitet.',
+  },
+  {
+    question: 'Ersetzt Konfliktlotse eine Beratung oder Therapie?',
+    answer: 'Nein. Konfliktlotse hilft bei alltäglichen Konflikten. Bei Gewalt, Drohungen, Kontrolle, Stalking oder einer akuten Krise brauchst du Schutz und professionelle Unterstützung – die wichtigsten Nummern findest du unter „Hilfe in Krisen“.',
+  },
+];
+
+const jsonLd = JSON.stringify([
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Konfliktlotse',
+    url: `${Astro.site.origin}/`,
+    inLanguage: 'de-DE',
+    description: 'Konkrete Gesprächshilfen und Ratgeber für Alltagskonflikte mit Partner:in, Chef:in, Freund:innen, Kolleg:innen, Nachbar:innen und Eltern.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(f => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  },
+]);
 ---
 
-<BaseLayout title="Startseite" description="Alltagskonflikte lösen – dein Lotse für schwierige Gespräche. Wähle deinen Konflikt und finde den richtigen Weg.">
+<BaseLayout
+  title="Konflikte lösen"
+  fullTitle="Konflikte lösen mit konkreten Worten | Konfliktlotse"
+  description={`Streit mit Partner:in, Chef:in, Nachbar:in oder Eltern? ${allConflicts.length} Alltagskonflikte mit fertigen Formulierungen, Schritt-für-Schritt-Plan und Ratgeber. Kostenlos, ohne Anmeldung.`}
+  jsonLd={jsonLd}
+>
   <section class="hero">
-    <h1>Kleine Konflikte.<br />Große Wirkung.</h1>
+    <h1>Vom Konflikt zum klaren Gespräch</h1>
     <p class="hero-sub">
-      Der Lotse für deinen nächsten schwierigen Moment.
+      Konkrete Worte und ein Plan für deinen nächsten schwierigen Moment.
       Wähle deine Situation und finde Schritt für Schritt
       den Weg zur Lösung.
     </p>
@@ -21,10 +87,18 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
         Zum Ratgeber
       </a>
     </div>
+    <p class="hero-trust">{allConflicts.length} Konflikte · {allConflicts.length} Ratgeber · kostenlos · ohne Anmeldung</p>
   </section>
 
+  {seasonTopic && (
+    <a class="season-banner" href={`${baseUrl}/themen/${seasonTopic.slug}/`}>
+      <span class="season-icon" aria-hidden="true">{seasonTopic.icon}</span>
+      <span><strong>{seasonTopic.title}?</strong> {seasonTopic.summary}</span>
+    </a>
+  )}
+
   <section class="categories-preview">
-    <h2>Für wen ist der Konflikt?</h2>
+    <h2>Mit wem hast du den Konflikt?</h2>
     <div class="category-grid">
       {
         categories.map(cat => (
@@ -37,6 +111,56 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
       }
     </div>
   </section>
+
+  <section class="featured">
+    <h2>Häufige Konflikte</h2>
+    <ul class="featured-list">
+      {featured.map(c => (
+        <li>
+          <a href={`${baseUrl}/konflikt/${c.category}/${c.slug}/`} class="featured-link">
+            <span class="featured-icon">{c.icon}</span>
+            <span class="featured-text">
+              <span class="featured-title">{c.title}</span>
+              <span class="featured-cat">{c.categoryName}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="play-teaser">
+    <a href={`${baseUrl}/spiel/gespraechstrainer/`} class="play-card">
+      <span class="play-icon" aria-hidden="true">🎯</span>
+      <span class="play-body">
+        <span class="play-title">Gesprächs-Trainer: Was antwortest du?</span>
+        <span class="play-text">{scenarios.length} typische Konfliktsätze – wähle deine Antwort und bekomme sofort Feedback. Dauert 5 Minuten.</span>
+      </span>
+    </a>
+    <a href={`${baseUrl}/spiel/konflikttyp/`} class="play-card">
+      <span class="play-icon" aria-hidden="true">🧩</span>
+      <span class="play-body">
+        <span class="play-title">Wie streitest du? Konflikttyp-Test</span>
+        <span class="play-text">Zehn Situationen, drei Minuten – entdecke deinen Konfliktstil mit Stärken und Tipps.</span>
+      </span>
+    </a>
+    <a href={`${baseUrl}/methoden/`} class="play-card play-card-alt">
+      <span class="play-icon" aria-hidden="true">🧰</span>
+      <span class="play-body">
+        <span class="play-title">{methods.length} Methoden verständlich erklärt</span>
+        <span class="play-text">Ich-Botschaften, aktives Zuhören, Gewaltfreie Kommunikation, Grenzen setzen und mehr.</span>
+      </span>
+    </a>
+  </section>
+
+  <nav class="explore" aria-label="Mehr entdecken">
+    <a href={`${baseUrl}/themen/`}>📚 Themen</a>
+    <a href={`${baseUrl}/methoden/`}>🧰 Methoden</a>
+    <a href={`${baseUrl}/spiel/`}>🎯 Üben</a>
+    <a href={`${baseUrl}/vorlagen/`}>📝 Vorlagen</a>
+    <a href={`${baseUrl}/glossar/`}>📖 Glossar</a>
+    <a href={`${baseUrl}/suche/`}>🔍 Suche</a>
+  </nav>
 
   <section class="how-it-works">
     <h2>So funktioniert's</h2>
@@ -54,6 +178,34 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
         <p><strong>Wie?</strong> Wähle: allein lösen oder beide Seiten?</p>
       </div>
     </div>
+  </section>
+
+  <section class="about-text">
+    <h2>Warum konkrete Worte helfen</h2>
+    <p>
+      Die meisten Alltagskonflikte scheitern nicht am Thema, sondern am ersten Satz.
+      Wer müde, gekränkt oder wütend ist, greift zu Vorwürfen („Du machst nie …“) oder
+      schweigt, bis es irgendwann knallt. Konfliktlotse gibt dir für jede Situation drei
+      Formulierungen – sanft, direkt oder sachlich – damit du den Ton wählen kannst, der zu dir
+      und deinem Gegenüber passt.
+    </p>
+    <p>
+      Dazu bekommst du einen klaren Ablauf, Antworten auf typische Gegenreaktionen und eine
+      Grenze, ab der du das Gespräch besser beendest. Wenn beide Seiten bereit sind, führen dich
+      moderierte Fragen zu einer Vereinbarung mit festem Überprüfungstermin. Im Ratgeber erfährst
+      du, warum sich solche Konflikte wiederholen und was langfristig hilft.
+      <a href={`${baseUrl}/ueber-uns/`}>Wer hinter Konfliktlotse steht und wie die Inhalte entstehen</a>.
+    </p>
+  </section>
+
+  <section class="home-faq">
+    <h2>Häufige Fragen</h2>
+    {faqs.map(f => (
+      <details class="faq-item">
+        <summary>{f.question}</summary>
+        <p>{f.answer}</p>
+      </details>
+    ))}
   </section>
 </BaseLayout>
 
@@ -118,9 +270,9 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
   }
-  @media (min-width: 500px) {
+  @media (min-width: 640px) {
     .category-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
   .category-card {
@@ -187,4 +339,64 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   .step p {
     color: var(--text-light);
   }
+  .hero-trust {
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+  .featured { padding: 1rem 0 2rem; }
+  .featured h2 { margin-bottom: 1rem; font-size: 1.25rem; }
+  .featured-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  @media (min-width: 560px) {
+    .featured-list { grid-template-columns: 1fr 1fr; }
+  }
+  .featured-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 56px;
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.9rem;
+    color: var(--text);
+  }
+  .featured-link:hover { border-color: var(--primary-light); }
+  .featured-icon { font-size: 1.4rem; }
+  .featured-text { display: flex; flex-direction: column; }
+  .featured-title { font-weight: 600; font-size: 0.95rem; }
+  .featured-cat { font-size: 0.8rem; color: var(--text-light); }
+  .about-text { padding: 1rem 0; }
+  .explore { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.5rem; }
+  .explore a { display: inline-flex; align-items: center; gap: 0.3rem; min-height: 44px; padding: 0 1rem; border: 1px solid var(--border); border-radius: 22px; background: var(--bg-white); color: var(--text); font-weight: 600; font-size: 0.9rem; }
+  .explore a:hover { border-color: var(--primary-light); color: var(--text); }
+  .season-banner { display: flex; gap: 0.75rem; align-items: center; background: #FFF3E0; border: 1px solid #FFE0B2; border-radius: var(--radius); padding: 0.9rem 1.1rem; color: var(--text); margin: 0 0 1rem; }
+  .season-banner:hover { border-color: var(--accent); color: var(--text); }
+  .season-icon { font-size: 1.6rem; }
+  .play-teaser { display: grid; grid-template-columns: 1fr; gap: 0.75rem; padding: 0.5rem 0 1.5rem; }
+  @media (min-width: 600px) { .play-teaser { grid-template-columns: 1fr 1fr; } }
+  .play-card { display: flex; gap: 0.9rem; align-items: flex-start; background: #FFF3E0; border: 1px solid #FFE0B2; border-radius: var(--radius); padding: 1.1rem 1.2rem; color: var(--text); }
+  .play-card:hover { border-color: var(--accent); color: var(--text); }
+  .play-card-alt { background: #F0F7F4; border-color: #D8EDE2; }
+  .play-card-alt:hover { border-color: var(--primary-light); }
+  .play-icon { font-size: 1.8rem; }
+  .play-body { display: flex; flex-direction: column; gap: 0.25rem; }
+  .play-title { font-weight: 700; }
+  .play-text { font-size: 0.9rem; color: var(--text-light); }
+  .about-text p { color: var(--text-light); }
+  .home-faq { padding: 1rem 0 2rem; }
+  .faq-item {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .faq-item summary { cursor: pointer; font-weight: 600; }
+  .faq-item p { margin: 0.75rem 0 0; color: var(--text-light); }
 </style>

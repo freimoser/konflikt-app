@@ -3,7 +3,14 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CrisisNotice from '../../../components/CrisisNotice.astro';
 import FeedbackWidget from '../../../components/FeedbackWidget.astro';
-import { categories } from '../../../data/categories/index.js';
+import { categories, getRelatedConflicts } from '../../../data/categories/index.js';
+import { getMethodsForConflict } from '../../../data/methods/index.js';
+import { getTopicsForConflict } from '../../../data/topics/index.js';
+import AdSlot from '../../../components/AdSlot.astro';
+import MethodLinks from '../../../components/MethodLinks.astro';
+import { scenarios } from '../../../data/trainer.js';
+import { seoTitles } from '../../../data/seo-titles.js';
+import { vorlagen } from '../../../data/vorlagen.js';
 import { normalizeConflict } from '../../../data/schema.js';
 
 export function getStaticPaths() {
@@ -26,15 +33,20 @@ const ratgeberUrl = `${baseUrl}/ratgeber/${category.id}/${conflict.slug}/`;
 
 const mode = Astro.url.searchParams.get('mode') || 'overview';
 
-const relatedConflicts = conflict.related
-  .map(rel => {
-    const cat = categories.find(c => c.id === rel.category);
-    if (!cat) return null;
-    const con = cat.conflicts.find(c => c.slug === rel.slug);
-    if (!con) return null;
-    return { ...con, category: cat };
-  })
-  .filter(Boolean);
+const relatedConflicts = getRelatedConflicts(category.id, conflict.slug, 4);
+const relatedMethods = getMethodsForConflict(category.id, conflict.slug, 3);
+const relatedTopics = getTopicsForConflict(category.id, conflict.slug, 2);
+// Passende Druckvorlage (außer der allgemeinen Checkliste, die ohnehin überall verlinkt ist)
+const matchingVorlage = vorlagen.find((v: any) => v.slug !== 'gespraech-vorbereiten' &&
+  (v.relatedConflicts || []).some((r: any) => r.category === category.id && r.slug === conflict.slug));
+const adsSensitive = Boolean(conflict.adsSensitive);
+const trainerScenario = scenarios.find(sc => sc.conflict.category === category.id && sc.conflict.slug === conflict.slug);
+
+// Lange Problembeschreibungen: zwei Sätze sichtbar, Rest aufklappbar (mobil keine Textwand).
+const problemSentences = (conflict.problem || '').split(/(?<=[.!?])\s+(?=[A-ZÄÖÜ„"])/);
+const collapse = problemSentences.length > 3;
+const problemLead = collapse ? problemSentences.slice(0, 2).join(' ') : conflict.problem;
+const problemRest = collapse ? problemSentences.slice(2).join(' ') : '';
 
 const breadcrumbs = [
   { label: 'Start', url: '/' },
@@ -46,9 +58,10 @@ const breadcrumbs = [
 const canonicalUrl = `${Astro.site.origin}${pageUrl}`;
 ---
 <BaseLayout
-  title={`${conflict.title} klären – Gesprächsleitfaden`}
+  title={conflict.seoTitle || seoTitles[`${category.id}/${conflict.slug}`] || `${conflict.title} – was sage ich jetzt?`}
   description={conflict.summary}
   canonical={pageUrl}
+  noAds={adsSensitive}
 >
   <Breadcrumbs crumbs={breadcrumbs} />
 
@@ -70,7 +83,13 @@ const canonicalUrl = `${Astro.site.origin}${pageUrl}`;
       <div id="view-overview" style={mode === 'overview' ? '' : 'display:none'}>
         <div class="section-card problem-box">
           <h2>Das Problem</h2>
-          <p>{conflict.problem}</p>
+          <p>{problemLead}</p>
+          {problemRest && (
+            <details class="more">
+              <summary>Weiterlesen</summary>
+              <p>{problemRest}</p>
+            </details>
+          )}
         </div>
 
         {conflict.causes && conflict.causes.length > 0 && (
@@ -112,6 +131,17 @@ const canonicalUrl = `${Astro.site.origin}${pageUrl}`;
           </div>
         )}
 
+        <AdSlot placement="after-tool" sensitive={adsSensitive} />
+
+        <MethodLinks methods={relatedMethods} topics={relatedTopics} heading="Mehr Hilfe zum Thema" />
+
+        {trainerScenario && (
+          <a class="trainer-cta" href={`${baseUrl}/spiel/gespraechstrainer/#${trainerScenario.id}`}>
+            <span class="trainer-cta-icon" aria-hidden="true">🎯</span>
+            <span><strong>Üben vor dem Ernstfall:</strong> Was antwortest du auf „{trainerScenario.says.replace(/^[„"]|[“"]$/g, '')}“? Probier es im Gesprächs-Trainer.</span>
+          </a>
+        )}
+
         <div class="ratgeber-promo">
           <h3>Tiefere Einblicke gesucht?</h3>
           <p>Verstehe die Dynamik hinter diesem Konflikt und finde langfristige Lösungen in unserem ausführlichen Ratgeber.</p>
@@ -141,18 +171,21 @@ const canonicalUrl = `${Astro.site.origin}${pageUrl}`;
               <div class="script-variant">
                 <h4>Sanft & Verbindend</h4>
                 <div class="script-text"><p>„{conflict.one_party.scripts.sanft}“</p></div>
+                <button type="button" class="copy-btn no-print" data-copy={conflict.one_party.scripts.sanft} hidden>Satz kopieren</button>
               </div>
             )}
             {conflict.one_party?.scripts?.direkt && (
               <div class="script-variant">
                 <h4>Klar & Direkt</h4>
                 <div class="script-text"><p>„{conflict.one_party.scripts.direkt}“</p></div>
+                <button type="button" class="copy-btn no-print" data-copy={conflict.one_party.scripts.direkt} hidden>Satz kopieren</button>
               </div>
             )}
             {conflict.one_party?.scripts?.sachlich && (
               <div class="script-variant">
                 <h4>Sachlich & Neutral</h4>
                 <div class="script-text"><p>„{conflict.one_party.scripts.sachlich}“</p></div>
+                <button type="button" class="copy-btn no-print" data-copy={conflict.one_party.scripts.sachlich} hidden>Satz kopieren</button>
               </div>
             )}
           </div>
@@ -251,6 +284,15 @@ const canonicalUrl = `${Astro.site.origin}${pageUrl}`;
       </div>
     </div>
 
+    <div class="print-bar no-print">
+      <button type="button" class="print-btn" data-print>🖨️ Gesprächsplan drucken</button>
+      <span class="print-hint">Druckt beide Wege (allein und gemeinsam) auf wenigen Seiten – auch als PDF speicherbar.</span>
+      <a class="print-hint prep-link" href={`${baseUrl}/vorlagen/gespraech-vorbereiten/`}>📝 Checkliste: Gespräch vorbereiten</a>
+      {matchingVorlage && (
+        <a class="print-hint prep-link" href={`${baseUrl}/vorlagen/${matchingVorlage.slug}/`}>{matchingVorlage.icon} {matchingVorlage.title}</a>
+      )}
+    </div>
+
     <FeedbackWidget slug={conflict.slug} />
 
     {relatedConflicts.length > 0 && (
@@ -278,23 +320,58 @@ const canonicalUrl = `${Astro.site.origin}${pageUrl}`;
       'two-party': document.getElementById('view-two-party')
     };
 
-    function setMode(mode) {
+    function showMode(mode) {
       if (!views[mode]) mode = 'overview';
       Object.keys(views).forEach(key => {
         if (views[key]) {
           views[key].style.display = (key === mode) ? '' : 'none';
         }
       });
+      return mode;
+    }
 
+    function setMode(mode) {
+      mode = showMode(mode);
       const url = new URL(window.location.href);
       if (mode === 'overview') {
         url.searchParams.delete('mode');
       } else {
         url.searchParams.set('mode', mode);
       }
-      window.history.replaceState({}, '', url);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState({ mode: mode }, '', url);
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
     }
+
+    // Direktaufruf mit ?mode=… (z. B. aus geteilten Links) – die Seite ist
+    // statisch als Übersicht vorgerendert, daher hier clientseitig umschalten.
+    showMode(new URLSearchParams(window.location.search).get('mode') || 'overview');
+
+    document.querySelectorAll('[data-print]').forEach(function(btn) {
+      btn.addEventListener('click', function() { window.print(); });
+    });
+    // „Satz kopieren“: nur sichtbar, wenn die Zwischenablage verfügbar ist.
+    if (navigator.clipboard && window.isSecureContext) {
+      document.querySelectorAll('[data-copy]').forEach(function(btn) {
+        btn.hidden = false;
+        btn.addEventListener('click', function() {
+          navigator.clipboard.writeText(btn.getAttribute('data-copy') || '').then(function() {
+            const old = btn.textContent;
+            btn.textContent = 'Kopiert ✓';
+            setTimeout(function() { btn.textContent = old; }, 1800);
+          });
+        });
+      });
+    }
+
+    // Zugeklappte Abschnitte (z. B. „Weiterlesen“) für den Druck öffnen.
+    window.addEventListener('beforeprint', function() {
+      document.querySelectorAll('details').forEach(function(d) { d.open = true; });
+    });
+
+    window.addEventListener('popstate', function() {
+      showMode(new URLSearchParams(window.location.search).get('mode') || 'overview');
+    });
 
     document.querySelectorAll('[data-mode]').forEach(function(el) {
       el.addEventListener('click', function(e) {
@@ -319,6 +396,25 @@ const canonicalUrl = `${Astro.site.origin}${pageUrl}`;
   .section-card p, .section-card li { color: var(--text-light); line-height: 1.7; }
   .section-card ul { padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
   .problem-box { border-left: 4px solid var(--accent); }
+  .copy-btn { font: inherit; font-size: 0.8rem; font-weight: 600; margin-top: 0.4rem; background: transparent; border: 1px solid var(--border); border-radius: 20px; padding: 0.3rem 0.8rem; cursor: pointer; color: var(--primary-dark); min-height: 32px; }
+  .copy-btn:hover { border-color: var(--primary-light); background: #F0F7F4; }
+  .print-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin: 2rem 0 0; }
+  .print-btn { font: inherit; font-weight: 600; background: var(--bg-white); border: 2px solid var(--primary-light); color: var(--primary-dark); border-radius: var(--radius-sm); padding: 0.6rem 1.1rem; cursor: pointer; min-height: 44px; }
+  .print-btn:hover { background: #F0F7F4; }
+  .print-hint { font-size: 0.8rem; color: var(--text-light); }
+  .prep-link { text-decoration: underline; font-weight: 600; color: var(--primary-dark); }
+  @media print {
+    #view-overview, #view-one-party, #view-two-party { display: block !important; }
+    .mode-cards, .mode-heading, .mode-switch, .ratgeber-promo, .related-section, .method-links, .trainer-cta, .more summary { display: none !important; }
+    .section-card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    #view-one-party, #view-two-party { break-before: page; }
+  }
+  .more summary { cursor: pointer; font-weight: 600; color: var(--primary); padding: 0.25rem 0; min-height: 44px; display: flex; align-items: center; }
+  .more[open] summary { display: none; }
+  .more p { margin-top: 0; }
+  .trainer-cta { display: flex; gap: 0.75rem; align-items: flex-start; background: #FFF3E0; border: 1px solid #FFE0B2; border-radius: var(--radius-sm); padding: 1rem 1.1rem; color: var(--text); margin: 0 0 2rem; }
+  .trainer-cta:hover { border-color: var(--accent); color: var(--text); }
+  .trainer-cta-icon { font-size: 1.5rem; }
   .why-box { border-left: 4px solid var(--primary-light); }
   .script-box { border-left: 4px solid var(--accent); }
   .goal-box { border-left: 4px solid var(--primary); }

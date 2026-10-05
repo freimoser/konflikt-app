@@ -1,0 +1,11 @@
+---
+import GuideArticle from '../../components/GuideArticle.astro';
+import { methods } from '../../data/methods/index.js';
+
+export function getStaticPaths() {
+  return methods.map(method => ({ params: { slug: method.slug }, props: { method } }));
+}
+
+const { method } = Astro.props;
+---
+<GuideArticle method={method} section="methoden" />

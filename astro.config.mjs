@@ -10,5 +10,11 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
-  integrations: [sitemap()]
+  integrations: [
+    sitemap({
+      // noindex-Seiten gehören nicht in die Sitemap (Sitemap = Bitte um Indexierung).
+      // Impressum: enthält eine Privatanschrift; Datenschutz: Standardtext ohne Suchnutzen.
+      filter: (page) => !/\/(impressum|datenschutz)\/$/.test(page),
+    }),
+  ],
 });

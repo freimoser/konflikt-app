@@ -78,7 +78,7 @@ export const chefCategory = {
       next_step: 'Bitte in vier Wochen um ein Follow-up-Gespräch, um den Fortschritt zu besprechen.',
       related: [
         { category: 'chef', slug: 'kein-feedback' },
-        { category: 'kollegin', slug: 'unterbricht-staendig' }
+        { category: 'kollegen', slug: 'unterbricht-staendig' }
       ],
       article: {
         title: 'Vom Chef nicht ernst genommen? So verschaffst du dir Respekt',
@@ -199,7 +199,7 @@ export const chefCategory = {
       next_step: 'Setze die besprochenen Prioritäten konsequent um und gehe pünktlich nach Hause. Wenn der Chef wieder mehr fordert, verweise freundlich auf eure Vereinbarung.',
       related: [
         { category: 'chef', slug: 'unklare-erwartungen' },
-        { category: 'kollegin', slug: 'schiebt-aufgaben-ab' }
+        { category: 'kollegen', slug: 'schiebt-aufgaben-ab' }
       ],
       article: {
         title: 'Zu viel Druck vom Chef: So setzt du Grenzen bei Überlastung',
@@ -561,7 +561,7 @@ export const chefCategory = {
     ],
     next_step: 'Bitte deinen Chef um ein Gespräch zur Aufgabenverteilung. Nutze ein konkretes, aktuelles Beispiel, bei dem du dich übergangen gefühlt hast.',
     related: [
-      { category: 'kollegin', slug: 'bekommt-anerkennung' },
+      { category: 'kollegen', slug: 'anerkennung-fehlt' },
       { category: 'chef', slug: 'unklare-erwartungen' }
     ],
     article: {

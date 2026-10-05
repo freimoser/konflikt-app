@@ -1,0 +1,30 @@
+// Zentrale Site-Konfiguration. Keine IDs oder Secrets hier eintragen –
+// Werbung wird ausschließlich über Umgebungsvariablen beim Build aktiviert
+// (lokal: .env, im Deployment: GitHub-Actions-Variablen). Siehe docs/loop/STRATEGIE.md.
+
+export const SITE_NAME = 'Konfliktlotse';
+export const OPERATOR = {
+  name: 'Serdar Thomas Freimoser',
+  street: 'Schinkelstraße 15',
+  city: '80805 München',
+  country: 'Deutschland',
+  email: '91Serdar@gmail.com',
+};
+
+const rawClient = (import.meta.env.PUBLIC_ADSENSE_CLIENT || '').trim();
+
+/** AdSense-Publisher-Kennung im Format `ca-pub-` + 16 Ziffern, sonst leer. */
+export const ADSENSE_CLIENT = /^ca-pub-\d{16}$/.test(rawClient) ? rawClient : '';
+export const ADS_ENABLED = ADSENSE_CLIENT !== '';
+
+/**
+ * Anzeigenblock-IDs aus dem AdSense-Konto (je Platzierung eine Umgebungsvariable).
+ * Ohne ID wird an dieser Stelle kein Block gerendert.
+ */
+export const AD_SLOTS = {
+  'in-article': (import.meta.env.PUBLIC_ADSENSE_SLOT_IN_ARTICLE || '').trim(),
+  'after-tool': (import.meta.env.PUBLIC_ADSENSE_SLOT_AFTER_TOOL || '').trim(),
+  'list': (import.meta.env.PUBLIC_ADSENSE_SLOT_LIST || '').trim(),
+} as const;
+
+export type AdPlacement = keyof typeof AD_SLOTS;

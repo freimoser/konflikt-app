@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { vorlagen } from '../../data/vorlagen.js';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const breadcrumbs = [{ label: 'Start', url: '/' }, { label: 'Vorlagen' }];
+---
+<BaseLayout
+  title="Vorlagen zum Ausdrucken"
+  fullTitle="Vorlagen für Konfliktgespräche zum Ausdrucken | Konfliktlotse"
+  description="Kostenlose Vorlagen zum Ausdrucken: Checkliste für das Konfliktgespräch, Familienrat-Protokoll, WG-Vereinbarung und Vereinbarung nach einem Streit – ohne Anmeldung."
+>
+  <Breadcrumbs crumbs={breadcrumbs} />
+  <h1>Vorlagen zum Ausdrucken</h1>
+  <p class="intro">
+    Manches klärt sich leichter auf Papier: Ein Plan für das Gespräch, eine Vereinbarung, die alle unterschreiben,
+    oder ein Protokoll, das ihr in vier Wochen wieder hervorholt. Alle Vorlagen sind kostenlos, ohne Anmeldung
+    und lassen sich direkt drucken oder als PDF speichern.
+  </p>
+  <div class="grid">
+    {vorlagen.map((v: any) => (
+      <a class="tile" href={`${baseUrl}/vorlagen/${v.slug}/`}>
+        <span class="tile-icon" aria-hidden="true">{v.icon}</span>
+        <span class="tile-title">{v.title}</span>
+        <span class="tile-text">{v.intro.split('. ')[0]}.</span>
+      </a>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .intro { color: var(--text-light); font-size: 1.05rem; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-top: 1.25rem; }
+  @media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .tile { display: flex; flex-direction: column; gap: 0.3rem; background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.2rem; color: var(--text); }
+  .tile:hover { border-color: var(--primary-light); }
+  .tile-icon { font-size: 1.6rem; }
+  .tile-title { font-weight: 700; }
+  .tile-text { font-size: 0.9rem; color: var(--text-light); }
+</style>

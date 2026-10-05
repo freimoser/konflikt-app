@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { scenarios } from '../../data/trainer.js';
+import { categories, getConflict } from '../../data/categories/index.js';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const items = scenarios
+  .map(s => ({ ...s, conflictData: getConflict(s.conflict.category, s.conflict.slug) }))
+  .filter(s => s.conflictData);
+
+const usedCategories = categories.filter(c => items.some(s => s.conflict.category === c.id));
+
+const typeLabel: Record<string, string> = {
+  klar: 'Klar und ruhig',
+  eskalierend: 'Eskalierend',
+  ausweichend: 'Ausweichend',
+};
+
+const breadcrumbs = [
+  { label: 'Start', url: '/' },
+  { label: 'Spiel', url: '/spiel/' },
+  { label: 'Gesprächs-Trainer' },
+];
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Gesprächs-Trainer: Was antwortest du?',
+  applicationCategory: 'EducationalApplication',
+  operatingSystem: 'Browser',
+  inLanguage: 'de-DE',
+  isAccessibleForFree: true,
+  url: `${Astro.site!.origin}${baseUrl}/spiel/gespraechstrainer/`,
+  description: 'Übe in typischen Alltagskonflikten die passende Antwort: Dein Gegenüber sagt einen schwierigen Satz, du wählst eine von drei Reaktionen und bekommst sofort Feedback.',
+});
+---
+<BaseLayout
+  title="Gesprächs-Trainer: Was antwortest du?"
+  fullTitle="Gesprächs-Trainer: Schwierige Gespräche üben | Konfliktlotse"
+  description={`Übe schlagfertig und fair zu reagieren: ${items.length} typische Konfliktsätze aus Beziehung, Job, Familie und Nachbarschaft – wähle deine Antwort und bekomme sofort Feedback.`}
+  jsonLd={jsonLd}
+>
+  <Breadcrumbs crumbs={breadcrumbs} />
+
+  <header class="trainer-head">
+    <p class="kicker">🎯 Spiel</p>
+    <h1>Gesprächs-Trainer: Was antwortest du?</h1>
+    <p class="lead">
+      Dein Gegenüber sagt einen dieser Sätze, die dich sonst sprachlos oder wütend machen. Du hast drei
+      Antworten zur Auswahl – welche bringt das Gespräch weiter? Du bekommst sofort Feedback. Nichts wird
+      gespeichert oder gesendet.
+    </p>
+  </header>
+
+  <div class="trainer-controls" data-trainer-controls hidden>
+    <label for="trainer-filter">Bereich:</label>
+    <select id="trainer-filter" data-trainer-filter>
+      <option value="zufall">Schnelle Runde: 5 zufällige Situationen</option>
+      <option value="alle">Alle Bereiche ({items.length})</option>
+      {usedCategories.map(c => (
+        <option value={c.id}>{c.name} ({items.filter(s => s.conflict.category === c.id).length})</option>
+      ))}
+    </select>
+    <p class="trainer-progress" aria-live="polite" data-trainer-progress></p>
+  </div>
+
+  <div class="scenarios" data-trainer>
+    {items.map((s, i) => (
+      <article class="scenario" id={s.id} data-scenario data-category={s.conflict.category}>
+        <p class="scenario-meta">
+          <span>{s.conflictData.icon} {s.conflictData.categoryName}</span>
+          <span class="scenario-count" data-count>Situation {i + 1} von {items.length}</span>
+        </p>
+        <p class="scenario-context">{s.context}</p>
+        <blockquote class="bubble">
+          <p>„{s.says.replace(/^[„"]|[“"]$/g, '')}“</p>
+        </blockquote>
+        <p class="question">Was antwortest du?</p>
+        <ul class="options">
+          {s.options.map((o: { text: string; type: string; feedback: string }) => (
+            <li class="option" data-type={o.type}>
+              <details>
+                <summary><span class="option-text">„{o.text.replace(/^[„"]|[“"]$/g, '')}“</span></summary>
+                <div class="feedback">
+                  <p class="feedback-type">{typeLabel[o.type] || o.type}</p>
+                  <p>{o.feedback}</p>
+                </div>
+              </details>
+            </li>
+          ))}
+        </ul>
+        <div class="scenario-after">
+          <p class="tip"><strong>Das Prinzip:</strong> {s.tip}</p>
+          <p class="scenario-link">
+            Mehr dazu: <a href={`${baseUrl}/konflikt/${s.conflict.category}/${s.conflict.slug}/`}>Gesprächsplan „{s.conflictData.title}“</a>
+          </p>
+          <button type="button" class="btn-next" data-next hidden>Nächste Situation →</button>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <section class="result" data-result hidden>
+    <h2>Geschafft!</h2>
+    <p class="result-score" data-result-score></p>
+    <p data-result-text></p>
+    <div class="result-actions">
+      <button type="button" class="btn-next" data-restart>Noch einmal üben</button>
+      <a class="btn-outline" href={`${baseUrl}/methoden/`}>Methoden entdecken</a>
+    </div>
+  </section>
+
+  <section class="trainer-info">
+    <h2>Worauf es bei guten Antworten ankommt</h2>
+    <ul>
+      <li><strong>Beim Thema bleiben:</strong> Lass dich nicht auf Nebenschauplätze oder Etiketten wie „pedantisch“ ein.</li>
+      <li><strong>Kurz und ruhig:</strong> Ein klarer Satz wirkt stärker als eine lange Verteidigung.</li>
+      <li><strong>Die andere Seite anerkennen, ohne nachzugeben:</strong> „Ich verstehe, dass …, und trotzdem …“</li>
+      <li><strong>Konkret werden:</strong> Eine kleine, machbare Bitte statt eines Grundsatzstreits.</li>
+    </ul>
+    <p>
+      Die Grundlagen dazu findest du bei den <a href={`${baseUrl}/methoden/ich-botschaften/`}>Ich-Botschaften</a>,
+      beim <a href={`${baseUrl}/methoden/aktives-zuhoeren/`}>aktiven Zuhören</a> und in der
+      <a href={`${baseUrl}/methoden/deeskalation-im-streit/`}>Deeskalation</a>.
+    </p>
+    <p class="safety">
+      Der Trainer übt Alltagskonflikte. Bei Drohungen, Kontrolle oder Gewalt geht es nicht um die richtige
+      Formulierung – dann findest du Unterstützung unter <a href={`${baseUrl}/hilfe-in-krisen/`}>Hilfe in Krisen</a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<script>
+  (function () {
+    const root = document.querySelector('[data-trainer]');
+    if (!root) return;
+    const all = Array.from(root.querySelectorAll<HTMLElement>('[data-scenario]'));
+    const controls = document.querySelector<HTMLElement>('[data-trainer-controls]');
+    const filter = document.querySelector<HTMLSelectElement>('[data-trainer-filter]');
+    const progress = document.querySelector<HTMLElement>('[data-trainer-progress]');
+    const result = document.querySelector<HTMLElement>('[data-result]');
+    const resultScore = document.querySelector<HTMLElement>('[data-result-score]');
+    const resultText = document.querySelector<HTMLElement>('[data-result-text]');
+    const restart = document.querySelector<HTMLButtonElement>('[data-restart]');
+    if (!all.length || !controls || !filter || !progress || !result) return;
+
+    document.documentElement.classList.add('trainer-js');
+    controls.hidden = false;
+
+    let deck: HTMLElement[] = [];
+    let index = 0;
+    let score = 0;
+    let answered = 0;
+
+    function resetScenario(el: HTMLElement) {
+      el.classList.remove('is-answered');
+      el.querySelectorAll('.option').forEach(o => o.classList.remove('is-chosen'));
+      el.querySelectorAll('details').forEach(d => { d.open = false; });
+      const next = el.querySelector<HTMLElement>('[data-next]');
+      if (next) next.hidden = true;
+    }
+
+    function updateProgress() {
+      progress!.textContent = `Situation ${Math.min(index + 1, deck.length)} von ${deck.length} · ${score} von ${answered} klar beantwortet`;
+    }
+
+    function show(i: number) {
+      all.forEach(el => { el.hidden = true; });
+      result!.hidden = true;
+      if (i >= deck.length) {
+        finish();
+        return;
+      }
+      const el = deck[i];
+      el.hidden = false;
+      const count = el.querySelector<HTMLElement>('[data-count]');
+      if (count) count.textContent = `Situation ${i + 1} von ${deck.length}`;
+      updateProgress();
+    }
+
+    function start(category: string, startId?: string) {
+      if (category === 'zufall') {
+        deck = all.slice().sort(() => Math.random() - 0.5).slice(0, 5);
+      } else {
+        deck = all.filter(el => category === 'alle' || el.dataset.category === category);
+      }
+      deck.forEach(resetScenario);
+      index = 0;
+      score = 0;
+      answered = 0;
+      if (startId) {
+        const pos = deck.findIndex(el => el.id === startId);
+        if (pos > 0) deck = deck.slice(pos).concat(deck.slice(0, pos));
+      }
+      show(0);
+    }
+
+    function finish() {
+      const ratio = deck.length ? score / deck.length : 0;
+      resultScore!.textContent = `${score} von ${deck.length} Situationen klar und ruhig beantwortet.`;
+      resultText!.textContent = ratio >= 0.8
+        ? 'Stark! Du erkennst zuverlässig, welche Antwort ein Gespräch öffnet. Probier es jetzt in einem echten Gespräch – mit einem Gesprächsplan im Rücken.'
+        : ratio >= 0.5
+          ? 'Gute Basis. Schau dir bei den Situationen, die danebengingen, das Prinzip noch einmal an – meist geht es darum, beim Thema zu bleiben statt zu kontern.'
+          : 'Ganz normal am Anfang: Unter Druck greifen wir alle zu Gegenangriff oder Rückzug. Die Methoden-Artikel zeigen dir, wie ruhige, klare Sätze aufgebaut sind.';
+      progress!.textContent = '';
+      result!.hidden = false;
+      result!.scrollIntoView({ block: 'start' });
+    }
+
+    all.forEach(el => {
+      el.querySelectorAll<HTMLElement>('.option').forEach(opt => {
+        const summary = opt.querySelector('summary');
+        if (!summary) return;
+        summary.addEventListener('click', e => {
+          if (!document.documentElement.classList.contains('trainer-js')) return;
+          e.preventDefault();
+          if (el.classList.contains('is-answered')) return;
+          el.classList.add('is-answered');
+          opt.classList.add('is-chosen');
+          el.querySelectorAll('details').forEach(d => { d.open = true; });
+          answered++;
+          if (opt.dataset.type === 'klar') score++;
+          updateProgress();
+          const next = el.querySelector<HTMLElement>('[data-next]');
+          if (next) { next.hidden = false; next.focus({ preventScroll: true }); }
+        });
+      });
+      el.querySelector('[data-next]')?.addEventListener('click', () => {
+        index++;
+        show(index);
+        window.scrollTo({ top: 0 });
+      });
+    });
+
+    filter.addEventListener('change', () => start(filter.value));
+    window.addEventListener('hashchange', () => {
+      const id = decodeURIComponent(window.location.hash.replace('#', ''));
+      const cat = id.startsWith('bereich-') ? id.slice(8) : '';
+      if (cat && filter.querySelector(`option[value="${cat}"]`)) {
+        filter.value = cat;
+        start(cat);
+      } else if (all.some(el => el.id === id)) {
+        filter.value = 'alle';
+        start('alle', id);
+      }
+    });
+    restart?.addEventListener('click', () => start(filter.value));
+
+    const hashId = decodeURIComponent(window.location.hash.replace('#', ''));
+    const hashEl = hashId ? all.find(el => el.id === hashId) : undefined;
+    const hashCat = hashId.startsWith('bereich-') ? hashId.slice(8) : '';
+    if (hashEl) {
+      filter.value = 'alle';
+      start('alle', hashEl.id);
+    } else if (hashCat && filter.querySelector(`option[value="${hashCat}"]`)) {
+      filter.value = hashCat;
+      start(hashCat);
+    } else {
+      start(filter.value);
+    }
+  })();
+</script>
+
+<style>
+  .kicker { font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; }
+  .lead { color: var(--text-light); font-size: 1.05rem; }
+  .trainer-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; margin: 1rem 0 1.25rem; }
+  .trainer-controls label { font-weight: 600; font-size: 0.9rem; }
+  .trainer-controls select { font: inherit; padding: 0.45rem 0.6rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-white); min-height: 44px; }
+  .trainer-progress { margin: 0; font-size: 0.85rem; color: var(--text-light); flex-basis: 100%; }
+  .scenarios { display: flex; flex-direction: column; gap: 1.5rem; }
+  .scenario { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+  .scenario-meta { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.75rem; }
+  .scenario-context { color: var(--text-light); }
+  .bubble { background: #FFF3E0; border-radius: 16px 16px 16px 4px; padding: 1rem 1.2rem; margin: 0 0 1rem; font-size: 1.1rem; font-weight: 600; }
+  .bubble p { margin: 0; }
+  .question { font-weight: 700; margin-bottom: 0.5rem; }
+  .options { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .option details { border: 2px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); transition: border-color 0.15s; }
+  .option summary { cursor: pointer; padding: 0.85rem 1rem; list-style: none; min-height: 44px; }
+  .option summary::-webkit-details-marker { display: none; }
+  .option summary:hover { background: #F0F7F4; }
+  .option-text { font-style: italic; }
+  .feedback { padding: 0 1rem 0.9rem; }
+  .feedback p { margin: 0 0 0.25rem; font-size: 0.92rem; color: var(--text-light); }
+  .feedback-type { font-weight: 700; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.04em; }
+  .option[data-type='klar'] .feedback-type { color: var(--primary); }
+  .option[data-type='eskalierend'] .feedback-type { color: #C1121F; }
+  .option[data-type='ausweichend'] .feedback-type { color: #9C6500; }
+  .is-answered .option[data-type='klar'] details { border-color: var(--primary); background: #F0F7F4; }
+  .is-answered .option.is-chosen:not([data-type='klar']) details { border-color: #E63946; background: #FFF5F5; }
+  .is-answered .option.is-chosen summary::before { content: 'Deine Wahl: '; font-weight: 700; font-style: normal; }
+  .is-answered summary { cursor: default; }
+  .is-answered summary:hover { background: transparent; }
+  .scenario-after { margin-top: 1rem; }
+  .tip { background: #F0F7F4; border-radius: var(--radius-sm); padding: 0.75rem 1rem; font-size: 0.92rem; }
+  .scenario-link { font-size: 0.9rem; }
+  .scenario-link a { text-decoration: underline; }
+  /* Ohne JS: Prinzip und Link immer sichtbar. Mit JS: erst nach der Antwort. */
+  :global(.trainer-js) .scenario:not(.is-answered) .scenario-after .tip,
+  :global(.trainer-js) .scenario:not(.is-answered) .scenario-after .scenario-link { display: none; }
+  .btn-next { font: inherit; font-weight: 700; background: var(--accent); color: var(--text); border: none; border-radius: var(--radius-sm); padding: 0.8rem 1.4rem; cursor: pointer; min-height: 44px; }
+  .btn-next:hover { background: var(--accent-light); }
+  .btn-outline { display: inline-block; font-weight: 600; border: 2px solid var(--primary); color: var(--primary); border-radius: var(--radius-sm); padding: 0.7rem 1.2rem; }
+  .result { background: var(--bg-white); border: 2px solid var(--primary-light); border-radius: var(--radius); padding: 1.5rem; text-align: center; }
+  .result h2 { margin-top: 0; }
+  .result-score { font-size: 1.2rem; font-weight: 700; color: var(--primary-dark); }
+  .result-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+  .trainer-info { margin-top: 2.5rem; }
+  .trainer-info ul { padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+  .trainer-info li, .trainer-info p { color: var(--text-light); }
+  .trainer-info a { text-decoration: underline; }
+  .safety { font-size: 0.9rem; background: #FFF3CD; border-left: 4px solid #FFC107; padding: 0.75rem 1rem; border-radius: var(--radius-sm); }
+</style>

@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Sicherheitsfragen: Ein „Ja“ führt immer zur Krisenhilfe – unabhängig vom Rest.
+const safetyQuestions = [
+  { id: 's1', text: 'Hast du Angst vor der anderen Person oder davor, wie sie reagiert?' },
+  { id: 's2', text: 'Gab es Gewalt, Drohungen mit Gewalt oder Zwang – körperlich, sexuell oder durch Einschüchterung?' },
+  { id: 's3', text: 'Kontrolliert die Person dein Handy, dein Geld, deine Kontakte oder verfolgt sie dich?' },
+];
+
+// Stufen vereinfacht nach den Eskalationsstufen von Friedrich Glasl.
+const statements = [
+  { id: 'q1', level: 1, text: 'Das Thema kommt immer wieder hoch, und die Stimmung wird dabei schnell angespannt.' },
+  { id: 'q2', level: 2, text: 'In unseren Gesprächen geht es mehr ums Rechthaben als um eine Lösung.' },
+  { id: 'q3', level: 2, text: 'Wir unterbrechen uns oder hören einander kaum noch richtig zu.' },
+  { id: 'q4', level: 3, text: 'Wir reden kaum noch darüber, sondern schaffen Tatsachen – schweigen, Dinge einfach durchziehen, Türen knallen.' },
+  { id: 'q5', level: 4, text: 'Mindestens eine Seite sucht Verbündete, die ihr recht geben (Familie, Kolleg:innen, Freundeskreis).' },
+  { id: 'q6', level: 4, text: 'Ich denke über die andere Person vor allem in Eigenschaften nach („egoistisch“, „unmöglich“, „faul“).' },
+  { id: 'q7', level: 5, text: 'Es gab Bloßstellungen, Beleidigungen oder Lästereien vor anderen.' },
+  { id: 'q8', level: 6, text: 'Es werden Ultimaten gestellt oder Konsequenzen angedroht („Wenn du nicht …, dann …“).' },
+];
+
+const results = [
+  {
+    key: 'safety',
+    title: 'Sicherheit geht vor',
+    range: 'Mindestens eine Sicherheitsfrage mit „Ja“',
+    text: 'Was du beschreibst, ist kein gewöhnlicher Kommunikationskonflikt. Wenn Angst, Gewalt, Drohungen oder Kontrolle im Spiel sind, ist ein klärendes Gespräch nicht der richtige erste Schritt. Sprich mit einer vertrauten Person und hol dir Unterstützung bei einer Beratungsstelle. In akuter Gefahr: Notruf 110.',
+    links: [
+      { label: 'Hilfe in Krisen – alle Nummern', url: '/hilfe-in-krisen/' },
+    ],
+  },
+  {
+    key: 'l1',
+    title: 'Gesprächsbereit',
+    range: 'Kein „Ja“ oder nur beim ersten Satz',
+    text: 'Ihr habt unterschiedliche Standpunkte, aber die Verbindung ist intakt. Das ist die beste Phase, um das Thema anzusprechen: ruhig, konkret, mit einer kleinen Bitte. Du kannst den Konflikt sehr wahrscheinlich selbst klären.',
+    links: [
+      { label: 'Konflikt auswählen und Gesprächsplan öffnen', url: '/konflikt/' },
+      { label: 'Ich-Botschaften', url: '/methoden/ich-botschaften/' },
+    ],
+  },
+  {
+    key: 'l2',
+    title: 'Angespannt',
+    range: 'Höchstes „Ja“ bei Rechthaben, Unterbrechen oder Tatsachen schaffen',
+    text: 'Es geht zunehmend ums Gewinnen statt ums Lösen, und Gespräche kippen schneller. Jetzt helfen feste Regeln: ausreden lassen, zusammenfassen, ein Thema pro Gespräch, eine vereinbarte Pause, wenn es laut wird. Selbst klären ist weiterhin gut möglich.',
+    links: [
+      { label: 'Deeskalation im Streit', url: '/methoden/deeskalation-im-streit/' },
+      { label: 'Aktives Zuhören', url: '/methoden/aktives-zuhoeren/' },
+    ],
+  },
+  {
+    key: 'l4',
+    title: 'Verhärtet',
+    range: 'Höchstes „Ja“ bei Verbündeten, Etiketten oder Bloßstellungen',
+    text: 'Es haben sich Lager und Feindbilder gebildet, oder jemand wurde vor anderen verletzt. Ein Gespräch unter vier Augen kann trotzdem gelingen, braucht aber gute Vorbereitung und oft eine neutrale dritte Person, die moderiert. Wichtig: erst die Verletzung anerkennen, dann über Lösungen sprechen.',
+    links: [
+      { label: 'Streit schlichten', url: '/themen/streit-schlichten/' },
+      { label: 'Harvard-Konzept', url: '/methoden/harvard-konzept/' },
+      { label: 'Richtig entschuldigen', url: '/methoden/richtig-entschuldigen/' },
+    ],
+  },
+  {
+    key: 'l6',
+    title: 'Hilfe von außen sinnvoll',
+    range: '„Ja“ bei Ultimaten oder Drohungen mit Konsequenzen',
+    text: 'Wenn Ultimaten und Drohungen die Gespräche bestimmen, ist der Konflikt weit fortgeschritten. Allein ist er jetzt schwer zu lösen. Sinnvoll sind Mediation, Paar- oder Familienberatung oder – im Job – Führungskraft, Personalabteilung oder Betriebsrat. Wenn die Drohungen dich einschüchtern oder Angst machen, gilt: Sicherheit zuerst.',
+    links: [
+      { label: 'Die 9 Eskalationsstufen nach Glasl', url: '/methoden/eskalationsstufen-glasl/' },
+      { label: 'Hilfe in Krisen', url: '/hilfe-in-krisen/' },
+    ],
+  },
+];
+
+const breadcrumbs = [
+  { label: 'Start', url: '/' },
+  { label: 'Spiel', url: '/spiel/' },
+  { label: 'Eskalations-Check' },
+];
+---
+<BaseLayout
+  title="Eskalations-Check: Wie verfahren ist dein Konflikt?"
+  fullTitle="Eskalations-Check: Wie verfahren ist dein Konflikt? | Konfliktlotse"
+  description="Kurzer Selbsttest mit 11 Fragen nach den Eskalationsstufen von Glasl: Ist dein Konflikt noch gesprächsbereit, angespannt oder verhärtet – und was hilft jetzt? Anonym, ohne Speicherung."
+>
+  <Breadcrumbs crumbs={breadcrumbs} />
+
+  <header>
+    <p class="kicker">🌡️ Selbsttest</p>
+    <h1>Eskalations-Check: Wie verfahren ist dein Konflikt?</h1>
+    <p class="lead">
+      Elf kurze Fragen, zwei Minuten. Du erfährst, in welcher Phase dein Konflikt ungefähr steckt und was
+      jetzt am ehesten hilft. Deine Antworten bleiben in deinem Browser – nichts wird gespeichert oder gesendet.
+    </p>
+  </header>
+
+  <form class="check" data-check novalidate>
+    <fieldset class="block block-safety">
+      <legend>Zuerst: Bist du sicher?</legend>
+      {safetyQuestions.map(q => (
+        <div class="q">
+          <p class="q-text" id={`${q.id}-label`}>{q.text}</p>
+          <div class="q-answers" role="radiogroup" aria-labelledby={`${q.id}-label`}>
+            <label><input type="radio" name={q.id} value="ja" /> Ja</label>
+            <label><input type="radio" name={q.id} value="nein" /> Nein</label>
+          </div>
+        </div>
+      ))}
+    </fieldset>
+
+    <fieldset class="block">
+      <legend>Trifft das auf deinen Konflikt zu?</legend>
+      {statements.map(q => (
+        <div class="q">
+          <p class="q-text" id={`${q.id}-label`}>{q.text}</p>
+          <div class="q-answers" role="radiogroup" aria-labelledby={`${q.id}-label`}>
+            <label><input type="radio" name={q.id} value="ja" data-level={q.level} /> Ja</label>
+            <label><input type="radio" name={q.id} value="nein" /> Nein</label>
+          </div>
+        </div>
+      ))}
+    </fieldset>
+
+    <p class="hint" data-hint hidden>Bitte beantworte alle Fragen – so wird die Einschätzung genauer.</p>
+    <button type="submit" class="btn-submit" data-submit hidden>Auswerten</button>
+    <noscript>
+      <p class="hint">
+        Ohne JavaScript kannst du dich selbst einordnen: Schau unten bei „So liest du dein Ergebnis“, bei
+        welcher Frage du zuletzt „Ja“ sagen würdest.
+      </p>
+    </noscript>
+  </form>
+
+  <section class="result" data-result tabindex="-1" hidden aria-live="polite">
+    <p class="result-kicker">Deine Einschätzung</p>
+    <h2 data-result-title></h2>
+    <p data-result-text></p>
+    <ul class="result-links" data-result-links></ul>
+    <button type="button" class="btn-reset" data-reset>Noch einmal</button>
+  </section>
+
+  <section class="legend">
+    <h2>So liest du dein Ergebnis</h2>
+    <p>
+      Entscheidend ist nicht die Zahl der „Ja“-Antworten, sondern die <strong>höchste Stufe</strong>, bei der
+      du zustimmst. Der Test ist eine Orientierung, keine Diagnose – vereinfacht angelehnt an die
+      <a href={`${baseUrl}/methoden/eskalationsstufen-glasl/`}>Eskalationsstufen nach Friedrich Glasl</a>.
+    </p>
+    {results.map(r => (
+      <div class={`band band-${r.key}`} data-band={r.key}>
+        <h3>{r.title}</h3>
+        <p class="band-range">{r.range}</p>
+        <p>{r.text}</p>
+        <ul>
+          {r.links.map(l => <li><a href={`${baseUrl}${l.url}`}>{l.label}</a></li>)}
+        </ul>
+      </div>
+    ))}
+  </section>
+</BaseLayout>
+
+<script>
+  (function () {
+    const form = document.querySelector<HTMLFormElement>('[data-check]');
+    const result = document.querySelector<HTMLElement>('[data-result]');
+    if (!form || !result) return;
+    const submit = form.querySelector<HTMLButtonElement>('[data-submit]');
+    const hint = form.querySelector<HTMLElement>('[data-hint]');
+    const title = result.querySelector<HTMLElement>('[data-result-title]');
+    const text = result.querySelector<HTMLElement>('[data-result-text]');
+    const links = result.querySelector<HTMLElement>('[data-result-links]');
+    const reset = result.querySelector<HTMLButtonElement>('[data-reset]');
+    if (!submit || !hint || !title || !text || !links) return;
+    submit.hidden = false;
+
+    const groups = Array.from(new Set(Array.from(form.querySelectorAll<HTMLInputElement>('input[type=radio]')).map(i => i.name)));
+
+    function bandFor(): string {
+      const data = new FormData(form!);
+      if (['s1', 's2', 's3'].some(n => data.get(n) === 'ja')) return 'safety';
+      let max = 0;
+      form!.querySelectorAll<HTMLInputElement>('input[data-level]:checked').forEach(i => {
+        max = Math.max(max, Number(i.dataset.level));
+      });
+      if (max >= 6) return 'l6';
+      if (max >= 4) return 'l4';
+      if (max >= 2) return 'l2';
+      return 'l1';
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const missing = groups.filter(n => !data.get(n));
+      // Sicherheitsfragen mit „Ja“ werten sofort aus, auch wenn der Rest fehlt.
+      const safetyYes = ['s1', 's2', 's3'].some(n => data.get(n) === 'ja');
+      if (missing.length && !safetyYes) {
+        hint.hidden = false;
+        const first = form.querySelector<HTMLInputElement>(`input[name="${missing[0]}"]`);
+        first?.focus();
+        return;
+      }
+      hint.hidden = true;
+      const key = bandFor();
+      const band = document.querySelector<HTMLElement>(`[data-band="${key}"]`);
+      if (!band) return;
+      title.textContent = band.querySelector('h3')?.textContent || '';
+      const paragraphs = band.querySelectorAll('p');
+      text.textContent = paragraphs[paragraphs.length - 1]?.textContent || '';
+      links.innerHTML = '';
+      band.querySelectorAll('a').forEach(a => {
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = a.getAttribute('href') || '#';
+        link.textContent = a.textContent;
+        li.appendChild(link);
+        links.appendChild(li);
+      });
+      result.className = `result result-${key}`;
+      result.hidden = false;
+      result.focus({ preventScroll: true });
+      result.scrollIntoView({ block: 'start' });
+    });
+
+    reset?.addEventListener('click', () => {
+      form.reset();
+      result.hidden = true;
+      hint.hidden = true;
+      window.scrollTo({ top: 0 });
+    });
+  })();
+</script>
+
+<style>
+  .kicker { font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; }
+  .lead { color: var(--text-light); font-size: 1.05rem; }
+  .block { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-white); padding: 1rem 1.25rem; margin: 1.25rem 0; }
+  .block legend { font-weight: 700; padding: 0 0.4rem; }
+  .block-safety { border-color: #FFC107; background: #FFFBEA; }
+  .q { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+  .q:last-child { border-bottom: none; }
+  .q-text { margin-bottom: 0.5rem; }
+  .q-answers { display: flex; gap: 0.5rem; }
+  .q-answers label { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 44px; padding: 0 1rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); cursor: pointer; font-weight: 600; }
+  .q-answers label:has(input:checked) { border-color: var(--primary); background: #F0F7F4; }
+  .q-answers input { accent-color: var(--primary); width: 1.1rem; height: 1.1rem; }
+  .hint { color: #9C6500; font-weight: 600; }
+  .btn-submit, .btn-reset { font: inherit; font-weight: 700; background: var(--accent); color: var(--text); border: none; border-radius: var(--radius-sm); padding: 0.85rem 1.6rem; cursor: pointer; min-height: 44px; }
+  .btn-submit:hover, .btn-reset:hover { background: var(--accent-light); }
+  .result { border-radius: var(--radius); padding: 1.5rem; margin: 1.5rem 0; background: var(--bg-white); border: 2px solid var(--primary-light); outline: none; }
+  .result h2 { margin-top: 0.25rem; }
+  .result-kicker { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-light); margin: 0; }
+  .result-safety { border-color: #E63946; background: #FFF5F5; }
+  .result-l6 { border-color: #F4A261; background: #FFF8F1; }
+  .result-links { padding-left: 1.25rem; margin-bottom: 1rem; }
+  .result-links a, .band a { text-decoration: underline; font-weight: 600; }
+  .legend { margin-top: 2.5rem; }
+  .legend > p { color: var(--text-light); }
+  .band { border-left: 4px solid var(--primary-light); background: var(--bg-white); border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; margin: 0.75rem 0; }
+  .band h3 { margin: 0 0 0.25rem; }
+  .band p { color: var(--text-light); margin-bottom: 0.5rem; }
+  .band ul { padding-left: 1.25rem; margin: 0; }
+  .band-range { font-size: 0.85rem; font-weight: 600; }
+  .band-safety { border-left-color: #E63946; }
+  .band-l6 { border-left-color: #F4A261; }
+</style>

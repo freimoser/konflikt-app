@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { OPERATOR } from '../config/site';
+---
+<BaseLayout
+  title="Kontakt"
+  description="So erreichst du Konfliktlotse: Feedback zu Gesprächsplänen, Themenvorschläge für neue Konflikte und Hinweise auf Fehler – per E-Mail, ohne Formular."
+  noAds
+>
+  <article class="page">
+    <h1>Kontakt</h1>
+    <p>
+      Du hast einen Fehler entdeckt, vermisst einen Konflikt oder möchtest uns sagen, was dir geholfen
+      hat? Schreib uns gern eine E-Mail:
+    </p>
+    <p class="contact-mail">
+      <a href={`mailto:${OPERATOR.email}?subject=Konfliktlotse`}>{OPERATOR.email}</a>
+    </p>
+
+    <h2>Worüber wir uns besonders freuen</h2>
+    <ul>
+      <li><strong>Themenvorschläge:</strong> Welcher Alltagskonflikt fehlt dir? Ein Stichwort reicht.</li>
+      <li><strong>Rückmeldungen zu Formulierungen:</strong> Welcher Satz hat funktioniert, welcher nicht?</li>
+      <li><strong>Fehlerhinweise:</strong> Kaputte Links, missverständliche Stellen, Tippfehler.</li>
+    </ul>
+
+    <h2>Was wir nicht leisten können</h2>
+    <p>
+      Wir bieten keine Einzelberatung, Therapie oder Rechtsberatung an und können auf persönliche
+      Konfliktschilderungen nicht individuell antworten. Bitte schicke uns deshalb keine sensiblen Details
+      über dich oder andere Personen.
+    </p>
+    <p class="contact-crisis">
+      Wenn du in Gefahr bist, bedroht wirst oder dich in einer akuten Krise befindest, wende dich bitte
+      sofort an den Notruf <strong>110</strong> bzw. <strong>112</strong> oder an die TelefonSeelsorge
+      (<strong>0800 1110111</strong>, kostenlos, rund um die Uhr). Weitere Stellen findest du unter
+      <a href="/hilfe-in-krisen/">Hilfe in Krisen</a>.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { max-width: 68ch; }
+  .page p, .page li { color: var(--text-light); }
+  .page ul { padding-left: 1.25rem; margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .contact-mail { font-size: 1.2rem; font-weight: 600; }
+  .contact-crisis { background: #FFF3CD; border-left: 4px solid #FFC107; padding: 1rem; border-radius: var(--radius-sm); color: #664D03 !important; }
+  .contact-crisis a { color: #7a5a00; text-decoration: underline; font-weight: 600; }
+</style>

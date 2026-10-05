@@ -1,23 +1,68 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { OPERATOR } from '../config/site';
 ---
-<BaseLayout 
-  title="Impressum" 
-  description="Impressum der Konfliktlotse App gemäß § 5 DDG."
+<BaseLayout
+  title="Impressum"
+  description="Impressum von Konfliktlotse gemäß § 5 DDG: Anbieter, Kontakt, inhaltlich Verantwortlicher sowie Hinweise zu Haftung und Urheberrecht."
+  noAds
+  noindex
 >
-  <h1>Impressum</h1>
-  <p>Angaben gemäß § 5 DDG</p>
-  <p>
-    Serdar Thomas Freimoser<br/>
-    Schinkelstraße 15<br/>
-    80805 München<br/>
-    Deutschland
-  </p>
-  <h2>Kontakt</h2>
-  <p>
-    E-Mail: <a href="mailto:91Serdar@gmail.com">91Serdar@gmail.com</a>
-  </p>
-  <p>
-    <em>Hinweis: Diese Website stellt einen automatisierten Gesprächsleitfaden bereit. Dies ersetzt keine professionelle psychologische, medizinische oder juristische Beratung.</em>
-  </p>
+  <article class="legal">
+    <h1>Impressum</h1>
+
+    <h2>Angaben gemäß § 5 DDG</h2>
+    <p>
+      {OPERATOR.name}<br />
+      {OPERATOR.street}<br />
+      {OPERATOR.city}<br />
+      {OPERATOR.country}
+    </p>
+
+    <h2>Kontakt</h2>
+    <p>E-Mail: <a href={`mailto:${OPERATOR.email}`}>{OPERATOR.email}</a></p>
+
+    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+    <p>{OPERATOR.name}, Anschrift wie oben</p>
+
+    <h2>Hinweis zu den Inhalten</h2>
+    <p>
+      Konfliktlotse bietet allgemeine Gesprächshilfen für alltägliche Konflikte. Die Inhalte ersetzen
+      keine psychologische, medizinische, therapeutische oder rechtliche Beratung. Bei Gewalt, Bedrohung
+      oder in einer akuten Krise findest du Hilfe unter <a href="/hilfe-in-krisen/">Hilfe in Krisen</a>.
+    </p>
+
+    <h2>Haftung für Inhalte und Links</h2>
+    <p>
+      Wir erstellen die Inhalte mit Sorgfalt, können aber keine Gewähr für Vollständigkeit, Richtigkeit
+      und Aktualität übernehmen. Für Inhalte externer Websites, auf die wir verlinken, sind ausschließlich
+      deren Betreiber verantwortlich. Zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar;
+      wenn wir von Rechtsverletzungen erfahren, entfernen wir betroffene Links umgehend.
+    </p>
+
+    <h2>Urheberrecht</h2>
+    <p>
+      Texte und Gestaltung dieser Website unterliegen dem deutschen Urheberrecht. Du darfst einzelne
+      Formulierungshilfen für deine persönlichen Gespräche selbstverständlich verwenden. Eine
+      Vervielfältigung oder Veröffentlichung der Inhalte darüber hinaus bedarf unserer Zustimmung.
+    </p>
+
+    <h2>Verbraucherstreitbeilegung</h2>
+    <p>
+      Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer
+      Verbraucherschlichtungsstelle teilzunehmen.
+    </p>
+
+    <p class="legal-note">
+      Hinweis: Dieser Text wurde mit Unterstützung automatisierter Werkzeuge erstellt und ersetzt keine
+      Rechtsberatung.
+    </p>
+  </article>
 </BaseLayout>
+
+<style>
+  .legal { max-width: 68ch; }
+  .legal-note { font-size: 0.85rem; color: var(--text-light); background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.75rem 1rem; margin-top: 2rem; }
+  .legal p { color: var(--text-light); }
+  .legal a { text-decoration: underline; }
+</style>

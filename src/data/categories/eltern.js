@@ -1,3 +1,9 @@
+import ueberhoehteErwartungen from '../conflicts/eltern/ueberhoehte-erwartungen.js';
+import kritisierenStaendig from '../conflicts/eltern/kritisieren-staendig.js';
+import respektierenGrenzenNicht from '../conflicts/eltern/respektieren-grenzen-nicht.js';
+import akzeptierenPartnerNicht from '../conflicts/eltern/akzeptieren-partner-nicht.js';
+import streitUmPflege from '../conflicts/eltern/streit-um-pflege.js';
+
 export const elternCategory = {
   id: 'eltern',
   name: 'Eltern',
@@ -88,8 +94,9 @@ export const elternCategory = {
       next_step: 'Wenn der erste Versuch nicht funktioniert, verkleinere die Grenze: Wähle ein einziges Thema, etwa Beziehungskommentare oder Jobratschläge, und kündige an, dass du Gespräche darüber künftig beendest. Wenn Unterstützung die Grenze verwischt, erstellt gemeinsam eine konkrete Vereinbarung zu Geld, Wohnen, Betreuung oder Pflege, damit nicht jede private Entscheidung daran gekoppelt wird.',
       related: [
         { category: 'eltern', slug: 'versteht-mich-nicht' },
-        { category: 'freunde', slug: 'grenzen-nicht-respektiert' },
-        { category: 'partner', slug: 'eifersucht' }
+        { category: 'eltern', slug: 'respektieren-grenzen-nicht' },
+        { category: 'eltern', slug: 'streit-um-pflege' },
+        { category: 'freunde', slug: 'grenzen-nicht-respektiert' }
       ],
       article: {
         title: 'Eltern mischen sich ständig ein: Wie du als erwachsenes Kind klare Grenzen setzt',
@@ -267,6 +274,7 @@ export const elternCategory = {
           }
         ]
       }
-    }
+    },
+    ueberhoehteErwartungen, kritisierenStaendig, respektierenGrenzenNicht, akzeptierenPartnerNicht, streitUmPflege,
   ]
 };

@@ -1,0 +1,115 @@
+---
+// Druckbare Vorlage: wird ausgedruckt und auf Papier ausgefüllt (keine Eingabefelder,
+// nichts wird gespeichert). Daten: src/data/vorlagen.js
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { vorlagen } from '../../data/vorlagen.js';
+import { getConflict } from '../../data/categories/index.js';
+import { getMethod } from '../../data/methods/index.js';
+
+export function getStaticPaths() {
+  return vorlagen.map(v => ({ params: { slug: v.slug }, props: { vorlage: v } }));
+}
+
+const { vorlage } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const conflicts = (vorlage.relatedConflicts || []).map((r: any) => getConflict(r.category, r.slug)).filter(Boolean);
+const methods = (vorlage.relatedMethods || []).map(getMethod).filter(Boolean);
+const breadcrumbs = [
+  { label: 'Start', url: '/' },
+  { label: 'Vorlagen', url: '/vorlagen/' },
+  { label: vorlage.title },
+];
+---
+<BaseLayout title={vorlage.title} fullTitle={`${vorlage.seoTitle} | Konfliktlotse`} description={vorlage.meta}>
+  <Breadcrumbs crumbs={breadcrumbs} />
+  <article class="sheet">
+    <p class="kicker no-print">{vorlage.icon} Vorlage zum Ausdrucken</p>
+    <h1>{vorlage.title}</h1>
+    <p class="intro">{vorlage.intro}</p>
+
+    <div class="print-bar no-print">
+      <button type="button" class="print-btn" data-print hidden>🖨️ Vorlage drucken</button>
+      <span class="print-hint">Kostenlos, ohne Anmeldung. Auch als PDF speicherbar.</span>
+    </div>
+
+    {vorlage.sections.map((sec: any) => (
+      <section class="block">
+        <h2>{sec.heading}</h2>
+        {sec.hint && <p class="hint">{sec.hint}</p>}
+        {sec.checks && (
+          <ul class="checks">{sec.checks.map((c: string) => <li><span class="box" aria-hidden="true">☐</span> {c}</li>)}</ul>
+        )}
+        {sec.table && (
+          <table class="fill-table">
+            <thead><tr>{sec.table.columns.map((c: string) => <th scope="col">{c}</th>)}</tr></thead>
+            <tbody>
+              {Array.from({ length: sec.table.rows || 6 }).map(() => (
+                <tr>{sec.table.columns.map(() => <td></td>)}</tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        {sec.fields && sec.fields.map((f: string) => (
+          <div class="field">
+            <p class="field-label">{f}</p>
+            {Array.from({ length: sec.lines || 2 }).map(() => <div class="line" aria-hidden="true"></div>)}
+          </div>
+        ))}
+      </section>
+    ))}
+
+    <footer class="sheet-foot">Vorlage von konfliktlotse.app – Gesprächshilfen für Alltagskonflikte</footer>
+  </article>
+
+  <section class="tips no-print">
+    <h2>So nutzt du die Vorlage</h2>
+    <ul>{vorlage.tips.map((t: string) => <li>{t}</li>)}</ul>
+  </section>
+
+  {(conflicts.length > 0 || methods.length > 0) && (
+    <section class="related no-print">
+      <h2>Passende Gesprächspläne und Methoden</h2>
+      <ul>
+        {conflicts.map((c: any) => <li><a href={`${baseUrl}/konflikt/${c.category}/${c.slug}/`}>{c.icon} {c.title}</a></li>)}
+        {methods.map((m: any) => <li><a href={`${baseUrl}/methoden/${m.slug}/`}>{m.icon} {m.title}</a></li>)}
+      </ul>
+    </section>
+  )}
+</BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-print]').forEach(btn => {
+    btn.hidden = false;
+    btn.addEventListener('click', () => window.print());
+  });
+</script>
+
+<style>
+  .kicker { font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; }
+  .intro { color: var(--text-light); }
+  .print-bar { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; margin: 1rem 0 1.5rem; }
+  .print-btn { font: inherit; font-weight: 700; background: var(--accent); color: var(--text); border: none; border-radius: var(--radius-sm); padding: 0.8rem 1.4rem; cursor: pointer; min-height: 44px; }
+  .print-hint { font-size: 0.85rem; color: var(--text-light); }
+  .sheet { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; }
+  .block { margin: 1.25rem 0; break-inside: avoid; }
+  .block h2 { font-size: 1.1rem; margin: 0 0 0.25rem; }
+  .hint { font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.5rem; }
+  .checks { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+  .box { font-size: 1.1rem; margin-right: 0.3rem; }
+  .field { margin: 0.6rem 0 0.9rem; }
+  .field-label { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
+  .line { border-bottom: 1px solid #9aa5a0; height: 1.9rem; }
+  .fill-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem; font-size: 0.85rem; table-layout: fixed; }
+  .fill-table th, .fill-table td { border: 1px solid #9aa5a0; padding: 0.35rem; text-align: left; }
+  .fill-table td { height: 2rem; }
+  .fill-table th { background: #F0F7F4; overflow-wrap: anywhere; }
+  .sheet-foot { margin-top: 1.5rem; font-size: 0.75rem; color: var(--text-light); text-align: right; }
+  .tips ul, .related ul { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .tips li { color: var(--text-light); }
+  .related a { text-decoration: underline; }
+  @media print {
+    .sheet { border: none; padding: 0; }
+    .line { border-bottom-color: #666; }
+  }
+</style>

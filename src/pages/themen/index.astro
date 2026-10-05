@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { topics, getSeasonalTopics } from '../../data/topics/index.js';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const breadcrumbs = [{ label: 'Start', url: '/' }, { label: 'Themen' }];
+const seasonal = getSeasonalTopics();
+const evergreen = topics.filter(t => !seasonal.includes(t));
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Themen-Ratgeber',
+  itemListElement: topics.map((t, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `${Astro.site!.origin}${baseUrl}/themen/${t.slug}/`,
+    name: t.title,
+  })),
+});
+---
+<BaseLayout
+  title="Themen"
+  fullTitle="Themen-Ratgeber: Streit in Beziehung, Familie und Job | Konfliktlotse"
+  description="Große Themen rund um Streit und Versöhnung: Streit an Weihnachten, in der Beziehung, Konfliktgespräche im Job, Streit schlichten – mit Plan und fertigen Formulierungen."
+  jsonLd={jsonLd}
+>
+  <Breadcrumbs crumbs={breadcrumbs} />
+  <h1>Themen-Ratgeber</h1>
+  <p class="intro">
+    Manche Konflikte haben viele Gesichter. Unsere Themen-Ratgeber bündeln das Wichtigste zu einem großen
+    Thema und führen dich zu den passenden Gesprächsplänen und Methoden.
+  </p>
+
+  {seasonal.length > 0 && (
+    <section>
+      <h2>Gerade aktuell</h2>
+      <div class="grid">
+        {seasonal.map(t => (
+          <a class="tile tile-season" href={`${baseUrl}/themen/${t.slug}/`}>
+            <span class="tile-kicker">{t.icon} {t.kicker}</span>
+            <span class="tile-title">{t.title}</span>
+            <span class="tile-text">{t.summary}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section>
+    <h2>Alle Themen</h2>
+    <div class="grid">
+      {evergreen.map(t => (
+        <a class="tile" href={`${baseUrl}/themen/${t.slug}/`}>
+          <span class="tile-kicker">{t.icon} {t.kicker}</span>
+          <span class="tile-title">{t.title}</span>
+          <span class="tile-text">{t.summary}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro { color: var(--text-light); font-size: 1.05rem; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+  @media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .tile { display: flex; flex-direction: column; gap: 0.3rem; background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.2rem; color: var(--text); }
+  .tile:hover { border-color: var(--primary-light); }
+  .tile-season { background: #FFF3E0; border-color: #FFE0B2; }
+  .tile-season:hover { border-color: var(--accent); }
+  .tile-kicker { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--primary); }
+  .tile-title { font-weight: 700; font-size: 1.1rem; }
+  .tile-text { font-size: 0.9rem; color: var(--text-light); }
+</style>

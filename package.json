@@ -9,7 +9,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "node scripts/check-links.mjs",
+    "verify": "node scripts/validate-data.mjs && astro build && node scripts/check-links.mjs && node scripts/check-launch.mjs",
+    "validate": "node scripts/validate-data.mjs",
+    "icons": "node scripts/gen-icons.mjs",
+    "check:launch": "node scripts/check-launch.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

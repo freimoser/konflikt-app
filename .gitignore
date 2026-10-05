@@ -26,3 +26,6 @@ pnpm-debug.log*
 # local strategy and diagram artifacts
 OPENROUTER-*.md
 struktur-alltagskonflikte.*
+
+# lokale Claude-Code-Konfiguration
+.claude/

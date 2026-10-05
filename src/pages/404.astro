@@ -10,10 +10,12 @@ const konfliktUrl = `${base}/konflikt/`.replace(/\/\/+/g, '/');
   description="Die gesuchte Seite konnte nicht gefunden werden (Fehler 404)."
   canonical="/404.html"
   noindex={true}
+  noAds
 >
   <div class="not-found">
     <h1>404 – Seite nicht gefunden</h1>
     <p>Entschuldigung, die von dir gesuchte Seite existiert nicht oder wurde verschoben.</p>
+    <p><a href="/suche/">Durchsuche alle Konflikte, Methoden und Themen →</a></p>
     <p>Vielleicht helfen dir diese Links weiter:</p>
     <div class="not-found-links">
       <a href={startUrl} class="btn">Zur Startseite</a>

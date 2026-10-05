@@ -1,0 +1,115 @@
+---
+// Seitensuche ohne externen Dienst: Alle Einträge werden statisch gerendert
+// (ohne JS eine vollständige A–Z-Übersicht), JS filtert live im Browser.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { getAllConflicts } from '../data/categories/index.js';
+import { methods } from '../data/methods/index.js';
+import { topics } from '../data/topics/index.js';
+import { vorlagen } from '../data/vorlagen.js';
+import { glossar } from '../data/glossar.js';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+type Entry = { title: string; url: string; kind: string; text: string; icon: string };
+const entries: Entry[] = [
+  ...topics.map(t => ({ title: t.title, url: `/themen/${t.slug}/`, kind: 'Thema', text: t.summary, icon: t.icon })),
+  ...methods.map(m => ({ title: m.title, url: `/methoden/${m.slug}/`, kind: 'Methode', text: m.summary, icon: m.icon })),
+  ...getAllConflicts().map(c => ({
+    title: `${c.title} (${c.categoryName})`,
+    url: `/konflikt/${c.category}/${c.slug}/`,
+    kind: 'Gesprächsplan',
+    text: c.summary,
+    icon: c.icon,
+  })),
+  { title: 'Gesprächs-Trainer: Was antwortest du?', url: '/spiel/gespraechstrainer/', kind: 'Spiel', text: 'Schwierige Sätze üben und sofort Feedback bekommen.', icon: '🎯' },
+  { title: 'Eskalations-Check', url: '/spiel/eskalations-check/', kind: 'Spiel', text: 'Wie verfahren ist dein Konflikt? Selbsttest nach Glasl.', icon: '🌡️' },
+  { title: 'Konflikttyp-Test: Wie streitest du?', url: '/spiel/konflikttyp/', kind: 'Spiel', text: 'Selbsttest: Welcher Konfliktstil prägt dich?', icon: '🧩' },
+  ...vorlagen.map((v: any) => ({ title: v.title, url: `/vorlagen/${v.slug}/`, kind: 'Vorlage', text: v.intro.split('. ')[0] + '.', icon: v.icon })),
+  ...glossar.map((g: any) => ({ title: g.term, url: `/glossar/#${g.slug}`, kind: 'Glossar', text: g.definition.split('. ')[0] + '.', icon: '📖' })),
+  { title: 'Hilfe in Krisen', url: '/hilfe-in-krisen/', kind: 'Hilfe', text: 'Notrufnummern und Beratungsstellen bei Gewalt, Bedrohung oder akuter Krise.', icon: '🆘' },
+].sort((a, b) => a.title.localeCompare(b.title, 'de'));
+
+const breadcrumbs = [{ label: 'Start', url: '/' }, { label: 'Suche' }];
+---
+<BaseLayout
+  title="Suche"
+  fullTitle="Suche: Konflikte, Methoden und Themen finden | Konfliktlotse"
+  description={`Durchsuche alle ${entries.length} Gesprächspläne, Methoden, Themen-Ratgeber und Übungen von Konfliktlotse – oder stöbere in der vollständigen Übersicht von A bis Z.`}
+>
+  <Breadcrumbs crumbs={breadcrumbs} />
+  <h1>Was beschäftigt dich?</h1>
+
+  <div class="search-box" data-search-box hidden>
+    <label for="q" class="visually-hidden">Suchbegriff</label>
+    <input id="q" type="search" placeholder="z. B. Schwiegermutter, Putzplan, Weihnachten …" autocomplete="off" data-search-input />
+    <p class="search-count" aria-live="polite" data-search-count></p>
+  </div>
+
+  <ul class="entries" data-entries>
+    {entries.map(e => (
+      <li data-entry data-haystack={`${e.title} ${e.text} ${e.kind}`.toLowerCase()}>
+        <a href={`${baseUrl}${e.url}`}>
+          <span class="entry-kind">{e.icon} {e.kind}</span>
+          <span class="entry-title">{e.title}</span>
+          <span class="entry-text">{e.text}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <p class="no-results" data-no-results hidden>
+    Nichts gefunden. Versuche ein anderes Wort – oder wähle deinen Konflikt über die
+    <a href={`${baseUrl}/konflikt/`}>Übersicht nach Personen</a>.
+  </p>
+</BaseLayout>
+
+<script>
+  (function () {
+    const box = document.querySelector<HTMLElement>('[data-search-box]');
+    const input = document.querySelector<HTMLInputElement>('[data-search-input]');
+    const count = document.querySelector<HTMLElement>('[data-search-count]');
+    const none = document.querySelector<HTMLElement>('[data-no-results]');
+    const items = Array.from(document.querySelectorAll<HTMLElement>('[data-entry]'));
+    if (!box || !input || !count || !none || !items.length) return;
+    box.hidden = false;
+
+    const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ß/g, 'ss');
+    const hay = items.map(el => norm(el.dataset.haystack || ''));
+
+    function run() {
+      const terms = norm(input!.value.trim()).split(/\s+/).filter(Boolean);
+      let shown = 0;
+      items.forEach((el, i) => {
+        const hit = terms.every(t => hay[i].includes(t));
+        el.hidden = !hit;
+        if (hit) shown++;
+      });
+      count!.textContent = terms.length ? `${shown} Treffer` : `${items.length} Einträge`;
+      none!.hidden = shown > 0;
+      const url = new URL(window.location.href);
+      if (terms.length) url.searchParams.set('q', input!.value.trim()); else url.searchParams.delete('q');
+      history.replaceState(null, '', url);
+    }
+
+    input.addEventListener('input', run);
+    const initial = new URLSearchParams(window.location.search).get('q');
+    if (initial) input.value = initial;
+    run();
+    input.focus();
+  })();
+</script>
+
+<style>
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .search-box { position: sticky; top: 56px; background: var(--bg); padding: 0.5rem 0 0.75rem; z-index: 5; }
+  .search-box input { width: 100%; font: inherit; font-size: 1.05rem; padding: 0.85rem 1rem; border: 2px solid var(--border); border-radius: var(--radius); background: var(--bg-white); min-height: 48px; }
+  .search-box input:focus { border-color: var(--primary); outline: none; }
+  .search-count { margin: 0.4rem 0 0; font-size: 0.85rem; color: var(--text-light); }
+  .entries { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .entries a { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.75rem 1rem; color: var(--text); }
+  .entries a:hover { border-color: var(--primary-light); }
+  .entry-kind { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--primary); }
+  .entry-title { font-weight: 600; }
+  .entry-text { font-size: 0.88rem; color: var(--text-light); }
+  .no-results a { text-decoration: underline; }
+</style>

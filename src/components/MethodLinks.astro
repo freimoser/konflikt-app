@@ -1,0 +1,42 @@
+---
+// Verlinkt passende Methoden aus dem Methoden-Silo (/methoden/).
+export interface Props {
+  methods: Array<{ slug: string; title: string; icon: string; summary: string }>;
+  /** Optionale Themen-Ratgeber (/themen/), erscheinen vor den Methoden. */
+  topics?: Array<{ slug: string; title: string; icon: string; summary: string }>;
+  heading?: string;
+}
+
+const { methods, topics = [], heading = 'Methoden, die dir dabei helfen' } = Astro.props;
+const items = [
+  ...topics.map(t => ({ ...t, href: `themen/${t.slug}/` })),
+  ...methods.map(m => ({ ...m, href: `methoden/${m.slug}/` })),
+];
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+{items.length > 0 && (
+  <section class="method-links" aria-label={heading}>
+    <h3>{heading}</h3>
+    <ul>
+      {items.map(m => (
+        <li>
+          <a href={`${baseUrl}/${m.href}`}>
+            <span class="ml-title">{m.icon} {m.title}</span>
+            <span class="ml-text">{m.summary}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+
+<style>
+  .method-links { margin: 2rem 0; }
+  .method-links h3 { margin: 0 0 0.75rem; font-size: 1.05rem; }
+  .method-links ul { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+  @media (min-width: 600px) { .method-links ul { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
+  .method-links a { display: flex; flex-direction: column; gap: 0.25rem; height: 100%; background: #F0F7F4; border: 1px solid #D8EDE2; border-radius: var(--radius-sm); padding: 0.8rem 1rem; color: var(--text); }
+  .method-links a:hover { border-color: var(--primary-light); }
+  .ml-title { font-weight: 700; font-size: 0.95rem; }
+  .ml-text { font-size: 0.85rem; color: var(--text-light); line-height: 1.5; }
+</style>

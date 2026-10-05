@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { scenarios } from '../../data/trainer.js';
+import { getAllConflicts } from '../../data/categories/index.js';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const conflictCount = getAllConflicts().length;
+const breadcrumbs = [{ label: 'Start', url: '/' }, { label: 'Spiel' }];
+---
+<BaseLayout
+  title="Spiel & Übungen"
+  fullTitle="Konflikte spielerisch üben | Konfliktlotse"
+  description="Schwierige Gespräche spielerisch üben: Gesprächs-Trainer mit typischen Konfliktsätzen, Eskalations-Check nach Glasl und der Konflikt-Lotse zu deinem Gesprächsplan."
+>
+  <Breadcrumbs crumbs={breadcrumbs} />
+
+  <h1>Konflikte spielerisch üben</h1>
+  <p class="lead">
+    Gute Gespräche sind Übungssache. Hier kannst du ohne Risiko ausprobieren, wie du in typischen
+    Situationen reagierst – bevor es im echten Leben darauf ankommt.
+  </p>
+
+  <div class="games">
+    <a class="game" href={`${baseUrl}/spiel/gespraechstrainer/`}>
+      <span class="game-icon" aria-hidden="true">🎯</span>
+      <span class="game-title">Gesprächs-Trainer: Was antwortest du?</span>
+      <span class="game-text">
+        {scenarios.length} Situationen aus Beziehung, Job, Familie und Nachbarschaft. Dein Gegenüber sagt einen
+        schwierigen Satz – du wählst eine von drei Antworten und bekommst sofort Feedback.
+      </span>
+      <span class="game-cta">Jetzt üben →</span>
+    </a>
+    <a class="game" href={`${baseUrl}/spiel/eskalations-check/`}>
+      <span class="game-icon" aria-hidden="true">🌡️</span>
+      <span class="game-title">Eskalations-Check: Wie verfahren ist dein Konflikt?</span>
+      <span class="game-text">
+        Elf kurze Fragen nach den Eskalationsstufen von Glasl. Du erfährst, ob dein Konflikt noch
+        gesprächsbereit, angespannt oder verhärtet ist – und was jetzt hilft.
+      </span>
+      <span class="game-cta">Check starten →</span>
+    </a>
+    <a class="game" href={`${baseUrl}/spiel/konflikttyp/`}>
+      <span class="game-icon" aria-hidden="true">🧩</span>
+      <span class="game-title">Konflikttyp-Test: Wie streitest du?</span>
+      <span class="game-text">
+        Zehn Alltagssituationen zeigen, welcher Konfliktstil dich prägt – mit Stärken, Risiken und
+        Tipps, die zu dir passen. Ergebnis teilbar, ohne dass Antworten gespeichert werden.
+      </span>
+      <span class="game-cta">Test starten →</span>
+    </a>
+    <a class="game" href={`${baseUrl}/konflikt/`}>
+      <span class="game-icon" aria-hidden="true">🧭</span>
+      <span class="game-title">Konflikt-Lotse: Wer? Was? Wie?</span>
+      <span class="game-text">
+        In drei Schritten zu deinem Gesprächsplan: Person wählen, Konflikt wählen, allein oder gemeinsam lösen.
+        {conflictCount} Konflikte mit fertigen Formulierungen.
+      </span>
+      <span class="game-cta">Konflikt wählen →</span>
+    </a>
+  </div>
+
+  <p class="note">
+    Alle Übungen laufen direkt in deinem Browser. Du gibst nichts ein, nichts wird gespeichert oder gesendet.
+  </p>
+</BaseLayout>
+
+<style>
+  .lead { color: var(--text-light); font-size: 1.05rem; }
+  .games { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1.5rem 0; }
+  @media (min-width: 600px) { .games { grid-template-columns: 1fr 1fr; } }
+  .game { display: flex; flex-direction: column; gap: 0.5rem; background: var(--bg-white); border: 2px solid var(--border); border-radius: var(--radius); padding: 1.5rem; color: var(--text); transition: border-color 0.15s, transform 0.15s; }
+  .game:hover { border-color: var(--primary-light); transform: translateY(-2px); }
+  .game-icon { font-size: 2.2rem; }
+  .game-title { font-weight: 700; font-size: 1.1rem; }
+  .game-text { color: var(--text-light); font-size: 0.95rem; }
+  .game-cta { margin-top: auto; font-weight: 700; color: var(--primary); }
+  .note { font-size: 0.9rem; color: var(--text-light); }
+</style>

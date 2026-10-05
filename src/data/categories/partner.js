@@ -88,7 +88,7 @@ export const partnerCategory = {
       related: [
         { category: 'partner', slug: 'hoert-nicht-zu' },
         { category: 'freunde', slug: 'sagt-immer-ab' },
-        { category: 'eltern', slug: 'erwartungen' }
+        { category: 'eltern', slug: 'ueberhoehte-erwartungen' }
       ],
       article: {
         title: 'Partner:in lässt Wäsche liegen: Wie ihr den Haushaltsstreit fair löst',
@@ -401,6 +401,7 @@ export const partnerCategory = {
     },
     {
       slug: 'eifersucht',
+      adsSensitive: true, // Kontrolle/Gewalt-Nähe: keine Werbung
       title: 'Eifersucht',
       icon: '🧭',
       summary: 'Eifersucht kann als kurzer Stich beginnen und schnell zu Kontrolle, Rückzug oder Streit führen. Entscheidend ist, zwischen Gefühl, Bedürfnis und Verhalten zu unterscheiden.',
@@ -1015,7 +1016,7 @@ export const partnerCategory = {
         { category: 'partner', slug: 'keine-zeit' },
         { category: 'partner', slug: 'streit-um-geld' },
         { category: 'partner', slug: 'unterschiedliche-naehebeduerfnisse' },
-        { category: 'eltern', slug: 'erwartungen' }
+        { category: 'eltern', slug: 'ueberhoehte-erwartungen' }
       ],
       article: {
         title: 'Verschiedene Zukunftspläne in der Beziehung: Wie ihr Richtung und Grenzen klärt',

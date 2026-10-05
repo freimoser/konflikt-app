@@ -1,0 +1,11 @@
+---
+import GuideArticle from '../../components/GuideArticle.astro';
+import { topics } from '../../data/topics/index.js';
+
+export function getStaticPaths() {
+  return topics.map(topic => ({ params: { slug: topic.slug }, props: { topic } }));
+}
+
+const { topic } = Astro.props;
+---
+<GuideArticle method={topic} section="themen" />

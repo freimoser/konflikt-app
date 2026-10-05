@@ -1,0 +1,113 @@
+---
+// Glossar als eine umfangreiche Seite mit Sprungmarken (bewusst keine Einzelseiten je Begriff,
+// um dünne Seiten zu vermeiden). Daten: src/data/glossar.js
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { glossar } from '../data/glossar.js';
+import { getMethod } from '../data/methods/index.js';
+import { getTopic } from '../data/topics/index.js';
+import { getConflict } from '../data/categories/index.js';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const pageUrl = `${Astro.site!.origin}${baseUrl}/glossar/`;
+
+const letterOf = (term: string) => {
+  const first = term.normalize('NFD').replace(/[̀-ͯ]/g, '').charAt(0).toUpperCase();
+  return /[A-Z]/.test(first) ? first : '#';
+};
+const groups = new Map<string, any[]>();
+for (const entry of glossar) {
+  const l = letterOf(entry.term);
+  if (!groups.has(l)) groups.set(l, []);
+  groups.get(l)!.push(entry);
+}
+const letters = Array.from(groups.keys());
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTermSet',
+  name: 'Glossar: Konflikte & Kommunikation von A bis Z',
+  url: pageUrl,
+  inLanguage: 'de-DE',
+  hasDefinedTerm: glossar.map((g: any) => ({
+    '@type': 'DefinedTerm',
+    name: g.term,
+    description: g.definition,
+    url: `${pageUrl}#${g.slug}`,
+  })),
+});
+
+const breadcrumbs = [{ label: 'Start', url: '/' }, { label: 'Glossar' }];
+---
+<BaseLayout
+  title="Glossar Konflikte & Kommunikation"
+  fullTitle="Glossar: Konflikt & Kommunikation von A–Z | Konfliktlotse"
+  description={`${glossar.length} Begriffe rund um Streit, Kommunikation und Konfliktlösung verständlich erklärt – von Allparteilichkeit über Ich-Botschaft bis Win-win, mit Beispielen und Links.`}
+  jsonLd={jsonLd}
+>
+  <Breadcrumbs crumbs={breadcrumbs} />
+  <h1>Glossar: Konflikte &amp; Kommunikation von A bis Z</h1>
+  <p class="intro">
+    Was ist eine Du-Botschaft, was bedeutet Allparteilichkeit, und wo liegt der Unterschied zwischen Kompromiss und
+    Konsens? Hier findest du die wichtigsten Begriffe kurz erklärt – jeweils mit einem Beispiel und Links zu
+    Methoden und Gesprächsplänen, mit denen du das Wissen direkt anwenden kannst.
+  </p>
+
+  <nav class="az" aria-label="Alphabet">
+    {letters.map(l => <a href={`#buchstabe-${l}`}>{l}</a>)}
+  </nav>
+
+  {letters.map((l, gi) => (
+    <>
+      <section class="letter" id={`buchstabe-${l}`}>
+        <h2>{l}</h2>
+        <dl>
+          {groups.get(l)!.map((g: any) => {
+            const method = g.method ? getMethod(g.method) : null;
+            const topic = g.topic ? getTopic(g.topic) : null;
+            const conflicts = (g.conflicts || []).map((c: any) => getConflict(c.category, c.slug)).filter(Boolean);
+            return (
+              <div class="entry" id={g.slug}>
+                <dt>{g.term}</dt>
+                <dd>
+                  <p>{g.definition}</p>
+                  {(method || topic || conflicts.length > 0) && (
+                    <p class="entry-links">
+                      {method && <a href={`${baseUrl}/methoden/${method.slug}/`}>Methode: {method.title}</a>}
+                      {topic && <a href={`${baseUrl}/themen/${topic.slug}/`}>Thema: {topic.title}</a>}
+                      {conflicts.map((c: any) => <a href={`${baseUrl}/konflikt/${c.category}/${c.slug}/`}>{c.icon} {c.title}</a>)}
+                    </p>
+                  )}
+                </dd>
+              </div>
+            );
+          })}
+        </dl>
+      </section>
+      {gi === Math.floor(letters.length / 2) && <AdSlot placement="in-article" />}
+    </>
+  ))}
+
+  <p class="outro">
+    Dir fehlt ein Begriff? <a href={`${baseUrl}/kontakt/`}>Schreib uns</a> – wir ergänzen das Glossar laufend.
+  </p>
+</BaseLayout>
+
+<style>
+  .intro { color: var(--text-light); font-size: 1.05rem; }
+  .az { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 1.25rem 0; position: sticky; top: 56px; background: var(--bg); padding: 0.5rem 0; z-index: 5; }
+  .az a { display: inline-flex; align-items: center; justify-content: center; min-width: 36px; min-height: 36px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-white); font-weight: 700; color: var(--primary-dark); }
+  .az a:hover { border-color: var(--primary-light); }
+  .letter { scroll-margin-top: 110px; }
+  .letter h2 { font-size: 1.6rem; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 0.25rem; }
+  .entry { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; margin: 0.75rem 0; scroll-margin-top: 110px; }
+  .entry:target { border-color: var(--accent); box-shadow: 0 0 0 3px #FFE0B2; }
+  dt { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.25rem; }
+  dd { margin: 0; }
+  dd p { color: var(--text-light); margin-bottom: 0.5rem; }
+  .entry-links { display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; font-size: 0.85rem; margin: 0; }
+  .entry-links a { text-decoration: underline; font-weight: 600; }
+  .outro { margin-top: 2rem; color: var(--text-light); }
+  .outro a { text-decoration: underline; }
+</style>

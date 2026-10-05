@@ -1,11 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { categories } from '../../data/categories/index.js';
+import { categories, getAllConflicts } from '../../data/categories/index.js';
+const total = getAllConflicts().length;
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<BaseLayout title="Konflikte" description="Alle Alltagskonflikte auf einen Blick. Wähle die Person, mit der du einen Konflikt hast.">
+<BaseLayout
+  title="Alle Konflikte"
+  fullTitle="Alltagskonflikte lösen: Gesprächspläne | Konfliktlotse"
+  description={`${total} Alltagskonflikte mit Partner:in, Chef:in, Freund:innen, Kolleg:innen, Nachbar:innen, Eltern, Geschwistern und in der WG – jeweils mit fertigen Formulierungen und Plan.`}
+>
   <section>
     <h1>Alle Konflikte</h1>
     <p class="page-desc">

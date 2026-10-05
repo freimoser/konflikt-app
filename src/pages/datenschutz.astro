@@ -1,24 +1,198 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ADS_ENABLED, OPERATOR } from '../config/site';
+
+const stand = '5. Oktober 2026';
+
+// Abschnittsnummern zentral vergeben – bedingt gerenderte Abschnitte erzeugen sonst Lücken/Doppelungen.
+const ABSCHNITTE = [
+  'verantwortlicher',
+  'hosting',
+  'funktionen',
+  ...(ADS_ENABLED ? ['werbung'] : []),
+  'speicherung',
+  'searchConsole',
+  'kontakt',
+  'rechte',
+  'automatisiert',
+  'aenderungen',
+];
+const nr = (k: string) => ABSCHNITTE.indexOf(k) + 1;
 ---
-<BaseLayout 
-  title="Datenschutzerklärung" 
-  description="Datenschutzerklärung der Konfliktlotse App."
+<BaseLayout
+  title="Datenschutzerklärung"
+  description="Datenschutzerklärung von Konfliktlotse: welche Daten beim Besuch anfallen, Hosting über GitHub Pages, Feedback per E-Mail und deine Rechte nach DSGVO."
+  noAds
+  noindex
 >
-  <h1>Datenschutzerklärung</h1>
-  <h2>1. Datenschutz auf einen Blick</h2>
-  <p>Wir nehmen den Schutz deiner persönlichen Daten ernst. Diese Website wird als rein statische Seite über GitHub Pages (USA) gehostet. Es gibt keine Nutzerkonten, keine Formulare, keine Cookies, keine Werbetracking-Scripts und keine Analyse-Tools (Analytics) auf dieser Seite.</p>
+  <article class="legal">
+    <h1>Datenschutzerklärung</h1>
+    <p class="legal-note">
+      Hinweis: Dieser Text wurde mit Unterstützung automatisierter Werkzeuge erstellt und ersetzt keine
+      Rechtsberatung. Stand: {stand}.
+    </p>
 
-  <h2>2. Hosting und Content Delivery Networks (CDN)</h2>
-  <h3>GitHub Pages</h3>
-  <p>Wir hosten unsere Website bei GitHub Pages. Anbieter ist die GitHub Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA (nachfolgend: GitHub).</p>
-  <p>Wenn du unsere Website besuchst, erfasst GitHub deine IP-Adresse und weitere technische Daten (z. B. Browser-Typ, Betriebssystem, Referrer-URL, Uhrzeit der Serveranfrage). Die Nutzung von GitHub Pages erfolgt im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter.</p>
-  <p>Der Datentransfer in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt.</p>
+    <section class="summary" aria-label="Das Wichtigste in Kürze">
+      <h2>Das Wichtigste in Kürze</h2>
+      <ul>
+        <li><strong>Du gibst nichts ein, was dein Gerät verlässt.</strong> Es gibt keine Konten, keine Formulare und
+          keine Eingabefelder für deinen Konflikt. Übungen und Tests werten deine Antworten nur in deinem Browser aus.</li>
+        {ADS_ENABLED ? (
+          <li><strong>Werbung nur mit deiner Einwilligung personalisiert.</strong> Wir finanzieren das Angebot über
+            Google AdSense; Cookies dafür werden erst nach deiner Zustimmung gesetzt.</li>
+        ) : (
+          <li><strong>Keine Cookies, keine Analyse, keine Werbung.</strong> Wir setzen derzeit nichts davon ein.</li>
+        )}
+        <li><strong>Technisch nötige Verbindungsdaten</strong> verarbeitet nur unser Hoster GitHub, um die Seiten
+          auszuliefern. Wir selbst sehen diese Daten nicht.</li>
+      </ul>
+    </section>
 
-  <h2>3. Deine Rechte</h2>
-  <p>Da wir keine personenbezogenen Daten (außer den technisch notwendigen beim Hosting) speichern, können wir dir in der Regel keine Auskunft, Löschung oder Berichtigung anbieten, da uns diese Daten nicht vorliegen. Wenn du per E-Mail Kontakt aufnimmst (z.B. über das Feedback-Widget), wird deine E-Mail-Adresse nur zur Beantwortung genutzt und nicht für andere Zwecke verarbeitet.</p>
-  
-  <h2>4. Kontakt</h2>
-  <p>Bei Fragen zum Datenschutz kannst du dich an den Betreiber wenden:</p>
-  <p>Serdar Thomas Freimoser<br/>E-Mail: <a href="mailto:91Serdar@gmail.com">91Serdar@gmail.com</a></p>
+    <h2>{nr('verantwortlicher')}. Verantwortlicher</h2>
+    <p>
+      {OPERATOR.name}<br />
+      {OPERATOR.street}<br />
+      {OPERATOR.city}<br />
+      {OPERATOR.country}<br />
+      E-Mail: <a href={`mailto:${OPERATOR.email}`}>{OPERATOR.email}</a>
+    </p>
+
+    <h2>{nr('hosting')}. Hosting über GitHub Pages und Server-Logfiles</h2>
+    <p>
+      Diese Website wird über GitHub Pages bereitgestellt. Anbieter ist die GitHub, Inc.,
+      88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA.
+    </p>
+    <p>
+      Beim Aufruf der Seiten verarbeitet GitHub technisch notwendige Verbindungsdaten, insbesondere
+      deine IP-Adresse, Datum und Uhrzeit des Abrufs, die aufgerufene Adresse, Browser- und
+      Betriebssysteminformationen sowie die zuvor besuchte Seite (Referrer). Das ist erforderlich, um
+      die Website auszuliefern und vor Missbrauch zu schützen. Rechtsgrundlage ist unser berechtigtes
+      Interesse an einer sicheren und zuverlässigen Bereitstellung (Art. 6 Abs. 1 lit. f DSGVO).
+    </p>
+    <p>
+      Dabei kann es zu einer Übermittlung von Daten in die USA kommen. Auf welcher Grundlage GitHub
+      Daten in Drittländer übermittelt und wie lange Protokolldaten gespeichert werden, beschreibt GitHub
+      in seiner
+      <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener noreferrer">Datenschutzerklärung</a>.
+      Wir selbst haben keinen Zugriff auf diese Protokolldaten und werten sie nicht aus.
+    </p>
+
+    <h2>{nr('funktionen')}. Übungen, Tests, Suche, Kopieren und Teilen</h2>
+    <p>
+      Gesprächs-Trainer, Eskalations-Check, Konflikttyp-Test und die Suche laufen vollständig in deinem
+      Browser. Deine Antworten werden weder gespeichert noch an uns oder Dritte übertragen; beim Neuladen der
+      Seite sind sie weg. „Satz kopieren“ legt nur den angezeigten Text in deine Zwischenablage. „Ergebnis
+      teilen“ übergibt einen kurzen Text und den Link zur Testseite an die Teilen-Funktion deines Geräts –
+      deine einzelnen Antworten sind darin nicht enthalten.
+    </p>
+
+    {ADS_ENABLED && (
+      <>
+        <h2>{nr('werbung')}. Werbung mit Google AdSense und Einwilligung</h2>
+        <p>
+          Auf dieser Website nutzen wir Google AdSense, einen Dienst der Google Ireland Limited,
+          Gordon House, Barrow Street, Dublin 4, Irland („Google“). AdSense blendet Anzeigen ein. Dazu
+          können Cookies oder vergleichbare Technologien auf deinem Gerät gespeichert oder ausgelesen und
+          Daten wie IP-Adresse, Geräte- und Browserinformationen sowie Informationen über die aufgerufene
+          Seite an Google übertragen werden. Eine Übermittlung in die USA ist dabei möglich.
+        </p>
+        <p>
+          Personalisierte Werbung und das Speichern bzw. Auslesen von Informationen auf deinem Gerät
+          erfolgen nur mit deiner Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die du beim
+          ersten Besuch über das Einwilligungsbanner erteilen oder ablehnen kannst. Du kannst deine
+          Auswahl jederzeit über das Einwilligungsbanner mit Wirkung für die Zukunft ändern.
+        </p>
+        <p>
+          Auf Seiten mit sensiblen Inhalten – etwa „Hilfe in Krisen“ – sowie auf Impressum und
+          Datenschutzerklärung binden wir keine Werbung ein. Mehr Informationen:
+          <a href="https://policies.google.com/technologies/ads" rel="noopener noreferrer">Wie Google Werbung einsetzt</a>
+          und <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Datenschutzerklärung von Google</a>.
+        </p>
+      </>
+    )}
+
+    <h2>{nr('speicherung')}. Cookies und Speicherung auf deinem Gerät</h2>
+    <table class="storage">
+      <thead>
+        <tr><th scope="col">Was</th><th scope="col">Zweck</th><th scope="col">Speicherdauer</th></tr>
+      </thead>
+      <tbody>
+        {ADS_ENABLED ? (
+          <tr><td>Cookies/IDs von Google AdSense</td><td>Anzeigen und Einwilligungsstatus, nur nach Einwilligung</td><td>laut Google, siehe Abschnitt {nr('werbung')}</td></tr>
+        ) : (
+          <tr><td>keine</td><td>Wir setzen keine Cookies und nutzen keinen lokalen Speicher (localStorage).</td><td>–</td></tr>
+        )}
+      </tbody>
+    </table>
+
+    <h2>{nr('searchConsole')}. Google Search Console</h2>
+    <p>
+      Diese Website kann in der Google Search Console angemeldet sein. <strong>Dabei wird nichts in deinem
+      Browser geladen und nichts über dich an uns übermittelt.</strong> Es gibt kein Skript, kein Cookie und
+      keinen Zählpixel. Die Daten entstehen bei Google im Rahmen der Suche – also unabhängig davon, ob du
+      diese Website aufrufst – und wir sehen sie ausschließlich zusammengefasst. Der Nachweis, dass uns die
+      Website gehört, läuft über einen Eintrag im DNS der Domain. Für eine Auskunft nach Art. 15 DSGVO zu
+      deinen Suchdaten ist Google der richtige Ansprechpartner.
+    </p>
+
+    <h2>{nr('kontakt')}. Kontakt und Feedback per E-Mail</h2>
+    <p>
+      Auf den Konfliktseiten kannst du mit „War das hilfreich?“ eine vorbereitete E-Mail in deinem
+      eigenen Mailprogramm öffnen. Sie enthält nur die Kennung der Seite und deine Bewertung – keine
+      Konfliktdetails. Ob du sie abschickst, entscheidest du selbst. Wenn du uns schreibst, verarbeiten
+      wir deine E-Mail-Adresse und den Inhalt deiner Nachricht nur, um dein Anliegen zu bearbeiten und
+      das Angebot zu verbessern (Art. 6 Abs. 1 lit. f DSGVO). Die Nachrichten löschen wir, sobald sie
+      nicht mehr benötigt werden, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.
+    </p>
+    <p>
+      Bitte schicke uns keine sensiblen Details zu deinem Konflikt, zu Gesundheit oder zu anderen
+      Personen. Wir bieten keine Einzelberatung an.
+    </p>
+
+    <h2>{nr('rechte')}. Deine Rechte</h2>
+    <p>Du hast nach der DSGVO insbesondere das Recht auf</p>
+    <ul>
+      <li>Auskunft über die zu dir gespeicherten Daten (Art. 15 DSGVO),</li>
+      <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO),</li>
+      <li>Löschung (Art. 17 DSGVO) und Einschränkung der Verarbeitung (Art. 18 DSGVO),</li>
+      <li>Datenübertragbarkeit (Art. 20 DSGVO),</li>
+      <li>Widerspruch gegen Verarbeitungen auf Grundlage berechtigter Interessen (Art. 21 DSGVO),</li>
+      <li>Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO).</li>
+    </ul>
+    <p>
+      Da wir selbst außer E-Mails keine personenbezogenen Daten speichern, beziehen sich Auskunft und
+      Löschung bei uns in der Regel nur auf Nachrichten, die du uns geschickt hast. Wende dich dafür an
+      <a href={`mailto:${OPERATOR.email}`}>{OPERATOR.email}</a>.
+    </p>
+    <p>
+      Du hast außerdem das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Zuständig
+      für uns ist das Bayerische Landesamt für Datenschutzaufsicht (BayLDA) in Ansbach.
+    </p>
+
+    <h2>{nr('automatisiert')}. Keine automatisierte Entscheidungsfindung</h2>
+    <p>
+      Wir treffen keine automatisierten Entscheidungen und betreiben kein Profiling im Sinne von Art. 22 DSGVO.
+      Die Auswertungen der Übungen und Tests sind unverbindliche Hinweise, die nur in deinem Browser entstehen.
+    </p>
+
+    <h2>{nr('aenderungen')}. Änderungen</h2>
+    <p>
+      Wir passen diese Erklärung an, wenn sich die Website technisch ändert, etwa wenn neue Dienste
+      eingebunden werden. Es gilt die jeweils hier veröffentlichte Fassung.
+    </p>
+  </article>
 </BaseLayout>
+
+<style>
+  .legal { max-width: 68ch; }
+  .legal-note { font-size: 0.85rem; color: var(--text-light); background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.75rem 1rem; }
+  .summary { background: #F0F7F4; border-left: 4px solid var(--primary); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin: 1.5rem 0; }
+  .summary h2 { margin-top: 0; font-size: 1.1rem; }
+  .summary ul { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .legal p, .legal li { color: var(--text-light); }
+  .legal ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+  .legal a { text-decoration: underline; }
+  .storage { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-bottom: 1rem; }
+  .storage th, .storage td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; vertical-align: top; color: var(--text-light); }
+  .storage th { background: var(--bg-white); color: var(--text); }
+</style>

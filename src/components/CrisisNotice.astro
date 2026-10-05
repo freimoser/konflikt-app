@@ -1,5 +1,6 @@
 ---
 export interface Props {
+  /** Konfliktspezifischer Sicherheitstext (Feld `safety`), ganzer Absatz. */
   context?: string;
 }
 
@@ -7,12 +8,20 @@ const { context } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 const hilfeUrl = `${baseUrl}/hilfe-in-krisen/`.replace(/\/\/+/g, '/');
 ---
-<div class="crisis-notice">
-  <strong>Wichtig:</strong> Ist das noch ein normaler Konflikt? 
-  {context && <span>Besonders bei Themen wie {context} gilt: </span>}
-  Bei Gewalt, Bedrohung oder Angst helfen keine Gesprächsregeln. Wende dich an Profis.
-  <a href={hilfeUrl}>Finde sofort Hilfe in Krisen.</a>
-</div>
+<aside class="crisis-notice" aria-label="Sicherheitshinweis">
+  {context ? (
+    <>
+      <p class="crisis-title"><strong>Ist das noch ein Alltagskonflikt?</strong></p>
+      <p>{context}</p>
+      <p class="crisis-link">Bei Gewalt, Bedrohung oder Angst: <a href={hilfeUrl}>Hilfe in Krisen finden</a> · Notruf 110</p>
+    </>
+  ) : (
+    <p>
+      <strong>Wichtig:</strong> Bei Gewalt, Bedrohung oder Angst helfen keine Gesprächsregeln.
+      Wende dich an Profis. <a href={hilfeUrl}>Hilfe in Krisen finden</a>
+    </p>
+  )}
+</aside>
 
 <style>
   .crisis-notice {
@@ -25,16 +34,17 @@ const hilfeUrl = `${baseUrl}/hilfe-in-krisen/`.replace(/\/\/+/g, '/');
     color: #664D03;
     line-height: 1.5;
   }
+  .crisis-notice p { margin: 0 0 0.5rem; color: #664D03; }
+  .crisis-notice p:last-child { margin-bottom: 0; }
   .crisis-notice a {
-    color: #997404;
+    color: #7a5a00;
     font-weight: 600;
     text-decoration: underline;
-    margin-left: 0.25rem;
   }
   .crisis-notice a:hover {
     color: #664D03;
   }
   .crisis-notice strong {
-    color: #997404;
+    color: #7a5a00;
   }
 </style>

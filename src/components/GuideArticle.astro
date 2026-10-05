@@ -1,0 +1,252 @@
+---
+// Gemeinsame Vorlage für Leitartikel: Methoden (/methoden/) und Themen (/themen/).
+// Datenformat: docs/loop/METHODEN-FORMAT.md bzw. docs/loop/THEMEN-FORMAT.md
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import AdSlot from './AdSlot.astro';
+import { getMethod } from '../data/methods/index.js';
+import { getConflict } from '../data/categories/index.js';
+
+export interface Props {
+  method: any;
+  /** 'methoden' oder 'themen' – bestimmt URL, Breadcrumb und Kicker. */
+  section?: 'methoden' | 'themen';
+}
+
+const { method, section = 'methoden' } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const pageUrl = `${baseUrl}/${section}/${method.slug}/`;
+const sectionLabel = section === 'themen' ? 'Themen' : 'Methoden';
+const kicker = method.kicker || (section === 'themen' ? 'Thema' : 'Methode');
+
+const relatedConflicts = (method.relatedConflicts || [])
+  .map((r: any) => getConflict(r.category, r.slug))
+  .filter(Boolean);
+const relatedMethods = (method.relatedMethods || []).map(getMethod).filter(Boolean);
+
+const published = method.published || '2026-09-30';
+const updated = method.updated || published;
+const updatedLabel = new Date(updated).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const sectionId = (i: number) => `abschnitt-${i + 1}`;
+
+const breadcrumbs = [
+  { label: 'Start', url: '/' },
+  { label: sectionLabel, url: `/${section}/` },
+  { label: method.title },
+];
+
+const schemas: object[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: method.h1,
+    description: method.meta,
+    inLanguage: 'de-DE',
+    datePublished: published,
+    dateModified: updated,
+    mainEntityOfPage: `${Astro.site!.origin}${pageUrl}`,
+    author: { '@type': 'Person', name: 'Serdar Thomas Freimoser' },
+    publisher: { '@type': 'Organization', name: 'Konfliktlotse' },
+  },
+];
+if (method.faqs?.length) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: method.faqs.map((f: { question: string; answer: string }) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  });
+}
+---
+<BaseLayout
+  title={method.h1}
+  fullTitle={`${method.h1.split(':')[0]} | Konfliktlotse`}
+  description={method.meta}
+  canonical={pageUrl}
+  jsonLd={JSON.stringify(schemas)}
+  ogType="article"
+  noAds={Boolean(method.adsSensitive)}
+>
+  <Breadcrumbs crumbs={breadcrumbs} />
+
+  <article class="method">
+    <header class="method-header">
+      <p class="method-kicker">{method.icon} {kicker}</p>
+      <h1>{method.h1}</h1>
+      <p class="method-date">Aktualisiert am <time datetime={updated}>{updatedLabel}</time></p>
+    </header>
+
+    <p class="lead">{method.intro}</p>
+
+    {method.origin && (
+      <p class="origin"><strong>Herkunft:</strong> {method.origin}</p>
+    )}
+
+    <nav class="toc" aria-label="Inhalt">
+      <p class="toc-title">Inhalt</p>
+      <ol>
+        {method.sections.map((s: { heading: string }, i: number) => (
+          <li><a href={`#${sectionId(i)}`}>{s.heading}</a></li>
+        ))}
+        <li><a href="#anwenden">So wendest du es an</a></li>
+        <li><a href="#beispiel">Beispiel: vorher und nachher</a></li>
+        <li><a href="#fehler">Typische Fehler</a></li>
+        <li><a href="#faq">Häufige Fragen</a></li>
+      </ol>
+    </nav>
+
+    {method.sections.map((s: { heading: string; paragraphs: string[]; list?: string[] }, i: number) => (
+      <>
+        <section id={sectionId(i)}>
+          <h2>{s.heading}</h2>
+          {s.paragraphs.map(p => <p>{p}</p>)}
+          {s.list && s.list.length > 0 && (
+            <ul>{s.list.map(item => <li>{item}</li>)}</ul>
+          )}
+        </section>
+        {i === 1 && <AdSlot placement="in-article" sensitive={method.adsSensitive} />}
+        {i === 4 && method.sections.length > 5 && <AdSlot placement="in-article" sensitive={method.adsSensitive} />}
+      </>
+    ))}
+
+    {method.slug === 'eskalationsstufen-glasl' && (
+      <a class="check-cta" href={`${baseUrl}/spiel/eskalations-check/`}>
+        🌡️ <strong>Wo steht dein Konflikt?</strong> Mach den Eskalations-Check – elf Fragen, zwei Minuten.
+      </a>
+    )}
+
+    <section id="anwenden" class="card">
+      <h2>So wendest du es an</h2>
+      <ol class="steps">
+        {method.steps.map((step: string) => <li>{step}</li>)}
+      </ol>
+    </section>
+
+    {method.example && (
+      <section id="beispiel">
+        <h2>Beispiel: vorher und nachher</h2>
+        <p>{method.example.situation}</p>
+        <div class="compare">
+          <div class="compare-before">
+            <p class="compare-label">Vorher</p>
+            <p>„{method.example.before.replace(/^[„"]|[“"]$/g, '')}“</p>
+          </div>
+          <div class="compare-after">
+            <p class="compare-label">Mit der Methode</p>
+            <p>„{method.example.after.replace(/^[„"]|[“"]$/g, '')}“</p>
+          </div>
+        </div>
+        <p>{method.example.why}</p>
+      </section>
+    )}
+
+    <section id="fehler">
+      <h2>Typische Fehler</h2>
+      <ul>{method.pitfalls.map((p: string) => <li>{p}</li>)}</ul>
+    </section>
+
+    {method.limits && (
+      <aside class="limits" aria-label="Grenzen der Methode">
+        <h2>Wann diese Methode nicht passt</h2>
+        <p>{method.limits}</p>
+        <p><a href={`${baseUrl}/hilfe-in-krisen/`}>Hilfe in Krisen finden</a></p>
+      </aside>
+    )}
+
+    {relatedConflicts.length > 0 && (
+      <section class="card">
+        <h2>{section === 'themen' ? 'Gesprächspläne zum Thema' : 'Direkt ausprobieren'}</h2>
+        <p>{section === 'themen' ? 'Passende Gesprächspläne mit fertigen Formulierungen:' : `Diese Gesprächspläne nutzen ${method.title} – mit fertigen Formulierungen für deine Situation:`}</p>
+        <ul class="link-list">
+          {relatedConflicts.map((c: any) => (
+            <li>
+              <a href={`${baseUrl}/konflikt/${c.category}/${c.slug}/`}>
+                <span>{c.icon}</span> {c.title} <span class="muted">({c.categoryName})</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {method.faqs?.length > 0 && (
+      <section id="faq">
+        <h2>Häufige Fragen</h2>
+        {method.faqs.map((f: { question: string; answer: string }) => (
+          <details class="faq">
+            <summary>{f.question}</summary>
+            <p>{f.answer}</p>
+          </details>
+        ))}
+      </section>
+    )}
+
+    {relatedMethods.length > 0 && (
+      <section>
+        <h2>{section === 'themen' ? 'Methoden, die dabei helfen' : 'Passende Methoden'}</h2>
+        <div class="method-cards">
+          {relatedMethods.map((m: any) => (
+            <a class="method-card" href={`${baseUrl}/methoden/${m.slug}/`}>
+              <span class="method-card-title">{m.icon} {m.title}</span>
+              <span class="method-card-text">{m.summary}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+    <p class="editorial-note">
+      Begriffe wie Allparteilichkeit oder Du-Botschaft erklärt kurz das <a href={`${baseUrl}/glossar/`}>Glossar</a>.
+      Wie unsere Inhalte entstehen: <a href={`${baseUrl}/ueber-uns/`}>Über Konfliktlotse</a>.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .method { max-width: 68ch; }
+  .method-kicker { font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .method-date { font-size: 0.85rem; color: var(--text-light); margin-top: -0.5rem; }
+  .lead { font-size: 1.1rem; line-height: 1.7; }
+  .method p, .method li { line-height: 1.75; }
+  .method section p, .method section li { color: #333; }
+  .method ul, .method ol { padding-left: 1.25rem; margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .origin { background: #F0F7F4; border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; font-size: 0.95rem; }
+  .toc { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin: 1.5rem 0; }
+  .toc-title { font-weight: 700; margin-bottom: 0.5rem; }
+  .toc ol { margin: 0; gap: 0.3rem; }
+  .toc a { text-decoration: underline; text-decoration-color: var(--border); }
+  .check-cta { display: block; background: #FFF3E0; border: 1px solid #FFE0B2; border-radius: var(--radius-sm); padding: 1rem 1.1rem; color: var(--text); margin: 1.5rem 0; }
+  .check-cta:hover { border-color: var(--accent); color: var(--text); }
+  .editorial-note { font-size: 0.85rem; color: var(--text-light); margin-top: 2rem; }
+  .editorial-note a { text-decoration: underline; }
+  .card { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 2rem 0; }
+  .card h2 { margin-top: 0; }
+  .steps li::marker { color: var(--primary); font-weight: 700; }
+  .compare { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin: 1rem 0; }
+  @media (min-width: 600px) { .compare { grid-template-columns: 1fr 1fr; } }
+  .compare > div { border-radius: var(--radius-sm); padding: 1rem 1.1rem; }
+  .compare p { margin: 0; font-style: italic; }
+  .compare .compare-label { font-style: normal; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+  .compare-before { background: #FFF5F5; border-left: 4px solid #E63946; }
+  .compare-after { background: #F0F7F4; border-left: 4px solid var(--primary); }
+  .limits { background: #FFF3CD; border-left: 4px solid #FFC107; border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin: 2rem 0; }
+  .limits h2 { margin-top: 0; font-size: 1.1rem; }
+  .limits p { color: #664D03; }
+  .limits a { color: #7a5a00; font-weight: 600; text-decoration: underline; }
+  .link-list { list-style: none; padding-left: 0 !important; }
+  .link-list a { display: block; padding: 0.6rem 0.9rem; border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); background: var(--bg); }
+  .link-list a:hover { border-color: var(--primary-light); }
+  .muted { color: var(--text-light); font-size: 0.85rem; }
+  .faq { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; margin-bottom: 0.5rem; }
+  .faq summary { cursor: pointer; font-weight: 600; }
+  .faq p { margin: 0.75rem 0 0; }
+  .method-cards { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+  @media (min-width: 600px) { .method-cards { grid-template-columns: 1fr 1fr; } }
+  .method-card { display: flex; flex-direction: column; gap: 0.3rem; background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; color: var(--text); }
+  .method-card:hover { border-color: var(--primary-light); }
+  .method-card-title { font-weight: 700; }
+  .method-card-text { font-size: 0.9rem; color: var(--text-light); }
+</style>

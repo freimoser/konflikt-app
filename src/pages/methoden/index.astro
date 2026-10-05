@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { methods } from '../../data/methods/index.js';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const breadcrumbs = [{ label: 'Start', url: '/' }, { label: 'Methoden' }];
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Methoden der Konfliktlösung',
+  itemListElement: methods.map((m, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `${Astro.site!.origin}${baseUrl}/methoden/${m.slug}/`,
+    name: m.title,
+  })),
+});
+---
+<BaseLayout
+  title="Methoden der Konfliktlösung"
+  fullTitle="Methoden der Konfliktlösung im Überblick | Konfliktlotse"
+  description="Die wichtigsten Methoden für schwierige Gespräche verständlich erklärt: Ich-Botschaften, aktives Zuhören, Gewaltfreie Kommunikation, Grenzen setzen, Harvard-Konzept."
+  jsonLd={jsonLd}
+>
+  <Breadcrumbs crumbs={breadcrumbs} />
+
+  <h1>Methoden der Konfliktlösung</h1>
+  <p class="intro">
+    Hinter jedem guten Gesprächsplan stecken ein paar bewährte Werkzeuge. Hier findest du sie einzeln
+    erklärt – mit Beispielsätzen, typischen Fehlern und den Grenzen jeder Methode. Du musst nicht alle
+    kennen: Für die meisten Alltagskonflikte reichen Ich-Botschaften, aktives Zuhören und eine klare Grenze.
+  </p>
+
+  <div class="methods-grid">
+    {methods.map(m => (
+      <a class="method-tile" href={`${baseUrl}/methoden/${m.slug}/`}>
+        <span class="tile-icon" aria-hidden="true">{m.icon}</span>
+        <span class="tile-title">{m.title}</span>
+        <span class="tile-text">{m.summary}</span>
+      </a>
+    ))}
+  </div>
+
+  <section class="guide">
+    <h2>Welche Methode passt zu meiner Situation?</h2>
+    <ul>
+      <li><strong>Du willst etwas Störendes ansprechen:</strong> <a href={`${baseUrl}/methoden/ich-botschaften/`}>Ich-Botschaften</a></li>
+      <li><strong>Ihr redet aneinander vorbei:</strong> <a href={`${baseUrl}/methoden/aktives-zuhoeren/`}>Aktives Zuhören</a></li>
+      <li><strong>Es geht um tiefere Bedürfnisse:</strong> <a href={`${baseUrl}/methoden/gewaltfreie-kommunikation/`}>Gewaltfreie Kommunikation</a></li>
+      <li><strong>Jemand überschreitet immer wieder deine Grenze:</strong> <a href={`${baseUrl}/methoden/grenzen-setzen/`}>Grenzen setzen</a></li>
+      <li><strong>Der Streit wird gerade laut:</strong> <a href={`${baseUrl}/methoden/deeskalation-im-streit/`}>Deeskalation</a></li>
+      <li><strong>Du hast selbst Mist gebaut:</strong> <a href={`${baseUrl}/methoden/richtig-entschuldigen/`}>Richtig entschuldigen</a></li>
+      <li><strong>Ihr müsst euch auf etwas einigen:</strong> <a href={`${baseUrl}/methoden/harvard-konzept/`}>Harvard-Konzept</a></li>
+      <li><strong>Du fragst dich, wie verfahren es schon ist:</strong> <a href={`${baseUrl}/methoden/eskalationsstufen-glasl/`}>Eskalationsstufen nach Glasl</a></li>
+    </ul>
+    <p>
+      Lieber direkt loslegen? Wähle deinen <a href={`${baseUrl}/konflikt/`}>konkreten Konflikt</a> und
+      bekomme fertige Formulierungen.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro { color: var(--text-light); font-size: 1.05rem; }
+  .methods-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin: 1.5rem 0 2rem; }
+  @media (min-width: 600px) { .methods-grid { grid-template-columns: 1fr 1fr; } }
+  .method-tile { display: flex; flex-direction: column; gap: 0.35rem; background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.2rem; color: var(--text); transition: border-color 0.15s, transform 0.15s; }
+  .method-tile:hover { border-color: var(--primary-light); transform: translateY(-2px); }
+  .tile-icon { font-size: 1.6rem; }
+  .tile-title { font-weight: 700; font-size: 1.05rem; }
+  .tile-text { font-size: 0.9rem; color: var(--text-light); }
+  .guide ul { padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+  .guide li, .guide p { color: var(--text-light); }
+  .guide a { text-decoration: underline; }
+</style>

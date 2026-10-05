@@ -29,6 +29,14 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+        env:
+          # Optional: als Repository-Variablen (Settings → Variables) setzen, um AdSense zu aktivieren.
+          PUBLIC_ADSENSE_CLIENT: ${{ vars.PUBLIC_ADSENSE_CLIENT }}
+          PUBLIC_ADSENSE_SLOT_IN_ARTICLE: ${{ vars.PUBLIC_ADSENSE_SLOT_IN_ARTICLE }}
+          PUBLIC_ADSENSE_SLOT_AFTER_TOOL: ${{ vars.PUBLIC_ADSENSE_SLOT_AFTER_TOOL }}
+          PUBLIC_ADSENSE_SLOT_LIST: ${{ vars.PUBLIC_ADSENSE_SLOT_LIST }}
+      - name: Linkprüfung
+        run: node scripts/check-links.mjs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
