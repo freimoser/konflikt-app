@@ -7,13 +7,29 @@ import { scenarios } from '../data/trainer.js';
 import { vorlagen } from '../data/vorlagen.js';
 import { glossar } from '../data/glossar.js';
 import { categories } from '../data/categories/index.js';
-import { OPERATOR } from '../config/site';
+import { OPERATOR, PERSON_ID } from '../config/site';
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 const conflictCount = getAllConflicts().length;
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'Über Konfliktlotse',
+  url: `${Astro.site!.origin}${baseUrl}/ueber-uns/`,
+  inLanguage: 'de-DE',
+  mainEntity: {
+    '@type': 'Person',
+    '@id': PERSON_ID,
+    name: OPERATOR.name,
+    url: `${Astro.site!.origin}${baseUrl}/ueber-uns/`,
+    address: { '@type': 'PostalAddress', addressLocality: 'München', addressCountry: 'DE' },
+  },
+  about: { '@type': 'WebSite', name: 'Konfliktlotse', url: `${Astro.site!.origin}${baseUrl}/` },
+});
 ---
 <BaseLayout
   title="Über uns"
+  jsonLd={jsonLd}
   description="Wer hinter Konfliktlotse steht, wie unsere Gesprächspläne und Ratgeber entstehen, nach welchen Grundsätzen wir schreiben und wo die Grenzen des Angebots liegen."
 >
   <article class="page">

@@ -7,6 +7,7 @@ import { getMethodsForConflict } from '../../../data/methods/index.js';
 import { getTopicsForConflict } from '../../../data/topics/index.js';
 import AdSlot from '../../../components/AdSlot.astro';
 import { seoTitles } from '../../../data/seo-titles.js';
+import { AUTHOR_SCHEMA, OPERATOR } from '../../../config/site';
 import MethodLinks from '../../../components/MethodLinks.astro';
 import { normalizeConflict } from '../../../data/schema.js';
 
@@ -77,10 +78,7 @@ schemas.push({
   "datePublished": published,
   "dateModified": updated,
   "mainEntityOfPage": `${Astro.site.origin}${pageUrl}`,
-  "author": {
-    "@type": "Person",
-    "name": "Serdar Thomas Freimoser"
-  },
+  "author": AUTHOR_SCHEMA,
   "publisher": {
     "@type": "Organization",
     "name": "Konfliktlotse",
@@ -125,7 +123,7 @@ const jsonLd = JSON.stringify(schemas);
     <div class="article-header">
       <div class="meta-tag">{category.icon} Konflikte mit {category.name}</div>
       <h1>{title}</h1>
-      <p class="article-date">Aktualisiert am <time datetime={updated}>{updatedLabel}</time></p>
+      <p class="article-date">Redaktion: <a href={`${baseUrl}/ueber-uns/`} rel="author">{OPERATOR.name}</a> · Aktualisiert am <time datetime={updated}>{updatedLabel}</time></p>
     </div>
 
     {article.intro && (
@@ -255,6 +253,7 @@ const jsonLd = JSON.stringify(schemas);
   .editorial-note { font-size: 0.85rem; color: var(--text-light); margin-top: 1.5rem; }
   .editorial-note a { text-decoration: underline; }
   .article-date { font-size: 0.85rem; color: var(--text-light); margin: -0.5rem 0 0; }
+  .article-date a { color: var(--text-light); text-decoration: underline; }
   .ratgeber-article {
     max-width: var(--max-width);
     margin: 0 auto;

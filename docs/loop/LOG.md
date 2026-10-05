@@ -352,3 +352,13 @@ Nach den Skills `website-livegang` und `website-seo-pflege`.
 **GEO-Audit (geo-optimizer) – Vorher:** Live-Startseite (alter Stand) **33/100, critical** (robots 15, llms 0, schema 0,
 meta 14, content 2). Nachher-Messung mit derselben Adresse nach dem Deploy.
 **Fehlalarme (nicht umgesetzt):** `/.well-known/ai.txt`, `/ai/*.json` (kein Standard), „dünne Seiten“ bei Kontakt/Krisenhilfe/Übersichten.
+
+**Deploy 2026-10-05:** 1. Versuch scheiterte an `npm ci` (Lockfile mit npm 11 erzeugt, Actions nutzt npm 10) →
+Lockfile mit `npx npm@10 install --package-lock-only` neu erzeugt. **Regel:** Lockfile-Änderungen immer mit npm 10 erzeugen
+und `npm ci` in sauberer Kopie testen. Live geprüft: 224/224 Sitemap-URLs 200, Icons/llms.txt/robots 200, Canonical korrekt,
+Impressum noindex, Googlebot 200, Adressen ohne Slash → 301 auf die Slash-Fassung (konsistent).
+
+**GEO-Audit nachher (gleiche Adressen):** Startseite 33 → **61**; Ratgeber 70, Methode 68, Thema 69 („good“); Über uns 53.
+Danach ergänzt: sichtbare Redaktionszeile (rel=author → Über uns), `Person` mit fester `@id` (`src/config/site.ts`,
+`AUTHOR_SCHEMA`) in allen Article-Schemas, `AboutPage`-Schema auf Über uns.
+**Offen, nur Betreiber kann liefern:** `sameAs`-Profile (z. B. LinkedIn) für die Person-Entität.

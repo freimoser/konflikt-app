@@ -11,6 +11,15 @@ export const OPERATOR = {
   email: '91Serdar@gmail.com',
 };
 
+/** Feste Entitäts-ID der verantwortlichen Person (Autorenangaben in allen Artikel-Schemas verweisen darauf). */
+export const PERSON_ID = 'https://konfliktlotse.app/ueber-uns/#person';
+export const AUTHOR_SCHEMA = {
+  '@type': 'Person',
+  '@id': PERSON_ID,
+  name: OPERATOR.name,
+  url: 'https://konfliktlotse.app/ueber-uns/',
+};
+
 const rawClient = (import.meta.env.PUBLIC_ADSENSE_CLIENT || '').trim();
 
 /** AdSense-Publisher-Kennung im Format `ca-pub-` + 16 Ziffern, sonst leer. */

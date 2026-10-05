@@ -6,6 +6,7 @@ import Breadcrumbs from './Breadcrumbs.astro';
 import AdSlot from './AdSlot.astro';
 import { getMethod } from '../data/methods/index.js';
 import { getConflict } from '../data/categories/index.js';
+import { AUTHOR_SCHEMA, OPERATOR } from '../config/site';
 
 export interface Props {
   method: any;
@@ -46,7 +47,7 @@ const schemas: object[] = [
     datePublished: published,
     dateModified: updated,
     mainEntityOfPage: `${Astro.site!.origin}${pageUrl}`,
-    author: { '@type': 'Person', name: 'Serdar Thomas Freimoser' },
+    author: AUTHOR_SCHEMA,
     publisher: { '@type': 'Organization', name: 'Konfliktlotse' },
   },
 ];
@@ -77,7 +78,7 @@ if (method.faqs?.length) {
     <header class="method-header">
       <p class="method-kicker">{method.icon} {kicker}</p>
       <h1>{method.h1}</h1>
-      <p class="method-date">Aktualisiert am <time datetime={updated}>{updatedLabel}</time></p>
+      <p class="method-date">Redaktion: <a href={`${baseUrl}/ueber-uns/`} rel="author">{OPERATOR.name}</a> · Aktualisiert am <time datetime={updated}>{updatedLabel}</time></p>
     </header>
 
     <p class="lead">{method.intro}</p>
@@ -209,6 +210,7 @@ if (method.faqs?.length) {
   .method { max-width: 68ch; }
   .method-kicker { font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.04em; }
   .method-date { font-size: 0.85rem; color: var(--text-light); margin-top: -0.5rem; }
+  .method-date a { color: var(--text-light); text-decoration: underline; }
   .lead { font-size: 1.1rem; line-height: 1.7; }
   .method p, .method li { line-height: 1.75; }
   .method section p, .method section li { color: #333; }
