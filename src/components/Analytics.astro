@@ -1,0 +1,141 @@
+---
+// Messung: Cloudflare Web Analytics (cookielos, ohne Banner) und/oder Google Analytics 4 (nur nach Einwilligung).
+// Ohne Kennungen rendert diese Komponente nichts. Auf sensiblen Seiten (noAds) wird nicht gemessen.
+import { GA_ENABLED, GA_ID, CF_ANALYTICS_ENABLED, CF_ANALYTICS_TOKEN, CONSENT_KEY } from '../config/site';
+
+export interface Props {
+  /** true auf sensiblen Seiten (Krisenhilfe, Rechtstexte, sensible Themen) – dort keine Messung. */
+  disabled?: boolean;
+}
+const { disabled = false } = Astro.props;
+// Auf sensiblen Seiten wird nichts gerendert. Ausnahme Datenschutzerklärung: dort ist der Widerruf
+// („Datenschutz-Einstellungen ändern“) möglich, aber auch dort wird nicht gemessen.
+const isPrivacyPage = /\/datenschutz\/?$/.test(Astro.url.pathname);
+const track = !disabled;
+const showGa = GA_ENABLED && (track || isPrivacyPage);
+const showCf = CF_ANALYTICS_ENABLED && !disabled;
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+{showCf && (
+  <script
+    defer
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon={JSON.stringify({ token: CF_ANALYTICS_TOKEN })}
+  ></script>
+)}
+
+{showGa && (
+  <>
+    <div class="consent" role="dialog" aria-live="polite" aria-label="Einwilligung zur Reichweitenmessung" data-consent-banner hidden>
+      <p>
+        Dürfen wir mit Google Analytics anonym messen, welche Seiten hilfreich sind? Dabei werden Cookies gesetzt und Daten
+        an Google übertragen – erst, wenn du zustimmst. Deine Eingaben in Übungen und Tests werden nie erfasst.
+        <a href={`${baseUrl}/datenschutz/`}>Mehr in der Datenschutzerklärung</a>
+      </p>
+      <div class="consent-actions">
+        <button type="button" data-consent="denied">Ablehnen</button>
+        <button type="button" data-consent="granted">Zustimmen</button>
+      </div>
+    </div>
+    <script is:inline define:vars={{ gaId: GA_ID, key: CONSENT_KEY, track }}>
+      (function () {
+        var banner = document.querySelector('[data-consent-banner]');
+        function read() { try { return localStorage.getItem(key); } catch (e) { return null; } }
+        function write(v) { try { localStorage.setItem(key, v); } catch (e) {} }
+        function load() {
+          if (window.__klGaLoaded) return;
+          window.__klGaLoaded = true;
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', gaId, {
+            anonymize_ip: true,
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false,
+          });
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId);
+          document.head.appendChild(s);
+        }
+        var state = read();
+        if (track) {
+          if (state === 'granted') load();
+          else if (state !== 'denied' && banner) banner.hidden = false;
+        }
+
+        document.querySelectorAll('[data-consent]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var v = btn.getAttribute('data-consent');
+            write(v);
+            if (banner) banner.hidden = true;
+            if (v === 'granted' && track) load();
+          });
+        });
+        // Widerruf / Änderung: Entscheidung löschen und Banner erneut zeigen.
+        document.querySelectorAll('[data-consent-reset]').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.preventDefault();
+            var wasGranted = read() === 'granted';
+            try { localStorage.removeItem(key); } catch (err) {}
+            if (wasGranted && window.__klGaLoaded) {
+              // Bereits gesetzte GA-Cookies entfernen und ohne Messung neu laden.
+              document.cookie.split(';').forEach(function (c) {
+                var name = c.split('=')[0].trim();
+                if (/^_ga/.test(name)) {
+                  document.cookie = name + '=; Max-Age=0; path=/';
+                  document.cookie = name + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+                }
+              });
+              location.reload();
+              return;
+            }
+            if (wasGranted) {
+              document.cookie.split(';').forEach(function (c) {
+                var name = c.split('=')[0].trim();
+                if (/^_ga/.test(name)) {
+                  document.cookie = name + '=; Max-Age=0; path=/';
+                  document.cookie = name + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+                }
+              });
+            }
+            if (banner) banner.hidden = false;
+          });
+        });
+      })();
+    </script>
+  </>
+)}
+
+<style>
+  .consent {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 200;
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    padding: 1rem 1.1rem;
+  }
+  .consent p { font-size: 0.9rem; color: var(--text); margin: 0 0 0.75rem; }
+  .consent a { text-decoration: underline; }
+  .consent-actions { display: flex; gap: 0.5rem; justify-content: flex-end; flex-wrap: wrap; }
+  /* Beide Knöpfe gleichwertig gestaltet – keine Lenkung zur Zustimmung. */
+  .consent-actions button {
+    font: inherit;
+    font-weight: 600;
+    min-height: 44px;
+    padding: 0.5rem 1.2rem;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--primary);
+    background: var(--bg-white);
+    color: var(--primary-dark);
+    cursor: pointer;
+  }
+  .consent-actions button:hover { background: #F0F7F4; }
+</style>

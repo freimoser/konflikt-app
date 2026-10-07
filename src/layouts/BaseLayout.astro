@@ -1,5 +1,6 @@
 ---
-import { ADS_ENABLED, ADSENSE_CLIENT } from '../config/site';
+import { ADS_ENABLED, ADSENSE_CLIENT, GA_ENABLED } from '../config/site';
+import Analytics from '../components/Analytics.astro';
 
 export interface Props {
   title: string;
@@ -197,6 +198,7 @@ const getPath = (path: string) => {
           <a href={getPath("kontakt/")}>Kontakt</a>
           <a href={getPath("impressum/")}>Impressum</a>
           <a href={getPath("datenschutz/")}>Datenschutz</a>
+          {GA_ENABLED && <a href={getPath("datenschutz/")} data-consent-reset>Datenschutz-Einstellungen</a>}
         </div>
       </div>
     </footer>
@@ -301,5 +303,6 @@ const getPath = (path: string) => {
         gap: 1rem;
       }
     </style>
+    <Analytics disabled={noAds} />
   </body>
 </html>

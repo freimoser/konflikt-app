@@ -91,3 +91,27 @@ manuellen Blöcke über `AD_SLOTS` nutzen.
 
 Werbefrei (Code-seitig erzwungen): Krisenhilfe, Impressum, Datenschutz, Kontakt, 404, Konflikt „Eifersucht“,
 Themen „Mobbing am Arbeitsplatz“, „Schweigen als Strafe“ und „Trennung im Guten“ (`adsSensitive: true` bzw. `noAds`).
+
+## 8. Reichweitenmessung aktivieren (vorbereitet seit 2026-10-07)
+Beides ist optional und unabhängig. Ohne Variable: nichts wird geladen, nichts steht in der Datenschutzerklärung.
+
+**Cloudflare Web Analytics (empfohlen zum Start, cookielos, ohne Banner)**
+1. Cloudflare-Konto → Analytics & Logs → Web Analytics → „Add a site“ → `konfliktlotse.app`,
+   **manuelle Einrichtung (JS-Snippet)** wählen, nicht die automatische (die Domain läuft nicht über Cloudflare).
+2. Aus dem Snippet nur den Token (32 Hex-Zeichen) kopieren.
+3. GitHub → Settings → Secrets and variables → Actions → Variables: `PUBLIC_CF_ANALYTICS_TOKEN` setzen, neu deployen
+   (z. B. Actions → „Deploy to GitHub Pages“ → Run workflow).
+
+**Google Analytics 4 (nur mit Einwilligung)**
+1. GA4-Property anlegen, Datenstream „Web“ für `https://konfliktlotse.app`, Mess-ID `G-…` kopieren.
+2. In GA4: Datenaufbewahrung auf 2 Monate, Google-Signale aus, Datenfreigabe-Einstellungen minimal.
+3. GitHub-Variable `PUBLIC_GA_ID` setzen, neu deployen.
+→ Banner erscheint (gleichwertige Knöpfe „Ablehnen“/„Zustimmen“), GA lädt erst nach Zustimmung mit
+`anonymize_ip`, ohne Google-Signale und ohne Werbepersonalisierung. Widerruf: „Datenschutz-Einstellungen“ im Footer
+und in der Datenschutzerklärung. Keine Messung auf Krisenhilfe, Rechtstexten und `adsSensitive`-Seiten.
+
+Technik: `src/components/Analytics.astro`, Konfiguration `src/config/site.ts`, Datenschutz-Abschnitte bedingt in
+`src/pages/datenschutz.astro`. `scripts/check-launch.mjs` blockiert: Messung ohne passenden Datenschutz-Abschnitt (und umgekehrt),
+direkt eingebundenes GA-Script, Messung/Banner auf der Krisenseite, Test-Kennungen.
+**Hinweis AdSense:** Sobald AdSense mit Googles eigener Einwilligungsmitteilung (CMP) läuft, das GA-Banner prüfen –
+zwei Banner nacheinander vermeiden (dann GA über die Google-CMP/Consent Mode steuern).

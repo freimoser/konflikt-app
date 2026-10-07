@@ -4,7 +4,7 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 
-const DIST = resolve('dist');
+const DIST = resolve(process.argv[2] || 'dist');
 const SITE = 'https://konfliktlotse.app';
 const blocker = [];
 const hinweis = [];
@@ -76,6 +76,22 @@ if (!new RegExp(`Sitemap:\\s*${SITE.replace(/\./g, '\\.')}/sitemap-index\\.xml`)
 for (const f of files.filter(f => /\.(html|txt|js)$/.test(f))) {
   if (/ca-pub-0{6,}/.test(read(f))) blocker.push(`Test-AdSense-Kennung im Build: ${relative(DIST, f)}`);
 }
+
+// 5b. Messung: Einbindung und Datenschutzerklärung müssen zusammenpassen
+const htmlAll = pages.map(p => ({ route: p.route, html: read(p.file) }));
+const ds = page('/datenschutz/') ? read(page('/datenschutz/').file) : '';
+const usesCf = htmlAll.some(p => p.html.includes('static.cloudflareinsights.com/beacon'));
+const usesGa = htmlAll.some(p => /googletagmanager\.com\/gtag\/js/.test(p.html));
+if (usesCf !== /Cloudflare Web Analytics/.test(ds)) blocker.push(`Cloudflare Web Analytics ${usesCf ? 'eingebunden, aber nicht' : 'nicht eingebunden, aber'} in der Datenschutzerklärung beschrieben.`);
+if (usesGa !== /Google Analytics \(nur mit Einwilligung\)/.test(ds)) blocker.push(`Google Analytics ${usesGa ? 'eingebunden, aber nicht' : 'nicht eingebunden, aber'} in der Datenschutzerklärung beschrieben.`);
+for (const p of htmlAll) {
+  if (/<script[^>]+src="https:\/\/www\.googletagmanager\.com/.test(p.html)) blocker.push(`${p.route}: GA-Script direkt eingebunden – darf erst nach Einwilligung geladen werden.`);
+  if (/G-(0{6,}|TEST|X{6,})/.test(p.html) || /"token":"0{32}"/.test(p.html)) blocker.push(`${p.route}: Test-Kennung für Messung im Build.`);
+}
+const krise = htmlAll.find(p => p.route === '/hilfe-in-krisen/');
+if (krise && (/cloudflareinsights|data-consent-banner/.test(krise.html))) blocker.push('/hilfe-in-krisen/: Messung oder Banner auf der Krisenseite.');
+if (usesGa && !/data-consent-reset/.test(ds)) blocker.push('Datenschutzerklärung ohne Widerruf (data-consent-reset).');
+if (!usesCf && !usesGa) hinweis.push('Keine Reichweitenmessung konfiguriert (PUBLIC_CF_ANALYTICS_TOKEN / PUBLIC_GA_ID leer).');
 
 // 6. Favicons (Google: Vielfache von 48) und llms.txt
 for (const f of ['favicon.ico', 'favicon.svg', 'favicon-48.png', 'favicon-96.png', 'apple-touch-icon.png']) {

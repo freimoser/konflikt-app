@@ -362,3 +362,15 @@ Impressum noindex, Googlebot 200, Adressen ohne Slash → 301 auf die Slash-Fass
 Danach ergänzt: sichtbare Redaktionszeile (rel=author → Über uns), `Person` mit fester `@id` (`src/config/site.ts`,
 `AUTHOR_SCHEMA`) in allen Article-Schemas, `AboutPage`-Schema auf Über uns.
 **Offen, nur Betreiber kann liefern:** `sameAs`-Profile (z. B. LinkedIn) für die Person-Entität.
+
+---
+
+## Messung vorbereitet – 2026-10-07
+- Cloudflare Web Analytics (`PUBLIC_CF_ANALYTICS_TOKEN`, cookielos) und GA4 (`PUBLIC_GA_ID`, Einwilligung vor dem Laden)
+  über `src/components/Analytics.astro`; Workflow reicht beide Variablen durch. Aktivierung: `STRATEGIE.md` §8.
+- Datenschutzerklärung: Abschnitte, Kurzfassung und Speicher-Tabelle bedingt; Widerruf-Knopf (`data-consent-reset`).
+- Neue Livegang-Blocker (gegengetestet): Messung ↔ Datenschutz-Abschnitt, GA direkt eingebunden, Messung/Banner auf
+  `/hilfe-in-krisen/`, Test-Kennungen. Erster Lauf fand das versteckte Banner auf der Krisenseite → behoben.
+- Browser-Test mit Test-Kennung (nur lokal): Banner vor Entscheidung, kein GA vor Zustimmung, „Ablehnen“ gespeichert,
+  Widerruf auf der Datenschutzseite, GA-Config mit anonymize_ip/ohne Signale nach Zustimmung.
+- `npm audit` (source-map-js, high) mit npm 10 behoben.
