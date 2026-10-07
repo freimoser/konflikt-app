@@ -33,7 +33,7 @@ const breadcrumbs = [
   <Breadcrumbs crumbs={breadcrumbs} />
   <section>
     <div class="cat-header">
-      <span class="cat-icon">{category.icon}</span>
+      <span class="cat-icon" aria-hidden="true">{category.icon}</span>
       <h1>{h1}</h1>
     </div>
     {hub ? hub.toolIntro.map((para: string) => <p class="cat-desc">{para}</p>) : <p class="cat-desc">{category.summary}</p>}

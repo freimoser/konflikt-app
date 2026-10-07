@@ -1,6 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { categories } from '../../data/categories/index.js';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { categories, getAllConflicts } from '../../data/categories/index.js';
+
+// „Neu im Ratgeber“: zuletzt veröffentlichte bzw. aktualisierte Artikel (echte Inhaltsdaten, kein Build-Datum)
+const newest = getAllConflicts()
+  .map(c => ({ ...c, date: c.updated || c.published || '2026-08-03' }))
+  .sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title, 'de'))
+  .slice(0, 6);
+const fmt = (d) => new Date(d).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
@@ -10,18 +18,32 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   fullTitle="Ratgeber Konflikte: Ursachen und Lösungen | Konfliktlotse"
   description="Ratgeber zu Alltagskonflikten: warum Streit mit Partner:in, Eltern, Chef:in oder Nachbar:in entsteht, typische Fehler, langfristige Lösungen und Antworten auf häufige Fragen."
 >
+  <Breadcrumbs crumbs={[{ label: 'Start', url: '/' }, { label: 'Ratgeber' }]} />
   <section>
     <h1>Alle Ratgeber</h1>
     <p class="page-desc">
       Verstehe die Dynamik hinter deinen Konflikten und finde langfristige Lösungen.
     </p>
 
+    <section class="newest" aria-labelledby="neu">
+      <h2 id="neu">Neu im Ratgeber</h2>
+      <ul>
+        {newest.map(c => (
+          <li>
+            <a href={`${baseUrl}/ratgeber/${c.category}/${c.slug}/`}>{c.article?.title || c.title}</a>
+            <span class="newest-meta">{c.categoryName} · <time datetime={c.date}>{fmt(c.date)}</time></span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <h2 class="all-heading">Alle Ratgeber nach Bereich</h2>
     <div class="category-list">
       {
         categories.map(cat => (
           <div class="cat-block">
             <a href={`${baseUrl}/ratgeber/${cat.id}/`} class="cat-block-header">
-              <span class="cat-block-icon">{cat.icon}</span>
+              <span class="cat-block-icon" aria-hidden="true">{cat.icon}</span>
               <span class="cat-block-name">{cat.name}</span>
               <span class="cat-block-arrow">→</span>
             </a>
@@ -43,6 +65,12 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 </BaseLayout>
 
 <style>
+  .newest { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 2rem; }
+  .newest h2 { margin-top: 0; font-size: 1.15rem; }
+  .newest ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .newest a { font-weight: 600; }
+  .newest-meta { display: block; font-size: 0.8rem; color: var(--text-light); }
+  .all-heading { font-size: 1.15rem; }
   .page-desc {
     color: var(--text-light);
     margin-bottom: 2rem;

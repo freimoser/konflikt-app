@@ -50,7 +50,7 @@ Beim Erledigen hier abhaken und in `LOG.md` eintragen.
 
 ## P2 – SEO-Technik
 - [x] (DL 5) Kategorie-Hubs mit Einleitung, Sofort-Tipps, FAQ (`src/data/hubs/`).
-- [ ] Ratgeber-Übersicht: „Neu“ und „Beliebt“-Sektionen.
+- [x] (Mini 4) Ratgeber-Übersicht: „Neu im Ratgeber“. Offen: „Beliebt“ (erst mit Messdaten).
 - [x] (Mini 3) Inhaltsverzeichnis (Sprungmarken) in langen Ratgebern.
 - [x] (DL 5) Interne Suche `/suche/` (statisch gerendert + JS-Filter).
 - [x] (DL 3) Datenprüfung `scripts/validate-data.mjs` (Verweise, Pflichtfelder, Nummern).

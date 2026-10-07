@@ -7,6 +7,7 @@ import { getMethodsForConflict } from '../../../data/methods/index.js';
 import { getTopicsForConflict } from '../../../data/topics/index.js';
 import AdSlot from '../../../components/AdSlot.astro';
 import { seoTitles } from '../../../data/seo-titles.js';
+import { displayTitle } from '../../../data/display-title.js';
 import { AUTHOR_SCHEMA, OPERATOR } from '../../../config/site';
 import MethodLinks from '../../../components/MethodLinks.astro';
 import { normalizeConflict } from '../../../data/schema.js';
@@ -38,7 +39,7 @@ const breadcrumbs = [
   { label: 'Start', url: '/' },
   { label: 'Ratgeber', url: '/ratgeber/' },
   { label: category.name, url: `/ratgeber/${category.id}/` },
-  { label: conflict.title }
+  { label: displayTitle(category.id, conflict) }
 ];
 
 const article = conflict.article || {};

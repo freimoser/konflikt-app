@@ -396,3 +396,9 @@ Auftrag: offensichtlichste, schnellste Verbesserungen, genau 5 Durchläufe, kein
   strategie, beispiele, hilfe, faq; nur vorhandene Abschnitte erscheinen).
 - `check-links.mjs` prüft jetzt Sprungmarken (gleiche und andere Seite) gegen die IDs im Build; gegengetestet.
   Ausnahme: `#bereich-…` im Trainer (entsteht per JS-Filter, kein Element).
+
+### Mini 4
+- „Neu im Ratgeber“ (6 neueste nach `updated`/`published`) auf `/ratgeber/` – Frische-Signal + interne Links.
+- Breadcrumbs (+ BreadcrumbList) auf `/ratgeber/` und `/konflikt/`.
+- Kontext-Titel zentral in `src/data/display-title.js`: H1 der Tool-Seite und letzter Breadcrumb (Tool + Ratgeber) identisch.
+- Deko-Emojis vor Überschriften `aria-hidden` (Konfliktseite, Hubs, Übersichten).
