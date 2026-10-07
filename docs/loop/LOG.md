@@ -385,3 +385,8 @@ Auftrag: offensichtlichste, schnellste Verbesserungen, genau 5 Durchläufe, kein
 - H1 der Tool-Seiten mit Kontext: 14 Konflikte mit kurzen Titeln („Hört nicht zu“, „Kritisieren ständig“) bekommen die
   Suchphrase aus `seo-titles.js` als H1, sichtbar geschlechtergerecht („Partner:in hört nicht zu“). Löst auch doppelte H1
   (partner/freunde „Hört nicht zu“). Build-Audit: nur bekannte Fehlalarme.
+
+### Mini 2
+- Sitemap mit `lastmod` aus echten Inhaltsdaten (`published`/`updated` der Konflikte, Methoden, Themen) via
+  `serialize` in `astro.config.mjs`; Übersichtsseiten ohne lastmod (kein ehrliches Datum). 181/224 URLs.
+  Neue Livegang-Prüfung: lastmod gültig und nicht in der Zukunft. Regel: `updated` nur bei inhaltlicher Änderung setzen.

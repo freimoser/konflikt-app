@@ -59,6 +59,12 @@ else {
     if (noindex && inSitemap.has(p.route)) blocker.push(`${p.route}: steht in der Sitemap, trägt aber noindex.`);
     if (!noindex && !inSitemap.has(p.route)) blocker.push(`${p.route}: ist indexierbar, fehlt aber in der Sitemap.`);
   }
+  // lastmod: gültig und nicht in der Zukunft (ein „springendes“ Build-Datum wäre wertlos)
+  for (const m of read(smFile).matchAll(/<lastmod>([^<]+)<\/lastmod>/g)) {
+    const t = Date.parse(m[1]);
+    if (Number.isNaN(t)) blocker.push(`Sitemap: ungültiges lastmod ${m[1]}`);
+    else if (t > Date.now() + 86400000) blocker.push(`Sitemap: lastmod in der Zukunft ${m[1]}`);
+  }
   for (const r of ['/impressum/', '/datenschutz/']) {
     if (page(r) && !/<meta name="robots" content="noindex/.test(read(page(r).file))) {
       blocker.push(`${r}: sollte noindex tragen (Privatanschrift/Standardtext).`);
