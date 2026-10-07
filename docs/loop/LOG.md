@@ -402,3 +402,13 @@ Auftrag: offensichtlichste, schnellste Verbesserungen, genau 5 Durchläufe, kein
 - Breadcrumbs (+ BreadcrumbList) auf `/ratgeber/` und `/konflikt/`.
 - Kontext-Titel zentral in `src/data/display-title.js`: H1 der Tool-Seite und letzter Breadcrumb (Tool + Ratgeber) identisch.
 - Deko-Emojis vor Überschriften `aria-hidden` (Konfliktseite, Hubs, Übersichten).
+
+### Mini 5 (letzter, Cron ec258ed4 beendet)
+- GitHub Actions auf aktuelle Hauptversionen (checkout v7, setup-node v7, upload-pages-artifact v5, deploy-pages v5) –
+  beseitigt die Node-20-Abkündigungswarnung. Breaking Changes geprüft: Cache ist explizit `npm`, keine Dotfiles im Build
+  (upload-pages-artifact ≥ v4 lässt sie weg), CI pusht nicht (Credential-Änderung in checkout v6 irrelevant).
+- Abschlussprüfung live: Sitemap-URLs, Canonical, noindex der Rechtstexte (siehe unten im Commit-Verlauf).
+
+**Bilanz Mini-Loop:** Kontext-H1 (14 Seiten), Sitemap-lastmod (181 URLs), Inhaltsverzeichnis in 79 Ratgebern,
+Sprungmarken-Prüfung, „Neu im Ratgeber“, Breadcrumbs auf Übersichten, konsistente Titel, a11y-Emojis, Actions-Update.
+Jede Änderung mit verify + audit grün, live geprüft.
