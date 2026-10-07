@@ -374,3 +374,14 @@ Danach ergänzt: sichtbare Redaktionszeile (rel=author → Über uns), `Person` 
 - Browser-Test mit Test-Kennung (nur lokal): Banner vor Entscheidung, kein GA vor Zustimmung, „Ablehnen“ gespeichert,
   Widerruf auf der Datenschutzseite, GA-Config mit anonymize_ip/ohne Signale nach Zustimmung.
 - `npm audit` (source-map-js, high) mit npm 10 behoben.
+
+---
+
+## Mini-Loop (5 Durchläufe) – ab 2026-10-07
+Auftrag: offensichtlichste, schnellste Verbesserungen, genau 5 Durchläufe, keine SEO-Fehler. Cron `2-59/5 * * * *`
+(Job ec258ed4), nach Durchlauf 5 beenden. Jeder Durchlauf: verify + audit grün → commit + push → Deploy prüfen.
+
+### Mini 1
+- H1 der Tool-Seiten mit Kontext: 14 Konflikte mit kurzen Titeln („Hört nicht zu“, „Kritisieren ständig“) bekommen die
+  Suchphrase aus `seo-titles.js` als H1, sichtbar geschlechtergerecht („Partner:in hört nicht zu“). Löst auch doppelte H1
+  (partner/freunde „Hört nicht zu“). Build-Audit: nur bekannte Fehlalarme.

@@ -40,6 +40,14 @@ const relatedTopics = getTopicsForConflict(category.id, conflict.slug, 2);
 const matchingVorlage = vorlagen.find((v: any) => v.slug !== 'gespraech-vorbereiten' &&
   (v.relatedConflicts || []).some((r: any) => r.category === category.id && r.slug === conflict.slug));
 const adsSensitive = Boolean(conflict.adsSensitive);
+
+// H1 mit Kontext: Sehr kurze Titel („Hört nicht zu“) bekommen die Suchphrase aus seo-titles.js,
+// sichtbar in geschlechtergerechter Form. Längere Titel tragen den Kontext schon selbst.
+const inclusive = (t: string) => t
+  .replace(/^Partner /, 'Partner:in ').replace(/^Kollege /, 'Kolleg:in ')
+  .replace(/^Freundin /, 'Freund:in ').replace(/^Freund /, 'Freund:in ');
+const seoHeadForH1 = (seoTitles[`${category.id}/${conflict.slug}`] || '').split(': ')[0];
+const h1 = conflict.title.length < 20 && seoHeadForH1 ? inclusive(seoHeadForH1) : conflict.title;
 const trainerScenario = scenarios.find(sc => sc.conflict.category === category.id && sc.conflict.slug === conflict.slug);
 
 // Lange Problembeschreibungen: zwei Sätze sichtbar, Rest aufklappbar (mobil keine Textwand).
@@ -68,7 +76,7 @@ const canonicalUrl = `${Astro.site.origin}${pageUrl}`;
   <section class="tool-content">
     <div class="conflict-header">
       <span class="conflict-icon">{conflict.icon}</span>
-      <h1>{conflict.title}</h1>
+      <h1>{h1}</h1>
     </div>
     <p class="conflict-with">{category.icon} Konflikt mit {category.name}</p>
 
