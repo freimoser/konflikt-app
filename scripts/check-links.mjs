@@ -35,6 +35,7 @@ const htmlFiles = files.filter(f => f.endsWith('.html'));
 const errors = [];
 const warnings = [];
 let linkCount = 0;
+const fragmentChecks = [];
 const seenTitles = new Map();
 
 for (const file of htmlFiles) {
@@ -44,6 +45,7 @@ for (const file of htmlFiles) {
 
   for (const m of html.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
     let url = m[1];
+    if (url.startsWith('#') && url.length > 1) { fragmentChecks.push({ from: rel, path: rel, frag: decodeURIComponent(url.slice(1)), url }); continue; }
     if (/^(mailto:|tel:|javascript:|data:|#)/.test(url)) continue;
     if (url.startsWith(SITE)) url = url.slice(SITE.length) || '/';
     if (/^https?:\/\//.test(url) || url.startsWith('//')) continue;
@@ -56,6 +58,8 @@ for (const file of htmlFiles) {
       warnings.push(`${rel}: Link ohne Trailing Slash → ${url}`);
     }
     if (!targetExists(pathname)) errors.push(`${rel}: kaputter Link → ${url}`);
+    const frag = url.includes('#') ? decodeURIComponent(url.split('#')[1]) : '';
+    if (frag && targetExists(pathname)) fragmentChecks.push({ from: rel, path: bare, frag, url });
   }
 
   if (!is404) {
@@ -86,6 +90,22 @@ for (const sm of files.filter(f => /sitemap-\d+\.xml$/.test(f))) {
     const path = m[1].replace(SITE, '') || '/';
     if (!targetExists(path)) errors.push(`Sitemap: Ziel fehlt → ${m[1]}`);
   }
+}
+
+// Sprungmarken: Ziel-ID muss auf der Zielseite existieren (brechen sonst still bei umformulierten Überschriften)
+const idCache = new Map();
+function idsOf(path) {
+  if (!idCache.has(path)) {
+    const f = path.endsWith('/') ? join(DIST, path, 'index.html') : join(DIST, path);
+    const html = existsSync(f) ? readFileSync(f, 'utf8') : '';
+    idCache.set(path, new Set([...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1])));
+  }
+  return idCache.get(path);
+}
+// Ziele, die erst per JavaScript entstehen (Trainer-Bereichsfilter), ausnehmen
+for (const f of fragmentChecks) {
+  if (/^bereich-/.test(f.frag)) continue;
+  if (!idsOf(f.path).has(f.frag)) errors.push(`${f.from}: Sprungmarke fehlt → ${f.url}`);
 }
 
 console.log(`Geprüft: ${htmlFiles.length} HTML-Seiten, ${linkCount} interne Links.`);

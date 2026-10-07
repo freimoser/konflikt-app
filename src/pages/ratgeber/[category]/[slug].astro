@@ -147,16 +147,29 @@ const jsonLd = JSON.stringify(schemas);
       <a href={toolUrl} class="btn-primary">Zum Gesprächsplan</a>
     </div>
 
+    <nav class="toc" aria-label="Inhalt">
+      <p class="toc-title">Inhalt</p>
+      <ol>
+          {article.situation && <li><a href="#situation">Die Situation</a></li>}
+          {article.causes && article.causes.length > 0 && <li><a href="#ursachen">Warum passiert das? (Ursachen & Dynamiken)</a></li>}
+          {article.mistakes && article.mistakes.length > 0 && <li><a href="#fehler">Häufige Fehler</a></li>}
+          {article.strategy && <li><a href="#strategie">Langfristige Lösungsstrategie</a></li>}
+          {article.examples && article.examples.length > 0 && <li><a href="#beispiele">Beispiele & Perspektiven</a></li>}
+          {article.help && <li><a href="#hilfe">Wann Abstand oder Hilfe sinnvoll ist</a></li>}
+          {article.faqs && article.faqs.length > 0 && <li><a href="#faq">Häufige Fragen (FAQ)</a></li>}
+      </ol>
+    </nav>
+
     <div class="content-body">
       {article.situation && (
-        <section>
+        <section id="situation">
           <h2>Die Situation</h2>
           <p>{article.situation}</p>
         </section>
       )}
 
       {article.causes && article.causes.length > 0 && (
-        <section>
+        <section id="ursachen">
           <h2>Warum passiert das? (Ursachen & Dynamiken)</h2>
           <ul>
             {article.causes.map(cause => <li>{cause}</li>)}
@@ -167,7 +180,7 @@ const jsonLd = JSON.stringify(schemas);
       <AdSlot placement="in-article" sensitive={adsSensitive} />
 
       {article.mistakes && article.mistakes.length > 0 && (
-        <section>
+        <section id="fehler">
           <h2>Häufige Fehler</h2>
           <ul>
             {article.mistakes.map(mistake => <li>{mistake}</li>)}
@@ -176,7 +189,7 @@ const jsonLd = JSON.stringify(schemas);
       )}
 
       {article.strategy && (
-        <section>
+        <section id="strategie">
           <h2>Langfristige Lösungsstrategie</h2>
           <p>{article.strategy}</p>
         </section>
@@ -185,7 +198,7 @@ const jsonLd = JSON.stringify(schemas);
       <MethodLinks methods={relatedMethods} topics={relatedTopics} />
 
       {article.examples && article.examples.length > 0 && (
-        <section>
+        <section id="beispiele">
           <h2>Beispiele & Perspektiven</h2>
           <ul>
             {article.examples.map(ex => <li>{ex}</li>)}
@@ -194,14 +207,14 @@ const jsonLd = JSON.stringify(schemas);
       )}
 
       {article.help && (
-        <section>
+        <section id="hilfe">
           <h2>Wann Abstand oder Hilfe sinnvoll ist</h2>
           <p>{article.help}</p>
         </section>
       )}
 
       {article.faqs && article.faqs.length > 0 && (
-        <section class="faq-section">
+        <section class="faq-section" id="faq">
           <h2>Häufige Fragen (FAQ)</h2>
           <div class="faq-list">
             {article.faqs.map(faq => (
@@ -250,6 +263,11 @@ const jsonLd = JSON.stringify(schemas);
 </BaseLayout>
 
 <style>
+  .toc { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.9rem 1.2rem; margin: 1.5rem 0; }
+  .toc-title { font-weight: 700; margin: 0 0 0.4rem; }
+  .toc ol { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.25rem; }
+  .toc a { text-decoration: underline; text-decoration-color: var(--border); }
+  .content-body section { scroll-margin-top: 70px; }
   .editorial-note { font-size: 0.85rem; color: var(--text-light); margin-top: 1.5rem; }
   .editorial-note a { text-decoration: underline; }
   .article-date { font-size: 0.85rem; color: var(--text-light); margin: -0.5rem 0 0; }

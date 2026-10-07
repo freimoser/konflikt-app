@@ -390,3 +390,9 @@ Auftrag: offensichtlichste, schnellste Verbesserungen, genau 5 Durchläufe, kein
 - Sitemap mit `lastmod` aus echten Inhaltsdaten (`published`/`updated` der Konflikte, Methoden, Themen) via
   `serialize` in `astro.config.mjs`; Übersichtsseiten ohne lastmod (kein ehrliches Datum). 181/224 URLs.
   Neue Livegang-Prüfung: lastmod gültig und nicht in der Zukunft. Regel: `updated` nur bei inhaltlicher Änderung setzen.
+
+### Mini 3
+- Inhaltsverzeichnis mit Sprungmarken in allen 79 Ratgeberartikeln (Abschnitts-IDs situation, ursachen, fehler,
+  strategie, beispiele, hilfe, faq; nur vorhandene Abschnitte erscheinen).
+- `check-links.mjs` prüft jetzt Sprungmarken (gleiche und andere Seite) gegen die IDs im Build; gegengetestet.
+  Ausnahme: `#bereich-…` im Trainer (entsteht per JS-Filter, kein Element).
