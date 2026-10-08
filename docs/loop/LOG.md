@@ -412,3 +412,37 @@ Auftrag: offensichtlichste, schnellste Verbesserungen, genau 5 Durchläufe, kein
 **Bilanz Mini-Loop:** Kontext-H1 (14 Seiten), Sitemap-lastmod (181 URLs), Inhaltsverzeichnis in 79 Ratgebern,
 Sprungmarken-Prüfung, „Neu im Ratgeber“, Breadcrumbs auf Übersichten, konsistente Titel, a11y-Emojis, Actions-Update.
 Jede Änderung mit verify + audit grün, live geprüft.
+
+---
+
+## SEO-Abstrafungsschutz – 2026-10-08 (Branch `seo/abstrafungsschutz`, nicht deployt)
+Grundlage: vollständige Prüfung (23 Punkte, Bericht im Chat). Umgesetzt ohne Rückfrage, auf eigenem Branch.
+
+**Inhalt / Abstrafungsschutz**
+- **Kannibalisierung Tool ↔ Ratgeber (79 Paare):** Ratgeber bekommen eigene Warum-Titel (`ratgeberTitle` in
+  `src/data/quick-answers/<kat>.js`, z. B. „Warum Partner nicht zuhören – und was hilft“); Tool behält „…: So sprichst du es an“.
+  Prüfungen: `validate-data.mjs` (Titelanfang Tool ≠ Ratgeber), `check-links.mjs` (gleicher Titelanfang auf 2 indexierbaren Seiten).
+- **Antwort zuerst (C17):** „Kurz gesagt“-Box ganz oben auf allen 79 Tool- (Was sage ich?) und 79 Ratgeberseiten
+  (Warum + was hilft) sowie Methoden/Themen (`summary`). Format: `docs/loop/QUICK-ANSWERS-FORMAT.md`.
+- **Belege (A5):** `src/data/sources.js` mit verifizierten Quellen + Prüfdatum (CNVC/Rosenberg, Gordon P.E.T. 1970,
+  Rogers & Farson 1957, Schulz von Thun 1981, Fisher/Ury 1981, Glasl/Haupt). Methoden zeigen „Quellen“ + `citation`
+  im Article-Schema; Methoden ohne Urheber einen ehrlichen Hinweis. Krisenseite: Quellenblock, Nummern und
+  Erreichbarkeit am 08.10.2026 auf den offiziellen Seiten geprüft (Männerhilfetelefon Mo–Do 8–20, Fr 8–15;
+  WEISSER RING täglich 7–22).
+- **Ehrliche Urheberschaft:** Autorenzeile „KI-gestützt erstellt, verantwortet von …“ (102 Artikel), „Über uns“ und
+  `llms.txt` beschreiben die KI-Erstellung offen.
+- **Kannibalisierung Übersicht ↔ Thema:** `/konflikt/partner/` umbenannt („Konflikte mit dem Partner: Gesprächspläne …“),
+  Hubs verlinken passende Themen (`hub.topic`); Methoden verlinken Themen, die sie nutzen (z. B. Grenzen setzen ↔ Nein sagen).
+- **Dünne Seiten:** `/suche/` noindex + aus Sitemap; `/spiel/`, `/vorlagen/`, `/kontakt/`, `/hilfe-in-krisen/` mit echtem
+  Nutzen erweitert (keine Fülltexte).
+
+**Technik**
+- Description ≤ 155 (Layout + Prüfung), Überschriften-Sprung h1→h3 in Ratgebern behoben + Prüfung auf Sprünge,
+  Links im Fließtext unterstrichen (a11y), `lastmod` für alle 223 Sitemap-URLs (Inhaltsdaten bzw. Git-Datum der Quelle;
+  Workflow `fetch-depth: 0`) + Blocker bei fehlendem lastmod.
+
+**Ergebnis:** verify/audit grün ohne Warnungen; Build-Audit: 0 Titel > 60, 0 Description > 155, 0 Sprünge, 0 doppelte
+Titel/Descriptions; Lighthouse (lokal, mobil) 100/100/100/100 auf Start, Tool, Ratgeber, Methode.
+
+**Offen (nur Betreiber):** DNS-Eintrag `www` → GitHub Pages; echte redaktionelle Durchsicht der wichtigsten Seiten
+mit eigenen Beispielen/Erfahrungen (größter verbleibender Hebel gegen „Scaled Content“).

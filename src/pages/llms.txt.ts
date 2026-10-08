@@ -17,8 +17,8 @@ export const GET: APIRoute = () => {
   lines.push(
     `Konfliktlotse ist ein unabhängiges, kostenloses Projekt von ${OPERATOR.name} (München). ` +
       `Es bietet ${conflicts.length} Gesprächspläne in ${categories.length} Lebensbereichen, je einen erklärenden Ratgeber, ` +
-      `${methods.length} Methodenartikel und ${topics.length} Themen-Leitartikel. Die Texte werden redaktionell mit Unterstützung von KI-Werkzeugen erstellt ` +
-      'und folgen festen Regeln: keine erfundenen Studien oder Zahlen, keine Rechtsauskünfte, nur verifizierte Notrufnummern.',
+      `${methods.length} Methodenartikel und ${topics.length} Themen-Leitartikel. Die Texte werden mit KI-Werkzeugen erstellt und vom Betreiber inhaltlich verantwortet; sie ` +
+      'folgen festen Regeln: keine erfundenen Studien oder Zahlen, keine Rechtsauskünfte, nur verifizierte Notrufnummern; Urheber- und Jahresangaben zu Methoden sind mit Quelle und Prüfdatum belegt.',
     '',
   );
 

@@ -1,6 +1,7 @@
 export default {
   id: 'partner',
-  toolTitle: 'Streit mit dem Partner: Gesprächspläne für typische Beziehungskonflikte',
+  toolTitle: 'Konflikte mit dem Partner: Gesprächspläne für jede Situation',
+  topic: 'streit-in-der-beziehung',
   toolMeta: 'Streit mit dem Partner oder der Partnerin? Wähle deinen Konflikt und hol dir einen ruhigen Gesprächsplan mit Einstieg, Formulierungen und nächstem Schritt.',
   toolIntro: [
     'Ihr habt euch gerade wieder über Wäsche, Handy, Geld oder fehlende Zeit gestritten, und du willst nicht, dass das nächste Gespräch genauso endet? Hier findest du typische Konflikte mit deinem:deiner Partner:in, jeweils mit einem konkreten Gesprächsplan: wie du einsteigst, welche Sätze deeskalieren und was ihr am Ende vereinbaren könnt.',

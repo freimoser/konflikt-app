@@ -11,6 +11,7 @@ import MethodLinks from '../../../components/MethodLinks.astro';
 import { scenarios } from '../../../data/trainer.js';
 import { seoTitles } from '../../../data/seo-titles.js';
 import { displayTitle } from '../../../data/display-title.js';
+import { getQuickAnswer } from '../../../data/quick-answers/index.js';
 import { vorlagen } from '../../../data/vorlagen.js';
 import { normalizeConflict } from '../../../data/schema.js';
 
@@ -43,6 +44,7 @@ const matchingVorlage = vorlagen.find((v: any) => v.slug !== 'gespraech-vorberei
 const adsSensitive = Boolean(conflict.adsSensitive);
 
 const h1 = displayTitle(category.id, conflict);
+const quick = getQuickAnswer(category.id, conflict.slug);
 const trainerScenario = scenarios.find(sc => sc.conflict.category === category.id && sc.conflict.slug === conflict.slug);
 
 // Lange Problembeschreibungen: zwei Sätze sichtbar, Rest aufklappbar (mobil keine Textwand).
@@ -74,6 +76,10 @@ const canonicalUrl = `${Astro.site.origin}${pageUrl}`;
       <h1>{h1}</h1>
     </div>
     <p class="conflict-with">{category.icon} Konflikt mit {category.name}</p>
+
+    {quick && (
+      <p class="answer"><strong>Kurz gesagt:</strong> {quick.toolAnswer}</p>
+    )}
 
     <div id="mode-view">
       <noscript>
@@ -398,6 +404,7 @@ const canonicalUrl = `${Astro.site.origin}${pageUrl}`;
   .section-card h2, .section-card h3 { margin-top: 0; margin-bottom: 0.75rem; }
   .section-card p, .section-card li { color: var(--text-light); line-height: 1.7; }
   .section-card ul { padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .answer { background: #F0F7F4; border-left: 4px solid var(--primary); border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; margin: 0.5rem 0 1.25rem; }
   .problem-box { border-left: 4px solid var(--accent); }
   .copy-btn { font: inherit; font-size: 0.8rem; font-weight: 600; margin-top: 0.4rem; background: transparent; border: 1px solid var(--border); border-radius: 20px; padding: 0.3rem 0.8rem; cursor: pointer; color: var(--primary-dark); min-height: 32px; }
   .copy-btn:hover { border-color: var(--primary-light); background: #F0F7F4; }

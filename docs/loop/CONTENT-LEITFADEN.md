@@ -3,8 +3,10 @@
 ## Neuen Konflikt anlegen (bewährter Ablauf aus DL 1)
 1. Datei `src/data/conflicts/<kategorie>/<slug>.js` mit `export default { … }` anlegen.
 2. In `src/data/categories/<kategorie>.js` oben importieren und ans Ende von `conflicts: [...]` hängen.
-3. `npm run verify` – Datenprüfung (`scripts/validate-data.mjs`), Build und Linkprüfung müssen grün sein.
-4. Verwaiste Konflikte prüfen (siehe Befehl unten) und ggf. in 1–2 bestehenden Konflikten
+3. In `src/data/quick-answers/<kategorie>.js` Kurzantworten + Ratgeber-Titel ergänzen
+   (Format `docs/loop/QUICK-ANSWERS-FORMAT.md`) – sonst schlägt die Datenprüfung fehl.
+4. `npm run verify` – Datenprüfung (`scripts/validate-data.mjs`), Build und Linkprüfung müssen grün sein.
+5. Verwaiste Konflikte prüfen (siehe Befehl unten) und ggf. in 1–2 bestehenden Konflikten
    unter `related` eintragen.
 
 Referenz für Format, Ton und Tiefe: erstes Objekt in `src/data/categories/eltern.js`

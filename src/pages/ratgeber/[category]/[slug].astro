@@ -8,6 +8,7 @@ import { getTopicsForConflict } from '../../../data/topics/index.js';
 import AdSlot from '../../../components/AdSlot.astro';
 import { seoTitles } from '../../../data/seo-titles.js';
 import { displayTitle } from '../../../data/display-title.js';
+import { getQuickAnswer } from '../../../data/quick-answers/index.js';
 import { AUTHOR_SCHEMA, OPERATOR } from '../../../config/site';
 import MethodLinks from '../../../components/MethodLinks.astro';
 import { normalizeConflict } from '../../../data/schema.js';
@@ -57,7 +58,11 @@ const pageTitle = conflict.article?.seoTitle
       : `${seoHead} – Ratgeber | Konfliktlotse`;
 // Nie denselben Titel wie die Tool-Seite: sonst konkurrieren beide Seiten um dieselbe Suchanfrage.
 const toolTitle = seoTitles[`${category.id}/${conflict.slug}`];
-const ratgeberTitle = toolTitle && pageTitle.startsWith(`${toolTitle} |`) ? `${seoHead}: Ursachen & Lösungen | Konfliktlotse` : pageTitle;
+const quick = getQuickAnswer(category.id, conflict.slug);
+// Eigener Warum-Titel trennt die Suchabsicht klar von der Tool-Seite (keine Kannibalisierung)
+const ratgeberTitle = quick?.ratgeberTitle
+  ? `${quick.ratgeberTitle} | Konfliktlotse`
+  : toolTitle && pageTitle.startsWith(`${toolTitle} |`) ? `${seoHead}: Ursachen & Lösungen | Konfliktlotse` : pageTitle;
 const description = article.meta || conflict.summary;
 
 // JSON-LD Generation
@@ -124,8 +129,12 @@ const jsonLd = JSON.stringify(schemas);
     <div class="article-header">
       <div class="meta-tag">{category.icon} Konflikte mit {category.name}</div>
       <h1>{title}</h1>
-      <p class="article-date">Redaktion: <a href={`${baseUrl}/ueber-uns/`} rel="author">{OPERATOR.name}</a> · Aktualisiert am <time datetime={updated}>{updatedLabel}</time></p>
+      <p class="article-date">KI-gestützt erstellt, verantwortet von <a href={`${baseUrl}/ueber-uns/`} rel="author">{OPERATOR.name}</a> · Aktualisiert am <time datetime={updated}>{updatedLabel}</time></p>
     </div>
+
+    {quick && (
+      <p class="answer"><strong>Kurz gesagt:</strong> {quick.ratgeberAnswer}</p>
+    )}
 
     {article.intro && (
       <div class="lead-text">
@@ -142,7 +151,7 @@ const jsonLd = JSON.stringify(schemas);
 
     <div class="tool-promo">
       <div class="tool-promo-content">
-        <h3>Akuter Konflikt?</h3>
+        <p class="promo-title">Akuter Konflikt?</p>
         <p>Finde die richtigen Worte mit unserem Gesprächsleitfaden.</p>
       </div>
       <a href={toolUrl} class="btn-primary">Zum Gesprächsplan</a>
@@ -233,7 +242,7 @@ const jsonLd = JSON.stringify(schemas);
 
     <div class="tool-promo tool-promo-end">
       <div class="tool-promo-content">
-        <h3>Bereit für das Gespräch?</h3>
+        <p class="promo-title">Bereit für das Gespräch?</p>
         <p>Im Gesprächsplan findest du drei fertige Formulierungen, den Ablauf Schritt für Schritt und Antworten auf typische Reaktionen.</p>
       </div>
       <a href={toolUrl} class="btn-primary">Gesprächsplan öffnen</a>
@@ -264,6 +273,8 @@ const jsonLd = JSON.stringify(schemas);
 </BaseLayout>
 
 <style>
+  .answer { background: #F0F7F4; border-left: 4px solid var(--primary); border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; margin: 1rem 0; }
+  .promo-title { font-weight: 700; font-size: 1.1rem; margin: 0 0 0.25rem; color: var(--text); }
   .toc { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.9rem 1.2rem; margin: 1.5rem 0; }
   .toc-title { font-weight: 700; margin: 0 0 0.4rem; }
   .toc ol { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.25rem; }

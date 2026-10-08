@@ -1,5 +1,6 @@
 export default {
   id: 'kollegen',
+  topic: 'konflikte-im-team-loesen',
   toolTitle: 'Stress mit Kollegen: Gesprächspläne für Konflikte im Team',
   toolMeta: 'Stress mit Kollegen oder Kolleginnen? Wähle deinen Teamkonflikt und hol dir einen Gesprächsplan mit sachlichem Einstieg, klaren Sätzen und nächstem Schritt.',
   toolIntro: [

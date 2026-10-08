@@ -1,5 +1,6 @@
 export default {
   id: 'chef',
+  topic: 'konfliktgespraech-am-arbeitsplatz',
   toolTitle: 'Probleme mit dem Chef: Gesprächspläne für schwierige Situationen mit Vorgesetzten',
   toolMeta: 'Probleme mit dem Chef oder der Chefin? Wähle deine Situation und bereite das Gespräch mit klarem Einstieg, sachlichen Formulierungen und nächstem Schritt vor.',
   toolIntro: [

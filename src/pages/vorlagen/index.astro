@@ -27,9 +27,26 @@ const breadcrumbs = [{ label: 'Start', url: '/' }, { label: 'Vorlagen' }];
       </a>
     ))}
   </div>
+  <section class="howto">
+    <h2>So nutzt du die Vorlagen</h2>
+    <p>
+      Druck die Vorlage aus oder speichere sie als PDF und füll sie <strong>vor</strong> dem Gespräch in Ruhe aus. Wer
+      seine Gedanken einmal aufgeschrieben hat, spricht im Gespräch klarer und lässt sich weniger leicht vom Thema
+      abbringen. Die Checkliste „Konfliktgespräch vorbereiten“ passt zu fast jedem Konflikt; die übrigen Vorlagen sind
+      für bestimmte Situationen gedacht: das Familiengespräch mit Kindern, die gemeinsame Absprache in der WG und die
+      Vereinbarung, die ihr nach einem Streit gemeinsam festhaltet.
+    </p>
+    <p>
+      Vereinbarungen wirken am besten, wenn alle Beteiligten sie unterschreiben und ihr einen festen Termin ausmacht, an
+      dem ihr gemeinsam nachschaut, was funktioniert hat. Die Vorlagen sind keine Verträge und ersetzen keine rechtliche
+      Beratung – zum Beispiel bei Mietfragen.
+    </p>
+  </section>
 </BaseLayout>
 
 <style>
+  .howto { margin-top: 2rem; }
+  .howto p { color: var(--text-light); }
   .intro { color: var(--text-light); font-size: 1.05rem; }
   .grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-top: 1.25rem; }
   @media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }

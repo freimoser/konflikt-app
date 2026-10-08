@@ -59,6 +59,10 @@ else {
     if (noindex && inSitemap.has(p.route)) blocker.push(`${p.route}: steht in der Sitemap, trägt aber noindex.`);
     if (!noindex && !inSitemap.has(p.route)) blocker.push(`${p.route}: ist indexierbar, fehlt aber in der Sitemap.`);
   }
+  // Jede Sitemap-URL braucht ein lastmod (aus Inhaltsdaten bzw. Git, nie Build-Datum)
+  const smXml = read(smFile);
+  const withoutLastmod = [...smXml.matchAll(/<url>([\s\S]*?)<\/url>/g)].filter(m => !/<lastmod>/.test(m[1])).map(m => (m[1].match(/<loc>([^<]+)/) || [])[1]);
+  if (withoutLastmod.length) blocker.push(`Sitemap: ${withoutLastmod.length} URL(s) ohne lastmod, z. B. ${withoutLastmod.slice(0, 3).join(', ')}`);
   // lastmod: gültig und nicht in der Zukunft (ein „springendes“ Build-Datum wäre wertlos)
   for (const m of read(smFile).matchAll(/<lastmod>([^<]+)<\/lastmod>/g)) {
     const t = Date.parse(m[1]);

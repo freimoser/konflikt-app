@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { helplineSources, CHECKED } from '../data/sources.js';
+const checkedLabel = new Date(CHECKED).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 <BaseLayout 
   title="Hilfe in Krisen" 
@@ -9,6 +11,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <h1>Hilfe in Krisen</h1>
   <p>Konfliktlotse bietet Tipps für alltägliche Konflikte. Wenn du jedoch Angst hast, bedroht wirst, Gewalt (physisch oder psychisch) erlebst oder dich in einer akuten seelischen Notlage befindest, helfen keine Gesprächsregeln. In diesen Fällen wende dich bitte an professionelle und geschulte Stellen.</p>
   
+  <h2>Woran du erkennst, dass es kein Alltagskonflikt mehr ist</h2>
+  <ul class="signs">
+    <li>Du hast Angst vor der Reaktion der anderen Person oder passt dein Verhalten an, um sie nicht zu reizen.</li>
+    <li>Es gab Gewalt, Drohungen, erzwungene Handlungen oder sexuelle Übergriffe – auch einmalig.</li>
+    <li>Jemand kontrolliert dein Handy, dein Geld, deine Kontakte oder verfolgt dich.</li>
+    <li>Du denkst daran, dir etwas anzutun, oder fühlst dich in einer Lage, aus der du keinen Ausweg siehst.</li>
+  </ul>
+  <p>
+    Trifft etwas davon zu, ist ein klärendes Gespräch nicht der richtige erste Schritt. Sprich mit einer Person, der du
+    vertraust, und nutze die Angebote unten – sie sind kostenfrei, und du musst deinen Namen nicht nennen. Wenn du dir
+    unsicher bist, ob deine Lage „schlimm genug“ ist: Ruf trotzdem an. Genau dafür sind diese Stellen da. Bei akuter
+    Gefahr wähle sofort den Notruf.
+  </p>
+
   <div class="emergency-contacts">
     <h2>Akute Gefahr</h2>
     <ul>
@@ -31,14 +47,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </ul>
 
     <h2>Hilfetelefon „Gewalt an Männern“</h2>
-    <p>Unterstützung für Männer, die von Gewalt betroffen sind.</p>
+    <p>Unterstützung für Männer, die von Gewalt betroffen sind – Montag bis Donnerstag 8 bis 20 Uhr, Freitag 8 bis 15 Uhr.</p>
     <ul>
       <li><strong>Telefon:</strong> 0800 1239900</li>
       <li><strong>Online:</strong> <a href="https://www.maennerhilfetelefon.de/" target="_blank" rel="noopener noreferrer">www.maennerhilfetelefon.de</a></li>
     </ul>
 
     <h2>WEISSER RING Opfer-Telefon</h2>
-    <p>Hilfe für Kriminalitätsopfer.</p>
+    <p>Hilfe für Kriminalitätsopfer – kostenfrei und anonym, täglich von 7 bis 22 Uhr.</p>
     <ul>
       <li><strong>Telefon:</strong> 116 006</li>
       <li><strong>Online:</strong> <a href="https://weisser-ring.de/hilfe-fuer-opfer/opfer-telefon" target="_blank" rel="noopener noreferrer">weisser-ring.de/hilfe-fuer-opfer/opfer-telefon</a></li>
@@ -46,6 +62,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 
   <style>
+    .signs { padding-left: 1.25rem; margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
     .emergency-contacts {
       margin-top: 2rem;
     }
@@ -62,4 +79,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       margin-bottom: 0.5rem;
     }
   </style>
+  <section class="sources" aria-labelledby="quellen">
+    <h2 id="quellen">Quellen</h2>
+    <p>Alle Nummern und Erreichbarkeiten haben wir am {checkedLabel} auf den offiziellen Seiten geprüft:</p>
+    <ul>
+      {helplineSources.map(h => (
+        <li><a href={h.url} rel="noopener noreferrer">{h.name}</a>: {h.detail}</li>
+      ))}
+    </ul>
+  </section>
 </BaseLayout>

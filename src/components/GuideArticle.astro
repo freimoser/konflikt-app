@@ -5,8 +5,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
 import AdSlot from './AdSlot.astro';
 import { getMethod } from '../data/methods/index.js';
+import { topics as allTopics } from '../data/topics/index.js';
 import { getConflict } from '../data/categories/index.js';
 import { AUTHOR_SCHEMA, OPERATOR } from '../config/site';
+import { methodSources, NO_SINGLE_SOURCE, CHECKED } from '../data/sources.js';
 
 export interface Props {
   method: any;
@@ -24,12 +26,18 @@ const relatedConflicts = (method.relatedConflicts || [])
   .map((r: any) => getConflict(r.category, r.slug))
   .filter(Boolean);
 const relatedMethods = (method.relatedMethods || []).map(getMethod).filter(Boolean);
+// Methoden verlinken die Themen, die auf sie verweisen (z. B. Grenzen setzen ↔ Nein sagen lernen)
+const topicsForMethod = section === 'methoden'
+  ? allTopics.filter((t: any) => (t.relatedMethods || []).includes(method.slug)).slice(0, 3)
+  : [];
 
 const published = method.published || '2026-09-30';
 const updated = method.updated || published;
 const updatedLabel = new Date(updated).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
 
 const sectionId = (i: number) => `abschnitt-${i + 1}`;
+const sources = section === 'methoden' ? (methodSources[method.slug] || []) : [];
+const checkedLabel = new Date(CHECKED).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
 
 const breadcrumbs = [
   { label: 'Start', url: '/' },
@@ -48,6 +56,7 @@ const schemas: object[] = [
     dateModified: updated,
     mainEntityOfPage: `${Astro.site!.origin}${pageUrl}`,
     author: AUTHOR_SCHEMA,
+    ...(sources.length ? { citation: sources.map((q: any) => (q.url ? { '@type': 'CreativeWork', name: q.text, url: q.url } : q.text)) } : {}),
     publisher: { '@type': 'Organization', name: 'Konfliktlotse' },
   },
 ];
@@ -78,8 +87,10 @@ if (method.faqs?.length) {
     <header class="method-header">
       <p class="method-kicker">{method.icon} {kicker}</p>
       <h1>{method.h1}</h1>
-      <p class="method-date">Redaktion: <a href={`${baseUrl}/ueber-uns/`} rel="author">{OPERATOR.name}</a> · Aktualisiert am <time datetime={updated}>{updatedLabel}</time></p>
+      <p class="method-date">KI-gestützt erstellt, verantwortet von <a href={`${baseUrl}/ueber-uns/`} rel="author">{OPERATOR.name}</a> · Aktualisiert am <time datetime={updated}>{updatedLabel}</time></p>
     </header>
+
+    <p class="answer"><strong>Kurz gesagt:</strong> {method.summary}</p>
 
     <p class="lead">{method.intro}</p>
 
@@ -97,6 +108,7 @@ if (method.faqs?.length) {
         <li><a href="#beispiel">Beispiel: vorher und nachher</a></li>
         <li><a href="#fehler">Typische Fehler</a></li>
         <li><a href="#faq">Häufige Fragen</a></li>
+        {section === 'methoden' && <li><a href="#quellen">Quellen</a></li>}
       </ol>
     </nav>
 
@@ -186,6 +198,15 @@ if (method.faqs?.length) {
       </section>
     )}
 
+    {topicsForMethod.length > 0 && (
+      <section>
+        <h2>Themen, in denen diese Methode hilft</h2>
+        <ul class="link-list">
+          {topicsForMethod.map((t: any) => <li><a href={`${baseUrl}/themen/${t.slug}/`}>{t.icon} {t.title}</a></li>)}
+        </ul>
+      </section>
+    )}
+
     {relatedMethods.length > 0 && (
       <section>
         <h2>{section === 'themen' ? 'Methoden, die dabei helfen' : 'Passende Methoden'}</h2>
@@ -199,6 +220,20 @@ if (method.faqs?.length) {
         </div>
       </section>
     )}
+    {section === 'methoden' && (
+      <section class="sources" aria-labelledby="quellen">
+        <h2 id="quellen">Quellen</h2>
+        {sources.length > 0 ? (
+          <ul>
+            {sources.map((q: any) => <li>{q.url ? <a href={q.url} rel="noopener noreferrer">{q.text}</a> : q.text}</li>)}
+          </ul>
+        ) : (
+          <p>{NO_SINGLE_SOURCE}</p>
+        )}
+        <p class="checked">Angaben zu Urheber:innen und Jahreszahlen geprüft am {checkedLabel}.</p>
+      </section>
+    )}
+
     <p class="editorial-note">
       Begriffe wie Allparteilichkeit oder Du-Botschaft erklärt kurz das <a href={`${baseUrl}/glossar/`}>Glossar</a>.
       Wie unsere Inhalte entstehen: <a href={`${baseUrl}/ueber-uns/`}>Über Konfliktlotse</a>.
@@ -222,6 +257,11 @@ if (method.faqs?.length) {
   .toc a { text-decoration: underline; text-decoration-color: var(--border); }
   .check-cta { display: block; background: #FFF3E0; border: 1px solid #FFE0B2; border-radius: var(--radius-sm); padding: 1rem 1.1rem; color: var(--text); margin: 1.5rem 0; }
   .check-cta:hover { border-color: var(--accent); color: var(--text); }
+  .answer { background: #F0F7F4; border-left: 4px solid var(--primary); border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; margin: 1rem 0 1.25rem; }
+  .sources { margin-top: 2rem; font-size: 0.9rem; }
+  .sources ul { padding-left: 1.2rem; }
+  .sources a { text-decoration: underline; }
+  .checked { font-size: 0.8rem; color: var(--text-light); }
   .editorial-note { font-size: 0.85rem; color: var(--text-light); margin-top: 2rem; }
   .editorial-note a { text-decoration: underline; }
   .card { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 2rem 0; }

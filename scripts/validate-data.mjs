@@ -7,6 +7,8 @@ import { scenarios } from '../src/data/trainer.js';
 import { topics } from '../src/data/topics/index.js';
 import { readdirSync } from 'node:fs';
 import { glossar } from '../src/data/glossar.js';
+import { getQuickAnswer } from '../src/data/quick-answers/index.js';
+import { seoTitles } from '../src/data/seo-titles.js';
 
 const errors = [];
 const warn = [];
@@ -110,6 +112,19 @@ for (const g of glossar) {
   if (g.topic && !topicSlugs.has(g.topic)) errors.push(`${where}: Thema fehlt → ${g.topic}`);
   for (const r of g.conflicts || []) if (!getConflict(r.category, r.slug)) errors.push(`${where}: Konflikt fehlt → ${r.category}/${r.slug}`);
   checkNumbers(where, JSON.stringify(g));
+}
+
+// Kurzantworten: vollständig, Längen, keine Kannibalisierung der Titel
+const head = (t) => (t || '').split(/[:?–-]/)[0].trim().toLowerCase();
+for (const c of getAllConflicts()) {
+  const key = `${c.category}/${c.slug}`;
+  const q = getQuickAnswer(c.category, c.slug);
+  if (!q) { errors.push(`${key}: Kurzantwort fehlt (src/data/quick-answers/${c.category}.js)`); continue; }
+  if (q.toolAnswer.length < 150 || q.toolAnswer.length > 320) errors.push(`${key}: toolAnswer ${q.toolAnswer.length} Zeichen`);
+  if (q.ratgeberAnswer.length < 150 || q.ratgeberAnswer.length > 340) errors.push(`${key}: ratgeberAnswer ${q.ratgeberAnswer.length} Zeichen`);
+  if (q.ratgeberTitle.length > 44) errors.push(`${key}: ratgeberTitle ${q.ratgeberTitle.length} Zeichen (max. 44)`);
+  if (seoTitles[key] && head(seoTitles[key]) === head(q.ratgeberTitle)) errors.push(`${key}: Ratgeber- und Tool-Titel beginnen gleich (Kannibalisierung)`);
+  checkNumbers(`kurzantwort/${key}`, JSON.stringify(q));
 }
 
 const ids = new Set();

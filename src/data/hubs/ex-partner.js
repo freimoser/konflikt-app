@@ -1,5 +1,6 @@
 export default {
   id: 'ex-partner',
+  topic: 'trennung-im-guten',
   toolTitle: 'Streit mit dem Ex: Gesprächspläne für Nachrichten, Kinderübergaben und Kosten',
   toolMeta: 'Streit mit dem Ex oder der Ex? Gesprächspläne für Nachrichten, Kinderübergaben, Kosten und neue Partnerschaften – sachlich und mit Blick auf die Kinder.',
   toolIntro: [

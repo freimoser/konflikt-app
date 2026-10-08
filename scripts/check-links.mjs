@@ -37,6 +37,7 @@ const warnings = [];
 let linkCount = 0;
 const fragmentChecks = [];
 const seenTitles = new Map();
+const seenHeads = new Map();
 
 for (const file of htmlFiles) {
   const html = readFileSync(file, 'utf8');
@@ -69,16 +70,25 @@ for (const file of htmlFiles) {
     const desc = (html.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '';
     const descLen = desc.replace(/&amp;/g, '&').replace(/&#39;|&quot;/g, "'").length;
     if (descLen < 50) warnings.push(`${rel}: Meta-Description fehlt oder < 50 Zeichen`);
-    else if (descLen > 160) warnings.push(`${rel}: Meta-Description ${descLen} Zeichen (Google kürzt ab ~160)`);
+    else if (descLen > 155) warnings.push(`${rel}: Meta-Description ${descLen} Zeichen (Grenze 155)`);
     if (!/noindex/.test(html.match(/<meta name="robots" content="([^"]*)"/)?.[1] || '')) {
       const t = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
       if (seenTitles.has(t)) warnings.push(`${rel}: <title> doppelt mit ${seenTitles.get(t)}`);
       else seenTitles.set(t, rel);
+      // Kannibalisierung: gleicher Titelanfang (vor „:“) auf zwei indexierbaren Seiten
+      const tHead = t.split(/[:|]/)[0].trim().toLowerCase();
+      if (seenHeads.has(tHead)) warnings.push(`${rel}: Titelanfang „${tHead}“ wie ${seenHeads.get(tHead)} (Kannibalisierung?)`);
+      else seenHeads.set(tHead, rel);
     }
     const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
     const titleLen = title.replace(/&amp;/g, '&').replace(/&#39;|&quot;/g, "'").length;
     if (!title) errors.push(`${rel}: kein <title>`);
     else if (titleLen > 60) warnings.push(`${rel}: <title> ${titleLen} Zeichen (Google kürzt ab ~60)`);
+    const mainHtml = (html.match(/<main[\s\S]*?<\/main>/) || [''])[0];
+    const levels = [...mainHtml.matchAll(/<h([1-6])[\s>]/g)].map(m => Number(m[1]));
+    for (let i = 1; i < levels.length; i++) {
+      if (levels[i] > levels[i - 1] + 1) { warnings.push(`${rel}: Überschriften-Sprung h${levels[i - 1]} → h${levels[i]}`); break; }
+    }
     const h1s = (html.match(/<h1[\s>]/g) || []).length;
     if (h1s !== 1) warnings.push(`${rel}: ${h1s} H1-Überschriften`);
   }

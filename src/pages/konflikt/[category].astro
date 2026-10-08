@@ -5,6 +5,7 @@ import AdSlot from '../../components/AdSlot.astro';
 import { categories } from '../../data/categories/index.js';
 import { getHub } from '../../data/hubs/index.js';
 import { scenarios } from '../../data/trainer.js';
+import { getTopic } from '../../data/topics/index.js';
 
 export function getStaticPaths() {
   return categories.map(cat => ({
@@ -16,6 +17,7 @@ export function getStaticPaths() {
 const { category } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 const hub = getHub(category.id);
+const hubTopic = hub?.topic ? getTopic(hub.topic) : null;
 const trainerCount = scenarios.filter(sc => sc.conflict.category === category.id).length;
 const h1 = hub?.toolTitle || `Konflikte mit ${category.name}`;
 const breadcrumbs = [
@@ -57,6 +59,13 @@ const breadcrumbs = [
         <h2>Drei Sofort-Tipps</h2>
         <ol>{hub.quickTips.map((t: string) => <li>{t}</li>)}</ol>
       </aside>
+    )}
+
+    {hubTopic && (
+      <p class="hub-crosslink">
+        Den großen Überblick findest du im Themen-Ratgeber
+        <a href={`${baseUrl}/themen/${hubTopic.slug}/`}>{hubTopic.title}</a>.
+      </p>
     )}
 
     {trainerCount > 0 && (

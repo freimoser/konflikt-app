@@ -60,12 +60,32 @@ const breadcrumbs = [{ label: 'Start', url: '/' }, { label: 'Spiel' }];
     </a>
   </div>
 
+  <section class="guide">
+    <h2>Welche Übung passt zu dir?</h2>
+    <p>
+      Der <strong>Gesprächs-Trainer</strong> eignet sich, wenn du ein Gespräch schon vor dir hast und wissen willst, wie
+      du auf typische Sätze reagierst, die dich sonst aus dem Konzept bringen – etwa „Jetzt fang nicht schon wieder damit
+      an“. Du siehst sofort, welche Antwort das Gespräch öffnet und welche es eher verhärtet.
+    </p>
+    <p>
+      Der <strong>Eskalations-Check</strong> hilft, wenn du unsicher bist, ob ein Gespräch unter vier Augen überhaupt noch
+      sinnvoll ist. Er ordnet deinen Konflikt grob ein und sagt dir, ob Regeln, eine neutrale dritte Person oder Schutz und
+      Hilfe von außen der nächste Schritt sind.
+    </p>
+    <p>
+      Der <strong>Konflikttyp-Test</strong> richtet den Blick auf dich selbst: Neigst du eher zum Rückzug, zum Nachgeben
+      oder zum Durchsetzen? Wer seinen eigenen Stil kennt, merkt früher, wann er in ein altes Muster rutscht. Alle drei
+      Übungen sind Anregungen zur Selbstreflexion und ersetzen keine Beratung.
+    </p>
+  </section>
+
   <p class="note">
     Alle Übungen laufen direkt in deinem Browser. Du gibst nichts ein, nichts wird gespeichert oder gesendet.
   </p>
 </BaseLayout>
 
 <style>
+  .guide p { color: var(--text-light); }
   .lead { color: var(--text-light); font-size: 1.05rem; }
   .games { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1.5rem 0; }
   @media (min-width: 600px) { .games { grid-template-columns: 1fr 1fr; } }

@@ -18,6 +18,7 @@ Seitenaufrufe pro Besuch × saubere, werbetaugliche Seiten.
 | `CONTENT-LEITFADEN.md` | Wie neue Konflikte/Artikel geschrieben und eingebunden werden |
 | `SPIEL.md` | Konzepte für das interaktive „Spiel“ (Konflikt-Flow, Quiz, Trainer) |
 | `METHODEN-FORMAT.md` | Datenformat + Schreibregeln für Methoden-Artikel (`/methoden/`) |
+| `QUICK-ANSWERS-FORMAT.md` | Kurzantworten („Kurz gesagt“) + Ratgeber-Titel je Konflikt |
 | `HUB-FORMAT.md` | Texte der Kategorie-Hubs (`src/data/hubs/<id>.js`) |
 | `THEMEN-FORMAT.md` | Format für Themen-Leitartikel (`/themen/`), gleiche Vorlage wie Methoden |
 

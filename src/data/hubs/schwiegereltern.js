@@ -1,5 +1,6 @@
 export default {
   id: 'schwiegereltern',
+  topic: 'streit-an-weihnachten',
   toolTitle: 'Probleme mit den Schwiegereltern: Gesprächspläne für Kritik, Einmischung und Besuche',
   toolMeta: 'Probleme mit den Schwiegereltern? Gesprächspläne für Kritik, Einmischung in die Erziehung, Besuche und Feiertage – und wie ihr als Paar gemeinsam auftretet.',
   toolIntro: [
