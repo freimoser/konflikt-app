@@ -529,3 +529,12 @@ Auftrag: App prüfen (einfach halten), funktioniert alles, sind wir bereit für 
 - Keine Konsolenfehler; 10 Kernseiten bei 375 px ohne horizontales Scrollen.
 - 12 externe Links: alle erreichbar (cnvc.org antwortet Bots mit 406, im Browser 200).
 - Keine Änderung nötig.
+
+### Check 3 – 2026-10-15 (letzter, Loop beendet)
+- Live erreichbar: llms.txt, OG-Bild, Favicons (ico/svg/apple-touch), Sitemap. Startseite 23 KB, ~0,5 s.
+- Strukturierte Daten live (Beispiel Methode): Article mit Bild, Person, Publisher-Logo, Quellen, FAQPage, Breadcrumbs.
+- Offen (nur Betreiber): `www.konfliktlotse.app` hat noch keinen DNS-Eintrag (Cloudflare: CNAME `www` →
+  `freimoser.github.io`, DNS only). Optional: Bing Webmaster Tools (Import aus Search Console) für Bing/ChatGPT-Suche.
+
+**Fazit KISS-Check:** Technik, Funktionen und Indexierbarkeit sind in Ordnung; einziger Fehler (Titel am
+Gender-Doppelpunkt abgeschnitten) in Check 1 behoben. Seite ist bereits im Suchindex.
