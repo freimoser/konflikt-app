@@ -24,24 +24,26 @@ Beim Erledigen hier abhaken und in `LOG.md` eintragen.
 - [x] (DL 3) Neue Kategorie **Mitbewohner:in / WG** (6): Putzplan, Lärm, Gäste/Partner:in wohnt quasi mit,
       Kosten/Nebenkosten, Essen aus dem Kühlschrank, Auszug/Kündigung.
 - [x] (DL 4) Neue Kategorie **Schwiegereltern** (6), **Ex-Partner:in / Co-Parenting** (6).
-- [ ] Neue Kategorie
+- [x] (DL 6) Neue Kategorie
       **Kinder & Teenager** (7: Handyzeit, Hausaufgaben, Zimmer, Ausgehen, Respekt, Taschengeld, Geschwisterstreit).
 
 ## P1 – Qualität (neu aus DL 2)
 - [x] (DL 3) Tool-Seite: Problemtext ist auf dem Handy eine lange Textwand → erste 2 Sätze zeigen, Rest in `<details>`.
 - [x] (DL 6) Kurze SEO-Titel für alle Tool-Seiten (`src/data/seo-titles.js`), Ratgeber-Fallback.
-- [ ] (alt) Pro Konflikt `seoTitle` pflegen, wo der generische Titel holpert (z. B. „Kritisieren ständig“ →
+- [x] (Mini/SEO 2026-10-08, erledigt über `seo-titles.js`, `display-title.js` und `ratgeberTitle`) Pro Konflikt `seoTitle` pflegen, wo der generische Titel holpert (z. B. „Kritisieren ständig“ →
       „Eltern kritisieren ständig: Was du sagen kannst“). H1 der Tool-Seite ggf. um Kategorie ergänzen.
 - [ ] Weitere Methoden: Feedback geben (SBI), Mediation, Nein sagen, Konfliktgespräch vorbereiten,
       Streitkultur in Beziehungen, Vier-Ohren-Modell (Schulz von Thun), Kompromiss vs. Konsens.
-- [ ] `adsSensitive` für weitere Konflikte prüfen (z. B. Vertrauen gebrochen? Pflege?) – Faustregel:
-      wenn Kontrolle/Gewalt/Krise Kernthema ist.
+- [x] (Kritisch 1) `adsSensitive` für weitere Konflikte geprüft – Faustregel: nur wenn Kontrolle/Gewalt/Krise
+      Kernthema ist. Ergebnis: nur Eifersucht (bereits gesetzt). Vertrauen gebrochen, Pflege, Ex-Partner:in nennen
+      Gewalt nur in der Sicherheitsweiche → bleiben werbefähig. Eifersucht bekommt bewusst kein Trainer-Szenario.
 
 ## P2 – Spiel & Werkzeuge (siehe `SPIEL.md`)
 - [x] (DL 3) Gesprächs-Trainer (`/spiel/gespraechstrainer/`, 18 Szenarien).
 - [x] (DL 5) Trainer: 30 Szenarien, alle 10 Kategorien.
 - [x] (DL 6) Trainer: Zufallsrunde (5) als Standard, Deep-Link `#bereich-<id>`.
-- [x] (DL 7) Trainer: alle 11 Kategorien (36). Ziel weiterhin 1 Szenario pro Konflikt (73).
+- [x] (DL 7) Trainer: alle 11 Kategorien (36).
+- [x] (Kritisch 1) Trainer: 1 Szenario pro Konflikt (alle außer Eifersucht, bewusst ausgenommen).
 - [x] (DL 4) Eskalations-Check (`/spiel/eskalations-check/`).
 - [x] (DL 7) Konflikttyp-Test (`/spiel/konflikttyp/`, teilbar ohne Tracking).
 - [ ] Ich-Botschaft-Baukasten (nur Auswahllisten).
@@ -56,7 +58,7 @@ Beim Erledigen hier abhaken und in `LOG.md` eintragen.
 - [x] (DL 3) Datenprüfung `scripts/validate-data.mjs` (Verweise, Pflichtfelder, Nummern).
 - [x] (DL 4) Orphan-Check in `validate-data.mjs`.
 - [x] (DL 6) Title-Längen-Check (> 70 Zeichen = Warnung) im Linkprüfer.
-- [ ] `HowTo`-JSON-LD ist von Google eingestellt → nicht einbauen; stattdessen saubere `Article`/`FAQPage`.
+- [x] (Entscheidung) `HowTo`-JSON-LD ist von Google eingestellt → nicht einbauen; stattdessen saubere `Article`/`FAQPage`.
 
 ## Neue Content-Ideen (Brainstorming DL 3)
 - ✅ (DL 8) Kategorie **Vermieter:in**. Offen: Kategorie **Arbeit allgemein / Kund:innen** (unfreundliche Kund:innen, Reklamation, Kund:in duzt/ist übergriffig → Krisenweiche).

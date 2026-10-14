@@ -446,3 +446,24 @@ Titel/Descriptions; Lighthouse (lokal, mobil) 100/100/100/100 auf Start, Tool, R
 
 **Offen (nur Betreiber):** DNS-Eintrag `www` → GitHub Pages; echte redaktionelle Durchsicht der wichtigsten Seiten
 mit eigenen Beispielen/Erfahrungen (größter verbleibender Hebel gegen „Scaled Content“).
+
+## Kritischer Loop (4 Durchläufe) – ab 2026-10-14
+
+Auftrag je Durchlauf: (1) alle offenen Punkte erledigen, die ohne Betreiber gehen; (2) kritisch prüfen, was SEO/GEO
+schadet, und selbst beheben. Jeder Durchlauf: `npm run verify` + `npm audit` grün → Commit/Push `main` → Live-Check.
+Nach Durchlauf 4 Cron beenden.
+
+### Kritisch 1 – 2026-10-14
+- **Trainer vollständig:** +36 Szenarien → 78, jeder Konflikt hat eine Übung (außer Eifersucht, bewusst: Kontroll-Nähe,
+  `adsSensitive`). Jede Tool-Seite verlinkt damit „Üben vor dem Ernstfall“ auf ihr Szenario (`#<id>`, Sprungmarken
+  vom Linkprüfer geprüft). Position der „klar“-Antwort gleichmäßig verteilt; keine Rechts-/Zahlenaussagen (Erbe, Pflege,
+  Gehalt, WG-Auszug geprüft).
+- **adsSensitive geprüft:** nur Eifersucht hat Kontrolle als Kernthema; übrige Konflikte nennen Gewalt nur in der
+  Sicherheitsweiche → unverändert.
+- **SEO-kritisch – doppelte Übersichten:** Shingle-Vergleich (6-Wort-Folgen) aller Seiten: `/konflikt/<kat>/` und
+  `/ratgeber/<kat>/` überschnitten sich zu 30–45 % (gleiche Kurzbeschreibung je Karte). Ratgeber-Übersicht zeigt jetzt den
+  ersten Satz der Warum-Antwort (`ratgeberAnswer`) → alle indexierbaren Paare < 25 %. Übrig nur `/suche/` (noindex).
+- **GEO:** `llms.txt` nennt Gesprächs-Trainer und „Über uns“ (Entstehung/Verantwortung).
+- IDEEN bereinigt (Kinder, seoTitle, adsSensitive, HowTo, Trainer abgehakt).
+- Nicht gemacht: `dateModified` pauschal auf 2026-10-08 heben – die Kurz-gesagt-Box ist eine kleine Ergänzung; ein
+  Massen-Update des Datums wirkt wie Frische-Manipulation. Datum nur bei substanzieller Überarbeitung ändern.

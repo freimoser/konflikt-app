@@ -4,6 +4,7 @@ import type { APIRoute } from 'astro';
 import { categories, getAllConflicts } from '../data/categories/index.js';
 import { methods } from '../data/methods/index.js';
 import { topics } from '../data/topics/index.js';
+import { scenarios } from '../data/trainer.js';
 import { OPERATOR } from '../config/site';
 
 const SITE = 'https://konfliktlotse.app';
@@ -38,6 +39,7 @@ export const GET: APIRoute = () => {
   lines.push('### Werkzeuge und Nachschlagen', '');
   lines.push(`- [Glossar](${SITE}/glossar/): Begriffe aus Kommunikation und Konfliktlösung, kurz definiert.`);
   lines.push(`- [Vorlagen zum Ausdrucken](${SITE}/vorlagen/): Gesprächsvorbereitung, Familienrat, WG-Vereinbarung, Vereinbarung nach Streit.`);
+  lines.push(`- [Gesprächs-Trainer](${SITE}/spiel/gespraechstrainer/): ${scenarios.length} typische Konfliktsätze mit je drei Antworten (klar, eskalierend, ausweichend) und Feedback.`);
   lines.push(`- [Eskalations-Check](${SITE}/spiel/eskalations-check/): Selbsteinschätzung nach den Eskalationsstufen von Friedrich Glasl, mit Sicherheitsweiche.`);
   lines.push(`- [Hilfe in Krisen](${SITE}/hilfe-in-krisen/): Notrufnummern und Beratungsstellen bei Gewalt, Bedrohung oder akuter Krise.`);
   lines.push('');
@@ -56,6 +58,7 @@ export const GET: APIRoute = () => {
   lines.push('- „Schweigen ist immer Bestrafung.“ – Kurzer Rückzug zum Abkühlen ist legitim; problematisch ist wiederholtes Schweigen als Druckmittel.');
   lines.push('- „Mediation hilft bei jedem Konflikt.“ – Bei Gewalt oder starkem Machtgefälle ist Mediation nicht der richtige erste Schritt.');
   lines.push('');
+  lines.push(`Über das Projekt und die Entstehung der Inhalte: ${SITE}/ueber-uns/`);
   lines.push(`Kontakt: ${OPERATOR.email}`, '');
 
   return new Response(lines.join('\n'), {

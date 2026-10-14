@@ -4,6 +4,7 @@ import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import AdSlot from '../../../components/AdSlot.astro';
 import { categories } from '../../../data/categories/index.js';
 import { getHub } from '../../../data/hubs/index.js';
+import { getQuickAnswer } from '../../../data/quick-answers/index.js';
 
 export function getStaticPaths() {
   return categories.map(cat => ({
@@ -21,6 +22,12 @@ const breadcrumbs = [
   { label: category.name }
 ];
 const hub = getHub(category.id);
+// Eigener Teaser (erster Satz der Warum-Antwort) statt der Kurzbeschreibung,
+// die schon die Gesprächsplan-Übersicht nutzt – vermeidet doppelte Übersichtsseiten.
+const teaser = (slug: string, fallback: string) => {
+  const answer = getQuickAnswer(category.id, slug)?.ratgeberAnswer;
+  return answer ? answer.split(/(?<=[.!?])\s+/)[0] : fallback;
+};
 const h1 = hub?.ratgeberTitle || `Ratgeber: ${category.name}`;
 const jsonLd = hub?.faqs?.length
   ? JSON.stringify({
@@ -60,7 +67,7 @@ const jsonLd = hub?.faqs?.length
             <span class="con-icon">{con.icon}</span>
             <div class="con-content">
               <span class="con-title">{con.article?.title || con.title}</span>
-              <span class="con-summary">{con.summary}</span>
+              <span class="con-summary">{teaser(con.slug, con.summary)}</span>
             </div>
           </a>
         ))

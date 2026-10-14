@@ -76,6 +76,126 @@ export const scenarios = [
     ],
     tip: 'Nimm die Befürchtung hinter dem Vorwurf ernst und mach einen Vorschlag, der beiden Spielraum lässt.'
   },
+  {
+    id: 'partner-zeit-1',
+    conflict: { category: 'partner', slug: 'keine-zeit' },
+    context: 'Zum dritten Mal in diesem Monat wird euer gemeinsamer Abend verschoben. Du sagst, dass dich das traurig macht.',
+    says: 'Du weißt doch, wie viel bei mir gerade los ist. Ich kann mich nicht zerteilen.',
+    options: [
+      {
+        text: 'Bei dir ist immer was los. Ich komme in deinem Leben offenbar ganz hinten.',
+        type: 'eskalierend',
+        feedback: '„Immer“ und „ganz hinten“ machen aus einem vollen Monat ein Urteil über die Beziehung. Dein Gegenüber wird sich eher rechtfertigen als planen.'
+      },
+      {
+        text: 'Ich sehe, dass du gerade viel stemmst. Mir fehlt nur ein fester Platz für uns. Können wir einen Abend pro Woche eintragen, der nicht verschoben wird – auch wenn er kurz ist?',
+        type: 'klar',
+        feedback: 'Du erkennst die Belastung an und machst aus „mehr Zeit“ einen kleinen, verlässlichen Termin. Das ist leichter zuzusagen als ein vager Wunsch.'
+      },
+      {
+        text: 'Ja, schon klar. Dann machen wir es halt irgendwann, wenn es passt.',
+        type: 'ausweichend',
+        feedback: '„Irgendwann“ verschwindet schnell zwischen anderen Terminen. Deine Enttäuschung bleibt und meldet sich beim nächsten Verschieben wieder.'
+      }
+    ],
+    tip: 'Mach aus „mehr Zeit“ einen festen Termin, den ihr beide schützt.'
+  },
+  {
+    id: 'partner-smartphone-1',
+    conflict: { category: 'partner', slug: 'smartphone-staendig' },
+    context: 'Beim Abendessen tippt dein:e Partner:in fast durchgehend auf dem Handy. Du sprichst es ruhig an.',
+    says: 'Ich schreibe doch nur kurz zurück. Warum ist das gleich wieder ein Drama?',
+    options: [
+      {
+        text: 'Kurz zurückschreiben ist okay. Mir geht es ums Essen: Mögen wir die Handys da ab jetzt beiseitelegen? Wenn etwas Dringendes ist, sag einfach Bescheid.',
+        type: 'klar',
+        feedback: 'Du gibst zu, dass einzelne Nachrichten kein Problem sind, und begrenzt die Bitte auf eine Situation. Mit der Ausnahme für Dringendes wirkt sie fair statt kontrollierend.'
+      },
+      {
+        text: 'Weil du süchtig nach dem Ding bist. Mit mir redest du ja eh kaum noch.',
+        type: 'eskalierend',
+        feedback: '„Süchtig“ ist ein Etikett, das kränkt und zur Gegenwehr einlädt. Über das gemeinsame Essen redet danach niemand mehr.'
+      },
+      {
+        text: 'Ist ja gut, war nicht so gemeint.',
+        type: 'ausweichend',
+        feedback: 'Du nimmst dein Anliegen zurück, obwohl es dir wichtig ist. Beim nächsten Essen sitzt du wahrscheinlich wieder vor einem Display.'
+      }
+    ],
+    tip: 'Bitte um handyfreie Momente statt um weniger Handy insgesamt.'
+  },
+  {
+    id: 'partner-naehe-1',
+    conflict: { category: 'partner', slug: 'unterschiedliche-naehebeduerfnisse' },
+    context: 'Du möchtest abends gern kuscheln und reden. Dein:e Partner:in zieht sich nach der Arbeit lieber allein zurück. Du sprichst an, dass du dich manchmal zurückgewiesen fühlst.',
+    says: 'Ich brauche halt meine Ruhe. Das hat doch nichts mit dir zu tun.',
+    options: [
+      {
+        text: 'Okay, dann frag ich einfach nicht mehr. Ich will dich ja nicht nerven.',
+        type: 'ausweichend',
+        feedback: 'Du verzichtest ganz auf dein Bedürfnis, statt es auszuhandeln. Der Abstand wird größer, und die Kränkung bleibt unausgesprochen.'
+      },
+      {
+        text: 'Es fühlt sich aber so an. Du bist einfach kalt, und ich muss immer betteln.',
+        type: 'eskalierend',
+        feedback: '„Kalt“ beschreibt dein Gegenüber als Person, nicht euer Problem. Wer sich so gesehen fühlt, zieht sich eher noch weiter zurück.'
+      },
+      {
+        text: 'Gut, dass du das sagst, das beruhigt mich. Wie wäre es so: Du hast nach der Arbeit erst mal deine Stunde für dich, und danach nehmen wir uns ein bisschen Zeit zu zweit?',
+        type: 'klar',
+        feedback: 'Du nimmst die Erklärung an und suchst eine Lösung, in der beide Bedürfnisse Platz haben. Ruhe und Nähe stehen dann nicht mehr gegeneinander.'
+      }
+    ],
+    tip: 'Nähe und Rückzug lassen sich oft nacheinander statt gegeneinander planen.'
+  },
+  {
+    id: 'partner-zukunft-1',
+    conflict: { category: 'partner', slug: 'verschiedene-zukunftsplaene' },
+    context: 'Du wünschst dir, in den nächsten Jahren zusammenzuziehen und über Kinder zu sprechen. Als du es ansprichst, wird dein:e Partner:in einsilbig.',
+    says: 'Können wir das nicht einfach auf uns zukommen lassen? Du machst so einen Druck.',
+    options: [
+      {
+        text: 'Ich lasse seit zwei Jahren alles auf mich zukommen. Irgendwann musst du dich mal entscheiden.',
+        type: 'eskalierend',
+        feedback: 'Der Satz klingt nach Ultimatum. Dein Gegenüber fühlt sich gedrängt und hat noch weniger Raum, ehrlich über Zweifel zu sprechen.'
+      },
+      {
+        text: 'Ich will dich nicht drängen. Ich möchte nur wissen, wie du darüber denkst, auch wenn du noch unsicher bist. Magst du dir am Wochenende in Ruhe eine Stunde dafür nehmen?',
+        type: 'klar',
+        feedback: 'Du nimmst den Druck aus dem Moment, ohne das Thema fallen zu lassen. Ein verabredetes Gespräch gibt beiden Zeit, sich vorzubereiten.'
+      },
+      {
+        text: 'Stimmt, ist ja auch noch viel Zeit. Vergiss, dass ich gefragt habe.',
+        type: 'ausweichend',
+        feedback: 'Du schiebst eine Frage weg, die dich beschäftigt. Die Unsicherheit wächst, während ihr beide so tut, als wäre alles geklärt.'
+      }
+    ],
+    tip: 'Frag nach den Gedanken des anderen, bevor du eine Entscheidung einforderst.'
+  },
+  {
+    id: 'partner-dusche-1',
+    conflict: { category: 'partner', slug: 'pinkeln-in-der-dusche' },
+    context: 'Du hast mitbekommen, dass dein:e Partner:in beim Duschen pinkelt, und gesagt, dass dich das stört.',
+    says: 'Ach komm, das macht doch jeder. Das wird doch eh weggespült.',
+    options: [
+      {
+        text: 'Kann sein, dass das viele machen. Für mich ist es trotzdem eine Ekelgrenze, weil wir die Dusche teilen. Kannst du vorher kurz aufs Klo gehen?',
+        type: 'klar',
+        feedback: 'Du streitest nicht darüber, was „normal“ ist, sondern sagst, was es für dich bedeutet. Die Bitte ist einfach und sofort umsetzbar.'
+      },
+      {
+        text: 'Hm, ja, wahrscheinlich übertreibe ich.',
+        type: 'ausweichend',
+        feedback: 'Du redest dein Gefühl klein, obwohl es echt ist. Der Ekel bleibt und begleitet dich jetzt bei jedem Duschen.'
+      },
+      {
+        text: 'Ich finde das einfach widerlich. Das ist so rücksichtslos von dir.',
+        type: 'eskalierend',
+        feedback: '„Widerlich“ und „rücksichtslos“ treffen die Person statt die Gewohnheit. Dein Gegenüber wird sich eher verteidigen als etwas ändern.'
+      }
+    ],
+    tip: 'Diskutiere nicht, was normal ist – sag, wo deine Grenze im gemeinsamen Bad liegt.'
+  },
 
   // ---------- Chef:in ----------
   {
@@ -149,6 +269,102 @@ export const scenarios = [
       }
     ],
     tip: 'Stell konkrete, leicht beantwortbare Fragen, statt allgemein um Feedback zu bitten.'
+  },
+  {
+    id: 'chef-ernst-1',
+    conflict: { category: 'chef', slug: 'nicht-ernst-genommen' },
+    context: 'Im Teammeeting schlägst du vor, die Kund:innenumfrage zu verkürzen. Deine Führungskraft geht sofort zum nächsten Punkt über.',
+    says: 'Ja, gute Idee vielleicht, aber dafür haben wir jetzt echt keine Zeit.',
+    options: [
+      {
+        text: 'Klar, kein Problem. War nur so ein Gedanke.',
+        type: 'ausweichend',
+        feedback: 'Du machst deinen Vorschlag selbst kleiner, als er ist. So bestätigst du ungewollt, dass er übergangen werden kann.'
+      },
+      {
+        text: 'Für meine Ideen ist ja nie Zeit. Bei anderen hörst du komischerweise immer zu.',
+        type: 'eskalierend',
+        feedback: 'Der Vergleich vor dem ganzen Team bringt deine Führungskraft in eine Verteidigungshaltung. Über die Umfrage wird so bestimmt nicht mehr gesprochen.'
+      },
+      {
+        text: 'Verstehe, die Agenda ist voll. Ich schreibe dir den Vorschlag in fünf Sätzen auf. Können wir ihn nächste Woche zehn Minuten besprechen?',
+        type: 'klar',
+        feedback: 'Du respektierst den Zeitrahmen und sorgst trotzdem dafür, dass die Idee nicht verloren geht. Ein kurzer schriftlicher Vorschlag ist leicht anzunehmen.'
+      }
+    ],
+    tip: 'Wenn eine Idee übergangen wird, gib ihr einen festen Platz statt einen zweiten Anlauf im falschen Moment.'
+  },
+  {
+    id: 'chef-unfair-1',
+    conflict: { category: 'chef', slug: 'unfaire-behandlung' },
+    context: 'Das neue Projekt, für das du dich gemeldet hattest, geht ohne Erklärung an eine Kollegin. Du fragst im Vier-Augen-Gespräch nach.',
+    says: 'Das war eine ganz normale Entscheidung. Du musst nicht alles persönlich nehmen.',
+    options: [
+      {
+        text: 'Ich will die Entscheidung gar nicht infrage stellen, ich möchte sie verstehen. Was hat den Ausschlag gegeben, und was müsste ich zeigen, damit ich beim nächsten Projekt dran bin?',
+        type: 'klar',
+        feedback: 'Du bleibst sachlich und fragst nach Kriterien statt nach Schuld. So bekommst du Informationen, mit denen du arbeiten kannst.'
+      },
+      {
+        text: 'Persönlich? Jeder hier sieht doch, dass du Lieblinge hast.',
+        type: 'eskalierend',
+        feedback: 'Der Vorwurf der Bevorzugung ist ohne Beispiele kaum zu besprechen. Deine Führungskraft wird ihn zurückweisen, und du erfährst nichts Neues.'
+      },
+      {
+        text: 'Nein, nein, passt schon. Ich war nur neugierig.',
+        type: 'ausweichend',
+        feedback: 'Du ziehst deine berechtigte Frage zurück. Das Gefühl, übergangen zu werden, bleibt, und beim nächsten Mal ist es schwerer, es anzusprechen.'
+      }
+    ],
+    tip: 'Frag nach Kriterien, nicht nach Schuld – damit kannst du beim nächsten Mal arbeiten.'
+  },
+  {
+    id: 'chef-erwartungen-1',
+    conflict: { category: 'chef', slug: 'unklare-erwartungen' },
+    context: 'Du hast ein Konzept abgegeben, um das deine Führungskraft im Vorbeigehen gebeten hatte. Jetzt kommt es mit vielen Anmerkungen zurück.',
+    says: 'So hatte ich mir das eigentlich nicht vorgestellt.',
+    options: [
+      {
+        text: 'Woher soll ich das wissen? Du sagst ja nie, was du eigentlich willst.',
+        type: 'eskalierend',
+        feedback: 'Der Ärger über die Extraarbeit ist nachvollziehbar, aber „nie“ macht daraus einen Angriff. Statt zu klären, was fehlt, verteidigt sich dein Gegenüber.'
+      },
+      {
+        text: 'Okay, dann lass uns kurz klären, was es braucht: Für wen ist das Konzept, was soll am Ende drinstehen, und bis wann? Ich schicke dir danach eine Gliederung, bevor ich weiterschreibe.',
+        type: 'klar',
+        feedback: 'Du holst das Briefing nach, das gefehlt hat, und baust eine frühe Abstimmung ein. Das spart beiden die nächste Runde Nacharbeit.'
+      },
+      {
+        text: 'Tut mir leid, ich überarbeite es und versuche, es besser zu treffen.',
+        type: 'ausweichend',
+        feedback: 'Du nimmst die Schuld auf dich und rätst erneut ins Blaue. Die Chance ist groß, dass auch die zweite Fassung nicht passt.'
+      }
+    ],
+    tip: 'Kläre Ziel, Umfang und Termin, bevor du weiterarbeitest – nicht erst bei der nächsten Abgabe.'
+  },
+  {
+    id: 'chef-gehalt-1',
+    conflict: { category: 'chef', slug: 'gehalt-abgelehnt' },
+    context: 'Du hast um eine Gehaltserhöhung gebeten und deine zusätzlichen Aufgaben des letzten Jahres aufgezählt. Deine Führungskraft lehnt ab.',
+    says: 'Das Budget ist dieses Jahr leider ausgeschöpft. Da kann ich nichts machen.',
+    options: [
+      {
+        text: 'Ach so, okay. Dann eben nicht.',
+        type: 'ausweichend',
+        feedback: 'Du beendest das Gespräch ohne Perspektive. Deine Leistung bleibt unbesprochen, und beim nächsten Anlauf fängst du wieder bei null an.'
+      },
+      {
+        text: 'Für andere Sachen ist ja auch Geld da. Ich lasse mich hier nicht länger ausnutzen.',
+        type: 'eskalierend',
+        feedback: 'Der Satz klingt nach Drohung und Vorwurf zugleich. Das macht es deiner Führungskraft schwer, sich später doch noch für dich einzusetzen.'
+      },
+      {
+        text: 'Verstehe, dass das Budget begrenzt ist. Dann lass uns festhalten, wann wir wieder darüber sprechen und woran du die Erhöhung festmachst. Gibt es bis dahin andere Möglichkeiten, etwa Weiterbildung?',
+        type: 'klar',
+        feedback: 'Du akzeptierst die Grenze für den Moment und sicherst dir einen Termin und Kriterien. Damit wird aus dem Nein ein Plan.'
+      }
+    ],
+    tip: 'Mach aus einem Nein zum Gehalt einen Termin mit klaren Kriterien.'
   },
 
   // ---------- Freunde ----------
@@ -224,6 +440,102 @@ export const scenarios = [
     ],
     tip: 'Zieh eine konkrete Linie, statt über die Absicht des anderen zu streiten.'
   },
+  {
+    id: 'freunde-zuhoeren-1',
+    conflict: { category: 'freunde', slug: 'hoert-nicht-zu' },
+    context: 'Beim Kaffee erzählst du deiner Freundin von einem Streit mit deiner Schwester. Nach zwei Sätzen ist sie wieder bei ihrem eigenen Wochenende. Du sprichst es an.',
+    says: 'Ich wollte dir doch nur zeigen, dass ich so was auch kenne. Jetzt bin ich wieder die Böse?',
+    options: [
+      {
+        text: 'Immer muss sich alles um dich drehen. Ich komme bei dir einfach nie zu Wort.',
+        type: 'eskalierend',
+        feedback: '„Immer“ und „nie“ machen aus einem Moment ein Urteil über die ganze Freundschaft. Sie wird eher Gegenbeispiele sammeln als nachfragen.'
+      },
+      {
+        text: 'Nein, gar nicht. Ich glaube dir, dass du mitfühlen wolltest. Ich bin nur noch nicht fertig. Darf ich kurz zu Ende erzählen? Danach will ich gern von deinem Wochenende hören.',
+        type: 'klar',
+        feedback: 'Du nimmst ihre gute Absicht ernst und holst dir trotzdem deinen Raum zurück. Das Angebot, danach zuzuhören, hält die Gegenseitigkeit sichtbar.'
+      },
+      {
+        text: 'Ach, schon okay. Erzähl ruhig, meins kann warten.',
+        type: 'ausweichend',
+        feedback: 'Du stellst dein Thema hinten an, obwohl es dich gerade beschäftigt. Sie merkt nicht, dass dir etwas gefehlt hat, und das Muster bleibt.'
+      }
+    ],
+    tip: 'Bitte ums Ausreden-Lassen, statt die Freundin für ihr Mitreden zu verurteilen.'
+  },
+  {
+    id: 'freunde-einseitig-1',
+    conflict: { category: 'freunde', slug: 'einseitige-freundschaft' },
+    context: 'Seit Monaten schlägst du jedes Treffen vor und meldest dich zuerst. Als du deinem Freund sagst, dass du dir mehr Initiative von ihm wünschst, reagiert er gereizt.',
+    says: 'Jetzt führst du also Strichliste, wer sich wie oft meldet? Das ist doch keine Freundschaft.',
+    options: [
+      {
+        text: 'Mir geht es nicht ums Zählen. Ich merke nur, dass ich mich fast immer zuerst melde, und das macht mich auf Dauer traurig. Magst du das nächste Treffen vorschlagen?',
+        type: 'klar',
+        feedback: 'Du weist den Vorwurf ruhig zurück und sagst, wie es dir damit geht. Die Bitte ist klein genug, dass er sie leicht erfüllen kann.'
+      },
+      {
+        text: 'Stimmt, vergiss es. Ich melde mich dann einfach wieder.',
+        type: 'ausweichend',
+        feedback: 'Du nimmst dein Anliegen zurück und bestätigst die alte Rollenverteilung. Das Ungleichgewicht bleibt, und dein Frust wächst leise weiter.'
+      },
+      {
+        text: 'Eine Freundschaft ist es nur von meiner Seite. Du nimmst halt gern und gibst nichts zurück.',
+        type: 'eskalierend',
+        feedback: 'Der Satz klingt wie eine Abrechnung. Dein Freund wird sich verteidigen, statt zu überlegen, was er beitragen könnte.'
+      }
+    ],
+    tip: 'Sag, was dir fehlt, und bitte um einen konkreten ersten Schritt – ohne Bilanz zu ziehen.'
+  },
+  {
+    id: 'freunde-vertrauen-1',
+    conflict: { category: 'freunde', slug: 'vertrauen-gebrochen' },
+    context: 'Du hast einer Freundin im Vertrauen von deiner Jobsuche erzählt. Jetzt hat dich eine gemeinsame Bekannte darauf angesprochen. Du stellst deine Freundin zur Rede.',
+    says: 'Mann, das ist mir halt rausgerutscht. Ich hab mich doch entschuldigt, jetzt lass es auch mal gut sein.',
+    options: [
+      {
+        text: 'Dir kann man echt nichts anvertrauen. Du plauderst doch alles aus.',
+        type: 'eskalierend',
+        feedback: 'Die Verletzung ist nachvollziehbar, aber als Pauschalurteil über ihren Charakter lässt der Satz keinen Weg zurück offen. Über das, was passiert ist, redet ihr dann nicht mehr.'
+      },
+      {
+        text: 'Ja, du hast recht, ist nicht so schlimm.',
+        type: 'ausweichend',
+        feedback: 'Du redest die Verletzung klein, damit Ruhe ist. Innerlich bleibt das Misstrauen, und deine Freundin weiß nicht, was du künftig brauchst.'
+      },
+      {
+        text: 'Ich nehme die Entschuldigung an. Gut ist es für mich trotzdem noch nicht, dafür brauche ich etwas Zeit. Und künftig: Was ich dir über die Arbeit erzähle, bleibt bitte bei dir.',
+        type: 'klar',
+        feedback: 'Du würdigst die Entschuldigung, ohne so zu tun, als wäre alles wieder wie vorher. Die klare Absprache gibt Vertrauen eine Chance, neu zu wachsen.'
+      }
+    ],
+    tip: 'Eine Entschuldigung annehmen heißt nicht, dass Vertrauen sofort wieder da sein muss.'
+  },
+  {
+    id: 'freunde-ausgeschlossen-1',
+    conflict: { category: 'freunde', slug: 'fuehle-mich-ausgeschlossen' },
+    context: 'Auf Instagram siehst du Fotos von einem Grillabend deiner Clique, von dem du nichts wusstest. Du fragst einen Freund aus der Runde, wie das kam.',
+    says: 'Das war total spontan. Und ehrlich, du hast in letzter Zeit eh meistens abgesagt.',
+    options: [
+      {
+        text: 'Okay, dann bin ich wohl selbst schuld.',
+        type: 'ausweichend',
+        feedback: 'Du übernimmst die Erklärung, ohne zu sagen, was dich verletzt hat. So ändert sich beim nächsten spontanen Treffen nichts.'
+      },
+      {
+        text: 'Ihr habt euch doch schon längst gegen mich entschieden. Sagt es wenigstens ehrlich.',
+        type: 'eskalierend',
+        feedback: 'Du unterstellst eine Absicht, die er wahrscheinlich bestreiten wird. Das Gespräch dreht sich dann um Rechtfertigungen statt um deinen Wunsch.'
+      },
+      {
+        text: 'Kann sein, dass ich öfter abgesagt habe. Trotzdem fände ich es schön, wenn ihr mich weiter fragt. Ob ich Zeit habe, entscheide ich lieber selbst.',
+        type: 'klar',
+        feedback: 'Du lässt seinen Einwand gelten und machst deutlich, was dir wichtig ist. Die Bitte ist einfach umzusetzen und kommt ohne Vorwurf aus.'
+      }
+    ],
+    tip: 'Bitte darum, gefragt zu werden – die Entscheidung, ob du Zeit hast, triffst du selbst.'
+  },
 
   // ---------- Kolleg:innen ----------
   {
@@ -297,6 +609,102 @@ export const scenarios = [
       }
     ],
     tip: 'Ein Kompliment verpflichtet zu nichts – du darfst Danke sagen und trotzdem Nein.'
+  },
+  {
+    id: 'kollegen-laestern-1',
+    conflict: { category: 'kollegen', slug: 'redet-schlecht' },
+    context: 'Du hast mitbekommen, dass ein Kollege in der Kaffeeküche über deine Präsentation gelästert hat. Du sprichst ihn unter vier Augen an.',
+    says: 'Wer erzählt denn so was? Ich hab doch nur gesagt, was alle denken.',
+    options: [
+      {
+        text: 'Wer es war, ist hier nicht der Punkt. Wenn dir an meiner Präsentation etwas nicht gefallen hat, sag es mir bitte direkt. Was hättest du anders gemacht?',
+        type: 'klar',
+        feedback: 'Du lässt dich nicht auf die Suche nach der Quelle ein und lädst ihn zu direkter Kritik ein. Damit wird aus Flurfunk ein Gespräch, mit dem du arbeiten kannst.'
+      },
+      {
+        text: 'Ach, war bestimmt ein Missverständnis. Lass uns das vergessen.',
+        type: 'ausweichend',
+        feedback: 'Du beendest das Gespräch, bevor es etwas klären konnte. Er lernt dabei, dass Lästern hinter deinem Rücken ohne Folgen bleibt.'
+      },
+      {
+        text: 'Typisch. Vorne freundlich und hinten rum lästern, das kannst du gut.',
+        type: 'eskalierend',
+        feedback: 'Das Etikett trifft seinen Charakter, nicht die Situation. Er wird sich wehren und vermutlich erst recht über dich reden.'
+      }
+    ],
+    tip: 'Streite nicht über die Quelle, sondern bitte darum, dass Kritik direkt bei dir ankommt.'
+  },
+  {
+    id: 'kollegen-zusammenarbeit-1',
+    conflict: { category: 'kollegen', slug: 'keine-zusammenarbeit' },
+    context: 'Für einen gemeinsamen Bericht brauchst du seit einer Woche die Zahlen deiner Kollegin. Auf deine Nachrichten kommt keine Antwort, also sprichst du sie am Schreibtisch an.',
+    says: 'Ich hab echt Wichtigeres zu tun. Dann mach den Bericht halt allein.',
+    options: [
+      {
+        text: 'Wichtigeres? Du hast doch nur keine Lust, das merkt hier jeder.',
+        type: 'eskalierend',
+        feedback: 'Du unterstellst ein Motiv und ziehst das Team als Zeugen hinzu. Sie wird dichtmachen, und die Zahlen kommen noch später.'
+      },
+      {
+        text: 'Ich glaube dir, dass du gerade viel hast. Allein geht es aber nicht, weil mir deine Zahlen fehlen. Schaffst du sie bis Donnerstag? Sonst klären wir die Priorität gemeinsam mit unserer Teamleitung.',
+        type: 'klar',
+        feedback: 'Du erkennst ihre Belastung an und bleibst bei dem, was die Aufgabe braucht. Mit Termin und einem fairen nächsten Schritt wird die Sache verbindlich, ohne zu drohen.'
+      },
+      {
+        text: 'Okay, ich such mir die Zahlen irgendwie selbst zusammen.',
+        type: 'ausweichend',
+        feedback: 'Du übernimmst stillschweigend ihren Teil und doppelte Arbeit. Beim nächsten gemeinsamen Projekt ist das dann schon die neue Normalität.'
+      }
+    ],
+    tip: 'Sag genau, was du bis wann brauchst, und biete für den Engpass einen gemeinsamen Klärungsweg an.'
+  },
+  {
+    id: 'kollegen-anerkennung-1',
+    conflict: { category: 'kollegen', slug: 'anerkennung-fehlt' },
+    context: 'Im Teammeeting wurde ein Kollege für das neue Kundenkonzept gelobt, an dem du die Analyse gemacht hast. Dein Anteil wurde nicht erwähnt. Du sprichst ihn danach an.',
+    says: 'Jetzt mach mal halblang. Das war Teamarbeit, da muss doch nicht jeder einzeln gefeiert werden.',
+    options: [
+      {
+        text: 'Hast recht, ist ja auch egal, wer was gemacht hat.',
+        type: 'ausweichend',
+        feedback: 'Du sagst, es sei egal, obwohl es dich offensichtlich beschäftigt. Dein Beitrag bleibt unsichtbar, auch beim nächsten Mal.'
+      },
+      {
+        text: 'Teamarbeit, genau. Darum möchte ich, dass sichtbar ist, wer was beigetragen hat. Nenn beim nächsten Termin bitte kurz, dass die Analyse von mir kommt, oder ich stelle den Teil selbst vor.',
+        type: 'klar',
+        feedback: 'Du greifst sein Argument auf und machst daraus einen fairen Anspruch. Die zwei Varianten lassen ihm Spielraum und sorgen trotzdem für Klarheit.'
+      },
+      {
+        text: 'Teamarbeit heißt bei dir offenbar: Die anderen arbeiten, und du kassierst das Lob.',
+        type: 'eskalierend',
+        feedback: 'Der Sarkasmus trifft, verhärtet aber die Fronten. Er wird sich rechtfertigen, statt deinen Anteil künftig zu nennen.'
+      }
+    ],
+    tip: 'Gerade bei Teamarbeit darf sichtbar sein, wer welchen Teil geleistet hat.'
+  },
+  {
+    id: 'kollegen-verteilung-1',
+    conflict: { category: 'kollegen', slug: 'aufgaben-unfair-verteilt' },
+    context: 'Schon wieder landen die Monatsabrechnung und die Kundenanfragen bei dir, während andere die neuen Projekte bekommen. Du sprichst es in der Teamrunde an.',
+    says: 'Du bist da halt am schnellsten drin. Warum sollte das jetzt jemand anders machen?',
+    options: [
+      {
+        text: 'Weil ihr es euch bequem macht und ich die ganze Drecksarbeit erledige.',
+        type: 'eskalierend',
+        feedback: 'Der Vorwurf trifft alle auf einmal. Statt über die Verteilung zu reden, verteidigt sich jetzt die ganze Runde.'
+      },
+      {
+        text: 'Na gut, dann mache ich es halt weiter.',
+        type: 'ausweichend',
+        feedback: 'Du gibst nach, bevor überhaupt jemand die Verteilung angeschaut hat. Die Mehrarbeit bleibt bei dir, der Frust auch.'
+      },
+      {
+        text: 'Schnell bin ich, weil ich es seit Monaten mache. Ich möchte aber auch an neuen Projekten mitarbeiten. Lass uns die Abrechnung rotieren, ich arbeite die nächste Person gern ein.',
+        type: 'klar',
+        feedback: 'Du erklärst, woher dein Tempo kommt, und machst einen konkreten Vorschlag. Mit dem Angebot zur Einarbeitung fällt es dem Team leichter, zuzustimmen.'
+      }
+    ],
+    tip: 'Mach aus „unfair“ einen konkreten Vorschlag, wie sich die Arbeit anders verteilen lässt.'
   },
 
   // ---------- Nachbarn ----------
@@ -372,6 +780,78 @@ export const scenarios = [
     ],
     tip: 'Frag bei Pauschalvorwürfen nach konkreten Beispielen, statt dich zu verteidigen.'
   },
+  {
+    id: 'nachbarn-muell-1',
+    conflict: { category: 'nachbarn', slug: 'muell-und-geruch' },
+    context: 'Vor der Wohnungstür gegenüber stehen seit Tagen zwei Müllsäcke im Treppenhaus, und der Geruch zieht bis in deinen Flur. Du klingelst bei deiner Nachbarin.',
+    says: 'Die Tonnen unten sind ständig voll. Wo soll ich das Zeug denn sonst hinstellen?',
+    options: [
+      {
+        text: 'Das mit den vollen Tonnen kenne ich. Im Treppenhaus riecht es aber inzwischen stark. Kannst du die Säcke heute noch runterbringen? Und wegen der Tonnen schreiben wir gern zusammen an die Hausverwaltung.',
+        type: 'klar',
+        feedback: 'Du nimmst ihren Einwand ernst, bleibst aber bei der akuten Bitte. Der Vorschlag, gemeinsam an die Verwaltung zu schreiben, macht aus dem Streit ein gemeinsames Problem.'
+      },
+      {
+        text: 'Mir doch egal, wohin. Aber hier stinkt es wegen dir wie auf einer Müllkippe.',
+        type: 'eskalierend',
+        feedback: 'Der Vergleich beschämt sie, und die Schuldzuweisung lässt keinen Raum für ihr Problem mit den Tonnen. Sie wird sich eher verteidigen als die Säcke wegbringen.'
+      },
+      {
+        text: 'Ach so, ja, dann ist das wohl so. Ich mach einfach meine Tür zu.',
+        type: 'ausweichend',
+        feedback: 'Du gibst dich mit dem Geruch ab, obwohl er dein Zuhause betrifft. Die Säcke bleiben stehen, und der Ärger staut sich bei dir.'
+      }
+    ],
+    tip: 'Trenne die akute Bitte vom gemeinsamen Organisationsproblem – beides darf auf den Tisch.'
+  },
+  {
+    id: 'nachbarn-haustier-1',
+    conflict: { category: 'nachbarn', slug: 'haustiere-stoeren' },
+    context: 'Der Hund deiner Nachbarin bellt an Werktagen oft lange, während sie nicht zu Hause ist. Du sprichst sie im Treppenhaus darauf an.',
+    says: 'Mein Hund bellt nicht. Der ist total lieb, das hätte ich doch gemerkt.',
+    options: [
+      {
+        text: 'Du bist ja auch nie da, wenn es passiert. Wer sein Tier den ganzen Tag allein lässt, sollte keinen Hund haben.',
+        type: 'eskalierend',
+        feedback: 'Du sprichst ihr ab, gut für ihr Tier zu sorgen. Sie wird den Hund und sich verteidigen, statt zuzuhören.'
+      },
+      {
+        text: 'Wenn du da bist, ist er bestimmt ruhig. Es passiert vor allem vormittags, wenn du weg bist, oft eine Stunde am Stück. Ich notiere mir diese Woche mal die Zeiten, dann schauen wir zusammen, was helfen könnte.',
+        type: 'klar',
+        feedback: 'Du glaubst ihr ihre Erfahrung und lieferst, was ihr fehlt: konkrete Beobachtungen. Der nächste Schritt ist klein und gemeinsam.'
+      },
+      {
+        text: 'Ach so, dann hab ich mich vielleicht verhört.',
+        type: 'ausweichend',
+        feedback: 'Du zweifelst an deiner Wahrnehmung, nur weil sie es nicht mitbekommt. Das Bellen geht weiter, und dein Ärger auch.'
+      }
+    ],
+    tip: 'Wer das Problem nicht selbst erlebt, braucht konkrete Beobachtungen statt Vorwürfe.'
+  },
+  {
+    id: 'nachbarn-hecke-1',
+    conflict: { category: 'nachbarn', slug: 'grundstuecksgrenzen' },
+    context: 'Die Hecke deines Nachbarn ragt seit dem Sommer weit über den Zaun in dein Gemüsebeet. Du sprichst ihn am Gartenzaun an.',
+    says: 'Die Hecke steht seit zwanzig Jahren so. Da hat sich noch nie jemand beschwert.',
+    options: [
+      {
+        text: 'Das glaube ich dir, und die Hecke gefällt mir ja auch. Nur hängt sie inzwischen so weit rüber, dass in meinem Beet kaum noch etwas wächst. Könntest du meine Seite im Herbst zurückschneiden? Beim Wegräumen helfe ich gern.',
+        type: 'klar',
+        feedback: 'Du stellst die Gewohnheit nicht infrage, sondern beschreibst, was sich verändert hat. Mit Zeitpunkt und Hilfsangebot ist die Bitte leicht anzunehmen.'
+      },
+      {
+        text: 'Dann pflanze ich mein Gemüse eben woanders.',
+        type: 'ausweichend',
+        feedback: 'Du räumst deinen eigenen Garten für seine Hecke. Das Problem wächst wortwörtlich weiter.'
+      },
+      {
+        text: 'Dass sich keiner beschwert hat, heißt nicht, dass es keinen stört. Du machst hier einfach, was du willst.',
+        type: 'eskalierend',
+        feedback: 'Aus einer Hecke wird ein Urteil über seinen Charakter. Er wird sich eher verteidigen als zur Heckenschere greifen.'
+      }
+    ],
+    tip: 'Gewohnheit ist kein Gegenargument – beschreib, was sich für dich konkret verändert hat.'
+  },
 
   // ---------- Eltern ----------
   {
@@ -445,6 +925,102 @@ export const scenarios = [
       }
     ],
     tip: 'Mach deutlich, dass die Grenze der Situation gilt, nicht der Beziehung.'
+  },
+  {
+    id: 'eltern-verstehen-1',
+    conflict: { category: 'eltern', slug: 'versteht-mich-nicht' },
+    context: 'Du erzählst deinen Eltern, dass du deine feste Bürostelle kündigst, um eine Ausbildung im Handwerk zu beginnen.',
+    says: 'Das verstehen wir einfach nicht. Du wirfst alles weg, wofür du so lange gearbeitet hast.',
+    options: [
+      {
+        text: 'Ihr habt noch nie verstanden, was mir wichtig ist. Ihr wollt nur, dass ich so lebe wie ihr.',
+        type: 'eskalierend',
+        feedback: '„Noch nie“ macht aus einer Entscheidung eine Abrechnung. Deine Eltern verteidigen sich, statt nachzufragen.'
+      },
+      {
+        text: 'Vielleicht habt ihr recht. Ich denk noch mal drüber nach.',
+        type: 'ausweichend',
+        feedback: 'Du stellst eine durchdachte Entscheidung infrage, um den Moment zu entschärfen. Beim nächsten Gespräch fängst du wieder bei null an.'
+      },
+      {
+        text: 'Ich sehe, dass euch das Sorgen macht, und ihr müsst es auch nicht gut finden. Entschieden habe ich mich trotzdem. Wenn ihr wissen wollt, was mich daran reizt, erzähle ich es euch beim nächsten Besuch in Ruhe.',
+        type: 'klar',
+        feedback: 'Du verlangst keine Zustimmung, nur Respekt für deine Entscheidung. Das Angebot lässt ihnen Raum, Fragen zu stellen, wenn sie so weit sind.'
+      }
+    ],
+    tip: 'Du brauchst nicht ihr Einverständnis – nur Respekt für deine Entscheidung.'
+  },
+  {
+    id: 'eltern-erwartungen-1',
+    conflict: { category: 'eltern', slug: 'ueberhoehte-erwartungen' },
+    context: 'Beim Sonntagskaffee fragt dein Vater wieder, warum du dich nicht auf die Leitungsstelle beworben hast. Du sagst, dass du mit deiner jetzigen Stelle zufrieden bist.',
+    says: 'Mit deinen Fähigkeiten verschenkst du dich da doch. Wir wollen nur das Beste für dich.',
+    options: [
+      {
+        text: 'Das weiß ich, und es freut mich, dass ihr mir so viel zutraut. Für mich ist das Beste gerade genau diese Stelle, mit Zeit für mein Leben daneben. Lasst uns die Beförderung bitte nicht bei jedem Besuch besprechen.',
+        type: 'klar',
+        feedback: 'Du nimmst das Wohlwollen an und stellst deinen eigenen Maßstab daneben. Die Bitte zum Schluss betrifft nur das Thema, nicht die Beziehung.'
+      },
+      {
+        text: 'Das Beste für euch, meinst du. Ihr wollt doch nur was zum Angeben bei den Verwandten.',
+        type: 'eskalierend',
+        feedback: 'Du unterstellst ein Motiv, das sie kränkt. Danach geht es um ihre Ehre und nicht mehr um deinen Weg.'
+      },
+      {
+        text: 'Ja, mal sehen. Vielleicht bewerbe ich mich nächstes Jahr.',
+        type: 'ausweichend',
+        feedback: 'Du machst eine Aussicht auf, die du gar nicht meinst. Die Erwartung bleibt bestehen und kommt beim nächsten Besuch zurück.'
+      }
+    ],
+    tip: 'Du kannst die gute Absicht annehmen, ohne den Maßstab zu übernehmen.'
+  },
+  {
+    id: 'eltern-partner-1',
+    conflict: { category: 'eltern', slug: 'akzeptieren-partner-nicht' },
+    context: 'Deine Mutter hat zu ihrem Geburtstag nur dich eingeladen, nicht deine:n Partner:in. Du rufst sie deswegen an.',
+    says: 'Ich will an meinem Geburtstag einfach keinen Stress. Du weißt doch, dass das nicht passt.',
+    options: [
+      {
+        text: 'Okay, dann komme ich eben allein. Ist ja nur ein Nachmittag.',
+        type: 'ausweichend',
+        feedback: 'Du gehst über die Ausladung hinweg, um den Frieden zu halten. Deine Beziehung wird damit stillschweigend zur Nebensache.'
+      },
+      {
+        text: 'Ich verstehe, dass du einen entspannten Tag willst. Für mich gehören wir zusammen: Entweder wir kommen zu zweit, oder ich feiere mit dir an einem anderen Tag nach. Und ich würde gern hören, was dir an uns schwerfällt.',
+        type: 'klar',
+        feedback: 'Du stehst zu deiner Beziehung, ohne den Kontakt zu deiner Mutter aufs Spiel zu setzen. Die Frage am Ende öffnet ein Gespräch über ihre Vorbehalte.'
+      },
+      {
+        text: 'Nicht passt? Du bist einfach engstirnig und gönnst mir mein Glück nicht.',
+        type: 'eskalierend',
+        feedback: 'Das Etikett macht deine Mutter zur Angeklagten. Sie wird ihre Ablehnung eher verteidigen als überdenken.'
+      }
+    ],
+    tip: 'Steh sichtbar zu deiner Beziehung und lass trotzdem eine Tür für das Gespräch offen.'
+  },
+  {
+    id: 'eltern-pflege-1',
+    conflict: { category: 'eltern', slug: 'streit-um-pflege' },
+    context: 'Dein Vater schafft den Haushalt nach einem Sturz kaum noch allein. Du hast vorgeschlagen, dass zweimal pro Woche ein Pflegedienst kommt.',
+    says: 'Ich lasse doch keine Fremden in mein Haus. Dafür habe ich ja dich.',
+    options: [
+      {
+        text: 'Du denkst echt nur an dich. Ich hab auch noch einen Job und ein eigenes Leben.',
+        type: 'eskalierend',
+        feedback: 'Dein Ärger ist verständlich, aber als Vorwurf hört dein Vater vor allem Ablehnung. Seine Angst vor fremder Hilfe wird dadurch eher größer.'
+      },
+      {
+        text: 'Na gut, dann komm ich halt öfter vorbei. Irgendwie kriegen wir das schon hin.',
+        type: 'ausweichend',
+        feedback: 'Du sagst etwas zu, das dich auf Dauer überfordern kann. Die Frage nach Unterstützung ist damit nur vertagt.'
+      },
+      {
+        text: 'Ich bin für dich da, und daran ändert sich nichts. Mehr als zwei Nachmittage pro Woche schaffe ich aber nicht. Lass uns gemeinsam zu einer Pflegeberatung gehen und schauen, welche Hilfe sich für dich gut anfühlt.',
+        type: 'klar',
+        feedback: 'Du sicherst ihm deine Nähe zu und sagst ehrlich, wo deine Grenze liegt. Die gemeinsame Beratung lässt ihm Mitsprache, statt über seinen Kopf hinweg zu entscheiden.'
+      }
+    ],
+    tip: 'Sag zuerst, was bleibt – und dann ehrlich, was du nicht leisten kannst.'
   },
 
   // ---------- Geschwister ----------
@@ -520,6 +1096,78 @@ export const scenarios = [
     ],
     tip: 'Trenne das Erzählen vom Vergleichen und benenne genau, was dich stört.'
   },
+  {
+    id: 'geschwister-bevorzugung-1',
+    conflict: { category: 'geschwister', slug: 'bevorzugung' },
+    context: 'Du hast zufällig erfahren, dass deine Schwester von euren Eltern Geld für ihre Wohnung bekommen hat. Als du es ihr gegenüber ansprichst, reagiert sie gereizt.',
+    says: 'Was kann ich denn dafür? Das musst du mit Mama und Papa klären, nicht mit mir.',
+    options: [
+      {
+        text: 'Stimmt, vergiss es. Ist ja euer Ding.',
+        type: 'ausweichend',
+        feedback: 'Du schluckst die Kränkung herunter. Der Groll bleibt und färbt das nächste Treffen mit deiner Schwester.'
+      },
+      {
+        text: 'Du warst schon immer das Lieblingskind, und du hast es genossen.',
+        type: 'eskalierend',
+        feedback: 'Du machst sie für das Verhalten eurer Eltern verantwortlich. Sie wird sich verteidigen, und der Graben zwischen euch wird tiefer.'
+      },
+      {
+        text: 'Du hast recht, entschieden haben das Mama und Papa, und mit ihnen rede ich auch. Dir erzähle ich es, weil es mich getroffen hat und ich nicht will, dass das unausgesprochen zwischen uns steht.',
+        type: 'klar',
+        feedback: 'Du sprichst sie von der Schuld frei und sagst offen, was in dir vorgeht. So steht ihr nicht gegeneinander, sondern könnt beide ehrlich bleiben.'
+      }
+    ],
+    tip: 'Trenn die Entscheidung der Eltern von der Beziehung zu deinen Geschwistern.'
+  },
+  {
+    id: 'geschwister-funkstille-1',
+    conflict: { category: 'geschwister', slug: 'funkstille' },
+    context: 'Nach Monaten ohne Kontakt triffst du deinen Bruder bei der Geburtstagsfeier eures Vaters. Du sagst ihm, dass du ihn vermisst hast.',
+    says: 'Jetzt auf einmal? Du hast dich doch auch nie gemeldet.',
+    options: [
+      {
+        text: 'Stimmt, ich hab mich auch zurückgezogen, und das tut mir leid. Ich würde gern wieder mehr voneinander mitbekommen. Wollen wir nächste Woche mal telefonieren, einfach so, ohne gleich alles aufzurollen?',
+        type: 'klar',
+        feedback: 'Du nimmst deinen Anteil an, ohne dich kleinzumachen, und machst ein kleines, konkretes Angebot. Er muss nicht sofort alles aufarbeiten, um Ja zu sagen.'
+      },
+      {
+        text: 'Ich hab es wenigstens versucht. Du warst doch derjenige, der eingeschnappt war.',
+        type: 'eskalierend',
+        feedback: 'Ihr seid sofort wieder bei der Schuldfrage. Das Gespräch endet wahrscheinlich dort, wo die Funkstille angefangen hat.'
+      },
+      {
+        text: 'Ja, okay, war blöd von mir. Lassen wir das.',
+        type: 'ausweichend',
+        feedback: 'Du nimmst die ganze Schuld auf dich und brichst ab. Die Annäherung, die du eigentlich wolltest, findet nicht statt.'
+      }
+    ],
+    tip: 'Nach langer Stille öffnet ein kleines Angebot mehr als die Frage, wer angefangen hat.'
+  },
+  {
+    id: 'geschwister-erbe-1',
+    conflict: { category: 'geschwister', slug: 'streit-ums-erbe' },
+    context: 'Wenige Wochen nach dem Tod eurer Mutter will dein Bruder das Elternhaus schnell verkaufen. Du möchtest dir mit der Entscheidung mehr Zeit lassen.',
+    says: 'Du hast dich die letzten Jahre doch kaum um Mama gekümmert. Und jetzt willst du mitreden?',
+    options: [
+      {
+        text: 'Und du hast dich nur blicken lassen, wenn es um Geld ging.',
+        type: 'eskalierend',
+        feedback: 'Ihr rechnet alte Rechnungen gegeneinander auf. Über das Haus wird so nicht mehr gesprochen, nur noch darüber, wer das bessere Kind war.'
+      },
+      {
+        text: 'Du warst viel öfter bei ihr als ich, das weiß ich, und danke dafür. Beim Haus möchte ich trotzdem mitentscheiden. Lass uns ein paar Wochen Abstand nehmen und es dann gemeinsam mit einer neutralen Beratung anschauen.',
+        type: 'klar',
+        feedback: 'Du erkennst seinen Einsatz an, ohne deine Stimme aufzugeben. Der Abstand nimmt Druck aus einer Entscheidung, die mitten in der Trauer schwerfällt.'
+      },
+      {
+        text: 'Dann entscheidet ihr das halt. Ich will keinen Streit.',
+        type: 'ausweichend',
+        feedback: 'Du ziehst dich zurück, obwohl dir das Haus wichtig ist. Der Ärger darüber kann später zwischen euch stehen, wenn sich nichts mehr ändern lässt.'
+      }
+    ],
+    tip: 'Würdige, was der andere getragen hat – und bleib trotzdem Teil der Entscheidung.'
+  },
 
   // ---------- Mitbewohner:innen ----------
   {
@@ -593,6 +1241,78 @@ export const scenarios = [
       }
     ],
     tip: 'Klär die offene Rechnung nach der alten Abmachung und verhandle Änderungen für die Zukunft.'
+  },
+  {
+    id: 'mitbewohner-laerm-1',
+    conflict: { category: 'mitbewohner', slug: 'laerm-in-der-wg' },
+    context: 'Dein Mitbewohner hört unter der Woche bis nach Mitternacht laut Musik, du musst um sechs aufstehen. Am Nachmittag sprichst du ihn in der Küche darauf an.',
+    says: 'Das ist eine WG und kein Kloster. Kauf dir halt Ohrstöpsel.',
+    options: [
+      {
+        text: 'Mit dir kann man echt nicht zusammenwohnen. Du denkst immer nur an dich.',
+        type: 'eskalierend',
+        feedback: '„Immer“ und das Urteil über seine Person machen aus einer Lärmfrage einen Charakterstreit. Er wird sich eher verteidigen, als über Uhrzeiten zu reden.'
+      },
+      {
+        text: 'Stimmt, ein Kloster will ich auch nicht. Am Wochenende ist mir das egal, aber unter der Woche muss ich früh raus. Kannst du sonntags bis donnerstags ab 23 Uhr leiser machen oder Kopfhörer nehmen?',
+        type: 'klar',
+        feedback: 'Du gibst ihm in einem Punkt recht und grenzt dein Anliegen genau ein. Mit Tagen und Uhrzeit wird aus „zu laut“ eine Bitte, die er leicht einhalten kann.'
+      },
+      {
+        text: 'Hm, okay. Dann probiere ich das mal mit Ohrstöpseln.',
+        type: 'ausweichend',
+        feedback: 'Du übernimmst das Problem allein, obwohl es euch beide betrifft. Der Schlafmangel bleibt, und der Ärger darüber wächst leise weiter.'
+      }
+    ],
+    tip: 'Mach aus „zu laut“ eine Bitte mit Tagen und Uhrzeit.'
+  },
+  {
+    id: 'mitbewohner-dauerbesuch-1',
+    conflict: { category: 'mitbewohner', slug: 'partner-wohnt-mit' },
+    context: 'Der Freund deiner Mitbewohnerin ist seit Wochen fast jeden Tag da, morgens ist das Bad ständig belegt. Du sprichst sie an, als ihr beide allein seid.',
+    says: 'Er ist doch total nett. Ich dachte, du magst ihn.',
+    options: [
+      {
+        text: 'Nett ist er schon. Ist auch nicht so schlimm, vergiss es einfach.',
+        type: 'ausweichend',
+        feedback: 'Du nimmst dein Anliegen zurück, weil es sich nach Kritik an ihm anfühlt. Am nächsten Morgen stehst du wieder vor dem besetzten Bad.'
+      },
+      {
+        text: 'Darum geht es nicht. Wenn er hier wohnen will, soll er halt Miete zahlen. Sonst kann er ja bei sich bleiben.',
+        type: 'eskalierend',
+        feedback: 'Der Ton klingt nach Ultimatum und richtet sich gegen ihn persönlich. Deine Mitbewohnerin wird ihre Beziehung verteidigen, statt mit dir nach einer Regel zu suchen.'
+      },
+      {
+        text: 'Ich mag ihn wirklich, darum geht es mir gar nicht. Er ist inzwischen fast jeden Tag hier, und das merken wir beim Bad und bei den Kosten. Lass uns beim nächsten WG-Abend eine Regel für Übernachtungsbesuch finden.',
+        type: 'klar',
+        feedback: 'Du trennst die Person von der Frage, wie viele Menschen sich die Wohnung teilen. Der Vorschlag für den WG-Abend gibt allen eine faire Chance mitzureden.'
+      }
+    ],
+    tip: 'Sprich über die Wohnsituation, nicht darüber, ob du den Besuch magst.'
+  },
+  {
+    id: 'mitbewohner-auszug-1',
+    conflict: { category: 'mitbewohner', slug: 'auszug-und-kuendigung' },
+    context: 'Du hast eine neue Stelle in einer anderen Stadt und erzählst deiner Mitbewohnerin, dass du aus der WG ausziehen willst.',
+    says: 'Und jetzt? Soll ich mich etwa allein um alles kümmern? Du lässt uns einfach hängen.',
+    options: [
+      {
+        text: 'Ich verstehe, dass das plötzlich kommt. Allein lasse ich euch damit nicht: Ich suche aktiv mit nach jemandem für mein Zimmer. Lass uns am Wochenende aufschreiben, was bis zur Übergabe alles zu klären ist.',
+        type: 'klar',
+        feedback: 'Du nimmst die Sorge ernst und zeigst, dass du deinen Teil übernimmst. Eine gemeinsame Liste macht aus dem Schreck einen planbaren Ablauf.'
+      },
+      {
+        text: 'Ach, vergiss es. Dann bleibe ich eben noch eine Weile, bis ihr jemanden habt.',
+        type: 'ausweichend',
+        feedback: 'Du stellst deine eigene Entscheidung zurück, um den Ärger zu vermeiden. Offen bleibt damit, wann und wie der Auszug wirklich passiert.'
+      },
+      {
+        text: 'Hängen lassen? Ich habe hier lang genug alles allein organisiert. Jetzt bist du mal dran.',
+        type: 'eskalierend',
+        feedback: 'Du rechnest alte Rechnungen auf, statt den Auszug zu planen. Die letzten Wochen in der WG werden dadurch eher angespannt als fair.'
+      }
+    ],
+    tip: 'Kündige einen Auszug zusammen mit dem an, was du selbst dazu beiträgst.'
   },
 
   // ---------- Schwiegereltern ----------
@@ -668,6 +1388,78 @@ export const scenarios = [
     ],
     tip: 'Sprecht als Paar mit einer Stimme und macht ein konkretes Angebot, statt euch zu rechtfertigen.'
   },
+  {
+    id: 'schwiegereltern-erziehung-1',
+    conflict: { category: 'schwiegereltern', slug: 'mischen-sich-in-erziehung-ein' },
+    context: 'Beim Abholen siehst du, dass euer Kind kurz vor dem Abendessen eine Tüte Gummibärchen bekommen hat, obwohl ihr als Paar darum gebeten hattet, das nicht zu tun. Du sprichst deinen Schwiegervater an.',
+    says: 'Bei Oma und Opa gelten eben andere Regeln. Euch hat das früher auch nicht geschadet.',
+    options: [
+      {
+        text: 'Ihr habt eure Kinder damals erzogen. Jetzt sind wir dran, und ihr haltet euch gefälligst daran.',
+        type: 'eskalierend',
+        feedback: 'Der Ton spricht deinem Schwiegervater jede Rolle ab. Er fühlt sich als Großvater zurückgesetzt und wird die Bitte eher als Angriff verstehen.'
+      },
+      {
+        text: 'Ja, stimmt wahrscheinlich. Ist ja nur ab und zu.',
+        type: 'ausweichend',
+        feedback: 'Du gibst eine Absprache auf, die ihr gemeinsam getroffen habt. Beim nächsten Besuch gilt sie dann vermutlich gar nicht mehr.'
+      },
+      {
+        text: 'Bei euch darf vieles anders sein, das gehört dazu. Bei Süßem vor dem Abendessen bitten wir euch aber, bei unserer Regel zu bleiben. Nach dem Essen ist etwas Kleines völlig in Ordnung.',
+        type: 'klar',
+        feedback: 'Du lässt den Großeltern ihren Spielraum und benennst nur die eine Regel, die euch wichtig ist. Mit dem „Nach dem Essen“ bekommt er einen Weg, der für alle passt.'
+      }
+    ],
+    tip: 'Lass den Großeltern ihren Spielraum und halte nur an den wenigen Regeln fest, die euch wirklich wichtig sind.'
+  },
+  {
+    id: 'schwiegereltern-rueckhalt-1',
+    conflict: { category: 'schwiegereltern', slug: 'partner-steht-nicht-hinter-mir' },
+    context: 'Beim Sonntagsbesuch hat deine Schwiegermutter wieder eure Erziehung kritisiert, und dein:e Partner:in hat geschwiegen. Auf der Heimfahrt sprichst du es an.',
+    says: 'Das sind halt meine Eltern. Ich kann doch nicht jedes Mal einen Streit anfangen.',
+    options: [
+      {
+        text: 'Das verlange ich auch gar nicht. Ich möchte nur nicht allein dastehen. Wenn so ein Kommentar kommt, reicht mir ein Satz von dir wie „Das haben wir zusammen entschieden.“ Können wir das so ausmachen?',
+        type: 'klar',
+        feedback: 'Du nimmst die Angst vor Streit ernst und bittest um etwas Kleines, Konkretes. Ein vereinbarter Satz ist leichter zu sagen als ein großes Gespräch mit den eigenen Eltern.'
+      },
+      {
+        text: 'Schon klar, Mama geht eben immer vor. Ich bin ja nur die Person, mit der du lebst.',
+        type: 'eskalierend',
+        feedback: 'Der Vorwurf zwingt dein:e Partner:in, sich zwischen dir und den Eltern zu entscheiden. Das führt eher zu Rückzug als zu Rückhalt.'
+      },
+      {
+        text: 'Okay, schon gut. Ich halte beim nächsten Mal einfach den Mund.',
+        type: 'ausweichend',
+        feedback: 'Du verzichtest auf Unterstützung, die du eigentlich brauchst. Die Kränkung bleibt, und beim nächsten Besuch fühlst du dich wieder allein.'
+      }
+    ],
+    tip: 'Bitte dein:e Partner:in nicht um einen Streit, sondern um einen einzigen Satz, der zeigt: Wir sind ein Team.'
+  },
+  {
+    id: 'schwiegereltern-ablehnung-1',
+    conflict: { category: 'schwiegereltern', slug: 'mag-mich-nicht' },
+    context: 'Du erfährst, dass deine Schwiegereltern einen Familienausflug geplant und nur deine:n Partner:in eingeladen haben. Du rufst deine Schwiegermutter an.',
+    says: 'Wir dachten, das ist eher was für die Familie.',
+    options: [
+      {
+        text: 'Ach so, klar, verstehe ich. Viel Spaß euch.',
+        type: 'ausweichend',
+        feedback: 'Du schluckst die Kränkung und bestätigst damit, dass du nicht dazugehörst. Beim nächsten Familientreffen wiederholt sich das wahrscheinlich.'
+      },
+      {
+        text: 'Das hat mich getroffen, ich sehe mich inzwischen als Teil der Familie. Ich muss nicht überall dabei sein, aber ich möchte gefragt werden. Ladet uns beim nächsten Mal bitte zu zweit ein.',
+        type: 'klar',
+        feedback: 'Du sagst offen, was die Ausladung mit dir macht, ohne Absicht zu unterstellen. Die Bitte ist klein und verlangt keine Zuneigung, nur Einbeziehung.'
+      },
+      {
+        text: 'Ihr habt mich von Anfang an nicht gewollt. Das merkt doch jeder.',
+        type: 'eskalierend',
+        feedback: 'Die Generalisierung lässt deiner Schwiegermutter nur die Wahl zwischen Zugeben und Abstreiten. Über den konkreten Ausflug sprecht ihr dann nicht mehr.'
+      }
+    ],
+    tip: 'Du kannst Zuneigung nicht einfordern, Respekt und Einbeziehung schon.'
+  },
 
   // ---------- Ex-Partner:in ----------
   {
@@ -741,6 +1533,78 @@ export const scenarios = [
       }
     ],
     tip: 'Antworte kurz, sachlich und freundlich auf den Inhalt – auf Vorwürfe musst du nicht eingehen.'
+  },
+  {
+    id: 'ex-partner-abwertung-1',
+    conflict: { category: 'ex-partner', slug: 'redet-schlecht-vor-kindern' },
+    context: 'Deine Tochter hat erzählt, beim anderen Elternteil heiße es, du seist schuld an der Trennung. Du sprichst deine:n Ex abends am Telefon darauf an, die Kinder schlafen.',
+    says: 'Ich sag den Kindern halt die Wahrheit. Die sollen nicht denken, ich wäre der Böse.',
+    options: [
+      {
+        text: 'Ich verstehe, dass du vor ihnen nicht schlecht dastehen willst, das will ich auch nicht. Die Kinder sollen sich aber nicht für eine Seite entscheiden müssen. Lass uns ausmachen, dass wir beide vor ihnen nicht über die Trennung urteilen.',
+        type: 'klar',
+        feedback: 'Du nimmst das Anliegen deines Gegenübers ernst und lenkst den Blick auf die Kinder. Die Regel gilt für euch beide und ist deshalb leichter anzunehmen.'
+      },
+      {
+        text: 'Die Wahrheit? Dann erzähle ich ihnen mal meine Version, mal sehen, wie dir das gefällt.',
+        type: 'eskalierend',
+        feedback: 'Du drohst, mit gleicher Münze zurückzuzahlen, und die Kinder stehen dann noch tiefer zwischen euch. Der Loyalitätskonflikt wird größer, nicht kleiner.'
+      },
+      {
+        text: 'Na ja, vielleicht ist ja was dran. Ich sage dazu lieber nichts.',
+        type: 'ausweichend',
+        feedback: 'Du lässt eine einseitige Darstellung stehen, die deine Tochter belastet. Für sie bleibt unklar, wem sie glauben soll.'
+      }
+    ],
+    tip: 'Schlag eine Regel vor, die für beide Haushalte gilt – Kinder brauchen keine Seite, sondern beide Eltern.'
+  },
+  {
+    id: 'ex-partner-neue-beziehung-1',
+    conflict: { category: 'ex-partner', slug: 'neue-partnerschaft' },
+    context: 'Dein:e Ex will die Kinder am nächsten Wochenende mit der neuen Partnerin bekannt machen. Du hast gefragt, ob ihr das vorher kurz besprechen könnt.',
+    says: 'Du bist doch nur eifersüchtig. Mein Privatleben geht dich nichts mehr an.',
+    options: [
+      {
+        text: 'Und du denkst nur an dich. Die Kinder sind dir doch völlig egal.',
+        type: 'eskalierend',
+        feedback: 'Du sprichst deinem Gegenüber ab, ein guter Elternteil zu sein. Das macht jede Absprache zum Kennenlernen fast unmöglich.'
+      },
+      {
+        text: 'Hast recht, ist deine Sache. Mach, wie du meinst.',
+        type: 'ausweichend',
+        feedback: 'Du ziehst dich zurück, obwohl es um eure gemeinsamen Kinder geht. Wie sie auf das Treffen vorbereitet werden, bleibt offen.'
+      },
+      {
+        text: 'Mit wem du zusammen bist, ist wirklich deine Sache. Mir geht es nur um die Kinder: Sie sollten von dir hören, dass es jemand Neues gibt, bevor sie die Person treffen. Können wir kurz absprechen, wie ihr das macht?',
+        type: 'klar',
+        feedback: 'Du lässt den Eifersuchtsvorwurf liegen und erkennst die Privatsphäre deines Gegenübers an. Deine Bitte bezieht sich nur auf das, was euch beide als Eltern betrifft.'
+      }
+    ],
+    tip: 'Trenne die neue Beziehung von der Frage, wie die Kinder gut darauf vorbereitet werden.'
+  },
+  {
+    id: 'ex-partner-freunde-1',
+    conflict: { category: 'ex-partner', slug: 'gemeinsame-freunde' },
+    context: 'Du warst auf dem Geburtstag einer Freundin, die ihr beide seit Jahren kennt. Am nächsten Tag schreibt dir dein:e Ex.',
+    says: 'Hab gehört, du warst bei Lea. Die war eigentlich zuerst meine Freundin.',
+    options: [
+      {
+        text: 'Ich hab dich nicht gefragt, wen du triffst. Also lass mich auch in Ruhe.',
+        type: 'eskalierend',
+        feedback: 'Der schroffe Ton schließt die Tür, bevor ein Gespräch beginnt. Der Streit landet so leicht bei Lea, die zwischen euch steht.'
+      },
+      {
+        text: 'Lea ist mit uns beiden befreundet, und ich möchte sie nicht verlieren. Ich bitte niemanden, sich zu entscheiden, und erzähle dort auch nichts über dich. Ich wünsche mir, dass wir beide das so halten.',
+        type: 'klar',
+        feedback: 'Du sagst klar, dass die Freundschaft bleibt, und versprichst, nichts weiterzutragen. Weil die Bitte für euch beide gilt, wirkt sie nicht wie ein Vorwurf.'
+      },
+      {
+        text: 'Okay, sorry. Dann gehe ich da nächstes Mal nicht mehr hin.',
+        type: 'ausweichend',
+        feedback: 'Du gibst eine Freundschaft auf, um Ärger zu vermeiden. Auf Dauer verlierst du so Menschen, die dir wichtig sind.'
+      }
+    ],
+    tip: 'Freund:innen gehören niemandem – zieh sie nicht in eure Trennung hinein.'
   },
 
   // ---------- Kinder ----------
