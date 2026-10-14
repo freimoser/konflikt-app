@@ -130,7 +130,7 @@ export const kollegenCategory = {
             answer: 'Nein, Sichtbarkeit ist im Job relevant. Kleinlich wirkt es eher, wenn jedes Detail beansprucht wird. Eine klare, konkrete Bitte um faire Nennung ist professionell.'
           },
           {
-            question: 'Wann sollte ich die Führungskraft einbeziehen?',
+            question: 'Wann sollte ich wegen geklauter Ideen die Führungskraft einbeziehen?',
             answer: 'Wenn ein direktes Gespräch scheitert, das Muster sich wiederholt oder sichtbare Karriere- und Projektchancen betroffen sind, sollte die Führungskraft sachlich über Teamregeln und Credits sprechen.'
           }
         ]
@@ -660,7 +660,7 @@ export const kollegenCategory = {
             answer: 'Nutze Handheben-Funktion, Chat und klare Moderation. Bei technischer Überschneidung hilft ein kurzer Satz wie "Du zuerst, danach ergänze ich meinen Punkt".'
           },
           {
-            question: 'Wann sollte ich die Führungskraft einbeziehen?',
+            question: 'Wann sollte ich wegen ständiger Unterbrechungen die Führungskraft einbeziehen?',
             answer: 'Wenn direkte Hinweise und Gesprächsregeln nicht helfen, wichtige Beiträge dauerhaft verloren gehen oder Unterbrechungen Teil von Abwertung und Ausgrenzung sind.'
           }
         ]
@@ -925,7 +925,7 @@ export const kollegenCategory = {
             answer: 'Benenne deine aktuelle Priorität und frage, was dafür weichen soll: „Ich kann das übernehmen, wenn Aufgabe A verschoben wird. Welche Priorität gilt?“'
           },
           {
-            question: 'Wann sollte ich die Führungskraft einbeziehen?',
+            question: 'Wann sollte ich bei unfair verteilten Aufgaben die Führungskraft einbeziehen?',
             answer: 'Wenn Prioritäten, Rollen oder Kapazitäten nicht unter Kolleg:innen entschieden werden können, Vereinbarungen scheitern oder deine Belastung dauerhaft zu hoch bleibt.'
           }
         ]

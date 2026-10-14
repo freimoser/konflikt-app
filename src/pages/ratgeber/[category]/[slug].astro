@@ -78,8 +78,10 @@ const updatedLabel = new Date(updated).toLocaleDateString('de-DE', { day: 'numer
 schemas.push({
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": title,
+  // Google empfiehlt kurze Headlines: bei sehr langen H1 der (kürzere) Seitentitel.
+  "headline": title.length <= 110 ? title : (quick?.ratgeberTitle || title),
   "description": description,
+  "image": new URL('/og/konfliktlotse.png', Astro.site).toString(),
   "inLanguage": "de-DE",
   "datePublished": published,
   "dateModified": updated,

@@ -1,7 +1,7 @@
 export default {
   id: 'freunde',
   toolTitle: 'Streit mit der besten Freundin oder dem besten Freund: Gesprächspläne für Freundschaftskonflikte',
-  toolMeta: 'Streit mit der besten Freundin oder dem besten Freund? Wähle deinen Konflikt und hol dir einen Gesprächsplan, der Klarheit bringt und die Freundschaft stärkt.',
+  toolMeta: 'Streit mit der besten Freundin oder dem besten Freund? Wähle deinen Konflikt: Gesprächspläne, die Klarheit bringen und die Freundschaft stärken.',
   toolIntro: [
     'Deine Freundin sagt schon wieder ab, dein Freund hat etwas Vertrauliches weitererzählt oder du fühlst dich in der Gruppe übergangen? Hier findest du typische Konflikte in Freundschaften, jeweils mit einem Gesprächsplan: wie du das Thema ansprichst, welche Formulierungen Vorwürfe vermeiden und wie ihr gemeinsam einen nächsten Schritt findet.',
     'Wähle den Konflikt, der am besten zu deiner Situation passt. Gerade in Freundschaften schweigen viele lieber, als einen Streit zu riskieren, und entfernen sich dann still voneinander. Ein ehrliches, ruhiges Gespräch ist oft der fairere Weg, auch wenn es Mut kostet. Überlege vorher, was dir wichtig ist: Willst du etwas verändern, verstehen oder eine Grenze ziehen? Diese Klarheit hilft dir, im Gespräch ruhig und bei dir zu bleiben.',
@@ -12,7 +12,7 @@ export default {
     'Frag nach der Sicht deines Gegenübers, bevor du ein Urteil über die Freundschaft fällst.',
   ],
   ratgeberTitle: 'Freundschaftskonflikte verstehen: Wenn es mit Freund:innen schwierig wird',
-  ratgeberMeta: 'Warum tun Konflikte unter Freund:innen so weh? Erfahre, welche Dynamiken Freundschaften belasten und wie du Nähe, Vertrauen und Grenzen besser ausbalancierst.',
+  ratgeberMeta: 'Warum tun Konflikte unter Freund:innen so weh? Welche Dynamiken Freundschaften belasten und wie du Nähe, Vertrauen und Grenzen besser ausbalancierst.',
   ratgeberIntro: [
     'Freundschaften beruhen auf Freiwilligkeit. Anders als in der Familie oder am Arbeitsplatz gibt es keine festen Rollen und keine Verträge, die euch zusammenhalten. Genau das macht Freundschaften wertvoll, aber auch verletzlich: Wenn etwas schiefläuft, fehlt oft ein eingeübter Weg, darüber zu sprechen. Viele Konflikte bleiben deshalb unausgesprochen und wirken im Hintergrund weiter.',
     'Häufig geht es um unausgesprochene Erwartungen. Wie oft meldet man sich? Wer organisiert Treffen? Was darf man weitererzählen? Solche Regeln sind selten vereinbart, und jede Person hat eigene Vorstellungen davon. Wenn sich Lebensphasen verändern, etwa durch einen neuen Job, eine Beziehung, Kinder oder einen Umzug, verschieben sich Zeit und Prioritäten. Was die eine Person als normale Veränderung erlebt, fühlt sich für die andere wie Zurückweisung an.',

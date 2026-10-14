@@ -10,6 +10,7 @@ import { glossar } from '../src/data/glossar.js';
 import { getQuickAnswer } from '../src/data/quick-answers/index.js';
 import { seoTitles } from '../src/data/seo-titles.js';
 import { areas as ichAreas, genericRequests } from '../src/data/ich-baukasten.js';
+import { toolMetas } from '../src/data/tool-metas.js';
 
 const errors = [];
 const warn = [];
@@ -136,6 +137,13 @@ for (const s of scenarios) {
   if (s.options.length !== 3 || s.options.filter(o => o.type === 'klar').length !== 1) {
     errors.push(`trainer/${s.id}: braucht 3 Optionen mit genau einer „klar“`);
   }
+}
+
+// Eigene Tool-Metas: Ziel existiert, Länge passt (sonst kürzt das Layout mit „…“)
+for (const [key, meta] of Object.entries(toolMetas)) {
+  const [cat, slug] = key.split('/');
+  if (!getConflict(cat, slug)) errors.push(`tool-metas: Konflikt fehlt → ${key}`);
+  if (meta.length < 110 || meta.length > 155) errors.push(`tool-metas/${key}: ${meta.length} Zeichen (110–155)`);
 }
 
 // Ich-Botschaft-Baukasten: Verweise, Anrede, IDs

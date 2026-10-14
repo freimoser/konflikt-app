@@ -127,7 +127,7 @@ export default {
         answer: 'Akzeptiere, dass ihr die Familie unterschiedlich erlebt habt. Bleib bei deiner Wahrnehmung, ohne sie beweisen zu müssen, und frag nach der Sicht deines Geschwisters.'
       },
       {
-        question: 'Wann brauchen wir Hilfe von außen?',
+        question: 'Wann brauchen wir bei Bevorzugung Unterstützung von außen?',
         answer: 'Wenn Gespräche immer wieder eskalieren, alte Verletzungen euch lähmen oder Gewalt und Druckmittel im Spiel sind. Dann können Beratung, Mediation oder Schutzangebote helfen.'
       }
     ]

@@ -1,7 +1,7 @@
 export default {
   id: 'geschwister',
   toolTitle: 'Streit unter Geschwistern: Gesprächspläne für Vergleiche, Geld, Erbe und Funkstille',
-  toolMeta: 'Streit unter Geschwistern? Gesprächspläne für Bevorzugung, Konkurrenz, Familienfeste, Geld, Erbe und Funkstille – mit Sätzen für ein Gespräch auf Augenhöhe.',
+  toolMeta: 'Streit unter Geschwistern? Gesprächspläne für Bevorzugung, Konkurrenz, Familienfeste, Geld, Erbe und Funkstille – mit Sätzen für Gespräche auf Augenhöhe.',
   toolIntro: [
     'Ein spitzer Kommentar beim Familienessen, eine unbezahlte Schuld oder wochenlanges Schweigen: Streit unter Geschwistern kann auch im Erwachsenenalter heftig werden, weil er schnell an alte Kränkungen rührt. Wähle unten die Situation, die dich gerade beschäftigt. Du bekommst einen Gesprächsplan mit einem ruhigen Einstieg, deiner Kernbotschaft und Antworten auf typische Abwehrsätze.',
     'Wichtig ist, dass du über das heutige Problem sprichst und nicht über jede Ungerechtigkeit aus der Kindheit. Benenne eine konkrete Situation, sag, was sie bei dir auslöst, und mach einen Vorschlag, wie es künftig laufen könnte. Wähle einen Moment ohne Publikum, also nicht mitten am Festtagstisch. Wenn Eltern oder weitere Geschwister beteiligt sind, klärt zuerst unter euch beiden, bevor ihr andere einbezieht.',

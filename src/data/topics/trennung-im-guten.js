@@ -6,7 +6,7 @@ export default {
   icon: '🕊️',
   adsSensitive: true, // sensibles Thema: keine Werbung
   h1: 'Trennung im Guten: Wie ihr fair auseinandergeht – auch mit Kindern',
-  meta: 'Trennung im Guten: das Trennungsgespräch führen, die Übergangszeit gestalten, Kindern die Trennung erklären, Kontaktpause und fairer Start ins Co-Parenting.',
+  meta: 'Trennung im Guten: das Trennungsgespräch führen, die Übergangszeit gestalten, Kindern die Trennung erklären, Kontaktpause, fairer Start ins Co-Parenting.',
   summary: 'Wie du ein Trennungsgespräch respektvoll führst, die Übergangszeit und Organisatorisches besprichst, Kindern die Trennung altersgerecht erklärst und euch als Eltern einen fairen Neuanfang ermöglichst.',
   origin: '',
   intro: 'Vielleicht denkst du schon lange darüber nach, vielleicht ist die Entscheidung plötzlich klar geworden. Eine Trennung tut weh, auch dann, wenn sie richtig ist. Viele Menschen haben Angst vor dem Gespräch, vor dem Schmerz des anderen, vor Streit über Wohnung und Geld und vor allem davor, was die Trennung mit den Kindern macht. „Im Guten“ heißt nicht, dass niemand traurig oder wütend ist. Es heißt, dass ihr euch trotz allem fair behandelt, ehrlich bleibt und Verantwortung für das übernehmt, was ihr gemeinsam habt. Dieser Ratgeber hilft dir, die ersten Schritte bewusst zu gehen.',

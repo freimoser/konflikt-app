@@ -14,6 +14,7 @@ import { displayTitle } from '../../../data/display-title.js';
 import { getQuickAnswer } from '../../../data/quick-answers/index.js';
 import { vorlagen } from '../../../data/vorlagen.js';
 import { normalizeConflict } from '../../../data/schema.js';
+import { toolMetas } from '../../../data/tool-metas.js';
 
 export function getStaticPaths() {
   const paths = [];
@@ -64,7 +65,7 @@ const canonicalUrl = `${Astro.site.origin}${pageUrl}`;
 ---
 <BaseLayout
   title={conflict.seoTitle || seoTitles[`${category.id}/${conflict.slug}`] || `${conflict.title} – was sage ich jetzt?`}
-  description={conflict.summary}
+  description={toolMetas[`${category.id}/${conflict.slug}`] || conflict.summary}
   canonical={pageUrl}
   noAds={adsSensitive}
 >

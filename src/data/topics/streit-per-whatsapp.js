@@ -5,7 +5,7 @@ export default {
   kicker: 'Kommunikation',
   icon: '📱',
   h1: 'Streit per WhatsApp und Nachricht: Warum Chats eskalieren und wie du besser schreibst',
-  meta: 'Streit per WhatsApp: warum Nachrichten missverstanden werden, was im Gruppenchat hilft, wann du besser anrufst und wie du eine klärende Nachricht schreibst.',
+  meta: 'Streit per WhatsApp: warum Nachrichten missverstanden werden, was im Gruppenchat hilft, wann du anrufst und wie du eine klärende Nachricht schreibst.',
   summary: 'Warum Streit im Chat so schnell hochkocht, wie du im Gruppenchat ruhig bleibst, wann ein Anruf besser ist und wie eine klärende Nachricht klingt, mit vielen Formulierungsbeispielen.',
   origin: '',
   intro: 'Es fängt mit einer kurzen Nachricht an. Ein „Ok.“ mit Punkt, eine Frage, die seit Stunden gelesen, aber nicht beantwortet ist, ein Satz, der schroffer klingt, als er vielleicht gemeint war. Du antwortest, die andere Person antwortet schärfer, und plötzlich steckt ihr mitten in einem Streit, den ihr so von Angesicht zu Angesicht vermutlich nie geführt hättet. Ob mit der Partnerin, dem Partner, der besten Freundin, in der Familiengruppe oder im WG-Chat: Messenger sind praktisch für Absprachen, aber schlecht für Konflikte. Wenn du verstehst, warum Nachrichten so leicht kippen, kannst du bewusster schreiben, früher den Kanal wechseln und Missverständnisse klären, bevor sie sich festsetzen.',

@@ -71,6 +71,7 @@ for (const file of htmlFiles) {
     const descLen = desc.replace(/&amp;/g, '&').replace(/&#39;|&quot;/g, "'").length;
     if (descLen < 50) warnings.push(`${rel}: Meta-Description fehlt oder < 50 Zeichen`);
     else if (descLen > 155) warnings.push(`${rel}: Meta-Description ${descLen} Zeichen (Grenze 155)`);
+    else if (desc.endsWith('…')) warnings.push(`${rel}: Meta-Description abgeschnitten – Quelltext auf ≤ 155 Zeichen kürzen`);
     if (!/noindex/.test(html.match(/<meta name="robots" content="([^"]*)"/)?.[1] || '')) {
       const t = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
       if (seenTitles.has(t)) warnings.push(`${rel}: <title> doppelt mit ${seenTitles.get(t)}`);

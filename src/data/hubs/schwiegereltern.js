@@ -2,7 +2,7 @@ export default {
   id: 'schwiegereltern',
   topic: 'streit-an-weihnachten',
   toolTitle: 'Probleme mit den Schwiegereltern: Gesprächspläne für Kritik, Einmischung und Besuche',
-  toolMeta: 'Probleme mit den Schwiegereltern? Gesprächspläne für Kritik, Einmischung in die Erziehung, Besuche und Feiertage – und wie ihr als Paar gemeinsam auftretet.',
+  toolMeta: 'Probleme mit den Schwiegereltern? Gesprächspläne für Kritik, Einmischung in die Erziehung, Besuche und Feiertage – und wie ihr als Paar zusammenhaltet.',
   toolIntro: [
     'Die Schwiegermutter kommentiert deine Kochkünste, die Schwiegereltern stehen unangemeldet vor der Tür oder wissen bei der Erziehung alles besser: Probleme mit den Schwiegereltern sind besonders heikel, weil immer eine dritte Person mitbetroffen ist. Wähle unten die Situation, die dich gerade beschäftigt, und du bekommst einen Gesprächsplan mit Einstieg, Kernbotschaft und Antworten auf typische Einwände.',
     'Bevor du mit den Schwiegereltern sprichst, lohnt sich ein Gespräch mit deiner Partnerin oder deinem Partner. Klärt, was euch beiden wichtig ist, wer das Thema anspricht und welche Grenze ihr gemeinsam vertretet. Oft ist es sinnvoll, dass das eigene Kind mit den Eltern redet. Bleib freundlich und konkret, erkenne gute Absichten an und benenne trotzdem klar, was ihr als Familie selbst entscheiden wollt.',

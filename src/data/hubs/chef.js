@@ -2,7 +2,7 @@ export default {
   id: 'chef',
   topic: 'konfliktgespraech-am-arbeitsplatz',
   toolTitle: 'Probleme mit dem Chef: Gesprächspläne für schwierige Situationen mit Vorgesetzten',
-  toolMeta: 'Probleme mit dem Chef oder der Chefin? Wähle deine Situation und bereite das Gespräch mit klarem Einstieg, sachlichen Formulierungen und nächstem Schritt vor.',
+  toolMeta: 'Probleme mit dem Chef oder der Chefin? Wähle deine Situation und bereite das Gespräch vor: mit klarem Einstieg, sachlichen Sätzen und nächstem Schritt.',
   toolIntro: [
     'Du fühlst dich übergangen, überlastet oder unfair behandelt und weißt nicht, wie du das bei deiner:deinem Vorgesetzten ansprechen sollst? Hier findest du typische Konflikte mit Chef:innen, jeweils mit einem Gesprächsplan: wie du einen Termin anfragst, wie du dein Anliegen sachlich formulierst und welche Vereinbarung du am Ende festhalten kannst.',
     'Wähle die Situation, die am besten passt, und bereite dich gezielt vor. Gerade gegenüber Vorgesetzten hilft es, Beobachtungen und Beispiele parat zu haben, statt nur ein Gefühl zu schildern. Bleib bei deinem Ziel: Du willst nicht recht bekommen, sondern bessere Arbeitsbedingungen, klare Erwartungen oder faire Behandlung erreichen. Überlege dir deshalb vorher, welches Ergebnis für dich ein guter erster Schritt wäre und wo du kompromissbereit bist.',
@@ -13,7 +13,7 @@ export default {
     'Halte am Ende schriftlich fest, was ihr vereinbart habt und bis wann.',
   ],
   ratgeberTitle: 'Konflikte mit Vorgesetzten: Warum es mit der Chefin oder dem Chef so oft hakt',
-  ratgeberMeta: 'Warum sind Konflikte mit Vorgesetzten so heikel? Erfahre, welche Dynamiken zwischen Chef:in und Mitarbeitenden typisch sind und wie du souverän damit umgehst.',
+  ratgeberMeta: 'Warum sind Konflikte mit Vorgesetzten so heikel? Welche Dynamiken zwischen Chef:in und Mitarbeitenden typisch sind und wie du souverän damit umgehst.',
   ratgeberIntro: [
     'Konflikte mit Vorgesetzten fühlen sich anders an als Streit mit Kolleg:innen oder Freund:innen. Der Grund ist das Machtgefälle: Deine Chefin oder dein Chef entscheidet mit über Aufgaben, Beurteilungen, Gehalt und manchmal über deine berufliche Zukunft. Viele Menschen schweigen deshalb lange, obwohl sie unzufrieden sind, und sprechen Probleme erst an, wenn der Frust bereits groß ist.',
     'Hinter vielen Konflikten stehen unterschiedliche Perspektiven. Vorgesetzte stehen selbst unter Druck von oben, jonglieren Budgets, Termine und Teamzusammensetzung und haben nicht immer den Überblick, wie viel bei einzelnen Mitarbeitenden landet. Fehlende Rückmeldung, unklare Erwartungen oder enge Kontrolle wirken dann wie Desinteresse oder Misstrauen, obwohl sie manchmal eher aus Zeitmangel oder Unsicherheit entstehen. Das entschuldigt kein unfaires Verhalten, hilft aber, das Gespräch weniger persönlich zu führen.',

@@ -51,13 +51,14 @@ const schemas: object[] = [
     '@type': 'Article',
     headline: method.h1,
     description: method.meta,
+    image: new URL('/og/konfliktlotse.png', Astro.site).toString(),
     inLanguage: 'de-DE',
     datePublished: published,
     dateModified: updated,
     mainEntityOfPage: `${Astro.site!.origin}${pageUrl}`,
     author: AUTHOR_SCHEMA,
     ...(sources.length ? { citation: sources.map((q: any) => (q.url ? { '@type': 'CreativeWork', name: q.text, url: q.url } : q.text)) } : {}),
-    publisher: { '@type': 'Organization', name: 'Konfliktlotse' },
+    publisher: { '@type': 'Organization', name: 'Konfliktlotse', url: `${Astro.site!.origin}/`, logo: { '@type': 'ImageObject', url: `${Astro.site!.origin}${baseUrl}/favicon.svg` } },
   },
 ];
 if (method.faqs?.length) {

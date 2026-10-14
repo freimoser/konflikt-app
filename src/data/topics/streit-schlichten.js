@@ -5,7 +5,7 @@ export default {
   kicker: 'Vermitteln',
   icon: '🤝',
   h1: 'Streit schlichten: So vermittelst du zwischen zwei Menschen, ohne Partei zu ergreifen',
-  meta: 'Streit schlichten ohne Partei zu ergreifen: wann du vermitteln solltest, Ablauf in fünf Schritten, hilfreiche Sätze für Familie, Team, Freundeskreis und WG.',
+  meta: 'Streit schlichten ohne Partei zu ergreifen: wann du vermitteln solltest, Ablauf in fünf Schritten, hilfreiche Sätze für Familie, Team, Freunde und WG.',
   summary: 'Wenn zwei Menschen in deinem Umfeld streiten, kannst du helfen, dass sie wieder miteinander reden. Entscheidend ist, dass du den Rahmen hältst und keine Seite wählst.',
   origin: '',
   intro: 'Zwei Menschen, die dir wichtig sind, reden nicht mehr miteinander – oder nur noch in Spitzen. Die Geschwister beim Familienessen, zwei Kolleg:innen im Team, die Mitbewohner:innen in der WG. Beide erzählen dir ihre Version, beide erwarten, dass du ihnen recht gibst. Vielleicht wünschst du dir einfach, dass wieder Ruhe einkehrt. Vermitteln kann tatsächlich viel bewirken, aber nur, wenn du nicht zur dritten Streitpartei wirst. Dieser Ratgeber zeigt dir, wann du dich einmischen solltest und wann besser nicht, wie eine informelle Schlichtung abläuft und welche Sätze dir als Vermittler:in helfen.',

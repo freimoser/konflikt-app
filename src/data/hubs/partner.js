@@ -13,7 +13,7 @@ export default {
     'Sag, was du dir wünschst, statt nur aufzuzählen, was dich stört.',
   ],
   ratgeberTitle: 'Beziehungskonflikte verstehen: Warum Paare immer wieder über dasselbe streiten',
-  ratgeberMeta: 'Warum streiten Paare immer wieder über dieselben Themen? Erfahre, welche Dynamiken hinter Beziehungskonflikten stecken und wie ihr fairer miteinander redet.',
+  ratgeberMeta: 'Warum streiten Paare immer wieder über dieselben Themen? Welche Dynamiken hinter Beziehungskonflikten stecken und wie ihr fairer miteinander redet.',
   ratgeberIntro: [
     'In einer Partnerschaft treffen zwei Menschen mit eigenen Gewohnheiten, Erwartungen und Vorstellungen von Nähe aufeinander. Streit ist deshalb normal und nicht automatisch ein Zeichen, dass etwas grundlegend falsch läuft. Schwierig wird es, wenn dieselben Themen immer wiederkehren und sich beide nach dem Gespräch unverstanden fühlen.',
     'Häufig geht es an der Oberfläche um Kleinigkeiten wie liegengebliebene Wäsche oder das Smartphone am Esstisch. Darunter liegen oft größere Fragen: Werde ich gesehen? Tragen wir die Verantwortung gleich verteilt? Bin ich dir wichtig? Weil Partner:innen so viel Alltag teilen, verknüpfen sich Haushalt, Geld, Freizeit und Zukunftspläne eng miteinander. Ein kleiner Anlass kann so alte Enttäuschungen aktivieren, und plötzlich wird über alles gleichzeitig gestritten.',

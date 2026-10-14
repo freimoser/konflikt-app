@@ -12,7 +12,7 @@ export default {
     'Haltet Absprachen schriftlich fest, zum Beispiel im WG-Chat oder auf einem Plan.',
   ],
   ratgeberTitle: 'Zusammenleben in der WG: Warum es in Wohngemeinschaften kracht und was hilft',
-  ratgeberMeta: 'Warum es in Wohngemeinschaften so oft Streit gibt: Ratgeber zu unterschiedlichen Standards, Privatsphäre, Geld und fairen Regeln für ein entspanntes WG-Leben.',
+  ratgeberMeta: 'Warum es in Wohngemeinschaften so oft Streit gibt: Ratgeber zu unterschiedlichen Standards, Privatsphäre, Geld und fairen Regeln für entspanntes WG-Leben.',
   ratgeberIntro: [
     'In einer Wohngemeinschaft teilen Menschen Küche, Bad und oft auch Alltag, ohne durch Familie oder Partnerschaft verbunden zu sein. Jede Person bringt eigene Vorstellungen davon mit, was sauber, leise oder fair ist. Was für die eine selbstverständlich ist, fällt dem anderen gar nicht auf. Genau diese unausgesprochenen Standards sind der häufigste Nährboden für Konflikte, denn niemand hat sie je gemeinsam vereinbart.',
     'Typische Reibungspunkte sind Putzen, Lärm, geteilte Vorräte, Nebenkosten und Besuch, der immer öfter bleibt. Dahinter stehen meist Grundbedürfnisse: Ruhe, Rückzug, Fairness und das Gefühl, in den eigenen vier Wänden mitbestimmen zu dürfen. Weil man sich ständig über den Weg läuft, meiden viele die direkte Aussprache und greifen zu Andeutungen, Zetteln oder Schweigen. Das verlagert den Ärger, löst ihn aber nicht. Mit der Zeit kann so eine angespannte Stimmung entstehen, in der sich niemand mehr richtig zu Hause fühlt.',

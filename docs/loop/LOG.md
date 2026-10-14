@@ -480,3 +480,16 @@ Nach Durchlauf 4 Cron beenden.
 - **SEO-kritisch:** Live geprüft: http→https 301, ohne Slash → 301, 404 echt, `/index.html` mit Canonical auf `/`.
   `www.konfliktlotse.app` antwortet nicht (DNS, nur Betreiber). Sitemap-`lastmod` für neue, noch nicht committete
   Seiten: heutiges Datum statt fehlend (vorher Blocker).
+
+### Kritisch 3 – 2026-10-14
+Schwerpunkt: Snippets und strukturierte Daten (Audit-Skript über alle indexierbaren Seiten im Build).
+- **Abgeschnittene Meta-Descriptions:** 56 Seiten endeten mit „…“ (Quelle > 155), 5 Ratgeber zeigten nur noch die
+  Einstiegsfrage (fitDescription nahm nur den ersten Satz). Behoben an der Quelle: 20 Tool-Seiten bekommen eigene
+  Metas (`src/data/tool-metas.js`, 110–155 Zeichen, `summary` bleibt unverändert für den Seiteninhalt), 16 Ratgeber-
+  `article.meta` gestrafft, 11 statische Seiten, 4 Themen, 7 Hubs gekürzt. Ergebnis: 0 abgeschnittene Descriptions.
+  Neue Warnung in `check-links.mjs` („Meta-Description abgeschnitten“), `validate-data.mjs` prüft `tool-metas` (Ziel + Länge).
+- **Article-Schema:** `image` ergänzt (102 Artikel, bisher fehlend – Google empfiehlt es), Publisher der Methoden mit
+  `url` + `logo` wie bei Ratgebern; `headline` > 110 Zeichen (10 Ratgeber) nutzt den kürzeren Seitentitel.
+- **Doppelte FAQ-Fragen** (gleiche Frage auf 2–3 indexierbaren Seiten, 4 Fälle) spezifisch umformuliert
+  (Kolleg:innen ×3, Geschwister/Bevorzugung, Vermieter/Kaution, Thema Versöhnen).
+- Geprüft ohne Befund: JSON-LD parsebar auf allen Seiten, BreadcrumbList auf allen Unterseiten, dateModified ≥ datePublished.

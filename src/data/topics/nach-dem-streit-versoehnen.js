@@ -123,7 +123,7 @@ export default {
       answer: 'Sprich das Schweigen ruhig an, ohne Vorwürfe: „Ich merke, dass du dich zurückziehst. Ich möchte gern mit dir reden, wenn du so weit bist.“ Wenn Schweigen regelmäßig als Druckmittel eingesetzt wird, lohnt sich ein grundsätzliches Gespräch oder eine Paarberatung.',
     },
     {
-      question: 'Warum streiten wir immer wieder über dasselbe?',
+      question: 'Warum kommt nach der Versöhnung derselbe Streit wieder?',
       answer: 'Wiederkehrende Streits haben meist ein tieferliegendes Thema, etwa unterschiedliche Bedürfnisse nach Nähe, Sicherheit oder Anerkennung. Schaut im Reparaturgespräch auf das Muster, nicht nur auf den letzten Anlass.',
     },
   ],

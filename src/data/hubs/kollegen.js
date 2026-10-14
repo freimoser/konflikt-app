@@ -2,7 +2,7 @@ export default {
   id: 'kollegen',
   topic: 'konflikte-im-team-loesen',
   toolTitle: 'Stress mit Kollegen: Gesprächspläne für Konflikte im Team',
-  toolMeta: 'Stress mit Kollegen oder Kolleginnen? Wähle deinen Teamkonflikt und hol dir einen Gesprächsplan mit sachlichem Einstieg, klaren Sätzen und nächstem Schritt.',
+  toolMeta: 'Stress mit Kollegen oder Kolleginnen? Wähle deinen Teamkonflikt: Gesprächsplan mit sachlichem Einstieg, klaren Sätzen und nächstem Schritt.',
   toolIntro: [
     'Eine Kollegin präsentiert deine Idee als ihre eigene, ein Kollege schiebt Aufgaben ab oder unterbricht dich in jedem Meeting? Hier findest du typische Konflikte mit Kolleg:innen, jeweils mit einem Gesprächsplan: wie du das Thema unter vier Augen ansprichst, welche Formulierungen sachlich bleiben und wie ihr Zuständigkeiten verbindlich klärt.',
     'Wähle die Situation, die am besten passt, und bereite dich kurz vor. Im Arbeitsalltag hilft es, bei Fakten und Auswirkungen auf die Arbeit zu bleiben, statt über Charakter oder Absichten zu sprechen. So bleibt das Gespräch professionell, und du kannst auch danach noch gut zusammenarbeiten. Hol Führungskräfte erst dazu, wenn das direkte Gespräch nichts verändert. So zeigst du, dass du den Konflikt erst selbst klären willst.',
@@ -13,7 +13,7 @@ export default {
     'Haltet getroffene Absprachen kurz schriftlich fest, zum Beispiel in einer Mail.',
   ],
   ratgeberTitle: 'Konflikte unter Kolleg:innen: Was hinter Ärger im Team steckt',
-  ratgeberMeta: 'Warum entstehen Konflikte unter Kolleg:innen so leicht? Erfahre, welche Dynamiken im Team typisch sind und wie ihr fairer mit Anerkennung und Aufgaben umgeht.',
+  ratgeberMeta: 'Warum entstehen Konflikte unter Kolleg:innen so leicht? Welche Dynamiken im Team typisch sind und wie ihr fairer mit Anerkennung und Aufgaben umgeht.',
   ratgeberIntro: [
     'Mit Kolleg:innen verbringst du oft mehr Zeit als mit Freund:innen, ausgesucht hast du sie dir aber meist nicht. Ihr teilt Aufgaben, Ziele und Termine und seid aufeinander angewiesen, ob ihr euch sympathisch findet oder nicht. Das macht Konflikte im Team besonders zäh: Man kann sich kaum aus dem Weg gehen, und jede Spannung wirkt sich auf den Arbeitsalltag aus.',
     'Viele Konflikte entstehen an unklaren Stellen der Zusammenarbeit. Wer ist für welche Aufgabe zuständig? Wessen Beitrag wird sichtbar? Wie werden Entscheidungen getroffen? Wo das nicht eindeutig geregelt ist, füllen Menschen die Lücken mit eigenen Annahmen. Hinzu kommen unterschiedliche Arbeitsstile, Konkurrenz um Anerkennung und Druck von außen, etwa durch knappe Fristen. Was als Missverständnis beginnt, wird so schnell zu einer Frage von Fairness und Respekt.',

@@ -5,7 +5,7 @@ export default {
   kicker: 'Führung',
   icon: '🧭',
   h1: 'Konflikte im Team lösen: Leitfaden für Führungskräfte und Teamleitungen',
-  meta: 'Konflikte im Team lösen: Frühwarnzeichen erkennen, richtig eingreifen, Gespräche moderieren, Vereinbarungen nachhalten, wissen, wann HR oder Mediation hilft.',
+  meta: 'Konflikte im Team lösen: Frühwarnzeichen erkennen, richtig eingreifen, Gespräche moderieren, Vereinbarungen nachhalten, wann HR oder Mediation hilft.',
   summary: 'Wie du als Führungskraft oder Teamleitung Spannungen früh erkennst, Einzel- und gemeinsame Gespräche moderierst, fair bleibst und Vereinbarungen nachhältst – und wann du Unterstützung von außen holen solltest.',
   origin: '',
   intro: 'Im Meeting wird es still, sobald zwei bestimmte Personen etwas sagen. Aufgaben bleiben liegen, weil niemand mit der anderen Seite reden will. Einzelne kommen zu dir und erzählen dir, was „die anderen“ wieder falsch gemacht haben. Als Führungskraft spürst du, dass etwas nicht stimmt, und fragst dich, ob du eingreifen sollst oder ob sich das von selbst legt. Konflikte gehören zu jeder Zusammenarbeit, sie sind kein Zeichen schlechter Führung. Schwierig wird es erst, wenn sie ungeklärt weiterlaufen. Dieser Leitfaden zeigt dir, wie du Spannungen früh erkennst, Gespräche strukturiert führst und dabei deine eigene Rolle nicht aus dem Blick verlierst.',

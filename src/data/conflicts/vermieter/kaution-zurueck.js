@@ -127,7 +127,7 @@ export default {
         answer: 'Das hängt vom Einzelfall ab und ist eine Rechtsfrage. Eine verbindliche Einschätzung bekommst du beim Mieterverein, bei einer Mieterberatung oder anwaltlich. Nachfragen kannst du jederzeit freundlich.'
       },
       {
-        question: 'Soll ich lieber anrufen oder schreiben?',
+        question: 'Soll ich wegen der Kaution lieber anrufen oder schreiben?',
         answer: 'Ein Anruf kann die Stimmung auflockern, wichtig ist aber die schriftliche Form. Fasse Telefonate kurz per E-Mail zusammen, damit beide Seiten denselben Stand haben.'
       }
     ]
