@@ -47,8 +47,8 @@ const article = conflict.article || {};
 const title = article.title || `Ratgeber: ${conflict.title}`;
 // <title>: der Teil vor dem Doppelpunkt ist meist die Suchphrase und passt in ~60 Zeichen.
 // Fallback: Suchphrase aus der kurzen Titel-Liste der Tool-Seiten + Ratgeber-Zusatz.
-const titleHead = title.split(':')[0].trim();
-const seoHead = (seoTitles[`${category.id}/${conflict.slug}`] || conflict.title).split(':')[0].trim();
+const titleHead = title.split(': ')[0].trim();
+const seoHead = (seoTitles[`${category.id}/${conflict.slug}`] || conflict.title).split(': ')[0].trim();
 const pageTitle = conflict.article?.seoTitle
   ? `${conflict.article.seoTitle} | Konfliktlotse`
   : titleHead.length >= 18 && titleHead.length <= 46

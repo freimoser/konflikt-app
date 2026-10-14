@@ -44,7 +44,7 @@ const jsonLd = hub?.faqs?.length
 
 <BaseLayout
   title={h1}
-  fullTitle={`${h1.split(':')[0]}${h1.split(':')[0].length > 36 ? '' : ' – Ratgeber'} | Konfliktlotse`}
+  fullTitle={`${h1.split(': ')[0]}${h1.split(': ')[0].length > 36 ? '' : ' – Ratgeber'} | Konfliktlotse`}
   description={hub?.ratgeberMeta || `Hintergründe und langfristige Lösungen für typische Konflikte mit ${category.name}: Ursachen, häufige Fehler und Antworten auf die wichtigsten Fragen.`}
   jsonLd={jsonLd}
 >

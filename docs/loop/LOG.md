@@ -511,3 +511,13 @@ Schwerpunkt: Snippets und strukturierte Daten (Audit-Skript über alle indexierb
   Durchsicht wichtiger Seiten mit eigenen Erfahrungen (größter Hebel gegen „Scaled Content“-Risiko).
 - Bewusst nicht gemacht: Massen-Update von `dateModified`; weitere KI-Seiten in großer Zahl (erst Search-Console-Daten
   abwarten, dann Seiten auf Position 8–20 vertiefen).
+
+## KISS-Check-Loop (3 Durchläufe) – ab 2026-10-15
+Auftrag: App prüfen (einfach halten), funktioniert alles, sind wir bereit für Google & Co.?
+
+### Check 1 – 2026-10-15
+- Live-Crawl aller 224 Sitemap-URLs als Googlebot: alle 200, Canonical = eigene URL, kein noindex, Titel vorhanden.
+- robots.txt erlaubt alles + nennt Sitemap; kein `X-Robots-Tag`. Search Console per DNS-TXT verifiziert.
+  `site:konfliktlotse.app` liefert bereits Treffer → Seite ist im Index.
+- **Bug behoben:** Titel wurden am ersten „:“ abgeschnitten – auch am Gender-Doppelpunkt („Konflikte unter Kolleg –
+  Ratgeber“, „Konflikte mit Vermieter – …“). Jetzt Trennung nur an „: “ (5 Stellen, inkl. Kannibalisierungs-Prüfung).

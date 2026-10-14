@@ -77,7 +77,7 @@ for (const file of htmlFiles) {
       if (seenTitles.has(t)) warnings.push(`${rel}: <title> doppelt mit ${seenTitles.get(t)}`);
       else seenTitles.set(t, rel);
       // Kannibalisierung: gleicher Titelanfang (vor „:“) auf zwei indexierbaren Seiten
-      const tHead = t.split(/[:|]/)[0].trim().toLowerCase();
+      const tHead = t.split(/:\s|\|/)[0].trim().toLowerCase();
       if (seenHeads.has(tHead)) warnings.push(`${rel}: Titelanfang „${tHead}“ wie ${seenHeads.get(tHead)} (Kannibalisierung?)`);
       else seenHeads.set(tHead, rel);
     }
