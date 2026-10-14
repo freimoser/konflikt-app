@@ -302,7 +302,7 @@ export const vorlagen = [
     slug: 'vereinbarung-nach-streit',
     title: 'Vorlage: Vereinbarung nach einem Streit',
     seoTitle: 'Vereinbarung nach einem Streit: Vorlage',
-    meta: 'Vorlage zum Ausdrucken: Haltet nach einem Streit fest, was passiert ist, was euch wichtig war, was ihr ändert und wann ihr es überprüft. Für Paare und Teams.',
+    meta: 'Zum Ausdrucken: Haltet nach einem Streit fest, was passiert ist, was euch wichtig war, was ihr ändert und wann ihr es überprüft. Für Paare und Teams.',
     icon: '🤝',
     intro:
       'Nach einem Streit ist die Versöhnung oft schnell da – aber ohne klare Absprache wiederholt sich derselbe Konflikt. Diese Vorlage hilft Paaren, Familien und Teams, das Ergebnis eines Klärungsgesprächs festzuhalten. Füllt sie gemeinsam aus, wenn sich die Gemüter beruhigt haben, und nicht mitten im Streit.',

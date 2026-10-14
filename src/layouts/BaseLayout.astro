@@ -25,6 +25,8 @@ const DESC_MAX = 155;
 function fitDescription(text: string): string {
   const clean = text.replace(/\s+/g, ' ').trim();
   if (clean.length <= DESC_MAX) return clean;
+  // Sichtbar im Build-Log: Quelle kürzen statt automatisch beschneiden zu lassen.
+  console.warn(`[seo] Description > ${DESC_MAX} Zeichen, wird gekürzt: ${Astro.url.pathname}`);
   let out = '';
   for (const sentence of clean.split(/(?<=[.!?])\s+/)) {
     if ((out + ' ' + sentence).trim().length > DESC_MAX) break;

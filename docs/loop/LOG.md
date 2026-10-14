@@ -493,3 +493,21 @@ Schwerpunkt: Snippets und strukturierte Daten (Audit-Skript über alle indexierb
 - **Doppelte FAQ-Fragen** (gleiche Frage auf 2–3 indexierbaren Seiten, 4 Fälle) spezifisch umformuliert
   (Kolleg:innen ×3, Geschwister/Bevorzugung, Vermieter/Kaution, Thema Versöhnen).
 - Geprüft ohne Befund: JSON-LD parsebar auf allen Seiten, BreadcrumbList auf allen Unterseiten, dateModified ≥ datePublished.
+
+### Kritisch 4 – 2026-10-14 (letzter Durchlauf, Cron beendet)
+- **Snippets vollständig:** Tool-Seiten zeigten bei langer `summary` nur deren ersten Satz (z. B. „Ihr seid ein Paar,
+  aber …“) – ohne Hinweis, was die Seite bietet. `tool-metas.js` jetzt für 58 Tool-Seiten (Situation + Angebot,
+  variiert, 110–155 Zeichen); auch 3 zu knappe Chef-Seiten (< 100 Zeichen). Eifersucht-Meta benennt Kontrolle als Grenze.
+- Startseite, Vorlage „Vereinbarung nach Streit“, Ich-Botschaft-Baukasten, Hilfe in Krisen: Description an der Quelle
+  passend gemacht. Ergebnis Build: 0 Descriptions gekürzt, 0 unter 100 Zeichen (indexierbar).
+- **Schutz vor Rückfall:** `BaseLayout` meldet im Build-Log `[seo] Description > 155 Zeichen, wird gekürzt: <pfad>`;
+  `validate-data.mjs` blockiert `article.meta` > 155 und `tool-metas` außerhalb 110–155; `check-links.mjs` warnt bei „…“.
+
+## Bilanz Kritischer Loop
+- Erledigt ohne Betreiber: Trainer für alle Konflikte (78), Ich-Botschaft-Baukasten, doppelte Übersichten entschärft,
+  vollständige Snippets auf allen indexierbaren Seiten, Article-Schema mit Bild, eindeutige FAQ, `llms.txt` ergänzt.
+- **Bleibt nur für den Betreiber:** DNS `www` → GitHub Pages (antwortet derzeit nicht); Search Console einrichten und
+  Sitemap einreichen; AdSense-/GA-/CF-Kennungen als GitHub-Variablen; `sameAs`-Profile für die Person; redaktionelle
+  Durchsicht wichtiger Seiten mit eigenen Erfahrungen (größter Hebel gegen „Scaled Content“-Risiko).
+- Bewusst nicht gemacht: Massen-Update von `dateModified`; weitere KI-Seiten in großer Zahl (erst Search-Console-Daten
+  abwarten, dann Seiten auf Position 8–20 vertiefen).
