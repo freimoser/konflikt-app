@@ -51,6 +51,7 @@ for (const c of getAllConflicts()) {
   }
   const a = c.article || {};
   if (!a.title || !a.meta) errors.push(`${key}: Artikel-Titel oder Meta fehlt`);
+  else if (a.meta.length > 155) errors.push(`${key}: Artikel-Meta ${a.meta.length} Zeichen (max. 155, sonst gekürzt)`);
   else if (a.meta.length < 110 || a.meta.length > 165) warn.push(`${key}: Meta-Description ${a.meta.length} Zeichen`);
   if ((a.faqs || []).length < 4) warn.push(`${key}: weniger als 4 FAQs`);
   checkNumbers(key, JSON.stringify(c));
