@@ -24,6 +24,7 @@ const entries: Entry[] = [
   })),
   { title: 'Gesprächs-Trainer: Was antwortest du?', url: '/spiel/gespraechstrainer/', kind: 'Spiel', text: 'Schwierige Sätze üben und sofort Feedback bekommen.', icon: '🎯' },
   { title: 'Eskalations-Check', url: '/spiel/eskalations-check/', kind: 'Spiel', text: 'Wie verfahren ist dein Konflikt? Selbsttest nach Glasl.', icon: '🌡️' },
+  { title: 'Ich-Botschaft-Baukasten', url: '/spiel/ich-botschaft/', kind: 'Spiel', text: 'Aus Situation, Gefühl, Bedürfnis und Bitte einen eigenen Satz zusammenstellen.', icon: '🧱' },
   { title: 'Konflikttyp-Test: Wie streitest du?', url: '/spiel/konflikttyp/', kind: 'Spiel', text: 'Selbsttest: Welcher Konfliktstil prägt dich?', icon: '🧩' },
   ...vorlagen.map((v: any) => ({ title: v.title, url: `/vorlagen/${v.slug}/`, kind: 'Vorlage', text: v.intro.split('. ')[0] + '.', icon: v.icon })),
   ...glossar.map((g: any) => ({ title: g.term, url: `/glossar/#${g.slug}`, kind: 'Glossar', text: g.definition.split('. ')[0] + '.', icon: '📖' })),

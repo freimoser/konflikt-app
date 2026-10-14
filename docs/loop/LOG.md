@@ -467,3 +467,16 @@ Nach Durchlauf 4 Cron beenden.
 - IDEEN bereinigt (Kinder, seoTitle, adsSensitive, HowTo, Trainer abgehakt).
 - Nicht gemacht: `dateModified` pauschal auf 2026-10-08 heben – die Kurz-gesagt-Box ist eine kleine Ergänzung; ein
   Massen-Update des Datums wirkt wie Frische-Manipulation. Datum nur bei substanzieller Überarbeitung ändern.
+
+### Kritisch 2 – 2026-10-14
+- **Ich-Botschaft-Baukasten** `/spiel/ich-botschaft/` (offener P2-Punkt): vier Auswahllisten (Situation → Gefühl →
+  Bedürfnis → Bitte), Satz wird live gebaut, Du-Botschaft zum Vergleich, Hinweise bei „Pseudo-Gefühlen“ (ignoriert,
+  respektlos behandelt, ausgenutzt) und Urteilen statt Bedürfnis. Anrede (du/ihr/Sie) je Situation für die offene Frage.
+  Ohne JS: Aufbau, 6 Vorher/Nachher-Beispiele, Stolperfallen – volle Seite, kein dünner Inhalt. Daten
+  `src/data/ich-baukasten.js` (16 Situationen, jede verlinkt ihren Gesprächsplan; `validate-data.mjs` prüft Verweise/Anrede).
+  Verlinkt von `/spiel/`, Methoden Ich-Botschaften + GFK, Footer, Suche, `llms.txt`, Über uns.
+  Titel bewusst „Ich-Botschaft-Baukasten: …“ (Werkzeug-Intention) ≠ Methode „Ich-Botschaften“ (Erklär-Intention).
+- Browser-Test: Bug gefunden und behoben (`data-du` an `<option>` kollidierte mit dem Kontrast-Absatz).
+- **SEO-kritisch:** Live geprüft: http→https 301, ohne Slash → 301, 404 echt, `/index.html` mit Canonical auf `/`.
+  `www.konfliktlotse.app` antwortet nicht (DNS, nur Betreiber). Sitemap-`lastmod` für neue, noch nicht committete
+  Seiten: heutiges Datum statt fehlend (vorher Blocker).

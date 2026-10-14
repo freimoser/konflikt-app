@@ -132,6 +132,12 @@ if (method.faqs?.length) {
       </a>
     )}
 
+    {(method.slug === 'ich-botschaften' || method.slug === 'gewaltfreie-kommunikation') && (
+      <a class="check-cta" href={`${baseUrl}/spiel/ich-botschaft/`}>
+        🧱 <strong>Selbst ausprobieren:</strong> Stell im Ich-Botschaft-Baukasten aus Situation, Gefühl, Bedürfnis und Bitte deinen eigenen Satz zusammen.
+      </a>
+    )}
+
     <section id="anwenden" class="card">
       <h2>So wendest du es an</h2>
       <ol class="steps">

@@ -9,6 +9,7 @@ import { readdirSync } from 'node:fs';
 import { glossar } from '../src/data/glossar.js';
 import { getQuickAnswer } from '../src/data/quick-answers/index.js';
 import { seoTitles } from '../src/data/seo-titles.js';
+import { areas as ichAreas, genericRequests } from '../src/data/ich-baukasten.js';
 
 const errors = [];
 const warn = [];
@@ -135,6 +136,16 @@ for (const s of scenarios) {
   if (s.options.length !== 3 || s.options.filter(o => o.type === 'klar').length !== 1) {
     errors.push(`trainer/${s.id}: braucht 3 Optionen mit genau einer „klar“`);
   }
+}
+
+// Ich-Botschaft-Baukasten: Verweise, Anrede, IDs
+const ichIds = new Set();
+for (const area of ichAreas) for (const s of area.situations) {
+  if (ichIds.has(s.id)) errors.push(`ich-baukasten: doppelte ID ${s.id}`);
+  ichIds.add(s.id);
+  if (!getConflict(s.conflict.category, s.conflict.slug)) errors.push(`ich-baukasten/${s.id}: Konflikt fehlt`);
+  if (!genericRequests[s.address]) errors.push(`ich-baukasten/${s.id}: unbekannte Anrede „${s.address}“`);
+  if (s.requests?.length !== 2 || !s.du) errors.push(`ich-baukasten/${s.id}: braucht 2 Bitten und eine Du-Botschaft`);
 }
 
 console.log(`Daten: ${getAllConflicts().length} Konflikte in ${categories.length} Kategorien, ${methods.length} Methoden, ${topics.length} Themen, ${glossar.length} Glossarbegriffe, ${scenarios.length} Trainer-Szenarien.`);

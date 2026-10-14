@@ -11,7 +11,7 @@ const breadcrumbs = [{ label: 'Start', url: '/' }, { label: 'Spiel' }];
 <BaseLayout
   title="Spiel & Übungen"
   fullTitle="Konflikte spielerisch üben | Konfliktlotse"
-  description="Schwierige Gespräche spielerisch üben: Gesprächs-Trainer mit typischen Konfliktsätzen, Eskalations-Check nach Glasl und der Konflikt-Lotse zu deinem Gesprächsplan."
+  description="Schwierige Gespräche spielerisch üben: Gesprächs-Trainer mit typischen Konfliktsätzen, Eskalations-Check nach Glasl, Konflikttyp-Test und Ich-Botschaft-Baukasten."
 >
   <Breadcrumbs crumbs={breadcrumbs} />
 
@@ -49,6 +49,15 @@ const breadcrumbs = [{ label: 'Start', url: '/' }, { label: 'Spiel' }];
       </span>
       <span class="game-cta">Test starten →</span>
     </a>
+    <a class="game" href={`${baseUrl}/spiel/ich-botschaft/`}>
+      <span class="game-icon" aria-hidden="true">🧱</span>
+      <span class="game-title">Ich-Botschaft-Baukasten</span>
+      <span class="game-text">
+        Situation, Gefühl, Bedürfnis, Bitte: Stell aus vier Auswahllisten deinen eigenen Satz zusammen – mit der
+        Du-Botschaft zum Vergleich und Hinweisen auf Wörter, die wie ein Vorwurf klingen.
+      </span>
+      <span class="game-cta">Satz bauen →</span>
+    </a>
     <a class="game" href={`${baseUrl}/konflikt/`}>
       <span class="game-icon" aria-hidden="true">🧭</span>
       <span class="game-title">Konflikt-Lotse: Wer? Was? Wie?</span>
@@ -74,8 +83,11 @@ const breadcrumbs = [{ label: 'Start', url: '/' }, { label: 'Spiel' }];
     </p>
     <p>
       Der <strong>Konflikttyp-Test</strong> richtet den Blick auf dich selbst: Neigst du eher zum Rückzug, zum Nachgeben
-      oder zum Durchsetzen? Wer seinen eigenen Stil kennt, merkt früher, wann er in ein altes Muster rutscht. Alle drei
-      Übungen sind Anregungen zur Selbstreflexion und ersetzen keine Beratung.
+      oder zum Durchsetzen? Wer seinen eigenen Stil kennt, merkt früher, wann er in ein altes Muster rutscht.
+    </p>
+    <p>
+      Der <strong>Ich-Botschaft-Baukasten</strong> hilft beim ersten Satz: Du siehst, wie aus „Du lässt immer alles
+      rumliegen!“ eine Bitte wird, auf die dein Gegenüber eingehen kann. Alle Übungen sind Anregungen zur Selbstreflexion und ersetzen keine Beratung.
     </p>
   </section>
 

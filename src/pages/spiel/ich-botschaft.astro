@@ -1,0 +1,251 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { areas, feelings, needs, genericRequests } from '../../data/ich-baukasten.js';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const situations = areas.flatMap(a => a.situations);
+const traps = [...feelings, ...needs].filter(x => x.hint);
+
+// Beispiele für die Ansicht ohne JavaScript und als Lesestoff: je Bereich die erste Situation.
+// Reihenfolge wie `areas`: partner, job, familie, freunde, wohnen, kinder.
+const exampleFeelings = ['aerger', 'aerger', 'traurig', 'enttaeuscht', 'erschoepft', 'sorgen'];
+const exampleNeeds = ['ordnung', 'gehoert', 'wertschaetzung', 'verlaesslichkeit', 'ruhe', 'verlaesslichkeit'];
+const sentence = (s: any, f: string, n: string, r: string) =>
+  `Wenn ${s.text}, ${f}, weil ${n}. ${r}`.replace(/^./, c => c.toUpperCase());
+const examples = areas.map((a, i) => {
+  const s = a.situations[0];
+  const f = feelings.find(x => x.id === exampleFeelings[i % exampleFeelings.length])!;
+  const n = needs.find(x => x.id === exampleNeeds[i % exampleNeeds.length])!;
+  return { area: a.label, du: s.du, ich: sentence(s, f.text, n.text, s.requests[0]), conflict: s.conflict };
+});
+
+const breadcrumbs = [
+  { label: 'Start', url: '/' },
+  { label: 'Spiel', url: '/spiel/' },
+  { label: 'Ich-Botschaft-Baukasten' },
+];
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Ich-Botschaft-Baukasten',
+  applicationCategory: 'EducationalApplication',
+  operatingSystem: 'Browser',
+  inLanguage: 'de-DE',
+  isAccessibleForFree: true,
+  url: `${Astro.site!.origin}${baseUrl}/spiel/ich-botschaft/`,
+  description: 'Stelle aus Situation, Gefühl, Bedürfnis und Bitte eine Ich-Botschaft zusammen und vergleiche sie mit der passenden Du-Botschaft.',
+});
+---
+<BaseLayout
+  title="Ich-Botschaft-Baukasten"
+  fullTitle="Ich-Botschaft-Baukasten: Satz für Satz formulieren"
+  description="Bau dir eine Ich-Botschaft aus vier Teilen: Situation, Gefühl, Bedürfnis, Bitte. Mit Du-Botschaft zum Vergleich, Hinweisen auf Stolperfallen und Beispielen."
+  jsonLd={jsonLd}
+>
+  <Breadcrumbs crumbs={breadcrumbs} />
+
+  <header>
+    <p class="kicker">🧱 Spiel</p>
+    <h1>Ich-Botschaft-Baukasten: Satz für Satz formulieren</h1>
+    <p class="lead">
+      Wähle eine Situation, dein Gefühl, was dir wichtig ist, und eine Bitte – der Baukasten setzt daraus einen
+      Satz zusammen, den du so sagen kannst. Du tippst nichts ein, nichts wird gespeichert oder gesendet.
+    </p>
+  </header>
+
+  <form class="builder" data-builder hidden>
+    <div class="step">
+      <label for="ib-situation"><span class="step-no">1</span> Was ist passiert? <span class="step-help">(Beobachtung, ohne Bewertung)</span></label>
+      <select id="ib-situation" data-part="situation">
+        {areas.map(a => (
+          <optgroup label={a.label}>
+            {a.situations.map(s => (
+              <option value={s.id} data-du-text={s.du} data-address={s.address}
+                data-conflict={`${baseUrl}/konflikt/${s.conflict.category}/${s.conflict.slug}/`}>Wenn {s.text}</option>
+            ))}
+          </optgroup>
+        ))}
+      </select>
+    </div>
+    <div class="step">
+      <label for="ib-feeling"><span class="step-no">2</span> Wie geht es dir damit?</label>
+      <select id="ib-feeling" data-part="feeling">
+        {feelings.map(f => <option value={f.id} data-hint={f.hint || ''}>… {f.text}</option>)}
+      </select>
+    </div>
+    <div class="step">
+      <label for="ib-need"><span class="step-no">3</span> Was ist dir wichtig?</label>
+      <select id="ib-need" data-part="need">
+        {needs.map(n => <option value={n.id} data-hint={n.hint || ''}>… weil {n.text}</option>)}
+      </select>
+    </div>
+    <div class="step">
+      <label for="ib-request"><span class="step-no">4</span> Worum bittest du?</label>
+      <select id="ib-request" data-part="request">
+        {situations.map(s => s.requests.map((r: string, i: number) => (
+          <option value={`${s.id}-${i}`} data-for={s.id}>{r}</option>
+        )))}
+        <option value="offen" data-generic>{genericRequests.du}</option>
+      </select>
+    </div>
+
+    <section class="output" aria-live="polite">
+      <p class="output-label">Deine Ich-Botschaft</p>
+      <p class="output-text" data-output></p>
+      <button type="button" class="btn-copy" data-copy>Satz kopieren</button>
+      <p class="output-hint" data-output-hint hidden></p>
+      <div class="contrast">
+        <p class="contrast-label">So klänge es als Du-Botschaft:</p>
+        <p class="contrast-text" data-contrast></p>
+        <p class="contrast-note">Die Du-Botschaft bewertet die Person – die Ich-Botschaft beschreibt, was passiert ist und was du brauchst.</p>
+      </div>
+      <p class="output-link"><a href="#" data-conflict-link>Ganzer Gesprächsplan zu dieser Situation →</a></p>
+    </section>
+  </form>
+
+  <section class="guide">
+    <h2>So ist eine Ich-Botschaft aufgebaut</h2>
+    <ol class="parts">
+      <li><strong>Situation:</strong> Was ist konkret passiert? Beschreibe es so, dass eine Kamera es hätte aufnehmen können –
+        ohne „immer“, „nie“ oder Eigenschaften wie „faul“.</li>
+      <li><strong>Gefühl:</strong> Was löst das in dir aus? Ärger, Stress, Enttäuschung oder Sorge gehören dir und lassen sich
+        schwer bestreiten.</li>
+      <li><strong>Bedürfnis:</strong> Warum ist dir das wichtig? Erst dieser Teil macht verständlich, worum es dir eigentlich
+        geht.</li>
+      <li><strong>Bitte:</strong> Was soll sich ändern? Eine kleine, machbare Bitte oder eine offene Frage gibt deinem
+        Gegenüber eine Möglichkeit, darauf einzugehen.</li>
+    </ol>
+    <p>
+      Hintergrund, Grenzen und weitere Beispiele findest du im Methodenartikel
+      <a href={`${baseUrl}/methoden/ich-botschaften/`}>Ich-Botschaften</a>. Der Aufbau ähnelt den vier Schritten der
+      <a href={`${baseUrl}/methoden/gewaltfreie-kommunikation/`}>Gewaltfreien Kommunikation</a>.
+    </p>
+
+    <h2>Beispiele: Du-Botschaft und Ich-Botschaft im Vergleich</h2>
+    <ul class="examples">
+      {examples.map(e => (
+        <li>
+          <p class="ex-area">{e.area}</p>
+          <p class="ex-du"><span>Statt:</span> „{e.du}“</p>
+          <p class="ex-ich"><span>Besser:</span> „{e.ich}“</p>
+          <p class="ex-link"><a href={`${baseUrl}/konflikt/${e.conflict.category}/${e.conflict.slug}/`}>Zum Gesprächsplan</a></p>
+        </li>
+      ))}
+    </ul>
+
+    <h2>Stolperfallen, die der Baukasten anzeigt</h2>
+    <p>
+      Manche Wörter klingen nach Gefühl oder Begründung, enthalten aber ein Urteil über dein Gegenüber. Wenn du sie
+      auswählst, erklärt der Baukasten, warum sie eher Abwehr auslösen:
+    </p>
+    <ul class="traps">
+      {traps.map(t => <li><strong>„{t.text}“:</strong> {t.hint}</li>)}
+    </ul>
+    <p>
+      Eine Ich-Botschaft garantiert kein Einverständnis. Sie senkt die Wahrscheinlichkeit, dass sich dein Gegenüber
+      angegriffen fühlt – die Lösung müsst ihr trotzdem gemeinsam finden. Wenn du üben willst, wie du auf typische
+      Gegenreaktionen antwortest, probier den <a href={`${baseUrl}/spiel/gespraechstrainer/`}>Gesprächs-Trainer</a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<script>
+  (function () {
+    const form = document.querySelector<HTMLFormElement>('[data-builder]');
+    if (!form) return;
+    const sel = (p: string) => form.querySelector<HTMLSelectElement>(`[data-part="${p}"]`)!;
+    const situation = sel('situation');
+    const feeling = sel('feeling');
+    const need = sel('need');
+    const request = sel('request');
+    const out = form.querySelector<HTMLElement>('[data-output]')!;
+    const hint = form.querySelector<HTMLElement>('[data-output-hint]')!;
+    const du = form.querySelector<HTMLElement>("[data-contrast]")!;
+    const link = form.querySelector<HTMLAnchorElement>('[data-conflict-link]')!;
+    const copy = form.querySelector<HTMLButtonElement>('[data-copy]')!;
+    const generic: Record<string, string> = { du: 'Wie siehst du das?', ihr: 'Wie seht ihr das?', Sie: 'Wie sehen Sie das?' };
+    form.hidden = false;
+
+    const label = (s: HTMLSelectElement) => s.selectedOptions[0]?.textContent?.trim() || '';
+
+    function syncRequests() {
+      const id = situation.value;
+      const address = situation.selectedOptions[0]?.dataset.address || 'du';
+      let firstVisible: HTMLOptionElement | null = null;
+      Array.from(request.options).forEach(o => {
+        if (o.dataset.generic !== undefined) {
+          o.textContent = generic[address] || generic.du;
+          o.hidden = false;
+          o.disabled = false;
+          return;
+        }
+        const show = o.dataset.for === id;
+        o.hidden = !show;
+        o.disabled = !show;
+        if (show && !firstVisible) firstVisible = o;
+      });
+      const current = request.selectedOptions[0];
+      if (!current || current.disabled) request.value = (firstVisible as HTMLOptionElement | null)?.value || 'offen';
+    }
+
+    function render() {
+      const s = label(situation).replace(/^Wenn\s+/, '');
+      const f = label(feeling).replace(/^…\s*/, '');
+      const n = label(need).replace(/^…\s*weil\s+/, '');
+      const r = label(request);
+      out.textContent = `Wenn ${s}, ${f}, weil ${n}. ${r}`;
+      du.textContent = `„${situation.selectedOptions[0]?.dataset.duText || ''}“`;
+      link.href = situation.selectedOptions[0]?.dataset.conflict || '#';
+      const hints = [feeling, need].map(x => x.selectedOptions[0]?.dataset.hint).filter(Boolean);
+      hint.hidden = !hints.length;
+      hint.textContent = hints.length ? `Achtung: ${hints.join(' ')}` : '';
+      copy.textContent = 'Satz kopieren';
+    }
+
+    situation.addEventListener('change', () => { syncRequests(); render(); });
+    [feeling, need, request].forEach(s => s.addEventListener('change', render));
+    copy.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(out.textContent || '');
+        copy.textContent = 'Kopiert ✓';
+      } catch {
+        copy.textContent = 'Kopieren nicht möglich – bitte markieren';
+      }
+    });
+    syncRequests();
+    render();
+  })();
+</script>
+
+<style>
+  .kicker { font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; }
+  .lead { color: var(--text-light); font-size: 1.05rem; }
+  .builder { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; margin: 1.5rem 0; display: flex; flex-direction: column; gap: 1rem; }
+  .step label { display: block; font-weight: 700; margin-bottom: 0.35rem; }
+  .step-no { display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--primary); color: #fff; font-size: 0.85rem; margin-right: 0.35rem; }
+  .step-help { font-weight: 400; color: var(--text-light); font-size: 0.9rem; }
+  .step select { width: 100%; font: inherit; padding: 0.7rem 0.8rem; min-height: 48px; border: 2px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); color: var(--text); }
+  .step select:focus { border-color: var(--primary); outline: none; }
+  .output { border-top: 1px solid var(--border); padding-top: 1rem; }
+  .output-label, .contrast-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-light); margin: 0 0 0.25rem; }
+  .output-text { font-size: 1.15rem; font-weight: 600; background: #F0F7F4; border-left: 4px solid var(--primary); padding: 0.9rem 1rem; border-radius: var(--radius-sm); }
+  .btn-copy { font: inherit; font-weight: 700; background: var(--accent); color: var(--text); border: none; border-radius: var(--radius-sm); padding: 0.7rem 1.2rem; cursor: pointer; min-height: 44px; }
+  .btn-copy:hover { background: var(--accent-light); }
+  .output-hint { background: #FFFBEA; border-left: 4px solid #FFC107; padding: 0.75rem 1rem; border-radius: var(--radius-sm); color: #664D03; margin-top: 1rem; }
+  .contrast { margin-top: 1rem; }
+  .contrast-text { color: #9B2C2C; font-weight: 600; margin: 0; }
+  .contrast-note { font-size: 0.9rem; color: var(--text-light); }
+  .output-link a, .guide a { text-decoration: underline; font-weight: 600; }
+  .guide { margin-top: 2rem; }
+  .guide p, .guide li { color: var(--text-light); }
+  .parts { padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .examples { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+  .examples li { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; }
+  .examples p { margin: 0.2rem 0; }
+  .ex-area { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--primary) !important; }
+  .ex-du span, .ex-ich span { font-weight: 700; color: var(--text); }
+  .ex-link { font-size: 0.9rem; }
+  .traps { padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+</style>

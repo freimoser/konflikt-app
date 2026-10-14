@@ -6,6 +6,7 @@ import { methods } from './src/data/methods/index.js';
 import { topics } from './src/data/topics/index.js';
 import { categories } from './src/data/categories/index.js';
 import { execSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
 
 // lastmod nur aus echten Inhaltsdaten (published/updated) – nie das Build-Datum, sonst ignoriert Google es.
 const SITE = 'https://konfliktlotse.app';
@@ -23,7 +24,10 @@ for (const t of topics) lastmod.set(`${SITE}/themen/${t.slug}/`, t.updated || t.
 // (In GitHub Actions braucht das die volle Historie: checkout mit fetch-depth: 0.)
 const gitDate = (...files) => {
   try {
-    return execSync(`git log -1 --format=%cs -- ${files.map(f => `"${f}"`).join(' ')}`, { encoding: 'utf8' }).trim() || null;
+    const date = execSync(`git log -1 --format=%cs -- ${files.map(f => `"${f}"`).join(' ')}`, { encoding: 'utf8' }).trim();
+    // Neue, noch nicht committete Datei: heute ist ihr ehrliches Änderungsdatum.
+    if (!date && files.some(f => existsSync(f))) return new Date().toISOString().slice(0, 10);
+    return date || null;
   } catch { return null; }
 };
 const maxDate = (...dates) => dates.filter(Boolean).sort().at(-1) || null;
@@ -52,6 +56,7 @@ setIfMissing('/spiel/', gitDate('src/pages/spiel/index.astro'));
 setIfMissing('/spiel/gespraechstrainer/', gitDate('src/data/trainer.js', 'src/pages/spiel/gespraechstrainer.astro'));
 setIfMissing('/spiel/eskalations-check/', gitDate('src/pages/spiel/eskalations-check.astro'));
 setIfMissing('/spiel/konflikttyp/', gitDate('src/data/quiz.js', 'src/pages/spiel/konflikttyp.astro'));
+setIfMissing('/spiel/ich-botschaft/', gitDate('src/data/ich-baukasten.js', 'src/pages/spiel/ich-botschaft.astro'));
 for (const page of ['ueber-uns', 'kontakt', 'hilfe-in-krisen']) setIfMissing(`/${page}/`, gitDate(`src/pages/${page}.astro`));
 
 // https://astro.build/config

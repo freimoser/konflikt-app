@@ -46,7 +46,8 @@ Beim Erledigen hier abhaken und in `LOG.md` eintragen.
 - [x] (Kritisch 1) Trainer: 1 Szenario pro Konflikt (alle außer Eifersucht, bewusst ausgenommen).
 - [x] (DL 4) Eskalations-Check (`/spiel/eskalations-check/`).
 - [x] (DL 7) Konflikttyp-Test (`/spiel/konflikttyp/`, teilbar ohne Tracking).
-- [ ] Ich-Botschaft-Baukasten (nur Auswahllisten).
+- [x] (Kritisch 2) Ich-Botschaft-Baukasten (`/spiel/ich-botschaft/`, nur Auswahllisten, Daten `src/data/ich-baukasten.js`).
+- [ ] Baukasten erweitern: weitere Situationen je Kategorie (Format im Dateikopf), ggf. Deep-Link `?s=<id>` von Tool-Seiten.
 - [x] (DL 5) Druckansicht „Gesprächsplan drucken“.
 - [x] (DL 6) Kopier-Button je Skriptvariante.
 

@@ -40,6 +40,7 @@ export const GET: APIRoute = () => {
   lines.push(`- [Glossar](${SITE}/glossar/): Begriffe aus Kommunikation und Konfliktlösung, kurz definiert.`);
   lines.push(`- [Vorlagen zum Ausdrucken](${SITE}/vorlagen/): Gesprächsvorbereitung, Familienrat, WG-Vereinbarung, Vereinbarung nach Streit.`);
   lines.push(`- [Gesprächs-Trainer](${SITE}/spiel/gespraechstrainer/): ${scenarios.length} typische Konfliktsätze mit je drei Antworten (klar, eskalierend, ausweichend) und Feedback.`);
+  lines.push(`- [Ich-Botschaft-Baukasten](${SITE}/spiel/ich-botschaft/): Ich-Botschaft aus Situation, Gefühl, Bedürfnis und Bitte zusammenstellen, mit Du-Botschaft zum Vergleich.`);
   lines.push(`- [Eskalations-Check](${SITE}/spiel/eskalations-check/): Selbsteinschätzung nach den Eskalationsstufen von Friedrich Glasl, mit Sicherheitsweiche.`);
   lines.push(`- [Hilfe in Krisen](${SITE}/hilfe-in-krisen/): Notrufnummern und Beratungsstellen bei Gewalt, Bedrohung oder akuter Krise.`);
   lines.push('');
