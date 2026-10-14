@@ -521,3 +521,11 @@ Auftrag: App prüfen (einfach halten), funktioniert alles, sind wir bereit für 
   `site:konfliktlotse.app` liefert bereits Treffer → Seite ist im Index.
 - **Bug behoben:** Titel wurden am ersten „:“ abgeschnitten – auch am Gender-Doppelpunkt („Konflikte unter Kolleg –
   Ratgeber“, „Konflikte mit Vermieter – …“). Jetzt Trennung nur an „: “ (5 Stellen, inkl. Kannibalisierungs-Prüfung).
+
+### Check 2 – 2026-10-15
+- Live im Browser bedient: Gesprächs-Trainer (Antwort → Feedback + „Nächste Situation“), Eskalations-Check (Ergebnis
+  „Angespannt“), Konflikttyp-Test (Ergebnis), Ich-Botschaft-Baukasten (Satz, Du-Kontrast, Anrede „Sie“), Suche
+  (`?q=` wird gesetzt), Tool-Seite (Modus „Beide Seiten“ → `?mode=two-party`, 3 Kopier-Buttons, Trainer-Link).
+- Keine Konsolenfehler; 10 Kernseiten bei 375 px ohne horizontales Scrollen.
+- 12 externe Links: alle erreichbar (cnvc.org antwortet Bots mit 406, im Browser 200).
+- Keine Änderung nötig.
