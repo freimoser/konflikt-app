@@ -8,7 +8,7 @@ export const OPERATOR = {
   street: 'Schinkelstraße 15',
   city: '80805 München',
   country: 'Deutschland',
-  email: '91Serdar@gmail.com',
+  email: 'kontakt@freimoser.de',
 };
 
 /** Feste Entitäts-ID der verantwortlichen Person (Autorenangaben in allen Artikel-Schemas verweisen darauf). */

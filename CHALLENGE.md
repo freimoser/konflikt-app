@@ -163,7 +163,7 @@ Erstelle vollständige Seiten und verlinke sie in Footer/Header, aber kennzeichn
 ### Impressumsdaten (öffentlich vorgesehen)
 - Betreiber: Serdar Thomas Freimoser
 - Anschrift: Schinkelstraße 15, 80805 München, Deutschland
-- E-Mail: 91Serdar@gmail.com
+- E-Mail: kontakt@freimoser.de
 - Keine Telefonnummer veröffentlichen
 
 Erstelle `/impressum/` mit diesen Daten und erforderlichen Standardhinweisen, ohne nicht vorhandene Register-, USt-ID- oder Aufsichtsangaben zu erfinden.
@@ -190,7 +190,7 @@ Kein Alarmismus auf jeder normalen Seite. Kurzer universeller Hinweis plus konte
 Implementiere pro Konfliktseite eine kleine „War das hilfreich?“-Komponente. Da kein externer Dienst/Account vorhanden ist:
 - keine vorgetäuschte Speicherung
 - keine unsichtbaren Netzwerkrequests
-- erlaubt ist eine ehrliche, datensparsame Lösung via vorbereiteter E-Mail an `91Serdar@gmail.com`, die nur Seiten-Slug + „hilfreich/nicht hilfreich“ enthält und den Nutzer vor dem Öffnen des Mailprogramms informiert
+- erlaubt ist eine ehrliche, datensparsame Lösung via vorbereiteter E-Mail an `kontakt@freimoser.de`, die nur Seiten-Slug + „hilfreich/nicht hilfreich“ enthält und den Nutzer vor dem Öffnen des Mailprogramms informiert
 - keine Freitext-Pflicht, keine Konfliktdetails im Mailtext
 - Komponente so kapseln, dass später ein privacy-first Endpoint ersetzt werden kann
 
