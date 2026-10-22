@@ -15,6 +15,7 @@ import { getQuickAnswer } from '../../../data/quick-answers/index.js';
 import { vorlagen } from '../../../data/vorlagen.js';
 import { normalizeConflict } from '../../../data/schema.js';
 import { toolMetas } from '../../../data/tool-metas.js';
+import { AUTHOR_SCHEMA } from '../../../config/site';
 
 export function getStaticPaths() {
   const paths = [];
@@ -62,11 +63,28 @@ const breadcrumbs = [
 ];
 
 const canonicalUrl = `${Astro.site.origin}${pageUrl}`;
+
+// Datum wie in Sitemap und Ratgeber (`published`/`updated`, sonst Erstveröffentlichung).
+const updated = conflict.updated || conflict.published || '2026-08-03';
+const updatedLabel = new Date(updated).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": h1,
+  "url": canonicalUrl,
+  "inLanguage": "de-DE",
+  "datePublished": conflict.published || '2026-08-03',
+  "dateModified": updated,
+  "author": AUTHOR_SCHEMA,
+  "publisher": { "@type": "Organization", "name": "Konfliktlotse", "url": Astro.site.origin },
+  "isPartOf": { "@type": "WebSite", "name": "Konfliktlotse", "url": Astro.site.origin },
+});
 ---
 <BaseLayout
   title={conflict.seoTitle || seoTitles[`${category.id}/${conflict.slug}`] || `${conflict.title} – was sage ich jetzt?`}
   description={toolMetas[`${category.id}/${conflict.slug}`] || conflict.summary}
   canonical={pageUrl}
+  jsonLd={jsonLd}
   noAds={adsSensitive}
 >
   <Breadcrumbs crumbs={breadcrumbs} />
@@ -76,7 +94,7 @@ const canonicalUrl = `${Astro.site.origin}${pageUrl}`;
       <span class="conflict-icon" aria-hidden="true">{conflict.icon}</span>
       <h1>{h1}</h1>
     </div>
-    <p class="conflict-with">{category.icon} Konflikt mit {category.name}</p>
+    <p class="conflict-with">{category.icon} Konflikt mit {category.name} · Stand: <time datetime={updated}>{updatedLabel}</time></p>
 
     {quick && (
       <p class="answer"><strong>Kurz gesagt:</strong> {quick.toolAnswer}</p>

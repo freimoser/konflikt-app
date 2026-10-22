@@ -553,3 +553,10 @@ Auftrag: offene Aufgaben ohne Betreiber erledigen, SEO-/GEO-Gefahren beheben, sc
 - `npm audit`: Vite 8.2.x (high, nur Dev-Server) → 8.3.5 per `audit fix`.
 - Audit gebaut (224 indexierbar): keine doppelten Titel/Descriptions, je 1 H1, alle Bilder mit alt, jede Seite ≥ 3
   interne Links, JSON-LD parsebar. `www` hat weiterhin keinen DNS-Eintrag (nur Betreiber).
+
+### Durchlauf 2 – 2026-10-22
+- Live geprüft: http→https, Pfade ohne Slash → 301 auf Slash-Version, `freimoser.github.io/konflikt-app/` → 301 auf
+  die Domain, unbekannte Pfade → 404; noindex nur auf 404, Suche, Impressum, Datenschutz (nicht in der Sitemap).
+- **Tool-Seiten (78) ohne Datum und ohne Seiten-Schema** → sichtbares „Stand: <Datum>“ und JSON-LD `WebPage` mit
+  `datePublished`/`dateModified` (gleiche Quelle wie Sitemap-lastmod und Ratgeber), Autor und Publisher.
+  Aktualitäts- und Herkunftssignal für Google und KI-Suchen; kein künstliches Datums-Update.
