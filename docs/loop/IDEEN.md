@@ -118,3 +118,9 @@ Beim Erledigen hier abhaken und in `LOG.md` eintragen.
 - ✅ DL 1: automatische Rückverlinkung verwandter Konflikte
 - ✅ DL 1: Artikel mit `datePublished`/`dateModified` + sichtbarem Datum
 - ✅ DL 1: `npm audit fix` → 0 Schwachstellen
+
+## Quick-Win-Loop 2026-10-22
+- [x] IndexNow (Bing/ChatGPT-Suche) automatisch nach jedem Deploy.
+- [x] Datum + WebPage-Schema auf Tool-Seiten.
+- [x] Dativ der Kategorienamen nach „mit“.
+- [ ] Später, mit Search-Console-Daten: Seiten auf Position 8–20 gezielt vertiefen (statt neuer Massenseiten).
