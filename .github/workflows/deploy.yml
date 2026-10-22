@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      indexnow_all:
+        description: 'Alle URLs per IndexNow melden (sonst nur kürzlich geänderte)'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -56,3 +61,17 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+  # Meldet geänderte URLs per IndexNow (Bing u. a.); bricht den Deploy nie ab.
+  indexnow:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: IndexNow
+        run: node scripts/indexnow.mjs ${{ inputs.indexnow_all && '--all' || '' }}

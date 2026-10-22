@@ -25,7 +25,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
           <div class="cat-block">
             <a href={`${baseUrl}/konflikt/${cat.id}/`} class="cat-block-header">
               <span class="cat-block-icon" aria-hidden="true">{cat.icon}</span>
-              <span class="cat-block-name">{cat.name}</span>
+              <h2 class="cat-block-name">{cat.name}</h2>
               <span class="cat-block-arrow">→</span>
             </a>
             <p class="cat-block-desc">{cat.summary}</p>
@@ -76,6 +76,10 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
   .cat-block-header:hover {
     background: #E8F5E9;
+  }
+  .cat-block-name {
+    font-size: inherit;
+    margin: 0;
   }
   .cat-block-icon {
     font-size: 1.5rem;

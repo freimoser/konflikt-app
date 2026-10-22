@@ -7,6 +7,8 @@ export const toolMetas = {
     'Unklare Aufträge, aber am Ende Kritik? So klärst du mit deiner Führungskraft Ziele und Maßstäbe – mit Sätzen in drei Tonlagen und klarem Ablauf.',
   'chef/nicht-ernst-genommen':
     'Deine Ideen gehen im Team unter? Mit diesen Formulierungen sprichst du es bei deiner Führungskraft an und vereinbarst einen nächsten Schritt.',
+  'chef/zu-viel-druck':
+    'Überstunden, Dauererreichbarkeit, zu knappe Deadlines? Mit diesen Sätzen sprichst du die Arbeitslast bei deiner Führungskraft an und setzt Prioritäten.',
   'partner/streit-um-geld': 'Ihr streitet immer wieder über Ausgaben und Sparen? So sprichst du Geld mit deinem:deiner Partner:in ruhig an und findet ihr gemeinsam faire Regeln.',
   'partner/hoert-nicht-zu': 'Du erzählst Wichtiges, doch dein:e Partner:in ist abwesend? Hier findest du Sätze in drei Tonlagen, um ohne Vorwurf um echte Aufmerksamkeit zu bitten.',
   'partner/keine-zeit': 'Zwischen Job, Terminen und Müdigkeit bleibt für euch kaum etwas übrig? Mit diesen Formulierungen sprichst du deinen Wunsch nach Nähe ohne Vorwürfe an.',

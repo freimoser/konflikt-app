@@ -538,3 +538,18 @@ Auftrag: App prüfen (einfach halten), funktioniert alles, sind wir bereit für 
 
 **Fazit KISS-Check:** Technik, Funktionen und Indexierbarkeit sind in Ordnung; einziger Fehler (Titel am
 Gender-Doppelpunkt abgeschnitten) in Check 1 behoben. Seite ist bereits im Suchindex.
+
+## Quick-Win-Loop (3 Durchläufe) – ab 2026-10-22
+Auftrag: offene Aufgaben ohne Betreiber erledigen, SEO-/GEO-Gefahren beheben, schnelle Verbesserungen.
+
+### Durchlauf 1 – 2026-10-22
+- **IndexNow eingeführt** (`scripts/indexnow.mjs`, Schlüsseldatei `public/<key>.txt`, Job `indexnow` nach dem
+  Deploy): meldet geänderte URLs (lastmod ≤ 2 Tage) an Bing/Yandex u. a.; `workflow_dispatch` mit `indexnow_all`
+  meldet alle. Bing speist die ChatGPT-Suche → GEO-Hebel ohne Bing-Webmaster-Konto. Fehler brechen den Deploy nie ab.
+  Einmalig alle URLs gemeldet.
+- `/konflikt/chef/zu-viel-druck/`: Description war 96 Zeichen mit Gesundheitsaussage („machen dich krank“) → eigene
+  Tool-Meta (151 Zeichen).
+- `/konflikt/`: Kategorienamen als `<h2>` (Seite hatte keine Zwischenüberschriften).
+- `npm audit`: Vite 8.2.x (high, nur Dev-Server) → 8.3.5 per `audit fix`.
+- Audit gebaut (224 indexierbar): keine doppelten Titel/Descriptions, je 1 H1, alle Bilder mit alt, jede Seite ≥ 3
+  interne Links, JSON-LD parsebar. `www` hat weiterhin keinen DNS-Eintrag (nur Betreiber).
