@@ -27,7 +27,7 @@ export const GET: APIRoute = () => {
   lines.push(`- [Alle Gesprächspläne nach Person](${SITE}/konflikt/): konkrete Formulierungen (sanft, direkt, sachlich), Ablauf, Antworten auf typische Gegenreaktionen, Abbruchkriterium.`);
   lines.push(`- [Ratgeber](${SITE}/ratgeber/): warum ein Alltagskonflikt entsteht, typische Fehler, langfristige Strategie, FAQ.`);
   for (const cat of categories) {
-    lines.push(`- [Konflikte mit ${cat.name}](${SITE}/konflikt/${cat.id}/): ${cat.summary}`);
+    lines.push(`- [Konflikte mit ${cat.nameDative || cat.name}](${SITE}/konflikt/${cat.id}/): ${cat.summary}`);
   }
   lines.push('');
   lines.push('### Methoden', '');

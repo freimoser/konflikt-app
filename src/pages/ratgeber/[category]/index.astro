@@ -45,7 +45,7 @@ const jsonLd = hub?.faqs?.length
 <BaseLayout
   title={h1}
   fullTitle={`${h1.split(': ')[0]}${h1.split(': ')[0].length > 36 ? '' : ' – Ratgeber'} | Konfliktlotse`}
-  description={hub?.ratgeberMeta || `Hintergründe und langfristige Lösungen für typische Konflikte mit ${category.name}: Ursachen, häufige Fehler und Antworten auf die wichtigsten Fragen.`}
+  description={hub?.ratgeberMeta || `Hintergründe und langfristige Lösungen für typische Konflikte mit ${category.nameDative || category.name}: Ursachen, häufige Fehler und Antworten auf die wichtigsten Fragen.`}
   jsonLd={jsonLd}
 >
   <Breadcrumbs crumbs={breadcrumbs} />
@@ -57,7 +57,7 @@ const jsonLd = hub?.faqs?.length
     </div>
     {hub
       ? hub.ratgeberIntro.map((para: string) => <p class="cat-desc">{para}</p>)
-      : <p class="cat-desc">Hintergründe und psychologische Dynamiken zu typischen Konflikten mit {category.name}.</p>}
+      : <p class="cat-desc">Hintergründe und psychologische Dynamiken zu typischen Konflikten mit {category.nameDative || category.name}.</p>}
 
     <h2 class="list-heading">Alle Ratgeber zu {category.name}</h2>
     <div class="conflict-grid">

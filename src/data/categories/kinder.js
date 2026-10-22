@@ -8,6 +8,7 @@ import geschwisterstreit from '../conflicts/kinder/geschwisterstreit.js';
 export const kinderCategory = {
   id: 'kinder',
   name: 'Kinder & Teenager',
+  nameDative: 'Kindern & Teenagern', // für „mit …“
   icon: '🧒',
   summary: 'Streit mit dem eigenen Kind kostet Nerven – ums Handy, die Hausaufgaben oder den Ton. Klare, ruhige Absprachen schützen eure Beziehung und geben deinem Kind Halt, auch in der Pubertät.',
   conflicts: [

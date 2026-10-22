@@ -19,7 +19,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 const hub = getHub(category.id);
 const hubTopic = hub?.topic ? getTopic(hub.topic) : null;
 const trainerCount = scenarios.filter(sc => sc.conflict.category === category.id).length;
-const h1 = hub?.toolTitle || `Konflikte mit ${category.name}`;
+const h1 = hub?.toolTitle || `Konflikte mit ${category.nameDative || category.name}`;
 const breadcrumbs = [
   { label: 'Start', url: '/' },
   { label: 'Konflikte', url: '/konflikt/' },
@@ -70,7 +70,7 @@ const breadcrumbs = [
 
     {trainerCount > 0 && (
       <a class="trainer-link" href={`${baseUrl}/spiel/gespraechstrainer/#bereich-${category.id}`}>
-        🎯 <strong>Üben:</strong> {trainerCount} typische Situationen mit {category.name} im Gesprächs-Trainer
+        🎯 <strong>Üben:</strong> {trainerCount} typische Situationen mit {category.nameDative || category.name} im Gesprächs-Trainer
       </a>
     )}
 

@@ -8,6 +8,7 @@ import geldGeliehen from '../conflicts/geschwister/geld-geliehen.js';
 export const geschwisterCategory = {
   id: 'geschwister',
   name: 'Geschwister',
+  nameDative: 'Geschwistern', // für „mit …“
   icon: '🧑‍🤝‍🧑',
   summary: 'Geschwisterkonflikte tragen oft alte Rollen aus der Kindheit in das Erwachsenenleben. Klare Worte helfen dir, heute auf Augenhöhe zu sprechen – über Vergleiche, Geld, Erbe oder Funkstille.',
   conflicts: [

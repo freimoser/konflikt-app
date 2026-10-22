@@ -560,3 +560,14 @@ Auftrag: offene Aufgaben ohne Betreiber erledigen, SEO-/GEO-Gefahren beheben, sc
 - **Tool-Seiten (78) ohne Datum und ohne Seiten-Schema** → sichtbares „Stand: <Datum>“ und JSON-LD `WebPage` mit
   `datePublished`/`dateModified` (gleiche Quelle wie Sitemap-lastmod und Ratgeber), Autor und Publisher.
   Aktualitäts- und Herkunftssignal für Google und KI-Suchen; kein künstliches Datums-Update.
+
+### Durchlauf 3 – 2026-10-22 (letzter, Loop beendet)
+- KI-Crawler-Zugang live geprüft: GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, PerplexityBot,
+  Google-Extended, Bingbot, CCBot, Applebot → alle 200; Cloudflare nur DNS (GitHub-IPs), keine Bot-Sperre.
+- Sprungmarken `#bereich-<kategorie>` zum Trainer sind kein Fehler (per JS ausgewertet → Filter).
+- **Grammatik „mit Geschwister“ / „mit Kinder & Teenager“** (Tool-Seiten, Ratgeber, Hubs, `llms.txt`) → neues Feld
+  `nameDative` („Geschwistern“, „Kindern & Teenagern“), überall nach „mit“ verwendet.
+
+**Bilanz Quick-Win-Loop:** IndexNow (alle 224 URLs gemeldet, künftig automatisch), Datum + WebPage-Schema auf 78
+Tool-Seiten, korrigierte Meta (zu-viel-druck), H2 auf `/konflikt/`, Grammatik in Kategorie-Bezeichnungen, Vite-
+Sicherheitsupdate. Offen nur für Betreiber: DNS `www`; optional Bing Webmaster Tools; AdSense-/Analytics-Kennungen.

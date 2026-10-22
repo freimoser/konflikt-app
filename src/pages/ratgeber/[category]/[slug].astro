@@ -129,7 +129,7 @@ const jsonLd = JSON.stringify(schemas);
 
   <article class="ratgeber-article">
     <div class="article-header">
-      <div class="meta-tag">{category.icon} Konflikte mit {category.name}</div>
+      <div class="meta-tag">{category.icon} Konflikte mit {category.nameDative || category.name}</div>
       <h1>{title}</h1>
       <p class="article-date">KI-gestützt erstellt, verantwortet von <a href={`${baseUrl}/ueber-uns/`} rel="author">{OPERATOR.name}</a> · Aktualisiert am <time datetime={updated}>{updatedLabel}</time></p>
     </div>

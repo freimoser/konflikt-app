@@ -94,7 +94,7 @@ const jsonLd = JSON.stringify({
       <span class="conflict-icon" aria-hidden="true">{conflict.icon}</span>
       <h1>{h1}</h1>
     </div>
-    <p class="conflict-with">{category.icon} Konflikt mit {category.name} · Stand: <time datetime={updated}>{updatedLabel}</time></p>
+    <p class="conflict-with">{category.icon} Konflikt mit {category.nameDative || category.name} · Stand: <time datetime={updated}>{updatedLabel}</time></p>
 
     {quick && (
       <p class="answer"><strong>Kurz gesagt:</strong> {quick.toolAnswer}</p>
