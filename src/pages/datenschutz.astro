@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { ADS_ENABLED, OPERATOR, GA_ENABLED, CF_ANALYTICS_ENABLED, CONSENT_KEY } from '../config/site';
 
-const stand = '5. Oktober 2026';
+const stand = '22. Oktober 2026';
 
 // Abschnittsnummern zentral vergeben – bedingt gerenderte Abschnitte erzeugen sonst Lücken/Doppelungen.
 const ABSCHNITTE = [
@@ -87,10 +87,10 @@ const nr = (k: string) => ABSCHNITTE.indexOf(k) + 1;
       Wir selbst haben keinen Zugriff auf diese Protokolldaten und werten sie nicht aus.
     </p>
 
-    <h2>{nr('funktionen')}. Übungen, Tests, Suche, Kopieren und Teilen</h2>
+    <h2>{nr('funktionen')}. Übungen, Tests, Baukasten, Suche, Kopieren und Teilen</h2>
     <p>
-      Gesprächs-Trainer, Eskalations-Check, Konflikttyp-Test und die Suche laufen vollständig in deinem
-      Browser. Deine Antworten werden weder gespeichert noch an uns oder Dritte übertragen; beim Neuladen der
+      Gesprächs-Trainer, Eskalations-Check, Konflikttyp-Test, Ich-Botschaft-Baukasten und die Suche laufen
+      vollständig in deinem Browser. Deine Antworten werden weder gespeichert noch an uns oder Dritte übertragen; beim Neuladen der
       Seite sind sie weg. „Satz kopieren“ legt nur den angezeigten Text in deine Zwischenablage. „Ergebnis
       teilen“ übergibt einen kurzen Text und den Link zur Testseite an die Teilen-Funktion deines Geräts –
       deine einzelnen Antworten sind darin nicht enthalten.

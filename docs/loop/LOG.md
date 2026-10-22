@@ -571,3 +571,10 @@ Auftrag: offene Aufgaben ohne Betreiber erledigen, SEO-/GEO-Gefahren beheben, sc
 **Bilanz Quick-Win-Loop:** IndexNow (alle 224 URLs gemeldet, künftig automatisch), Datum + WebPage-Schema auf 78
 Tool-Seiten, korrigierte Meta (zu-viel-druck), H2 auf `/konflikt/`, Grammatik in Kategorie-Bezeichnungen, Vite-
 Sicherheitsupdate. Offen nur für Betreiber: DNS `www`; optional Bing Webmaster Tools; AdSense-/Analytics-Kennungen.
+
+### Rechtstexte-Check – 2026-10-22
+- Live geprüft: keine Cookies, kein localStorage, keine Anfragen an Drittserver (Analytics/AdSense nicht konfiguriert)
+  → Datenschutzerklärung stimmt mit der Technik überein. Ergänzt: Ich-Botschaft-Baukasten im Abschnitt „Übungen,
+  Tests …“; Stand 22. Oktober 2026. Kontakt-E-Mail kommt zentral aus `src/config/site.ts` (kontakt@freimoser.de).
+- Impressum (§ 5 DDG, § 18 Abs. 2 MStV) vollständig bis auf zweiten Kontaktweg (nur E-Mail) – Entscheidung Betreiber.
+- AGB: keine nötig (kein Vertrag, keine Konten, keine Verkäufe).
