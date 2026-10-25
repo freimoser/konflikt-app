@@ -17,7 +17,7 @@ export default {
   'mikromanagement': {
     toolAnswer: 'Biete deiner Führungskraft verlässliche Zwischenstände an und bitte im Gegenzug um mehr Spielraum im Detail. Zum Beispiel: „Ich schicke dir jeden Freitag einen kurzen Stand. Können wir dafür vereinbaren, dass ich Kleinigkeiten selbst entscheide?“',
     ratgeberAnswer: 'Hinter Mikromanagement steckt oft Unsicherheit oder großer Druck von oben, der die Führungskraft an Details festhalten lässt. Dauerhaft helfen transparente Statusupdates, die Vertrauen aufbauen, und klar abgesprochene Entscheidungsspielräume.',
-    ratgeberTitle: 'Warum Chefs alles kontrollieren wollen',
+    ratgeberTitle: 'Mikromanagement: Warum Chefs kontrollieren',
   },
   'unfaire-behandlung': {
     toolAnswer: 'Sprich eine konkrete Beobachtung sachlich an und frag nach den Kriterien hinter der Entscheidung. Zum Beispiel: „Bei der Projektvergabe wurde ich zuletzt nicht berücksichtigt. Kannst du mir erklären, wonach du entscheidest und was ich dafür tun kann?“',

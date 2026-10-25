@@ -2,6 +2,7 @@ export default {
   published: '2026-09-30',
   slug: 'deeskalation-im-streit',
   title: 'Deeskalation im Streit',
+  seoTitle: 'Deeskalation im Streit: So gelingt sie', // <title> (≤ 44 Zeichen), Suchbegriff vorn
   icon: '🧯',
   h1: 'Streit deeskalieren: Was du in hitzigen Momenten sagen und tun kannst',
   meta: 'Streit deeskalieren: Warnsignale erkennen, Auszeit vereinbaren, Tempo senken. Konkrete Sätze für hitzige Momente und wann du lieber gehen solltest.',

@@ -2,6 +2,7 @@ export default {
   published: '2026-09-30',
   slug: 'nein-sagen-lernen',
   title: 'Nein sagen lernen',
+  seoTitle: 'Nein sagen lernen: Sätze ohne Schuldgefühl', // <title> (≤ 44 Zeichen), Suchbegriff vorn
   kicker: 'Selbstbehauptung',
   icon: '✋',
   h1: 'Nein sagen lernen: Freundlich ablehnen, ohne schlechtes Gewissen',

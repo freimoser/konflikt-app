@@ -2,6 +2,7 @@ export default {
   published: '2026-09-30',
   slug: 'mobbing-am-arbeitsplatz',
   title: 'Mobbing am Arbeitsplatz',
+  seoTitle: 'Mobbing am Arbeitsplatz: Was du tun kannst', // <title> (≤ 44 Zeichen), Suchbegriff vorn
   kicker: 'Job',
   icon: '🛡️',
   adsSensitive: true, // sensibles Thema: keine Werbung

@@ -2,6 +2,7 @@ export default {
   published: '2026-09-30',
   slug: 'richtig-entschuldigen',
   title: 'Richtig entschuldigen',
+  seoTitle: 'Richtig entschuldigen: So wirkt es ehrlich', // <title> (≤ 44 Zeichen), Suchbegriff vorn
   icon: '🤝',
   h1: 'Richtig entschuldigen: 5 Bausteine, die wirklich ankommen',
   meta: 'Richtig entschuldigen: 5 Bausteine einer echten Entschuldigung, typische Schein-Entschuldigungen und Formulierungen, die beim Gegenüber ankommen.',

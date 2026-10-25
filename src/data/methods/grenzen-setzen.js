@@ -2,6 +2,7 @@ export default {
   published: '2026-09-30',
   slug: 'grenzen-setzen',
   title: 'Grenzen setzen',
+  seoTitle: 'Grenzen setzen lernen: Sätze und Beispiele', // <title> (≤ 44 Zeichen), Suchbegriff vorn
   icon: '🚧',
   h1: 'Grenzen setzen lernen: Klare Sätze für Familie, Job und Freundschaft',
   meta: 'Grenzen setzen ohne Streit: So erkennst du deine Grenzen, formulierst sie kurz und klar und hältst sie durch – mit Beispielsätzen für Familie und Job.',

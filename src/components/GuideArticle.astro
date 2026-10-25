@@ -75,7 +75,7 @@ if (method.faqs?.length) {
 ---
 <BaseLayout
   title={method.h1}
-  fullTitle={`${method.h1.split(': ')[0]} | Konfliktlotse`}
+  fullTitle={`${method.seoTitle || method.h1.split(': ')[0]} | Konfliktlotse`}
   description={method.meta}
   canonical={pageUrl}
   jsonLd={JSON.stringify(schemas)}

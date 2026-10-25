@@ -2,6 +2,7 @@ export default {
   published: '2026-09-30',
   slug: 'ich-botschaften',
   title: 'Ich-Botschaften',
+  seoTitle: 'Ich-Botschaften: Aufbau und Beispiele', // <title> (≤ 44 Zeichen), Suchbegriff vorn
   icon: '💬',
   h1: 'Ich-Botschaften: So sprichst du Kritik an, ohne anzugreifen (mit Beispielen)',
   meta: 'Ich-Botschaften statt Du-Vorwürfe: Aufbau in vier Teilen, versteckte Du-Botschaften erkennen und über zehn Umformulierungen für Beziehung, Job und Familie.',

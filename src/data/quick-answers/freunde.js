@@ -12,7 +12,7 @@ export default {
   'einseitige-freundschaft': {
     toolAnswer: 'Sprich das Ungleichgewicht ehrlich an und sag, was du dir künftig von der anderen Seite wünschst. Zum Beispiel: „Ich mag dich sehr, aber ich melde mich fast immer zuerst. Es würde mir viel bedeuten, wenn auch mal ein Vorschlag von dir kommt.“',
     ratgeberAnswer: 'Meist entstehen feste Rollen: Eine Person kümmert sich verlässlich, die andere gewöhnt sich daran, dass Kontakt und Planung von selbst passieren. Langfristig hilft, das Ungleichgewicht offen anzusprechen und bewusst weniger Vorleistung zu bringen, um zu sehen, was zurückkommt.',
-    ratgeberTitle: 'Warum Freundschaften einseitig werden',
+    ratgeberTitle: 'Einseitige Freundschaft: Ursachen, Auswege',
   },
   'vertrauen-gebrochen': {
     toolAnswer: 'Benenne ruhig, was passiert ist und was es bei dir ausgelöst hat, und frag nach der Sicht der anderen Person. Zum Beispiel: „Dass du das weitererzählt hast, hat mich sehr verletzt. Ich möchte verstehen, wie es dazu kam, bevor ich entscheide, wie es weitergeht.“',

@@ -591,3 +591,12 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
 - Ratgeber (79): H1 lief in die Autorenzeile (negativer Abstand) → `margin: 0.5rem 0 0`.
 - `PRODUCT.md` und `WEBSITE-STATUS.md` (Skill website-bauen/impeccable) eingecheckt.
 - `npm audit`: undici (high) und zod (high) per `audit fix` aktualisiert (nur Build-Abhängigkeiten).
+
+### Durchlauf 2 – 2026-10-26
+- **Keyword-Recherche mit echten Daten** (DataForSEO, 174 Begriffe, ca. 0,17 $): `recherche/keyword-karte.md`.
+  Volumen liegt bei Methoden (GFK 27.100, Vier-Ohren 6.600, Aktives Zuhören/Deeskalation je 4.400 …) und Mobbing
+  (8.100); Konflikte sind Long-Tail (10–400).
+- **Titel auf Suchbegriffe ausgerichtet:** neues Feld `seoTitle` für Methoden/Themen (11 Seiten, validiert ≤ 44 Zeichen),
+  6 Tool-Titel (Mikromanagement, Nebenkostenabrechnung prüfen, Hund bellt, Kaution zurückfordern, Geschwisterstreit,
+  Erbstreit) und 3 Ratgeber-Titel (Mikromanagement, Laute Nachbarn, Einseitige Freundschaft). Nur Titel, die der
+  Inhalt deckt (z. B. „mit Beispielen“ nur bei Seiten mit Beispielen).

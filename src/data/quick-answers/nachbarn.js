@@ -6,7 +6,7 @@ export default {
       'Sprich den Nachbarn zeitnah und freundlich an, beschreibe konkret, wann der Lärm bei dir ankommt, und bitte um eine kleine Änderung. Zum Beispiel: „Abends hört man bei mir die Bässe bis ins Schlafzimmer, könntest du den Lautsprecher anders aufstellen?“',
     ratgeberAnswer:
       'Häufig bemerken Nachbarn gar nicht, wie stark Geräusche bei dir ankommen, und unterschiedliche Lebensrhythmen verschärfen das. Langfristig helfen ein frühes, ruhiges Gespräch statt Zetteln oder Klopfen sowie gemeinsame Absprachen zu ruhigen Zeiten, die für beide Seiten machbar sind.',
-    ratgeberTitle: 'Warum Nachbarn laut sind – und was hilft',
+    ratgeberTitle: 'Laute Nachbarn: Ursachen und was hilft',
   },
   'parkplatz-streit': {
     toolAnswer:

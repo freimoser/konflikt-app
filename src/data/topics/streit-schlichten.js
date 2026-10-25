@@ -2,6 +2,7 @@ export default {
   published: '2026-09-30',
   slug: 'streit-schlichten',
   title: 'Streit schlichten',
+  seoTitle: 'Streit schlichten: So vermittelst du fair', // <title> (≤ 44 Zeichen), Suchbegriff vorn
   kicker: 'Vermitteln',
   icon: '🤝',
   h1: 'Streit schlichten: So vermittelst du zwischen zwei Menschen, ohne Partei zu ergreifen',

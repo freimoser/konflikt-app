@@ -2,6 +2,7 @@ export default {
   published: '2026-09-30',
   slug: 'aktives-zuhoeren',
   title: 'Aktives Zuhören',
+  seoTitle: 'Aktives Zuhören: Techniken und Beispiele', // <title> (≤ 44 Zeichen), Suchbegriff vorn
   icon: '👂',
   h1: 'Aktives Zuhören lernen: Techniken, Beispielsätze und typische Fehler',
   meta: 'Aktives Zuhören lernen: Paraphrasieren, Gefühle spiegeln, offene Fragen, Pausen aushalten – mit Beispielsätzen, typischen Fehlern und Tipps für den Streit.',

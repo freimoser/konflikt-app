@@ -2,6 +2,7 @@ export default {
   published: '2026-09-30',
   slug: 'vier-ohren-modell',
   title: 'Vier-Ohren-Modell',
+  seoTitle: 'Vier-Ohren-Modell: Erklärung und Beispiele', // <title> (≤ 44 Zeichen), Suchbegriff vorn
   icon: '👂',
   h1: 'Vier-Ohren-Modell einfach erklärt: Warum wir aneinander vorbeireden',
   meta: 'Vier-Ohren-Modell nach Schulz von Thun einfach erklärt: Sachinhalt, Selbstkundgabe, Beziehung, Appell – mit Alltagsbeispielen und Tipps zum Nachfragen.',

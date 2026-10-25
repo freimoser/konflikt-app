@@ -11,7 +11,7 @@ sondern gegen den Bestand geprüft. Lücken werden geschlossen, das vorhandene D
 |---|---|---|---|---|
 | 0 | Einrichten | ✅ | 2026-10-22 | Statusdatei, impeccable 4.7.0 läuft, DataForSEO-MCP eingetragen |
 | 1 | Fundament | ✅ | 2026-10-22 | Marke gemessen (unten), `PRODUCT.md` von der Person bestätigt |
-| 2 | Recherche | 🔄 | | Strategie in `docs/loop/STRATEGIE.md`; keine Keyword-/GEO-Karte mit echten Suchdaten |
+| 2 | Recherche | 🔄 | 2026-10-26 | `recherche/keyword-karte.md` (174 Begriffe, DataForSEO); Titel angepasst; GEO-Prüfung offen |
 | 3 | Texte | ➖ | | Inhalte datengetrieben in `src/data/`, Regeln in `docs/loop/CONTENT-LEITFADEN.md` |
 | 4 | Design-Richtung | ✅ | | vorhandenes Design gilt |
 | 5 | Bauen | ✅ | | Astro, 228 Seiten, strukturierte Daten |

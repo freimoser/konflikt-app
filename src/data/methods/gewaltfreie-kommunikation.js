@@ -2,6 +2,7 @@ export default {
   published: '2026-09-30',
   slug: 'gewaltfreie-kommunikation',
   title: 'Gewaltfreie Kommunikation',
+  seoTitle: 'Gewaltfreie Kommunikation mit Beispielen', // <title> (≤ 44 Zeichen), Suchbegriff vorn
   icon: '🦒',
   h1: 'Gewaltfreie Kommunikation: Die 4 Schritte nach Rosenberg mit Beispielen',
   meta: 'Gewaltfreie Kommunikation nach Rosenberg: Beobachtung, Gefühl, Bedürfnis, Bitte – mit Beispielen, typischen Fehlern und Tipps für alltagstaugliche Sätze.',

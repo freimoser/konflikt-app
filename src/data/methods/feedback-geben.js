@@ -2,6 +2,7 @@ export default {
   published: '2026-09-30',
   slug: 'feedback-geben',
   title: 'Feedback geben',
+  seoTitle: 'Feedback geben ohne Kränkung: Beispiele', // <title> (≤ 44 Zeichen), Suchbegriff vorn
   icon: '🗣️',
   h1: 'Feedback geben ohne Kränkung: Aufbau, Beispiele, typische Fehler',
   meta: 'Feedback geben, das ankommt: Situation, Verhalten, Wirkung, der richtige Zeitpunkt, Beispiele für Job und Alltag – und warum das Sandwich oft scheitert.',
