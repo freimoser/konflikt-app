@@ -590,3 +590,4 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   (große Vorschaubilder in Discover/Bildern, volle Snippet-Länge; noindex-Seiten unverändert).
 - Ratgeber (79): H1 lief in die Autorenzeile (negativer Abstand) → `margin: 0.5rem 0 0`.
 - `PRODUCT.md` und `WEBSITE-STATUS.md` (Skill website-bauen/impeccable) eingecheckt.
+- `npm audit`: undici (high) und zod (high) per `audit fix` aktualisiert (nur Build-Abhängigkeiten).
