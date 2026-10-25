@@ -608,3 +608,6 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
 - **Entität „Konfliktlotse“:** `Organization` mit `@id`, PNG-Logo (180 px), Gründer → Person-`@id`; `WebSite` und alle
   Artikel/Tool-Seiten verweisen per `publisher` auf dieselbe `@id` (vorher drei unterschiedliche, teils ohne Logo).
   Hilft Google/KI-Suchen, Seite, Herausgeber und verantwortliche Person als zusammengehörig zu erkennen.
+- Zwischenfall: Ein Push enthielt einen fehlenden Import (Build auf GitHub rot, Deploy übersprungen, Live-Stand
+  unverändert); sofort behoben. Ursache: Prüfkette wertete Textausgabe statt Exit-Code aus → ab jetzt Freigabe nur über
+  Exit-Code von `npm run verify` und `npm audit --audit-level=low`.
