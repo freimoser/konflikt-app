@@ -64,7 +64,7 @@ const breadcrumbs = [
     {hubTopic && (
       <p class="hub-crosslink">
         Den großen Überblick findest du im Themen-Ratgeber
-        <a href={`${baseUrl}/themen/${hubTopic.slug}/`}>{hubTopic.title}</a>.
+        {' '}<a href={`${baseUrl}/themen/${hubTopic.slug}/`}>{hubTopic.title}</a>.
       </p>
     )}
 
@@ -78,7 +78,7 @@ const breadcrumbs = [
 
     <p class="hub-crosslink">
       Du willst verstehen, warum diese Konflikte entstehen?
-      <a href={`${baseUrl}/ratgeber/${category.id}/`}>Zum Ratgeber {category.name} →</a>
+      {' '}<a href={`${baseUrl}/ratgeber/${category.id}/`}>Zum Ratgeber {category.name} →</a>
     </p>
   </section>
 </BaseLayout>

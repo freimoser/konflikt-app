@@ -578,3 +578,15 @@ Sicherheitsupdate. Offen nur für Betreiber: DNS `www`; optional Bing Webmaster 
   Tests …“; Stand 22. Oktober 2026. Kontakt-E-Mail kommt zentral aus `src/config/site.ts` (kontakt@freimoser.de).
 - Impressum (§ 5 DDG, § 18 Abs. 2 MStV) vollständig bis auf zweiten Kontaktweg (nur E-Mail) – Entscheidung Betreiber.
 - AGB: keine nötig (kein Vertrag, keine Konten, keine Verkäufe).
+
+## SEO/GEO-Loop (mind. 15 Durchläufe) – ab 2026-10-26
+Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Regeln einhalten.
+
+### Durchlauf 1 – 2026-10-26
+- **Fehlende Leerzeichen vor Links (15 Quellstellen, 28 Vorkommen auf 20 Seiten):** Astros HTML-Kompression entfernt
+  den Zeilenumbruch vor einem `<a>` am Zeilenanfang → „Themen-RatgeberKonfliktgespräch“. Jetzt `{' '}<a`.
+  Prüfung im gebauten HTML: 0 Vorkommen. (Wortverschmelzung stört Lesbarkeit und Textverständnis von Suchmaschinen.)
+- Indexierbare Seiten: `robots` mit `max-image-preview:large, max-snippet:-1, max-video-preview:-1`
+  (große Vorschaubilder in Discover/Bildern, volle Snippet-Länge; noindex-Seiten unverändert).
+- Ratgeber (79): H1 lief in die Autorenzeile (negativer Abstand) → `margin: 0.5rem 0 0`.
+- `PRODUCT.md` und `WEBSITE-STATUS.md` (Skill website-bauen/impeccable) eingecheckt.
