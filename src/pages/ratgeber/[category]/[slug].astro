@@ -1,4 +1,5 @@
 ---
+import { publisher } from '../../../data/structured-data.js';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CrisisNotice from '../../../components/CrisisNotice.astro';
@@ -87,14 +88,7 @@ schemas.push({
   "dateModified": updated,
   "mainEntityOfPage": `${Astro.site.origin}${pageUrl}`,
   "author": AUTHOR_SCHEMA,
-  "publisher": {
-    "@type": "Organization",
-    "name": "Konfliktlotse",
-    "logo": {
-      "@type": "ImageObject",
-      "url": `${Astro.site.origin}${baseUrl}/favicon.svg`
-    }
-  }
+  "publisher": publisher
 });
 
 // FAQ Schema

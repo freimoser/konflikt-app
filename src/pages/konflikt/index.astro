@@ -1,8 +1,10 @@
 ---
+import { itemList } from '../../data/structured-data.js';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { categories, getAllConflicts } from '../../data/categories/index.js';
 const total = getAllConflicts().length;
+const jsonLd = JSON.stringify(itemList('Konflikte nach Lebensbereich', categories.map(c => ({ name: `Konflikte mit ${c.nameDative || c.name}`, path: `/konflikt/${c.id}/` }))));
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
@@ -11,6 +13,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   title="Alle Konflikte"
   fullTitle="Alltagskonflikte lösen: Gesprächspläne | Konfliktlotse"
   description={`${total} Alltagskonflikte mit Partner:in, Chef:in, Familie, Freund:innen, Nachbar:innen und in der WG – jeweils mit fertigen Formulierungen und Plan.`}
+  jsonLd={jsonLd}
 >
   <Breadcrumbs crumbs={[{ label: 'Start', url: '/' }, { label: 'Konflikte' }]} />
   <section>

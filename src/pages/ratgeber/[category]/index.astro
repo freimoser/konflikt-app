@@ -1,4 +1,5 @@
 ---
+import { itemList } from '../../../data/structured-data.js';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import AdSlot from '../../../components/AdSlot.astro';
@@ -29,8 +30,8 @@ const teaser = (slug: string, fallback: string) => {
   return answer ? answer.split(/(?<=[.!?])\s+/)[0] : fallback;
 };
 const h1 = hub?.ratgeberTitle || `Ratgeber: ${category.name}`;
-const jsonLd = hub?.faqs?.length
-  ? JSON.stringify({
+const faqLd = hub?.faqs?.length
+  ? ({
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
       mainEntity: hub.faqs.map((f: { question: string; answer: string }) => ({
@@ -39,7 +40,11 @@ const jsonLd = hub?.faqs?.length
         acceptedAnswer: { '@type': 'Answer', text: f.answer },
       })),
     })
-  : undefined;
+  : null;
+const jsonLd = JSON.stringify([
+  ...(faqLd ? [faqLd] : []),
+  itemList(`Ratgeber: Konflikte mit ${category.nameDative || category.name}`, category.conflicts.map((c: any) => ({ name: c.title, path: `/ratgeber/${category.id}/${c.slug}/` }))),
+]);
 ---
 
 <BaseLayout

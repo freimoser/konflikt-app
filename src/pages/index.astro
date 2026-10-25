@@ -1,4 +1,5 @@
 ---
+import { organization, ORGANIZATION_ID } from '../data/structured-data.js';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { categories, getAllConflicts } from '../data/categories/index.js';
 import { scenarios } from '../data/trainer.js';
@@ -46,10 +47,12 @@ const faqs = [
 ];
 
 const jsonLd = JSON.stringify([
+  organization,
   {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Konfliktlotse',
+    publisher: { '@id': ORGANIZATION_ID },
     url: `${Astro.site.origin}/`,
     inLanguage: 'de-DE',
     description: 'Konkrete Gesprächshilfen und Ratgeber für Alltagskonflikte mit Partner:in, Chef:in, Freund:innen, Kolleg:innen, Nachbar:innen und Eltern.',

@@ -1,15 +1,18 @@
 ---
+import { itemList } from '../../data/structured-data.js';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { vorlagen } from '../../data/vorlagen.js';
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 const breadcrumbs = [{ label: 'Start', url: '/' }, { label: 'Vorlagen' }];
+const jsonLd = JSON.stringify(itemList('Vorlagen zum Ausdrucken', vorlagen.map((v: any) => ({ name: v.title, path: `/vorlagen/${v.slug}/` }))));
 ---
 <BaseLayout
   title="Vorlagen zum Ausdrucken"
   fullTitle="Vorlagen für Konfliktgespräche zum Ausdrucken | Konfliktlotse"
   description="Kostenlose Vorlagen zum Ausdrucken: Checkliste fürs Konfliktgespräch, Familienrat-Protokoll, WG-Vereinbarung und Vereinbarung nach einem Streit."
+  jsonLd={jsonLd}
 >
   <Breadcrumbs crumbs={breadcrumbs} />
   <h1>Vorlagen zum Ausdrucken</h1>

@@ -1,4 +1,5 @@
 ---
+import { webApplication } from '../../data/structured-data.js';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 
@@ -86,6 +87,7 @@ const breadcrumbs = [
   title="Eskalations-Check: Wie verfahren ist dein Konflikt?"
   fullTitle="Eskalations-Check: Wie verfahren ist dein Konflikt? | Konfliktlotse"
   description="Selbsttest mit 11 Fragen nach den Eskalationsstufen von Glasl: Ist dein Konflikt gesprächsbereit, angespannt oder verhärtet – und was hilft jetzt?"
+  jsonLd={JSON.stringify(webApplication('Eskalations-Check: Wie verfahren ist dein Konflikt?', '/spiel/eskalations-check/', 'Selbsttest mit 11 Fragen nach den Eskalationsstufen von Glasl: Ist dein Konflikt gesprächsbereit, angespannt oder verhärtet – und was hilft jetzt?'))}
 >
   <Breadcrumbs crumbs={breadcrumbs} />
 

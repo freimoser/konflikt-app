@@ -600,3 +600,11 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   6 Tool-Titel (Mikromanagement, Nebenkostenabrechnung prüfen, Hund bellt, Kaution zurückfordern, Geschwisterstreit,
   Erbstreit) und 3 Ratgeber-Titel (Mikromanagement, Laute Nachbarn, Einseitige Freundschaft). Nur Titel, die der
   Inhalt deckt (z. B. „mit Beispielen“ nur bei Seiten mit Beispielen).
+
+### Durchlauf 3 – 2026-10-26
+- **Strukturierte Daten für Übersichten:** `ItemList` auf `/konflikt/`, 12 Kategorie-Hubs, `/ratgeber/`, 12
+  Ratgeber-Kategorien (zusätzlich zur FAQ), `/vorlagen/`, `/spiel/`; `WebApplication` für Eskalations-Check und
+  Konflikttyp-Test (wie Trainer/Baukasten). Neue Bausteine in `src/data/structured-data.js`.
+- **Entität „Konfliktlotse“:** `Organization` mit `@id`, PNG-Logo (180 px), Gründer → Person-`@id`; `WebSite` und alle
+  Artikel/Tool-Seiten verweisen per `publisher` auf dieselbe `@id` (vorher drei unterschiedliche, teils ohne Logo).
+  Hilft Google/KI-Suchen, Seite, Herausgeber und verantwortliche Person als zusammengehörig zu erkennen.
