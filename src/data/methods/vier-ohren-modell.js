@@ -145,5 +145,5 @@ export default {
     { category: 'kollegen', slug: 'keine-zusammenarbeit' },
     { category: 'ex-partner', slug: 'jede-nachricht-eskaliert' },
   ],
-  relatedMethods: ['aktives-zuhoeren', 'ich-botschaften', 'feedback-geben'],
+  relatedMethods: ['aktives-zuhoeren', 'ich-botschaften', 'watzlawick-axiome'],
 };

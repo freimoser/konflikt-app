@@ -15,6 +15,9 @@ export const methodSources = {
   'aktives-zuhoeren': [
     { text: 'Carl R. Rogers, Richard E. Farson: Active Listening. Industrial Relations Center, University of Chicago, 1957', url: 'https://wholebeinginstitute.com/wp-content/uploads/Rogers_Farson_Active-Listening.pdf' },
   ],
+  'watzlawick-axiome': [
+    { text: 'Paul Watzlawick, Janet H. Beavin, Don D. Jackson: Pragmatics of Human Communication. Norton, 1967; deutsch: „Menschliche Kommunikation. Formen, Störungen, Paradoxien“. Huber, 1969', url: 'https://de.wikipedia.org/wiki/Paul_Watzlawick' },
+  ],
   'vier-ohren-modell': [
     { text: 'Friedemann Schulz von Thun: Miteinander reden 1 – Störungen und Klärungen. Rowohlt, 1981', url: 'https://www.schulz-von-thun.de/veroeffentlichungen/miteinander-reden' },
   ],

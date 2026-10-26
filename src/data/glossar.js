@@ -267,6 +267,7 @@ export const glossar = [
     term: 'Metakommunikation',
     definition:
       'Metakommunikation heißt, über die Art zu sprechen, wie ihr miteinander redet – statt nur über das Streitthema selbst. Das hilft, wenn Gespräche immer wieder im selben Muster enden. Beispiel: „Mir fällt auf, dass wir bei Geldthemen schnell laut werden. Wollen wir vereinbaren, wie wir darüber reden, bevor wir weitermachen?“',
+    method: 'watzlawick-axiome',
     topic: 'streit-in-der-beziehung',
     conflicts: [{ category: 'partner', slug: 'streit-um-geld' }],
   },

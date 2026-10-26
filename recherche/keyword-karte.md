@@ -213,3 +213,29 @@ Arbeitsplatz, Nein sagen lernen, Streit schlichten.
 0	hausaufgaben streit eltern		
 0	kind räumt zimmer nicht auf		
 ```
+
+## Neue Themen-Chancen (Recherche 2026-10-26, DataForSEO keyword_ideas + Suchvolumen)
+
+Volumen = Google-Ads-Monatsmittel DE; eng verwandte Schreibweisen teilen sich ein Volumen (nicht addieren).
+
+| # | Cluster (Volumen) | Seitentyp | Status |
+|---|---|---|---|
+| 1 | 5 Axiome Watzlawick 4.400 · watzlawick axiome 2.400 · man kann nicht nicht kommunizieren 2.400 · axiome der kommunikation 720 | Methode | ✅ `/methoden/watzlawick-axiome/` |
+| 2 | Mental Load 9.900 | Thema (Partner, verlinkt mit „Wäsche liegen lassen“) | offen |
+| 3 | Ghosting 27.100 · ghosting freundschaft 260 | Thema (abgrenzen von „Schweigen als Strafe“) | offen |
+| 4 | People Pleaser 22.200 · harmoniebedürftig 720 · konfliktscheu 320 | Thema (abgrenzen von „Nein sagen lernen“) | offen |
+| 5 | Passiv-aggressiv 5.400 · passiv aggressives verhalten 1.600 | Thema (Verhalten beschreiben, keine Diagnose) | offen |
+| 6 | Drama-Dreieck (Karpman) 2.900 | Methode | offen |
+| 7 | Familienstreit 8.100 | Themen-Hub Familie (SERP prüfen: teils News) | offen |
+| 8 | Geburtstag vergessen 5.400 | Konflikt Freunde/Partner (SERP prüfen: teils „Sprüche“) | offen |
+| 9 | Schlagfertigkeit 2.400 · schlagfertige antworten 320 | Methode „schlagfertig, ohne zu eskalieren“ | offen |
+| 10 | Lästern 3.600 | Thema (über Job hinaus) | offen |
+| 11 | Schmollen 1.900 · beleidigte Leberwurst 1.900 · nachtragend 1.300 | Thema | offen |
+| 12 | Konfliktarten 1.600 · Konflikt Definition 1.600 · Konfliktlösungsstrategien 390 | Thema/Glossar | offen |
+
+Kleinere Chancen: Kontaktabbruch Eltern 1.000, Freundschaft beenden 720, Entschuldigung schreiben 590, Beziehungspause 880.
+Bestehende Seiten erweitern: silent treatment 4.400 (Schweigen als Strafe), konstruktive Kritik 1.900 / Sandwich-Methode 720
+(Feedback), schluss machen 720 (Trennung im Guten), Win-win-Situation 3.600 (Glossar), Nachbarschaftsstreit 2.900 (Hub Nachbarn).
+
+Bewusst abgelehnt (Diagnose der anderen Person, Missbrauchskontext, Recht): Gaslighting 74.000, toxische Beziehung 22.200,
+Love Bombing 14.800, Bossing 27.100 (Kannibalisierung Mobbing), Cybermobbing 12.100, Manipulation 9.900, Transaktionsanalyse 6.600.

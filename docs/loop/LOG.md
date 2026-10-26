@@ -667,3 +667,11 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   - Feedback: SBI-Modell und WWW-Regel benannt, Abschnitte „Positives Feedback formulieren“ und „Feedbackregeln auf
     einen Blick“, FAQ WWW-Regel. „Feedbackregeln nach Schulz von Thun“ bewusst nicht zugeschrieben.
   - Alle drei `updated: 2026-10-26`.
+
+### Durchlauf 9 – 2026-10-26
+- **Themen-Chancen recherchiert** (Recherche-Agent, DataForSEO, ca. 0,35 $): 12 neue Cluster mit Volumen in
+  `recherche/keyword-karte.md`, plus bewusst abgelehnte Begriffe (Diagnose-/Rechts-/Missbrauchsnähe).
+- **Neue Methode `/methoden/watzlawick-axiome/`** (4.400 + 2.400 + 2.400 + 720/Monat, bisher keine Seite):
+  5 Axiome in eigenen Worten, Alltagsbeispiele, Interpunktions-Kreislauf, Schritte, Beispiel, Grenzen, 5 FAQ, Quelle
+  (Watzlawick/Beavin/Jackson 1967/1969). Verlinkt aus Methodenübersicht, Vier-Ohren-Modell, Glossar
+  (Metakommunikation), `llms.txt` und Sitemap automatisch.

@@ -10,11 +10,13 @@ import harvardKonzept from './harvard-konzept.js';
 import eskalationsstufenGlasl from './eskalationsstufen-glasl.js';
 import vierOhrenModell from './vier-ohren-modell.js';
 import feedbackGeben from './feedback-geben.js';
+import watzlawickAxiome from './watzlawick-axiome.js';
 
 export const methods = [
   ichBotschaften,
   aktivesZuhoeren,
   vierOhrenModell,
+  watzlawickAxiome,
   gewaltfreieKommunikation,
   grenzenSetzen,
   deeskalationImStreit,
