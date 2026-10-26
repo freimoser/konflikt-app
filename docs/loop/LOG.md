@@ -694,3 +694,10 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   Persönlichkeit), 6 Alltagsbeispiele (Beziehung, Job, WG), mögliche Hintergründe ohne Diagnose, Formulierungen zum
   Reagieren, Grenzen/Absprachen, Perspektive „wenn ich selbst so reagiere“, Beispiel (WG-Zettel), 5 FAQ inkl.
   „Ist das eine Störung?“ (keine Ferndiagnose). Glossarbegriff verweist auf die Seite; 6 Seiten verlinken.
+
+### Durchlauf 13 – 2026-10-26
+- **Neue Methode `/methoden/drama-dreieck/`** (2.900/Monat): Rollen Opfer/Verfolger/Retter (als Rollen, nicht als
+  Etiketten), Rollenwechsel und „versteckter Gewinn“, Beispiele Familie/Beziehung/Job, Erkennen, Ausstieg über das
+  Gewinner-Dreieck (Acey Choy 1990), Beispiel, 5 FAQ; Quellen Karpman 1968 und Choy 1990; Grenzen: echte Gewalt ist
+  keine „Rolle“. Glossarbegriff „Drama-Dreieck“.
+- Datenprüfung blockiert jetzt Methoden-/Themen-Meta > 155 Zeichen (vorher nur Build-Warnung).

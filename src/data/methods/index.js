@@ -11,12 +11,14 @@ import eskalationsstufenGlasl from './eskalationsstufen-glasl.js';
 import vierOhrenModell from './vier-ohren-modell.js';
 import feedbackGeben from './feedback-geben.js';
 import watzlawickAxiome from './watzlawick-axiome.js';
+import dramaDreieck from './drama-dreieck.js';
 
 export const methods = [
   ichBotschaften,
   aktivesZuhoeren,
   vierOhrenModell,
   watzlawickAxiome,
+  dramaDreieck,
   gewaltfreieKommunikation,
   grenzenSetzen,
   deeskalationImStreit,

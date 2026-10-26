@@ -76,6 +76,7 @@ for (const m of methods) {
     if (!methodSlugs.has(s)) errors.push(`methode/${m.slug}: Methode fehlt → ${s}`);
   }
   if (m.seoTitle && m.seoTitle.length > 44) errors.push(`methode/${m.slug}: seoTitle ${m.seoTitle.length} Zeichen (max. 44)`);
+  if (m.meta && m.meta.length > 155) errors.push(`methode/${m.slug}: meta ${m.meta.length} Zeichen (max. 155)`);
   checkNumbers(`methode/${m.slug}`, JSON.stringify(m));
 }
 
@@ -91,6 +92,7 @@ for (const t of topics) {
     if (!methodSlugs.has(s)) errors.push(`thema/${t.slug}: Methode fehlt → ${s}`);
   }
   if (t.seoTitle && t.seoTitle.length > 44) errors.push(`thema/${t.slug}: seoTitle ${t.seoTitle.length} Zeichen (max. 44)`);
+  if (t.meta && t.meta.length > 155) errors.push(`thema/${t.slug}: meta ${t.meta.length} Zeichen (max. 155)`);
   checkNumbers(`thema/${t.slug}`, JSON.stringify(t));
 }
 

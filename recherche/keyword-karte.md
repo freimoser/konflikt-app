@@ -225,7 +225,7 @@ Volumen = Google-Ads-Monatsmittel DE; eng verwandte Schreibweisen teilen sich ei
 | 3 | Ghosting 27.100 · ghosting freundschaft 260 | Thema (abgrenzen von „Schweigen als Strafe“) | offen |
 | 4 | People Pleaser 22.200 · harmoniebedürftig 720 · konfliktscheu 320 | Thema (abgrenzen von „Nein sagen lernen“) | offen |
 | 5 | Passiv-aggressiv 5.400 · passiv aggressives verhalten 1.600 | Thema (Verhalten beschreiben, keine Diagnose) | ✅ `/themen/passiv-aggressives-verhalten/` |
-| 6 | Drama-Dreieck (Karpman) 2.900 | Methode | offen |
+| 6 | Drama-Dreieck (Karpman) 2.900 | Methode | ✅ `/methoden/drama-dreieck/` |
 | 7 | Familienstreit 8.100 | Themen-Hub Familie (SERP prüfen: teils News) | offen |
 | 8 | Geburtstag vergessen 5.400 | Konflikt Freunde/Partner (SERP prüfen: teils „Sprüche“) | offen |
 | 9 | Schlagfertigkeit 2.400 · schlagfertige antworten 320 | Methode „schlagfertig, ohne zu eskalieren“ | offen |

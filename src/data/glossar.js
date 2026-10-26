@@ -76,6 +76,14 @@ export const glossar = [
     conflicts: [{ category: 'ex-partner', slug: 'jede-nachricht-eskaliert' }],
   },
   {
+    slug: 'drama-dreieck',
+    term: 'Drama-Dreieck',
+    definition:
+      'Modell von Stephen B. Karpman (1968) für festgefahrene Konflikte: Die Beteiligten wechseln zwischen den Rollen Opfer, Verfolger und Retter, sodass sich der Streit im Kreis dreht. Aussteigen heißt, die eigene Rolle zu erkennen und wieder auf Augenhöhe zu sprechen – handlungsfähig statt hilflos, klar statt anklagend, fürsorglich mit Nachfrage statt ungefragt rettend.',
+    method: 'drama-dreieck',
+    conflicts: [{ category: 'eltern', slug: 'mischt-sich-ein' }],
+  },
+  {
     slug: 'du-botschaft',
     term: 'Du-Botschaft',
     definition:

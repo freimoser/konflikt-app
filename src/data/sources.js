@@ -15,6 +15,10 @@ export const methodSources = {
   'aktives-zuhoeren': [
     { text: 'Carl R. Rogers, Richard E. Farson: Active Listening. Industrial Relations Center, University of Chicago, 1957', url: 'https://wholebeinginstitute.com/wp-content/uploads/Rogers_Farson_Active-Listening.pdf' },
   ],
+  'drama-dreieck': [
+    { text: 'Stephen B. Karpman: Fairy tales and script drama analysis. Transactional Analysis Bulletin 7 (26), 1968', url: 'https://karpmandramatriangle.com/' },
+    { text: 'Acey Choy: The Winner\'s Triangle. Transactional Analysis Journal 20 (1), 1990' },
+  ],
   'watzlawick-axiome': [
     { text: 'Paul Watzlawick, Janet H. Beavin, Don D. Jackson: Pragmatics of Human Communication. Norton, 1967; deutsch: „Menschliche Kommunikation. Formen, Störungen, Paradoxien“. Huber, 1969', url: 'https://de.wikipedia.org/wiki/Paul_Watzlawick' },
   ],
