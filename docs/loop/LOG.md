@@ -710,3 +710,20 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   5 Techniken ohne Gemeinheit (Nachfragen, Wiederholen, Teilzustimmung, Umdeuten, Ebene ansprechen), Antworten auf
   Killerphrasen und Sticheleien, „wenn dir nichts einfällt“, Grenze statt Pointe bei Beleidigungen, Beispiel, 5 FAQ.
   Ohne Einzelquelle (Hinweis statt erfundener Urheberschaft). Glossar „Killerphrase“ verweist auf die Methode.
+
+### Durchlauf 15 – 2026-10-26 (Loop beendet)
+- **Neues Thema `/themen/ghosting/`** (27.100/Monat): Bedeutung, klare Abgrenzung zu Schweigen als Strafe, Kontaktpause
+  und Kontaktabbruch zum Selbstschutz, Gründe ohne Ferndiagnose, Formulierungen für Dating/Freundschaft/Bewerbung,
+  Loslassen, fair beenden statt ghosten, Beispiel, 5 FAQ. Glossarbegriff „Ghosting“. Jetzt 230 indexierbare Seiten.
+
+**Bilanz SEO/GEO-Loop (15 Durchläufe):**
+- Technik: Leerzeichen vor Links (28 Stellen), Robots-Preview-Direktiven, Ratgeber-H1-Abstand, CSS inline (Lighthouse
+  100/100/100/100), `tel:`-Links auf der Krisenseite, Entität `Organization` mit einheitlichem `publisher`, `ItemList` auf
+  allen Übersichten, `WebApplication` für Tests, Glossar als Begriffsnetz mit `mentions`; Prüfungen für `seoTitle` und Meta.
+- Recherche (DataForSEO, gesamt ca. 1,2 $): Keyword-Karte mit 174 Begriffen, 12 neue Themen-Cluster, 9 SERP-Abgleiche.
+- Inhalte: 20 Titel auf Suchbegriffe ausgerichtet; 12 Methoden/Themen nach SERP-Abgleich erweitert (GFK, Vier-Ohren,
+  Aktives Zuhören, Deeskalation, Mobbing, Glasl, Grenzen, Ich-Botschaften, Harvard, Feedback, Schweigen, Trennung);
+  Glossar 40 → 49; 6 neue Seiten: Watzlawick-Axiome, Mental Load, Passiv-aggressiv, Drama-Dreieck, Schlagfertigkeit,
+  Ghosting (zusammen > 70.000 Suchen/Monat im Kernbegriff).
+- Bewusst nicht: Gaslighting, toxische Beziehung, Love Bombing, Bossing u. a. (Diagnose-/Rechts-/Missbrauchsnähe).
+- Offen für später: People Pleaser, Familienstreit, Geburtstag vergessen, Lästern, Schmollen, Konfliktarten (SERP vorher prüfen).

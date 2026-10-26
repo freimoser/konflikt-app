@@ -147,6 +147,14 @@ export const glossar = [
     conflicts: [{ category: 'partner', slug: 'waesche-liegen-lassen' }],
   },
   {
+    slug: 'ghosting',
+    term: 'Ghosting',
+    definition:
+      'Plötzlicher Kontaktabbruch ohne Erklärung: Eine Person antwortet nicht mehr und meldet sich nicht zurück, als hätte sie sich in Luft aufgelöst. Der Begriff stammt aus dem Online-Dating und wird auch für Freundschaften und Bewerbungsprozesse verwendet. Anders als Schweigen als Strafe soll der Kontakt dabei ganz enden.',
+    topic: 'ghosting',
+    conflicts: [{ category: 'freunde', slug: 'sagt-immer-ab' }],
+  },
+  {
     slug: 'giraffensprache',
     term: 'Giraffensprache',
     definition:

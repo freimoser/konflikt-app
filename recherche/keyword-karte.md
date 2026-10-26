@@ -222,7 +222,7 @@ Volumen = Google-Ads-Monatsmittel DE; eng verwandte Schreibweisen teilen sich ei
 |---|---|---|---|
 | 1 | 5 Axiome Watzlawick 4.400 · watzlawick axiome 2.400 · man kann nicht nicht kommunizieren 2.400 · axiome der kommunikation 720 | Methode | ✅ `/methoden/watzlawick-axiome/` |
 | 2 | Mental Load 9.900 | Thema (Partner, verlinkt mit „Wäsche liegen lassen“) | ✅ `/themen/mental-load/` |
-| 3 | Ghosting 27.100 · ghosting freundschaft 260 | Thema (abgrenzen von „Schweigen als Strafe“) | offen |
+| 3 | Ghosting 27.100 · ghosting freundschaft 260 | Thema (abgrenzen von „Schweigen als Strafe“) | ✅ `/themen/ghosting/` |
 | 4 | People Pleaser 22.200 · harmoniebedürftig 720 · konfliktscheu 320 | Thema (abgrenzen von „Nein sagen lernen“) | offen |
 | 5 | Passiv-aggressiv 5.400 · passiv aggressives verhalten 1.600 | Thema (Verhalten beschreiben, keine Diagnose) | ✅ `/themen/passiv-aggressives-verhalten/` |
 | 6 | Drama-Dreieck (Karpman) 2.900 | Methode | ✅ `/methoden/drama-dreieck/` |
