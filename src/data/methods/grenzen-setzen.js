@@ -1,5 +1,6 @@
 export default {
   published: '2026-09-30',
+  updated: '2026-10-26',
   slug: 'grenzen-setzen',
   title: 'Grenzen setzen',
   seoTitle: 'Grenzen setzen lernen: Sätze und Beispiele', // <title> (≤ 44 Zeichen), Suchbegriff vorn
@@ -20,6 +21,18 @@ export default {
         'Forderung: „Du musst pünktlich sein.“ – Grenze: „Ich warte fünfzehn Minuten, danach gehe ich allein ins Kino.“',
         'Forderung: „Mischt euch nicht in unsere Erziehung ein.“ – Grenze: „Wenn ihr unsere Entscheidungen vor den Kindern kritisiert, fahren wir früher nach Hause.“',
         'Forderung: „Schick mir abends keine Mails mehr.“ – Grenze: „Ich lese nach 18 Uhr keine Mails und antworte am nächsten Morgen.“',
+      ],
+    },
+    {
+      heading: 'Welche Arten von Grenzen gibt es?',
+      paragraphs: [
+        'Grenzen betreffen nicht nur Berührungen. Es hilft, verschiedene Bereiche zu unterscheiden, weil du in manchen leichter Nein sagen kannst als in anderen.',
+      ],
+      list: [
+        'Körperliche Grenzen: Nähe, Berührung, eigener Raum – „Bitte frag, bevor du mich umarmst.“',
+        'Emotionale Grenzen: welche Themen, Gefühle und Kommentare du an dich heranlässt – „Über meine Beziehung möchte ich gerade nicht sprechen.“',
+        'Zeitliche Grenzen: Erreichbarkeit, Termine, Arbeitszeit – „Nach 19 Uhr beantworte ich keine Arbeitsnachrichten.“',
+        'Materielle Grenzen: Geld, Wohnung, Gegenstände – „Mein Auto verleihe ich nicht.“',
       ],
     },
     {
@@ -56,6 +69,25 @@ export default {
       paragraphs: [
         'Fast jede neue Grenze bringt ein schlechtes Gewissen mit sich, besonders wenn du bisher immer verfügbar warst. Das Schuldgefühl bedeutet nicht, dass du jemandem schadest. Oft zeigt es nur, dass du eine alte Regel brichst – etwa „Ich bin nur liebenswert, wenn ich helfe“.',
         'Die Enttäuschung der anderen Person darfst du wahrnehmen, ohne sie lösen zu müssen. Ein Satz wie „Ich merke, dass dich das enttäuscht. Meine Antwort bleibt trotzdem Nein“ erkennt das Gefühl an und hält die Grenze. Mit der Zeit wird das Unbehagen meist leiser, weil du erlebst, dass Beziehungen ein Nein aushalten.',
+      ],
+    },
+    {
+      heading: 'Warum fällt Grenzen setzen so schwer?',
+      paragraphs: [
+        'Viele Menschen wissen genau, was ihnen zu viel ist, und sagen trotzdem Ja. Dahinter stecken selten Schwäche, sondern verständliche Gründe: die Angst, abgelehnt zu werden oder einen Streit auszulösen, ein starkes Bedürfnis nach Harmonie oder Rollen, die früh gelernt wurden, etwa „die Vernünftige“ oder „der, der immer hilft“.',
+        'Hilfreich ist, das schlechte Gefühl nach einem Nein nicht als Beweis zu nehmen, dass es falsch war. Es zeigt oft nur, dass du etwas Ungewohntes tust. Mehr dazu im Abschnitt über Schuldgefühle.',
+      ],
+    },
+    {
+      heading: 'Übungen zum Grenzen setzen',
+      paragraphs: [
+        'Grenzen setzen lernt man wie jede Fertigkeit am besten in kleinen Schritten – erst dort, wo wenig auf dem Spiel steht.',
+      ],
+      list: [
+        'Bedenkzeit-Satz: Gewöhn dir an, auf Bitten nicht sofort zu antworten: „Ich sag dir bis morgen Bescheid.“ So entscheidest du, nicht der Moment.',
+        'Kleines Nein: Sag eine Woche lang bei einer kleinen Sache bewusst Nein, etwa bei einem Zusatzwunsch im Café oder einer Einladung, auf die du keine Lust hast.',
+        'Bestandsaufnahme: Schreib auf, wann du in den letzten Tagen Ja gesagt und Nein gemeint hast. Welche Bereiche tauchen immer wieder auf?',
+        'Groll-Notiz: Notiere, wann du dich über jemanden geärgert hast. Oft steckt dahinter eine Grenze, die du noch nicht ausgesprochen hast.',
       ],
     },
     {
@@ -108,6 +140,10 @@ export default {
     {
       question: 'Kann ich eine Grenze auch nachträglich setzen?',
       answer: 'Ja. Ein Satz wie „Ich habe letzte Woche zugesagt und merke, dass es mir zu viel ist. Ab jetzt mache ich das nicht mehr“ ist völlig legitim. Grenzen dürfen sich verändern, wenn du mehr über dich lernst.',
+    },
+    {
+      question: 'Wie setze ich Grenzen in der Beziehung?',
+      answer: 'In einer Partnerschaft geht es weniger um ein hartes Nein als um ehrliche Absprachen. Sprich deine Grenze in einem ruhigen Moment an, beschreib konkret, was du brauchst, und frag nach den Wünschen deines Gegenübers. Eine Grenze wie „Ich brauche nach der Arbeit eine halbe Stunde für mich“ ist kein Rückzug aus der Beziehung, sondern macht Nähe danach oft leichter.',
     },
   ],
   relatedConflicts: [

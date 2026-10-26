@@ -1,5 +1,6 @@
 export default {
   published: '2026-09-30',
+  updated: '2026-10-26',
   slug: 'mobbing-am-arbeitsplatz',
   title: 'Mobbing am Arbeitsplatz',
   seoTitle: 'Mobbing am Arbeitsplatz: Was du tun kannst', // <title> (≤ 44 Zeichen), Suchbegriff vorn
@@ -64,6 +65,19 @@ export default {
       ],
     },
     {
+      heading: 'Mobbing durch Vorgesetzte (Bossing)',
+      paragraphs: [
+        'Geht das Mobbing von der Führungskraft aus, spricht man auch von Bossing. Es ist besonders belastend, weil die Person, die eigentlich für einen fairen Umgang sorgen soll, selbst Teil des Problems ist und über Aufgaben, Beurteilungen und Arbeitszeiten mitentscheidet.',
+        'Dokumentiere in diesem Fall besonders sorgfältig und such dir früh Unterstützung außerhalb der direkten Linie: bei der nächsthöheren Ebene, der Personalabteilung, dem Betriebs- oder Personalrat oder einer Beratungsstelle.',
+      ],
+      list: [
+        'Wichtige Aufgaben werden dir ohne Begründung entzogen, oder du bekommst nur noch sinnlose oder unlösbare Aufträge.',
+        'Deine Arbeit wird überkontrolliert und vor anderen abgewertet.',
+        'Informationen, Einladungen oder Rückmeldungen erreichen dich nicht mehr, alle anderen schon.',
+        'Kritik kommt nur noch öffentlich, Lob gar nicht.',
+      ],
+    },
+    {
       heading: 'Ansprechpersonen: Wer dich unterstützen kann',
       paragraphs: [
         'Mobbing lässt sich selten allein lösen. Welche Stelle für dich die richtige ist, hängt von deinem Arbeitsplatz ab und davon, von wem das Verhalten ausgeht. Oft ist es hilfreich, mehrere Wege parallel zu gehen: innerbetriebliche Unterstützung für die Situation im Job und Unterstützung außerhalb für dich selbst.',
@@ -75,6 +89,8 @@ export default {
         'Betriebsrat oder Personalrat: Die Interessenvertretung kann dich beraten, zu Gesprächen begleiten und kennt die betrieblichen Regeln. Frag zu Beginn, wie vertraulich dein Anliegen behandelt wird.',
         'Betriebliche Ansprechstellen: Viele Unternehmen haben Vertrauenspersonen, Beschwerdestellen, Gleichstellungsbeauftragte, betriebliche Sozialberatung oder Konfliktlots:innen. Frag nach, was es bei dir gibt.',
         'Hausärztin oder Hausarzt: Wenn du schlecht schläfst, dich erschöpft fühlst oder körperliche Beschwerden hast, sprich offen darüber. Die Praxis kann dich untersuchen, entlasten und bei Bedarf weitervermitteln.',
+        'Betriebsärztin oder Betriebsarzt: Sie unterliegen der ärztlichen Schweigepflicht und können dich beraten, wenn die Situation dir gesundheitlich zusetzt.',
+        'Schwerbehindertenvertretung: Wenn du schwerbehindert oder gleichgestellt bist, kann sie dich zusätzlich unterstützen und zu Gesprächen begleiten.',
         'Beratungsstellen: Mobbing- und Konfliktberatungen, Gewerkschaften oder psychosoziale Beratungsstellen helfen dir, deine Situation zu sortieren und nächste Schritte zu planen. Bei Diskriminierung sind Antidiskriminierungsstellen zuständig.',
         'Anwaltliche Beratung: Wenn du wissen willst, welche Rechte du hast, oder wenn Abmahnung, Kündigung oder Aufhebungsvertrag im Raum stehen, lass dich von einer Fachanwältin oder einem Fachanwalt für Arbeitsrecht beraten.',
       ],
@@ -143,6 +159,14 @@ export default {
     {
       question: 'Was kann ich tun, wenn mich das Mobbing krank macht?',
       answer: 'Nimm Beschwerden wie Schlafprobleme, Erschöpfung oder Angst ernst und sprich mit deiner Hausärztin oder deinem Hausarzt. Bei starker seelischer Belastung erreichst du die TelefonSeelsorge rund um die Uhr unter 0800 1110111 oder 116 123.',
+    },
+    {
+      question: 'Ist Mobbing strafbar?',
+      answer: 'In Deutschland gibt es keinen eigenen Straftatbestand „Mobbing“. Einzelne Handlungen, die beim Mobbing vorkommen, etwa Beleidigungen, Bedrohungen, Nachstellung oder körperliche Übergriffe, können aber strafbar sein. Ob das in deinem Fall zutrifft, kann eine Fachanwältin oder ein Fachanwalt einschätzen. Bei Bedrohung oder Gewalt wende dich an die Polizei.',
+    },
+    {
+      question: 'Soll ich wegen Mobbing kündigen?',
+      answer: 'Triff diese Entscheidung möglichst nicht im akuten Stress. Eine eigene Kündigung oder ein Aufhebungsvertrag kann Folgen haben, zum Beispiel beim Arbeitslosengeld. Lass dich deshalb vorher beraten, etwa beim Betriebsrat, bei einer Gewerkschaft oder bei einer Fachanwältin oder einem Fachanwalt für Arbeitsrecht. Manchmal gibt es auch Alternativen wie eine Versetzung.',
     },
   ],
   relatedConflicts: [

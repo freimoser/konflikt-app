@@ -645,3 +645,12 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   kurze Cache-Dauer (GitHub Pages fest 10 min, nicht änderbar).
 - **CSS inline** (`build.inlineStylesheets: 'always'`, 5–11 KB je Seite): kein Stylesheet-Request mehr vor dem ersten
   Rendern. Tool-Seite 42 KB roh / 10 KB gzip.
+- **SERP-Abgleich Mobbing (8.100), Glasl (1.900), Grenzen setzen (1.900)** per Recherche-Agent, umgesetzt:
+  - Mobbing: Abschnitt „Mobbing durch Vorgesetzte (Bossing)“, Betriebsärzt:in und Schwerbehindertenvertretung als
+    Ansprechstellen, FAQ „Ist Mobbing strafbar?“ (ohne Paragrafen, Verweis auf Fachanwält:in/Polizei), FAQ „Soll ich
+    wegen Mobbing kündigen?“ (vorher beraten lassen). Keine Fristen/Dauern („3 Monate“ aus KI-Übersicht bewusst nicht).
+  - Glasl: „Die 9 Stufen auf einen Blick“ als erste Liste (Snippet-tauglich, mit Namensvarianten), FAQ Beispiel am
+    Arbeitsplatz, FAQ heiße/kalte Konflikte. Deeskalations-„Regeln“ anderer Modelle bewusst nicht übernommen.
+  - Grenzen setzen: „Welche Arten von Grenzen gibt es?“, „Warum fällt Grenzen setzen so schwer?“, „Übungen zum
+    Grenzen setzen“ (u. a. Bedenkzeit-Satz), FAQ Beziehung. Eltern-Intention („bei Kindern“) als eigene Idee notiert.
+  - Alle drei `updated: 2026-10-26`.

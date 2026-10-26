@@ -1,5 +1,6 @@
 export default {
   published: '2026-09-30',
+  updated: '2026-10-26',
   slug: 'eskalationsstufen-glasl',
   title: 'Eskalationsstufen nach Glasl',
   icon: '📉',
@@ -9,6 +10,23 @@ export default {
   origin: 'Das Modell stammt von Friedrich Glasl, einem österreichischen Konfliktforscher und Organisationsberater. Er beschreibt darin neun Stufen, auf denen Konflikte eskalieren, gegliedert in drei Ebenen, und hat es in seinem Standardwerk „Konfliktmanagement“ ausgearbeitet.',
   intro: 'Kaum ein Streit beginnt mit einem großen Knall. Meistens fängt es mit einer Kleinigkeit an: ein gereizter Ton, eine Bemerkung, die hängen bleibt. Irgendwann merkst du, dass ihr nicht mehr über die Sache sprecht, sondern darüber, wer recht hat – und später darüber, wer der schlechtere Mensch ist. Das Modell von Friedrich Glasl hilft dir, diesen Verlauf zu erkennen, während du mittendrin steckst. Es sagt dir nicht, wer schuld ist. Es zeigt dir, wo ihr gerade steht, und vor allem: welche Art von Lösung auf dieser Stufe noch realistisch ist.',
   sections: [
+    {
+      heading: 'Die 9 Stufen auf einen Blick',
+      paragraphs: [
+        'Glasls Modell in Kurzform: neun Stufen, gegliedert in drei Ebenen. Je tiefer ein Konflikt rutscht, desto schwerer finden die Beteiligten allein wieder heraus.',
+      ],
+      list: [
+        'Stufe 1 – Verhärtung (Ebene 1: beide können gewinnen)',
+        'Stufe 2 – Debatte und Polemik, auch Polarisation genannt (Ebene 1)',
+        'Stufe 3 – Taten statt Worte (Ebene 1)',
+        'Stufe 4 – Sorge um Image und Koalitionen (Ebene 2: einer soll gewinnen)',
+        'Stufe 5 – Gesichtsverlust (Ebene 2)',
+        'Stufe 6 – Drohstrategien (Ebene 2)',
+        'Stufe 7 – Begrenzte Vernichtungsschläge (Ebene 3: beide verlieren)',
+        'Stufe 8 – Zersplitterung (Ebene 3)',
+        'Stufe 9 – Gemeinsam in den Abgrund (Ebene 3)',
+      ],
+    },
     {
       heading: 'Wie das Modell aufgebaut ist',
       paragraphs: [
@@ -106,6 +124,14 @@ export default {
     {
       question: 'Muss ein Konflikt alle Stufen der Reihe nach durchlaufen?',
       answer: 'Nicht zwingend. Das Modell beschreibt einen typischen Verlauf, doch manche Konflikte bleiben lange auf einer Stufe stehen oder springen schnell weiter, etwa nach einer besonders verletzenden Bemerkung.',
+    },
+    {
+      question: 'Wie sieht ein Beispiel am Arbeitsplatz aus?',
+      answer: 'Zwei Kolleg:innen sind sich über die Aufteilung eines Projekts uneinig (Stufe 1). In Meetings wird nur noch gegeneinander argumentiert (Stufe 2), dann erledigt jede Person ihre Teile, ohne die andere zu informieren (Stufe 3). Sucht eine Seite Verbündete im Team (Stufe 4) und stellt die andere vor der Führungskraft bloß (Stufe 5), ist der Konflikt allein kaum noch zu lösen – spätestens dann helfen Führungskraft, Personalabteilung oder eine Moderation.',
+    },
+    {
+      question: 'Was sind heiße und kalte Konflikte nach Glasl?',
+      answer: 'Glasl unterscheidet zwei Erscheinungsformen. In heißen Konflikten wird offen und emotional gestritten, beide Seiten suchen die Auseinandersetzung. In kalten Konflikten ziehen sich die Beteiligten zurück, meiden einander und blockieren still – nach außen wirkt alles ruhig, doch der Konflikt schwelt weiter.',
     },
   ],
   relatedConflicts: [

@@ -124,3 +124,4 @@ Beim Erledigen hier abhaken und in `LOG.md` eintragen.
 - [x] Datum + WebPage-Schema auf Tool-Seiten.
 - [x] Dativ der Kategorienamen nach „mit“.
 - [ ] Später, mit Search-Console-Daten: Seiten auf Position 8–20 gezielt vertiefen (statt neuer Massenseiten).
+- [ ] Eigene Seite „Grenzen setzen bei Kindern“ (eigene Suchintention laut SERP 2026-10-26; Eltern-Perspektive).
