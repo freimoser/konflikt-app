@@ -202,6 +202,7 @@ export const glossar = [
       'Eine Killerphrase ist eine pauschale Aussage, die eine Idee oder ein Gespräch abwürgt, bevor es richtig begonnen hat. Sie ersetzt Argumente durch Abwertung. Beispiele: „Das haben wir schon immer so gemacht“, „Das funktioniert eh nicht“ oder „Jetzt sei doch nicht so empfindlich“. Du kannst gelassen nachfragen: „Was genau spricht aus deiner Sicht dagegen?“',
     topic: 'konfliktgespraech-am-arbeitsplatz',
     conflicts: [{ category: 'chef', slug: 'nicht-ernst-genommen' }],
+    method: 'schlagfertig-reagieren',
   },
   {
     slug: 'kompromiss',

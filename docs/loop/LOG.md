@@ -701,3 +701,12 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   Gewinner-Dreieck (Acey Choy 1990), Beispiel, 5 FAQ; Quellen Karpman 1968 und Choy 1990; Grenzen: echte Gewalt ist
   keine „Rolle“. Glossarbegriff „Drama-Dreieck“.
 - Datenprüfung blockiert jetzt Methoden-/Themen-Meta > 155 Zeichen (vorher nur Build-Warnung).
+
+### Durchlauf 14 – 2026-10-26
+- **Gesamt-Audit nach den Inhaltserweiterungen:** 228 indexierbare Seiten, keine doppelten Titel/Descriptions, je
+  1 H1, alle Bilder mit alt, JSON-LD fehlerfrei, keine verklebten Links, Titel ≤ 60, Descriptions 100–155, jede Seite
+  ≥ 3 interne Links (neue Seiten: Watzlawick 14, Drama-Dreieck 13, Mental Load 16, Passiv-aggressiv 6).
+- **Neue Methode `/methoden/schlagfertig-reagieren/`** (Schlagfertigkeit 2.400 + schlagfertige Antworten 320):
+  5 Techniken ohne Gemeinheit (Nachfragen, Wiederholen, Teilzustimmung, Umdeuten, Ebene ansprechen), Antworten auf
+  Killerphrasen und Sticheleien, „wenn dir nichts einfällt“, Grenze statt Pointe bei Beleidigungen, Beispiel, 5 FAQ.
+  Ohne Einzelquelle (Hinweis statt erfundener Urheberschaft). Glossar „Killerphrase“ verweist auf die Methode.

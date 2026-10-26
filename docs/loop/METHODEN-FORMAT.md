@@ -37,7 +37,7 @@ export default {
 ## Methodenliste (gültige Slugs für `relatedMethods`)
 gewaltfreie-kommunikation, ich-botschaften, aktives-zuhoeren, harvard-konzept,
 eskalationsstufen-glasl, grenzen-setzen, richtig-entschuldigen, deeskalation-im-streit,
-vier-ohren-modell, feedback-geben, watzlawick-axiome, drama-dreieck
+vier-ohren-modell, feedback-geben, watzlawick-axiome, drama-dreieck, schlagfertig-reagieren
 
 ## Schreibregeln
 - Respektvolles **Du**, geschlechtergerecht. Keine Platzhalter, keine Floskeln.
