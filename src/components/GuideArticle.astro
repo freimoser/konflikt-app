@@ -10,6 +10,7 @@ import { topics as allTopics } from '../data/topics/index.js';
 import { getConflict } from '../data/categories/index.js';
 import { AUTHOR_SCHEMA, OPERATOR } from '../config/site';
 import { methodSources, NO_SINGLE_SOURCE, CHECKED } from '../data/sources.js';
+import { glossar } from '../data/glossar.js';
 
 export interface Props {
   method: any;
@@ -38,6 +39,8 @@ const updatedLabel = new Date(updated).toLocaleDateString('de-DE', { day: 'numer
 
 const sectionId = (i: number) => `abschnitt-${i + 1}`;
 const sources = section === 'methoden' ? (methodSources[method.slug] || []) : [];
+// Glossarbegriffe, die auf diese Methode bzw. dieses Thema verweisen (Querverlinkung + `mentions` im Schema)
+const glossaryTerms = glossar.filter((g: any) => (section === 'themen' ? g.topic : g.method) === method.slug);
 const checkedLabel = new Date(CHECKED).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
 
 const breadcrumbs = [
@@ -57,6 +60,7 @@ const schemas: object[] = [
     datePublished: published,
     dateModified: updated,
     mainEntityOfPage: `${Astro.site!.origin}${pageUrl}`,
+    ...(glossaryTerms.length ? { mentions: glossaryTerms.map((g: any) => ({ '@type': 'DefinedTerm', name: g.term, url: `${Astro.site!.origin}/glossar/#${g.slug}` })) } : {}),
     author: AUTHOR_SCHEMA,
     ...(sources.length ? { citation: sources.map((q: any) => (q.url ? { '@type': 'CreativeWork', name: q.text, url: q.url } : q.text)) } : {}),
     publisher,
@@ -206,6 +210,20 @@ if (method.faqs?.length) {
       </section>
     )}
 
+    {glossaryTerms.length > 0 && (
+      <section>
+        <h2>Begriffe aus dem Glossar</h2>
+        <dl class="glossary-terms">
+          {glossaryTerms.map((g: any) => (
+            <div>
+              <dt><a href={`${baseUrl}/glossar/#${g.slug}`}>{g.term}</a></dt>
+              <dd>{g.definition.split(/(?<=[.!?])\s+/)[0]}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    )}
+
     {topicsForMethod.length > 0 && (
       <section>
         <h2>Themen, in denen diese Methode hilft</h2>
@@ -292,6 +310,9 @@ if (method.faqs?.length) {
   .muted { color: var(--text-light); font-size: 0.85rem; }
   .faq { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; margin-bottom: 0.5rem; }
   .faq summary { cursor: pointer; font-weight: 600; }
+  .glossary-terms div { margin-bottom: 0.75rem; }
+  .glossary-terms dt { font-weight: 600; }
+  .glossary-terms dd { margin: 0.15rem 0 0; color: var(--text-light); }
   .faq p { margin: 0.75rem 0 0; }
   .method-cards { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
   @media (min-width: 600px) { .method-cards { grid-template-columns: 1fr 1fr; } }

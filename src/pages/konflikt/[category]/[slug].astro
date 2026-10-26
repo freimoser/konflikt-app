@@ -16,6 +16,7 @@ import { getQuickAnswer } from '../../../data/quick-answers/index.js';
 import { vorlagen } from '../../../data/vorlagen.js';
 import { normalizeConflict } from '../../../data/schema.js';
 import { toolMetas } from '../../../data/tool-metas.js';
+import { glossar } from '../../../data/glossar.js';
 import { AUTHOR_SCHEMA } from '../../../config/site';
 
 export function getStaticPaths() {
@@ -45,6 +46,7 @@ const relatedTopics = getTopicsForConflict(category.id, conflict.slug, 2);
 const matchingVorlage = vorlagen.find((v: any) => v.slug !== 'gespraech-vorbereiten' &&
   (v.relatedConflicts || []).some((r: any) => r.category === category.id && r.slug === conflict.slug));
 const adsSensitive = Boolean(conflict.adsSensitive);
+const glossaryTerms = glossar.filter((g: any) => (g.conflicts || []).some((c: any) => c.category === category.id && c.slug === conflict.slug));
 
 const h1 = displayTitle(category.id, conflict);
 const quick = getQuickAnswer(category.id, conflict.slug);
@@ -163,6 +165,9 @@ const jsonLd = JSON.stringify({
         <AdSlot placement="after-tool" sensitive={adsSensitive} />
 
         <MethodLinks methods={relatedMethods} topics={relatedTopics} heading="Mehr Hilfe zum Thema" />
+        {glossaryTerms.length > 0 && (
+          <p class="glossary-line">Begriffe aus dem Glossar: {glossaryTerms.map((g: any, i: number) => <>{i > 0 && ', '}<a href={`${baseUrl}/glossar/#${g.slug}`}>{g.term}</a></>)}</p>
+        )}
 
         {trainerScenario && (
           <a class="trainer-cta" href={`${baseUrl}/spiel/gespraechstrainer/#${trainerScenario.id}`}>
@@ -419,6 +424,7 @@ const jsonLd = JSON.stringify({
   .conflict-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.25rem; }
   .conflict-icon { font-size: 2.2rem; }
   .conflict-header h1 { margin: 0; line-height: 1.2; }
+  .glossary-line { font-size: 0.9rem; color: var(--text-light); margin-top: 0.75rem; }
   .conflict-with { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1.5rem; }
   .section-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.25rem; }
   .section-card h2, .section-card h3 { margin-top: 0; margin-bottom: 0.75rem; }

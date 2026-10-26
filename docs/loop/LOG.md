@@ -654,3 +654,8 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   - Grenzen setzen: „Welche Arten von Grenzen gibt es?“, „Warum fällt Grenzen setzen so schwer?“, „Übungen zum
     Grenzen setzen“ (u. a. Bedenkzeit-Satz), FAQ Beziehung. Eltern-Intention („bei Kindern“) als eigene Idee notiert.
   - Alle drei `updated: 2026-10-26`.
+
+### Durchlauf 8 – 2026-10-26
+- **Glossar als Begriffsnetz:** Methoden-/Themenseiten zeigen „Begriffe aus dem Glossar“ (19 Seiten, Begriff +
+  erster Definitionssatz, Link auf `/glossar/#…`) und nennen sie im Article-Schema als `mentions` (`DefinedTerm`).
+  47 Tool-Seiten verlinken passende Glossarbegriffe. Stärkt interne Verlinkung und Entitätsbezüge für GEO.
