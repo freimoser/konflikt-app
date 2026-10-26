@@ -1,5 +1,6 @@
 export default {
   published: '2026-09-30',
+  updated: '2026-10-26',
   slug: 'harvard-konzept',
   title: 'Harvard-Konzept',
   icon: '🤝',
@@ -44,6 +45,13 @@ export default {
       paragraphs: [
         'BATNA steht für „Best Alternative to a Negotiated Agreement“, auf Deutsch meist „beste Alternative“ genannt. Gemeint ist: Was ist das Beste, was du tun kannst, wenn ihr euch nicht einigt? Diese Frage klingt zunächst nüchtern, macht dich aber gelassener. Wer seine Alternative kennt, muss nicht jedem Vorschlag zustimmen und lässt sich weniger unter Druck setzen.',
         'Im Gehaltsgespräch kann deine beste Alternative ein anderes Jobangebot sein, eine Weiterbildung, die dich für andere Stellen attraktiver macht, oder die Entscheidung, das Thema in einem halben Jahr erneut anzusprechen. Beim Parkplatz kann es die Hausverwaltung sein. Wichtig ist, deine Alternative realistisch einzuschätzen und auch die deines Gegenübers mitzudenken. Sie ist dein innerer Kompass, kein Druckmittel.',
+      ],
+    },
+    {
+      heading: 'Harvard-Konzept in der Mediation',
+      paragraphs: [
+        'Viele Mediationen arbeiten mit demselben Kerngedanken: weg von den Positionen, die beide Seiten nennen, hin zu den Interessen dahinter. Die Mediatorin oder der Mediator fragt nach dem „Warum“ einer Forderung und sammelt mit beiden Seiten Optionen, bevor entschieden wird.',
+        'Ein bekanntes Beispiel aus dem Buch: Zwei Schwestern streiten um eine Orange und teilen sie schließlich in der Mitte. Die eine presst ihre Hälfte aus und wirft die Schale weg, die andere braucht nur die Schale zum Backen. Hätten sie nach den Interessen gefragt statt um die Orange zu verhandeln, hätten beide alles bekommen, was sie wollten.',
       ],
     },
     {
@@ -101,6 +109,14 @@ export default {
     {
       question: 'Was mache ich, wenn mein Gegenüber nicht mitspielt?',
       answer: 'Du kannst trotzdem nach Interessen fragen, faire Maßstäbe vorschlagen und Angriffe auf dich als Angriffe auf das Problem umdeuten. Bleibt die andere Seite bei Druck und Tricks, gibt dir deine beste Alternative die Freiheit, eine Einigung auch abzulehnen.',
+    },
+    {
+      question: 'Welche Verhandlungsstrategien gibt es?',
+      answer: 'Grob lassen sich zwei Grundformen unterscheiden. Beim positionsbezogenen Verhandeln (Feilschen) beharren beide auf ihren Forderungen und nähern sich in Zugeständnissen an – hart, wenn es vor allem ums Gewinnen geht, weich, wenn vor allem die Beziehung geschont werden soll. Beim sachbezogenen Verhandeln nach dem Harvard-Konzept stehen dagegen die Interessen beider Seiten, mehrere Optionen und faire Maßstäbe im Mittelpunkt.',
+    },
+    {
+      question: 'Welche Kritik gibt es am Harvard-Konzept?',
+      answer: 'Das Konzept setzt voraus, dass beide Seiten grundsätzlich kooperieren wollen. Wenn eine Seite nur gewinnen will, ein großes Machtgefälle besteht oder es tatsächlich nur um ein festes Stück zu verteilen geht, stößt es an Grenzen. Dann helfen eine klare eigene Alternative (BATNA), Unterstützung durch Dritte oder eine Mediation.',
     },
   ],
   relatedConflicts: [

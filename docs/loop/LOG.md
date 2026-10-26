@@ -659,3 +659,11 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
 - **Glossar als Begriffsnetz:** Methoden-/Themenseiten zeigen „Begriffe aus dem Glossar“ (19 Seiten, Begriff +
   erster Definitionssatz, Link auf `/glossar/#…`) und nennen sie im Article-Schema als `mentions` (`DefinedTerm`).
   47 Tool-Seiten verlinken passende Glossarbegriffe. Stärkt interne Verlinkung und Entitätsbezüge für GEO.
+- **SERP-Abgleich Ich-Botschaften (2.400), Harvard-Konzept (1.300), Feedback geben (1.300)**, umgesetzt:
+  - Ich-Botschaften: Abschnitt „Übungen und Satzschablone“, FAQ „drei oder vier Bestandteile?“ (Gordon vs. GFK),
+    FAQ Nachteile. Gordons Typologie (konfrontierend/anerkennend/…) mangels gesicherter Quelle nicht übernommen.
+  - Harvard: Abschnitt „Harvard-Konzept in der Mediation“ (inkl. Orangen-Beispiel aus dem Buch), FAQ
+    Verhandlungsstrategien (positions- vs. sachbezogen), FAQ Kritik/Grenzen.
+  - Feedback: SBI-Modell und WWW-Regel benannt, Abschnitte „Positives Feedback formulieren“ und „Feedbackregeln auf
+    einen Blick“, FAQ WWW-Regel. „Feedbackregeln nach Schulz von Thun“ bewusst nicht zugeschrieben.
+  - Alle drei `updated: 2026-10-26`.

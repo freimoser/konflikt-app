@@ -1,5 +1,6 @@
 export default {
   published: '2026-09-30',
+  updated: '2026-10-26',
   slug: 'ich-botschaften',
   title: 'Ich-Botschaften',
   seoTitle: 'Ich-Botschaften: Aufbau und Beispiele', // <title> (≤ 44 Zeichen), Suchbegriff vorn
@@ -63,6 +64,18 @@ export default {
       ],
     },
     {
+      heading: 'Übungen und Satzschablone',
+      paragraphs: [
+        'Ich-Botschaften klingen am Anfang ungewohnt. Mit einer einfachen Schablone und ein paar Übungen werden sie schnell natürlicher. Die Schablone: „Wenn [konkretes Verhalten], dann [Wirkung auf dich], und ich fühle mich [Gefühl]. Mir wäre wichtig, dass [Wunsch].“ Später brauchst du sie nicht mehr Wort für Wort.',
+      ],
+      list: [
+        'Du-Sätze umbauen: Schreib drei Vorwürfe auf, die dir in letzter Zeit herausgerutscht sind, und formuliere sie nach der Schablone um.',
+        'Gefühlswort-Check: Prüfe, ob dein Gefühlswort wirklich ein Gefühl ist („ärgerlich“, „traurig“) oder ein versteckter Vorwurf („übergangen“, „ausgenutzt“).',
+        'Kamera-Probe: Lies den Verhaltensteil laut vor. Könnte eine Kamera genau das aufnehmen, ohne Deutung und ohne „immer“ oder „nie“?',
+        'Zum Ausprobieren: Im Ich-Botschaft-Baukasten unter „Üben“ setzt du Situation, Gefühl, Bedürfnis und Bitte per Auswahl zusammen.',
+      ],
+    },
+    {
       heading: 'Wann Ich-Botschaften nicht reichen',
       paragraphs: [
         'Ich-Botschaften sind ein guter Einstieg, aber kein Zaubertrick. Wenn ein Konflikt schon lange schwelt, reicht ein gut formulierter Satz selten aus. Dann braucht es ein echtes Gespräch, in dem auch die andere Seite ihre Sicht schildern kann – hier hilft aktives Zuhören. Bei widersprüchlichen Interessen, etwa ums Geld oder um Zukunftspläne, geht es irgendwann um Lösungen, nicht nur um Gefühle.',
@@ -112,6 +125,14 @@ export default {
     {
       question: 'Funktionieren Ich-Botschaften auch im Job?',
       answer: 'Ja, auch gegenüber Kolleg:innen und Vorgesetzten. Im beruflichen Kontext hilft es, die Wirkung sachlich zu beschreiben, etwa auf Arbeitsabläufe oder Termine, und einen konkreten Vorschlag zu machen.',
+    },
+    {
+      question: 'Hat eine Ich-Botschaft drei oder vier Bestandteile?',
+      answer: 'Bei Thomas Gordon besteht die klassische Ich-Botschaft aus drei Teilen: dem konkreten Verhalten, seiner Wirkung auf dich und deinem Gefühl. Viele Anleitungen ergänzen einen vierten Teil, den Wunsch oder die Bitte. Ähnlich, aber nicht dasselbe ist der Vierschritt der Gewaltfreien Kommunikation nach Rosenberg: Beobachtung, Gefühl, Bedürfnis, Bitte.',
+    },
+    {
+      question: 'Welche Nachteile haben Ich-Botschaften?',
+      answer: 'Mechanisch aufgesagt wirken sie schnell einstudiert, und hinter einer freundlichen Form kann trotzdem Druck stecken („Ich bin enttäuscht, dass du immer …“). Außerdem lösen sie keinen echten Interessenkonflikt – sie öffnen nur das Gespräch. Danach braucht es Zuhören und eine gemeinsame Lösung.',
     },
   ],
   relatedConflicts: [

@@ -1,5 +1,6 @@
 export default {
   published: '2026-09-30',
+  updated: '2026-10-26',
   slug: 'feedback-geben',
   title: 'Feedback geben',
   seoTitle: 'Feedback geben ohne Kränkung: Beispiele', // <title> (≤ 44 Zeichen), Suchbegriff vorn
@@ -20,7 +21,7 @@ export default {
     {
       heading: 'Der Aufbau: Situation, Verhalten, Wirkung',
       paragraphs: [
-        'Eine weit verbreitete Struktur für Feedback besteht aus drei Teilen. Sie hilft dir, bei Tatsachen zu bleiben und nicht in Verallgemeinerungen abzurutschen. Oft ergänzt man sie um einen vierten Teil: einen Wunsch oder eine Frage, wie es weitergehen kann.',
+        'Eine weit verbreitete Struktur für Feedback besteht aus drei Teilen; im Englischen ist sie als SBI-Modell bekannt (Situation, Behavior, Impact), im Deutschen gibt es die ähnliche WWW-Regel: Wahrnehmung, Wirkung, Wunsch. Sie hilft dir, bei Tatsachen zu bleiben und nicht in Verallgemeinerungen abzurutschen. Oft ergänzt man sie um einen vierten Teil: einen Wunsch oder eine Frage, wie es weitergehen kann.',
       ],
       list: [
         'Situation: Wann und wo war das? „Im Teammeeting am Dienstag …“',
@@ -41,6 +42,27 @@ export default {
         'Partnerschaft: „Du bist so unaufmerksam.“ wird zu „Als du beim Essen mit meinen Eltern die ganze Zeit aufs Handy geschaut hast, war mir das unangenehm. Mir ist wichtig, dass du bei solchen Treffen präsent bist.“',
         'WG: „Du machst nie sauber.“ wird zu „Laut Putzplan war das Bad letzte Woche bei dir dran, und es ist noch nicht passiert. Schaffst du es bis Samstag?“',
         'Freundschaft: „Du bist echt egoistisch.“ wird zu „Bei den letzten drei Treffen haben wir fast nur über dein Thema gesprochen. Ich hätte mir gewünscht, auch mal von meinem neuen Job zu erzählen.“',
+      ],
+    },
+    {
+      heading: 'Positives Feedback formulieren',
+      paragraphs: [
+        'Lob braucht dieselbe Genauigkeit wie Kritik. Ein pauschales „Gut gemacht!“ freut kurz, sagt aber nicht, was genau gut war und was die Person wiederholen soll.',
+        'Nenne deshalb auch beim Lob die konkrete Situation, das Verhalten und die Wirkung: „Deine Zusammenfassung am Ende des Meetings hat allen geholfen, die nächsten Schritte klar zu haben. Danke dafür.“ Oder privat: „Dass du gestern nachgefragt hast, wie es mir geht, hat mir gutgetan.“',
+      ],
+    },
+    {
+      heading: 'Feedbackregeln auf einen Blick',
+      paragraphs: [
+        'Diese Regeln findest du in vielen Varianten. Sie lassen sich auf wenige Punkte zusammenfassen:',
+      ],
+      list: [
+        'Beschreibend statt wertend: was du beobachtet hast, nicht was du darüber denkst.',
+        'Konkret statt pauschal: ein bestimmter Moment, keine „immer“- und „nie“-Sätze.',
+        'Auf veränderbares Verhalten bezogen, nicht auf Persönlichkeit oder Aussehen.',
+        'Zeitnah und unter vier Augen, wenn es um Kritik geht.',
+        'Angeboten statt aufgedrängt: Frag, ob die Person gerade offen für eine Rückmeldung ist.',
+        'In Ich-Form: „Mir ist aufgefallen …“, „Bei mir kam an …“',
       ],
     },
     {
@@ -106,6 +128,10 @@ export default {
     {
       question: 'Wie reagiere ich, wenn ich unfaires Feedback bekomme?',
       answer: 'Hör erst zu und frag nach einem konkreten Beispiel. Du musst nicht allem zustimmen und darfst sagen, dass du die Situation anders erlebt hast. Wenn Feedback abwertend oder persönlich wird, darfst du das Gespräch unterbrechen und eine Grenze ziehen.',
+    },
+    {
+      question: 'Was ist die WWW-Regel beim Feedback?',
+      answer: 'Die WWW-Regel gliedert Feedback in drei Schritte: Wahrnehmung (was du konkret beobachtet hast), Wirkung (was das bei dir oder im Team ausgelöst hat) und Wunsch (was du dir künftig wünschst). Sie entspricht weitgehend dem Aufbau Situation, Verhalten, Wirkung, ergänzt um einen Ausblick.',
     },
   ],
   relatedConflicts: [
