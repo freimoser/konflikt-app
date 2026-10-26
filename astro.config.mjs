@@ -66,6 +66,9 @@ export default defineConfig({
   trailingSlash: 'always',
   build: {
     format: 'directory',
+    // CSS je Seite nur 5–11 KB: direkt ins HTML, damit kein Stylesheet-Request das erste Rendern blockiert
+    // (Suchbesucher kommen fast immer zum ersten Mal; GitHub Pages cacht ohnehin nur 10 Minuten).
+    inlineStylesheets: 'always',
   },
   integrations: [
     sitemap({

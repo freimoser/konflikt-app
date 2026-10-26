@@ -638,3 +638,10 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
 - **Glossar 40 → 47 Begriffe** (je `DefinedTerm`, Sprungmarke, Querverweise): Eskalationsstufen nach Glasl,
   Giraffensprache, Harvard-Konzept, Konfliktgespräch, Mikromanagement, Mobbing, Verbalisieren – alle aus der
   Keyword-/SERP-Recherche (Definitionsfragen in „Ähnliche Fragen“/KI-Übersichten). Nur gesicherte Fakten.
+
+### Durchlauf 7 – 2026-10-26
+- **Lighthouse (lokal, mobil)** auf Startseite, Tool-Seite, GFK-Methode: je 100 Performance / 100 Barrierefreiheit /
+  100 Best Practices / 100 SEO; LCP ≈ 1,0 s, CLS 0, TBT 0 ms. Offene Hinweise: render-blockierendes Stylesheet,
+  kurze Cache-Dauer (GitHub Pages fest 10 min, nicht änderbar).
+- **CSS inline** (`build.inlineStylesheets: 'always'`, 5–11 KB je Seite): kein Stylesheet-Request mehr vor dem ersten
+  Rendern. Tool-Seite 42 KB roh / 10 KB gzip.
