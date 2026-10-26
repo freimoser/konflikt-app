@@ -632,3 +632,9 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
     Abschnitt „Körpersprache und Abstand“, FAQ Definition (mit Synonymen), FAQ Deeskalationstraining (Abgrenzung).
     „12 Grundregeln“ eines Anbieters bewusst nicht übernommen.
   - Alle drei mit `updated: 2026-10-26`.
+
+### Durchlauf 6 – 2026-10-26
+- Methodenseiten geprüft: „Kurz gesagt“-Definition steht bereits ganz oben (gut extrahierbar) – keine Änderung.
+- **Glossar 40 → 47 Begriffe** (je `DefinedTerm`, Sprungmarke, Querverweise): Eskalationsstufen nach Glasl,
+  Giraffensprache, Harvard-Konzept, Konfliktgespräch, Mikromanagement, Mobbing, Verbalisieren – alle aus der
+  Keyword-/SERP-Recherche (Definitionsfragen in „Ähnliche Fragen“/KI-Übersichten). Nur gesicherte Fakten.

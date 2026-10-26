@@ -1,5 +1,5 @@
 // Glossar „Konflikte & Kommunikation von A bis Z“
-// 40 Begriffe, alphabetisch (deutsche Sortierung). slug = Sprungmarke (#slug).
+// Begriffe alphabetisch (deutsche Sortierung). slug = Sprungmarke (#slug).
 export const glossar = [
   {
     slug: 'aktives-zuhoeren',
@@ -102,6 +102,13 @@ export const glossar = [
     conflicts: [{ category: 'ex-partner', slug: 'jede-nachricht-eskaliert' }],
   },
   {
+    slug: 'eskalationsstufen-glasl',
+    term: 'Eskalationsstufen nach Glasl',
+    definition:
+      'Der österreichische Konfliktforscher Friedrich Glasl beschreibt neun Stufen, in denen Konflikte eskalieren – von der Verhärtung der Standpunkte bis zum gemeinsamen Absturz. Die Stufen bilden drei Ebenen: Auf den ersten drei Stufen können noch beide Seiten gewinnen, danach geht es zunehmend um Gewinnen auf Kosten des anderen und schließlich um beidseitiges Verlieren.',
+    method: 'eskalationsstufen-glasl',
+  },
+  {
     slug: 'familienrat',
     term: 'Familienrat',
     definition:
@@ -132,6 +139,13 @@ export const glossar = [
     conflicts: [{ category: 'partner', slug: 'waesche-liegen-lassen' }],
   },
   {
+    slug: 'giraffensprache',
+    term: 'Giraffensprache',
+    definition:
+      'Bildhafter Name für die einfühlsame Sprache der Gewaltfreien Kommunikation nach Marshall B. Rosenberg. Die Giraffe steht für ein großes Herz und Überblick; ihr Gegenstück ist die urteilende „Wolfssprache“ mit Vorwürfen und Forderungen. Giraffensprache heißt: Beobachtung, Gefühl, Bedürfnis und Bitte.',
+    method: 'gewaltfreie-kommunikation',
+  },
+  {
     slug: 'grenze',
     term: 'Grenze',
     definition:
@@ -142,6 +156,13 @@ export const glossar = [
       { category: 'eltern', slug: 'respektieren-grenzen-nicht' },
       { category: 'schwiegereltern', slug: 'kommen-unangemeldet' },
     ],
+  },
+  {
+    slug: 'harvard-konzept',
+    term: 'Harvard-Konzept',
+    definition:
+      'Verhandlungsmethode, die Roger Fisher und William Ury 1981 im Buch „Getting to Yes“ (deutsch: „Das Harvard-Konzept“) bekannt gemacht haben. Die Grundsätze: Menschen und Probleme getrennt behandeln, Interessen statt Positionen in den Blick nehmen, mehrere Optionen entwickeln und nach neutralen Kriterien entscheiden.',
+    method: 'harvard-konzept',
   },
   {
     slug: 'haeusliche-gewalt',
@@ -181,6 +202,13 @@ export const glossar = [
       'Bei einem Kompromiss kommen sich beide Seiten entgegen und verzichten jeweils auf einen Teil ihrer Wünsche. Das ist oft fair und schnell, lässt aber manchmal beide ein wenig unzufrieden zurück. Beispiel: Ihr fahrt eine Woche ans Meer und eine Woche in die Berge, obwohl jede:r lieber zwei Wochen am Lieblingsort verbracht hätte. Manchmal lohnt sich die Suche nach einer Win-win-Lösung.',
     topic: 'streit-im-urlaub',
     conflicts: [{ category: 'schwiegereltern', slug: 'feiertage-aufteilen' }],
+  },
+  {
+    slug: 'konfliktgespraech',
+    term: 'Konfliktgespräch',
+    definition:
+      'Ein geplantes Gespräch, in dem ein Konflikt offen angesprochen und gemeinsam nach einer Lösung gesucht wird. Gute Konfliktgespräche haben einen vereinbarten Zeitpunkt, beschreiben konkrete Situationen statt Charaktereigenschaften und enden mit einer Vereinbarung, die später überprüft wird.',
+    topic: 'konfliktgespraech-am-arbeitsplatz',
   },
   {
     slug: 'konsens',
@@ -241,6 +269,21 @@ export const glossar = [
       'Metakommunikation heißt, über die Art zu sprechen, wie ihr miteinander redet – statt nur über das Streitthema selbst. Das hilft, wenn Gespräche immer wieder im selben Muster enden. Beispiel: „Mir fällt auf, dass wir bei Geldthemen schnell laut werden. Wollen wir vereinbaren, wie wir darüber reden, bevor wir weitermachen?“',
     topic: 'streit-in-der-beziehung',
     conflicts: [{ category: 'partner', slug: 'streit-um-geld' }],
+  },
+  {
+    slug: 'mikromanagement',
+    term: 'Mikromanagement',
+    definition:
+      'Führungsstil, bei dem eine Führungskraft Aufgaben bis ins Detail vorgibt und kontrolliert, statt Ziele zu vereinbaren und Verantwortung zu übergeben. Mitarbeitende erleben das oft als Misstrauen. Häufige Ursachen sind Unsicherheit, Druck von oben oder unklare Erwartungen.',
+    conflicts: [{ category: 'chef', slug: 'mikromanagement' }, { category: 'chef', slug: 'unklare-erwartungen' }],
+  },
+  {
+    slug: 'mobbing',
+    term: 'Mobbing',
+    definition:
+      'Wiederholte und über längere Zeit anhaltende Angriffe, Ausgrenzung oder Schikanen gegen eine Person, etwa am Arbeitsplatz. Ein einzelner Streit oder eine unfreundliche Bemerkung ist noch kein Mobbing. Wer betroffen ist, sollte Vorfälle mit Datum festhalten und sich Unterstützung suchen, zum Beispiel beim Betriebsrat oder einer Beratungsstelle.',
+    topic: 'mobbing-am-arbeitsplatz',
+    conflicts: [{ category: 'kollegen', slug: 'redet-schlecht' }],
   },
   {
     slug: 'paraphrasieren',
@@ -341,6 +384,13 @@ export const glossar = [
       { category: 'ex-partner', slug: 'redet-schlecht-vor-kindern' },
       { category: 'kollegen', slug: 'redet-schlecht' },
     ],
+  },
+  {
+    slug: 'verbalisieren',
+    term: 'Verbalisieren',
+    definition:
+      'Technik des aktiven Zuhörens: Du sprichst die Gefühle aus, die du bei deinem Gegenüber wahrnimmst, und formulierst sie als Vermutung – etwa „Das klingt, als wärst du ziemlich enttäuscht.“ Verbalisieren geht einen Schritt weiter als Paraphrasieren, das vor allem den Inhalt wiedergibt.',
+    method: 'aktives-zuhoeren',
   },
   {
     slug: 'versoehnung',
