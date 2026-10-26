@@ -1,5 +1,6 @@
 export default {
   published: '2026-09-30',
+  updated: '2026-10-26',
   slug: 'gewaltfreie-kommunikation',
   title: 'Gewaltfreie Kommunikation',
   seoTitle: 'Gewaltfreie Kommunikation mit Beispielen', // <title> (≤ 44 Zeichen), Suchbegriff vorn
@@ -52,6 +53,29 @@ export default {
       ],
     },
     {
+      heading: 'Giraffensprache und Wolfssprache',
+      paragraphs: [
+        'In Seminaren veranschaulichte Rosenberg die beiden Arten zu sprechen mit zwei Tieren. Die Giraffe steht für die einfühlsame Sprache: Sie hat unter den Landtieren das größte Herz und durch ihren langen Hals den Überblick. Der Wolf steht für die Sprache der Urteile, Vorwürfe und Forderungen – er sieht vor allem, wer schuld ist und wer etwas falsch macht.',
+        'Wolfssprache ist nichts Böses, sondern meist ein Zeichen, dass ein Bedürfnis unerfüllt ist. Hilfreich ist der Gedanke, Wolfssätze zu übersetzen – die eigenen und die des Gegenübers. Aus „Du bist so egoistisch!“ wird dann etwa: „Ich bin enttäuscht, weil mir wichtig ist, dass wir beide gefragt werden.“',
+      ],
+      list: [
+        'Wolf: „Du hörst mir nie zu.“ – Giraffe: „Ich habe gerade zweimal angesetzt und bin nicht zu Ende gekommen. Ich möchte gehört werden. Hast du jetzt fünf Minuten?“',
+        'Wolf: „Typisch, wieder zu spät.“ – Giraffe: „Wir waren um 19 Uhr verabredet, jetzt ist es halb acht. Ich bin genervt, weil mir Verlässlichkeit wichtig ist. Kannst du mir das nächste Mal schreiben, wenn es später wird?“',
+      ],
+    },
+    {
+      heading: 'Übungen für den Alltag',
+      paragraphs: [
+        'Die vier Schritte wirken erst, wenn sie nicht mehr auswendig gelernt klingen. Dafür helfen kurze Übungen, die du ohne Gegenüber machen kannst – am besten mit einer Situation, die dich gerade wirklich beschäftigt.',
+      ],
+      list: [
+        'Kamera-Test: Schreib einen Satz auf, der dich ärgert, und streiche alles, was eine Kamera nicht aufnehmen könnte. Was übrig bleibt, ist deine Beobachtung.',
+        'Gefühl oder Gedanke? Prüfe deine Gefühlswörter: „traurig“, „gereizt“, „erschöpft“ sind Gefühle; „übergangen“, „ausgenutzt“, „ignoriert“ sind Deutungen über das Verhalten anderer.',
+        'Bedürfnis hinter dem Vorwurf: Nimm einen Vorwurf, den du oft hörst oder sagst, und frag: Was fehlt hier eigentlich – Ruhe, Wertschätzung, Verlässlichkeit, Mitsprache?',
+        'Bitte statt Forderung: Formuliere eine Bitte, die konkret, machbar und ablehnbar ist. Wenn du ein Nein nicht aushalten würdest, ist es noch eine Forderung.',
+      ],
+    },
+    {
       heading: 'Empathie und die Kritik an der GFK',
       paragraphs: [
         'Mindestens so wichtig wie das eigene Sprechen ist das empathische Zuhören. Wenn dein Gegenüber dir Vorwürfe macht, kannst du innerlich übersetzen: Was beobachtet die Person, was fühlt sie, was braucht sie? Eine Rückfrage wie „Bist du enttäuscht, weil dir gemeinsame Zeit gerade wichtig ist?“ entschärft oft mehr als jede Rechtfertigung – auch wenn du nicht richtig liegst, zeigt sie, dass du verstehen willst.',
@@ -101,6 +125,10 @@ export default {
     {
       question: 'Funktioniert GFK auch im Job oder mit Nachbarn?',
       answer: 'Ja, vor allem die Trennung von Beobachtung und Bewertung hilft in fast jedem Konflikt. Im beruflichen Kontext darf die Sprache sachlicher sein, zum Beispiel „Mir ist wichtig, dass …“ statt ausführlicher Gefühlsbeschreibungen.',
+    },
+    {
+      question: 'Was ist die Giraffensprache?',
+      answer: 'So nannte Rosenberg die einfühlsame Sprache der Gewaltfreien Kommunikation, im Gegensatz zur urteilenden „Wolfssprache“. Die Giraffe steht für das größte Herz unter den Landtieren und für Überblick. Praktisch heißt Giraffensprache: Beobachtung, Gefühl, Bedürfnis und Bitte statt Vorwurf, Urteil und Forderung.',
     },
   ],
   relatedConflicts: [

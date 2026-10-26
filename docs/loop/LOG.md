@@ -611,3 +611,11 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
 - Zwischenfall: Ein Push enthielt einen fehlenden Import (Build auf GitHub rot, Deploy übersprungen, Live-Stand
   unverändert); sofort behoben. Ursache: Prüfkette wertete Textausgabe statt Exit-Code aus → ab jetzt Freigabe nur über
   Exit-Code von `npm run verify` und `npm audit --audit-level=low`.
+
+### Durchlauf 4 – 2026-10-26
+- **SERP-Abgleich „gewaltfreie kommunikation“ (27.100/Monat)** per DataForSEO: KI-Übersicht nennt die 4 Schritte und
+  die „Giraffensprache“; „Ähnliche Fragen“: GFK nach Rosenberg, Giraffensprache, Konflikte gewaltfrei lösen; verwandte
+  Suchen: Übungen, Sätze, Beispiele im Alltag.
+- GFK-Seite ergänzt: Abschnitt **„Giraffensprache und Wolfssprache“** (mit Übersetzungsbeispielen), Abschnitt
+  **„Übungen für den Alltag“** (Kamera-Test, Gefühl vs. Deutung, Bedürfnis hinter dem Vorwurf, Bitte vs. Forderung),
+  FAQ „Was ist die Giraffensprache?“. `updated: 2026-10-26` (echte inhaltliche Erweiterung).
