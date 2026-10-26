@@ -675,3 +675,10 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   5 Axiome in eigenen Worten, Alltagsbeispiele, Interpunktions-Kreislauf, Schritte, Beispiel, Grenzen, 5 FAQ, Quelle
   (Watzlawick/Beavin/Jackson 1967/1969). Verlinkt aus Methodenübersicht, Vier-Ohren-Modell, Glossar
   (Metakommunikation), `llms.txt` und Sitemap automatisch.
+
+### Durchlauf 10 – 2026-10-26
+- SERP „mental load“ geprüft: Definition, Anzeichen, Tests, Mütter/Familie; Gesundheitsportale dominieren.
+- **Neues Thema `/themen/mental-load/`** (9.900/Monat) mit eigenem Blickwinkel „in der Beziehung ansprechen und fair
+  aufteilen“: Definition (Ausführen vs. Verantworten), Anzeichen, warum Gespräche scheitern („helfen“), Formulierungen,
+  ganze Zuständigkeiten statt Einzelaufgaben, Perspektive der weniger belasteten Person, Beispiel, 5 FAQ. Keine
+  Statistiken, kein Test-Versprechen. Glossar-Eintrag „Mental Load“; 16 Seiten verlinken (Konflikte, Methoden, Hubs).

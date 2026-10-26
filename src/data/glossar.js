@@ -263,6 +263,14 @@ export const glossar = [
     ],
   },
   {
+    slug: 'mental-load',
+    term: 'Mental Load',
+    definition:
+      'Die unsichtbare Denk- und Organisationsarbeit im Alltag: an Dinge denken, vorausplanen, Termine im Blick behalten und nachhalten, ob etwas erledigt ist. Mental Load entsteht dort, wo eine Person zwar nicht alles selbst erledigt, aber für alles verantwortlich ist. Entlastung bringt vor allem, ganze Zuständigkeiten statt einzelner Aufgaben abzugeben.',
+    topic: 'mental-load',
+    conflicts: [{ category: 'partner', slug: 'waesche-liegen-lassen' }],
+  },
+  {
     slug: 'metakommunikation',
     term: 'Metakommunikation',
     definition:

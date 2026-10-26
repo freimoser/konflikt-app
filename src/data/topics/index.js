@@ -13,10 +13,12 @@ import streitPerWhatsapp from './streit-per-whatsapp.js';
 import konflikteImTeamLoesen from './konflikte-im-team-loesen.js';
 import trennungImGuten from './trennung-im-guten.js';
 import mediationEinfachErklaert from './mediation-einfach-erklaert.js';
+import mentalLoad from './mental-load.js';
 
 export const topics = [
   streitAnWeihnachten,
   streitInDerBeziehung,
+  mentalLoad,
   konfliktgespraechAmArbeitsplatz,
   nachDemStreitVersoehnen,
   streitSchlichten,
