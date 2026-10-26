@@ -682,3 +682,9 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   aufteilen“: Definition (Ausführen vs. Verantworten), Anzeichen, warum Gespräche scheitern („helfen“), Formulierungen,
   ganze Zuständigkeiten statt Einzelaufgaben, Perspektive der weniger belasteten Person, Beispiel, 5 FAQ. Keine
   Statistiken, kein Test-Versprechen. Glossar-Eintrag „Mental Load“; 16 Seiten verlinken (Konflikte, Methoden, Hubs).
+
+### Durchlauf 11 – 2026-10-26
+- **Bestehende Seiten auf recherchierte Begriffe erweitert** (statt neuer Seiten, keine Kannibalisierung):
+  „Silent Treatment“ (4.400) als FAQ in Schweigen als Strafe; „Win-win-Situation“ (3.600) in der Glossar-Definition;
+  Ratgeber-Hub Nachbarn heißt jetzt „Nachbarschaftsstreit verstehen …“ (2.900); FAQ „Was ist konstruktive Kritik?“
+  (1.900) in Feedback geben; FAQ „Wie mache ich respektvoll Schluss?“ (720) in Trennung im Guten (mit Sicherheitshinweis).

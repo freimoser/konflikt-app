@@ -11,7 +11,7 @@ export default {
     'Such das Gespräch in einem ruhigen Moment und nicht mitten in der Störung, wenn du schon wütend bist.',
     'Schlag eine konkrete Lösung vor, etwa feste Ruhezeiten oder eine klare Parkregel.',
   ],
-  ratgeberTitle: 'Nachbarschaftskonflikte verstehen: Warum Streit im Haus so schnell eskaliert',
+  ratgeberTitle: 'Nachbarschaftsstreit verstehen: Warum Streit im Haus so schnell eskaliert',
   ratgeberMeta: 'Warum eskalieren Nachbarschaftskonflikte so leicht? Erfahre, welche Dynamiken hinter Streit im Haus stecken und wie ihr auf Dauer friedlich zusammenlebt.',
   ratgeberIntro: [
     'Nachbarschaftskonflikte betreffen den Ort, an dem du eigentlich zur Ruhe kommen willst. Wenn Lärm durch die Wand dringt, der Parkplatz blockiert ist oder Gerüche in die Wohnung ziehen, fühlt sich das schnell wie ein Eingriff in dein Zuhause an. Gleichzeitig kannst du dir deine Nachbar:innen nicht aussuchen und ihnen auch kaum aus dem Weg gehen. Diese Mischung aus Nähe und Unfreiwilligkeit macht Streit im Haus besonders belastend.',

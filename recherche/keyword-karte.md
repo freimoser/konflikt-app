@@ -234,7 +234,7 @@ Volumen = Google-Ads-Monatsmittel DE; eng verwandte Schreibweisen teilen sich ei
 | 12 | Konfliktarten 1.600 · Konflikt Definition 1.600 · Konfliktlösungsstrategien 390 | Thema/Glossar | offen |
 
 Kleinere Chancen: Kontaktabbruch Eltern 1.000, Freundschaft beenden 720, Entschuldigung schreiben 590, Beziehungspause 880.
-Bestehende Seiten erweitern: silent treatment 4.400 (Schweigen als Strafe), konstruktive Kritik 1.900 / Sandwich-Methode 720
+Bestehende Seiten erweitert (✅ 2026-10-26): silent treatment 4.400 (Schweigen als Strafe), konstruktive Kritik 1.900 / Sandwich-Methode 720
 (Feedback), schluss machen 720 (Trennung im Guten), Win-win-Situation 3.600 (Glossar), Nachbarschaftsstreit 2.900 (Hub Nachbarn).
 
 Bewusst abgelehnt (Diagnose der anderen Person, Missbrauchskontext, Recht): Gaslighting 74.000, toxische Beziehung 22.200,

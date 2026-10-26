@@ -1,5 +1,6 @@
 export default {
   published: '2026-10-01',
+  updated: '2026-10-26',
   slug: 'trennung-im-guten',
   title: 'Trennung im Guten',
   kicker: 'Beziehung',
@@ -128,6 +129,10 @@ export default {
     {
       question: 'Wo bekommen wir Hilfe bei Fragen zu Kindern, Wohnung oder Unterhalt?',
       answer: 'Erziehungs- und Familienberatungsstellen, das Jugendamt und Familienmediation helfen bei Absprachen als Eltern. Rechtliche Fragen zu Sorgerecht, Unterhalt oder Scheidung klärst du am besten mit einer Anwältin oder einem Anwalt für Familienrecht.',
+    },
+    {
+      question: 'Wie mache ich respektvoll Schluss?',
+      answer: 'Sag es persönlich und in einem ruhigen Rahmen, klar und ohne lange Begründungslisten: „Ich habe entschieden, die Beziehung zu beenden.“ Vermeide Schuldzuweisungen und falsche Hoffnung, und lass der anderen Person Raum für ihre Reaktion. Wenn du dich vor der Reaktion fürchtest, geht deine Sicherheit vor – dann ist auch eine Nachricht oder ein Gespräch an einem öffentlichen Ort in Ordnung.',
     },
   ],
   relatedConflicts: [

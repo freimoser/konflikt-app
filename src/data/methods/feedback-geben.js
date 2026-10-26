@@ -133,6 +133,10 @@ export default {
       question: 'Was ist die WWW-Regel beim Feedback?',
       answer: 'Die WWW-Regel gliedert Feedback in drei Schritte: Wahrnehmung (was du konkret beobachtet hast), Wirkung (was das bei dir oder im Team ausgelöst hat) und Wunsch (was du dir künftig wünschst). Sie entspricht weitgehend dem Aufbau Situation, Verhalten, Wirkung, ergänzt um einen Ausblick.',
     },
+    {
+      question: 'Was ist konstruktive Kritik?',
+      answer: 'Konstruktive Kritik benennt ein konkretes Verhalten und seine Wirkung und zeigt, wie es besser laufen könnte – mit dem Ziel, dem Gegenüber weiterzuhelfen, nicht es abzuwerten. Destruktive Kritik bleibt dagegen pauschal („Das ist schlecht“), greift die Person an und lässt keinen Weg nach vorn offen.',
+    },
   ],
   relatedConflicts: [
     { category: 'chef', slug: 'kein-feedback' },

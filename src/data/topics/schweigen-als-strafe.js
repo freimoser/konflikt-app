@@ -1,6 +1,7 @@
 export default {
   adsSensitive: true, // Kontrolle/psychische Gewalt als Kernthema: keine Werbung
   published: '2026-09-30',
+  updated: '2026-10-26',
   slug: 'schweigen-als-strafe',
   title: 'Schweigen als Strafe',
   kicker: 'Beziehung & Familie',
@@ -123,6 +124,10 @@ export default {
     {
       question: 'Was kann ich tun, wenn ich selbst im Streit verstumme?',
       answer: 'Kündige deine Pause an und nenne einen Zeitpunkt, zu dem du das Gespräch wieder aufnimmst. So bleibt dein Rückzug nachvollziehbar und fühlt sich für die andere Person nicht wie eine Strafe an.',
+    },
+    {
+      question: 'Was bedeutet „Silent Treatment“?',
+      answer: 'Silent Treatment ist der englische Begriff für Schweigen als Strafe: Eine Person ignoriert die andere absichtlich, oft über Stunden oder Tage, um Druck auszuüben oder Unmut zu zeigen, ohne ihn auszusprechen. Anders als eine angekündigte Streitpause bleibt dabei offen, worum es geht und wann es endet.',
     },
   ],
   relatedConflicts: [

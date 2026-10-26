@@ -422,7 +422,7 @@ export const glossar = [
     slug: 'win-win',
     term: 'Win-win',
     definition:
-      'Eine Win-win-Lösung erfüllt die wichtigsten Interessen aller Beteiligten, statt dass eine Seite verliert. Sie ist ein Kernziel des Harvard-Konzepts von Roger Fisher und William Ury. Der Weg dorthin: Interessen klären, mehrere Optionen sammeln, gemeinsam auswählen. Beispiel: Du brauchst Ruhe zum Arbeiten, deine Mitbewohnerin will Musik hören – mit Kopfhörern und festen Ruhezeiten ist beiden geholfen.',
+      'Eine Win-win-Situation oder Win-win-Lösung erfüllt die wichtigsten Interessen aller Beteiligten, statt dass eine Seite verliert. Sie ist ein Kernziel des Harvard-Konzepts von Roger Fisher und William Ury. Der Weg dorthin: Interessen klären, mehrere Optionen sammeln, gemeinsam auswählen. Beispiel: Du brauchst Ruhe zum Arbeiten, deine Mitbewohnerin will Musik hören – mit Kopfhörern und festen Ruhezeiten ist beiden geholfen.',
     method: 'harvard-konzept',
     conflicts: [{ category: 'mitbewohner', slug: 'laerm-in-der-wg' }],
   },
