@@ -14,6 +14,7 @@ import konflikteImTeamLoesen from './konflikte-im-team-loesen.js';
 import trennungImGuten from './trennung-im-guten.js';
 import mediationEinfachErklaert from './mediation-einfach-erklaert.js';
 import mentalLoad from './mental-load.js';
+import passivAggressivesVerhalten from './passiv-aggressives-verhalten.js';
 
 export const topics = [
   streitAnWeihnachten,
@@ -25,6 +26,7 @@ export const topics = [
   mobbingAmArbeitsplatz,
   neinSagenLernen,
   schweigenAlsStrafe,
+  passivAggressivesVerhalten,
   streitPerWhatsapp,
   konflikteImTeamLoesen,
   trennungImGuten,

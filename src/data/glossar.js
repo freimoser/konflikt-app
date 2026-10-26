@@ -305,6 +305,7 @@ export const glossar = [
   {
     slug: 'passiv-aggressives-verhalten',
     term: 'Passiv-aggressives Verhalten',
+    topic: 'passiv-aggressives-verhalten',
     definition:
       'Passiv-aggressives Verhalten beschreibt ein Muster, bei dem Ärger nicht offen ausgesprochen, sondern indirekt gezeigt wird: durch spitze Bemerkungen, absichtliches Trödeln, „vergessene“ Absprachen oder demonstratives Seufzen. Das Gegenüber spürt die Spannung, kann sie aber schwer greifen. Beispiel: „Nein, schon gut, ich mach das eben wieder selbst.“ Hilfreich ist, das Muster freundlich anzusprechen.',
     conflicts: [

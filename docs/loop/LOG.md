@@ -688,3 +688,9 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   „Silent Treatment“ (4.400) als FAQ in Schweigen als Strafe; „Win-win-Situation“ (3.600) in der Glossar-Definition;
   Ratgeber-Hub Nachbarn heißt jetzt „Nachbarschaftsstreit verstehen …“ (2.900); FAQ „Was ist konstruktive Kritik?“
   (1.900) in Feedback geben; FAQ „Wie mache ich respektvoll Schluss?“ (720) in Trennung im Guten (mit Sicherheitshinweis).
+
+### Durchlauf 12 – 2026-10-26
+- **Neues Thema `/themen/passiv-aggressives-verhalten/`** (5.400 + 1.600/Monat): Definition (Verhalten, keine
+  Persönlichkeit), 6 Alltagsbeispiele (Beziehung, Job, WG), mögliche Hintergründe ohne Diagnose, Formulierungen zum
+  Reagieren, Grenzen/Absprachen, Perspektive „wenn ich selbst so reagiere“, Beispiel (WG-Zettel), 5 FAQ inkl.
+  „Ist das eine Störung?“ (keine Ferndiagnose). Glossarbegriff verweist auf die Seite; 6 Seiten verlinken.
