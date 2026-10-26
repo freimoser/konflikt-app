@@ -1,5 +1,6 @@
 export default {
   published: '2026-09-30',
+  updated: '2026-10-26',
   slug: 'aktives-zuhoeren',
   title: 'Aktives Zuhören',
   seoTitle: 'Aktives Zuhören: Techniken und Beispiele', // <title> (≤ 44 Zeichen), Suchbegriff vorn
@@ -25,7 +26,7 @@ export default {
       ],
       list: [
         'Paraphrasieren: Du gibst den Inhalt in eigenen Worten wieder. „Wenn ich dich richtig verstehe, hast du das Gefühl, dass die ganze Planung am Ende an dir hängen bleibt?“ oder „Du meinst also, der Termin kam für dich zu kurzfristig.“',
-        'Gefühle spiegeln: Du benennst die Emotion, die du wahrnimmst, als Vermutung. „Das klingt, als wärst du ziemlich enttäuscht.“ oder „Ich höre da auch Ärger raus – stimmt das?“',
+        'Gefühle spiegeln (auch Verbalisieren genannt): Du benennst die Emotion, die du wahrnimmst, als Vermutung. „Das klingt, als wärst du ziemlich enttäuscht.“ oder „Ich höre da auch Ärger raus – stimmt das?“',
         'Offene Fragen: Du stellst Fragen, die mehr als Ja oder Nein zulassen. „Was hat dich daran am meisten getroffen?“, „Wie war das für dich?“ oder „Was würde dir jetzt helfen?“',
         'Zusammenfassen: Nach einem längeren Gespräch bündelst du das Wichtigste. „Lass mich kurz zusammenfassen: Es geht dir weniger um den einen Abend, sondern darum, dass du dich schon länger zurückgestellt fühlst. Habe ich das richtig verstanden?“',
       ],
@@ -56,6 +57,18 @@ export default {
         'Wenn dein Gegenüber dir einen Vorwurf macht, ist aktives Zuhören am schwersten und am wertvollsten. Dein Körper schaltet auf Verteidigung, du willst richtigstellen. Hilfreich ist, dir bewusst zwei Schritte vorzunehmen: zuerst verstehen, dann antworten. Sag das ruhig auch laut: „Ich will gleich meine Sicht erklären, aber erst möchte ich verstehen, was dich so aufgebracht hat.“',
         'Paraphrasiere dann den Kern, nicht die schärfsten Worte. Aus „Du denkst nie an mich!“ wird: „Du hast gerade den Eindruck, dass ich deine Bedürfnisse übersehe.“ So nimmst du die Botschaft ernst, ohne das „nie“ zu übernehmen. Wenn du merkst, dass du selbst zu aufgewühlt bist, um zuzuhören, ist eine ehrliche Pause besser als gespieltes Verständnis: „Ich merke, dass mich das gerade sehr trifft. Ich brauche zehn Minuten, dann will ich dir richtig zuhören.“',
         'Danach bist du dran. Wer sich verstanden fühlt, kann deine Perspektive meist besser aufnehmen. Für deine eigene Sicht eignen sich Ich-Botschaften, die an das Gehörte anknüpfen, ohne es wegzuwischen.',
+      ],
+    },
+    {
+      heading: 'Aktives Zuhören üben',
+      paragraphs: [
+        'Aktives Zuhören ist eine Fertigkeit wie Fahrradfahren: Lesen hilft, üben hilft mehr. Am besten übst du in ruhigen Gesprächen, bevor du es im Streit brauchst.',
+      ],
+      list: [
+        'Erst wiederholen, dann antworten: Vereinbart zu zweit für zehn Minuten, dass jede Person den Kern des Gesagten in eigenen Worten wiederholt, bevor sie antwortet. Erst wenn die andere Person „Ja, genau“ sagt, geht es weiter.',
+        'Gefühlswort finden: Hör bei einem Gespräch oder Podcast bewusst darauf, welche Gefühle mitschwingen, und benenne für dich jeweils ein passendes Wort.',
+        'Eine Frage mehr: Stell im nächsten Gespräch eine offene Frage mehr, als du es sonst tun würdest, bevor du von dir erzählst oder einen Rat gibst.',
+        'Pause zählen: Zähl nach einer Aussage deines Gegenübers innerlich bis drei, bevor du antwortest. Oft kommt in dieser Pause noch das Wichtigste.',
       ],
     },
   ],
@@ -101,6 +114,10 @@ export default {
     {
       question: 'Funktioniert aktives Zuhören auch am Arbeitsplatz?',
       answer: 'Ja, etwa in Feedbackgesprächen, bei Konflikten im Team oder wenn Erwartungen unklar sind. Zusammenfassen und Nachfragen verhindern dort viele Missverständnisse, bevor sie zu Streit werden.',
+    },
+    {
+      question: 'Was bedeutet aktives Zuhören nach Carl Rogers?',
+      answer: 'Der Psychologe Carl Rogers beschrieb in seiner klientenzentrierten Gesprächsführung drei Grundhaltungen: Empathie (einfühlendes Verstehen), bedingungslose Wertschätzung und Echtheit (Kongruenz). Aktives Zuhören setzt diese Haltungen im Gespräch um: Du versuchst, die Sicht deines Gegenübers zu verstehen und zurückzumelden, ohne sie sofort zu bewerten.',
     },
   ],
   relatedConflicts: [

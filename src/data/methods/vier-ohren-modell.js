@@ -1,5 +1,6 @@
 export default {
   published: '2026-09-30',
+  updated: '2026-10-26',
   slug: 'vier-ohren-modell',
   title: 'Vier-Ohren-Modell',
   seoTitle: 'Vier-Ohren-Modell: Erklärung und Beispiele', // <title> (≤ 44 Zeichen), Suchbegriff vorn
@@ -13,7 +14,7 @@ export default {
     {
       heading: 'Die vier Seiten einer Nachricht',
       paragraphs: [
-        'Schulz von Thun geht davon aus, dass jede Äußerung vier Botschaften zugleich enthält, ob du willst oder nicht. Sie lassen sich als Quadrat darstellen, deshalb heißt das Modell auch Kommunikationsquadrat. Keine Seite ist wichtiger als die andere, aber je nach Situation tritt eine davon in den Vordergrund.',
+        'Schulz von Thun geht davon aus, dass jede Äußerung vier Botschaften zugleich enthält, ob du willst oder nicht. Sie lassen sich als Quadrat darstellen, deshalb heißt das Modell auch Kommunikationsquadrat oder Nachrichtenquadrat. Wer spricht, ist dabei der Sender, wer zuhört, der Empfänger – und beide haben vier Seiten im Spiel. Keine Seite ist wichtiger als die andere, aber je nach Situation tritt eine davon in den Vordergrund.',
         'Das bekannteste Lehrbeispiel ist eine Autofahrt: Eine Person sitzt auf dem Beifahrersitz und sagt zur fahrenden Person „Da vorne ist grün“. An diesem kurzen Satz lassen sich alle vier Seiten gut zeigen.',
       ],
       list: [
@@ -72,6 +73,18 @@ export default {
         'Springst du bei jeder Andeutung sofort auf und erledigst Dinge, um die dich niemand ausdrücklich gebeten hat, ist dein Appell-Ohr sehr aktiv. Übe, erst nachzufragen, ob etwas von dir erwartet wird. Hörst du dagegen fast nur Fakten, lohnt es sich, das Selbstkundgabe-Ohr zu stärken: Frag dich, wie es deinem Gegenüber gerade gehen könnte. Das Ziel ist nicht, ein Ohr abzuschalten, sondern alle vier flexibel nutzen zu können.',
       ],
     },
+    {
+      heading: 'Übungen zum Vier-Ohren-Modell',
+      paragraphs: [
+        'Das Modell wird erst nützlich, wenn du es an echten Sätzen ausprobierst. Diese Übungen kannst du allein oder zu zweit machen.',
+      ],
+      list: [
+        'Ein Satz, vier Botschaften: Nimm einen Satz aus deinem Alltag, etwa „Der Müll ist voll.“, und schreib alle vier Seiten auf – Sachinhalt, Selbstkundgabe, Beziehung, Appell.',
+        'Welches Ohr war es? Erinnere dich an eine Bemerkung, die dich zuletzt geärgert hat. Mit welchem Ohr hast du sie gehört, und was hättest du mit einem anderen Ohr gehört?',
+        'Zu zweit: Eine Person sagt einen Satz, die andere antwortet viermal – so, als hätte sie nur mit dem Sach-, dem Selbstkundgabe-, dem Beziehungs- oder dem Appell-Ohr gehört. So wird sichtbar, wie verschieden derselbe Satz ankommen kann.',
+        'Nachfrage-Satz parat haben: Leg dir einen Satz zurecht wie „Meinst du das als Hinweis oder als Bitte an mich?“ und nutze ihn eine Woche lang, wann immer du unsicher bist.',
+      ],
+    },
   ],
   steps: [
     'Bemerke deine erste Reaktion: Ärger, Kränkung oder der Impuls, sofort etwas zu tun, sind Hinweise darauf, welches Ohr gerade laut ist.',
@@ -114,6 +127,14 @@ export default {
     {
       question: 'Kann man das Vier-Ohren-Modell auch im Job nutzen?',
       answer: 'Ja, gerade bei knappen E-Mails und Chatnachrichten entstehen schnell Missverständnisse, weil Tonfall und Mimik fehlen. Wenn eine Nachricht dich ärgert, frag nach, bevor du antwortest, und formuliere eigene Bitten ausdrücklich statt zwischen den Zeilen.',
+    },
+    {
+      question: 'Was ist der Unterschied zwischen Watzlawick und Schulz von Thun?',
+      answer: 'Paul Watzlawick formulierte unter anderem den Grundsatz, dass jede Kommunikation einen Inhalts- und einen Beziehungsaspekt hat. Schulz von Thun baute darauf auf und unterschied vier Seiten: Neben Sachinhalt und Beziehung stehen bei ihm die Selbstkundgabe (was ich über mich zeige) und der Appell (wozu ich dich bewegen möchte).',
+    },
+    {
+      question: 'Wie hilft das Vier-Ohren-Modell in der Beziehung?',
+      answer: 'In Partnerschaften hören viele Sätze vor allem mit dem Beziehungs-Ohr: „Der Kühlschrank ist leer“ kommt dann als Vorwurf an, obwohl vielleicht nur eine Information oder eine Bitte gemeint war. Das Modell hilft, solche Momente zu erkennen und nachzufragen, statt zu deuten – etwa: „Ist das eine Bitte an mich, heute einzukaufen?“',
     },
   ],
   relatedConflicts: [

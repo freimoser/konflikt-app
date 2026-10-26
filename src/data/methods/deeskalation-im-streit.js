@@ -1,5 +1,6 @@
 export default {
   published: '2026-09-30',
+  updated: '2026-10-26',
   slug: 'deeskalation-im-streit',
   title: 'Deeskalation im Streit',
   seoTitle: 'Deeskalation im Streit: So gelingt sie', // <title> (≤ 44 Zeichen), Suchbegriff vorn
@@ -59,6 +60,18 @@ export default {
         'Nach dem Streit ist vor der Klärung. Ein Reparaturgespräch, wenn beide wieder ruhig sind, schließt die Lücke, die die Auszeit gelassen hat. Dort könnt ihr sagen, was euch verletzt hat, was ihr eigentlich gebraucht hättet und was ihr beim nächsten Mal anders machen wollt. Ohne dieses Gespräch bleibt der Konflikt nur vertagt und flammt beim nächsten Anlass wieder auf.',
       ],
     },
+    {
+      heading: 'Körpersprache und Abstand',
+      paragraphs: [
+        'Was du sagst, kommt nur an, wenn dein Körper dasselbe sagt. Im Streit reagiert dein Gegenüber oft stärker auf Haltung, Abstand und Stimme als auf Worte.',
+      ],
+      list: [
+        'Abstand halten: Bleib etwa eine Armlänge oder mehr entfernt, rück niemandem nach und versperr keinen Weg zur Tür.',
+        'Offen statt angespannt: Hände sichtbar und locker, keine verschränkten Arme, kein erhobener Zeigefinger.',
+        'Auf Augenhöhe: Setz dich hin, wenn die andere Person sitzt, statt dich über sie zu beugen.',
+        'Grenze ohne Gegenangriff: Bei Beleidigungen hilft eine ruhige Ich-Botschaft mit klarer Grenze, etwa: „Wenn du mich so nennst, höre ich nicht mehr zu. Ich rede gern weiter, wenn wir beide ruhiger sind.“',
+      ],
+    },
   ],
   steps: [
     'Vereinbart in einer ruhigen Stunde ein gemeinsames Stopp-Signal und die Regel, dass beide es nutzen dürfen und es respektiert wird.',
@@ -102,6 +115,14 @@ export default {
     {
       question: 'Was, wenn nur ich deeskalieren will und die andere Person weiter anheizt?',
       answer: 'Du kannst nur dein eigenes Verhalten steuern, aber das hat oft mehr Wirkung, als man denkt, weil zum Hochschaukeln zwei gehören. Wenn die andere Person dauerhaft weiter eskaliert, ist das ein Zeichen, Unterstützung von außen zu suchen, zum Beispiel in einer Beratung.',
+    },
+    {
+      question: 'Was bedeutet Deeskalation?',
+      answer: 'Deeskalation ist das Gegenteil von Eskalation: Ein Konflikt wird Schritt für Schritt entschärft, damit wieder ein Gespräch möglich wird. Ähnliche Begriffe sind Entschärfung oder Beruhigung. Im Alltag heißt das vor allem, Tempo, Lautstärke und Druck herauszunehmen, ohne das eigentliche Thema unter den Teppich zu kehren.',
+    },
+    {
+      question: 'Was lernt man in einem Deeskalationstraining?',
+      answer: 'Professionelle Deeskalationstrainings, etwa für Pflege, Kliniken oder Sicherheitsberufe, gehen über Alltagsstreit hinaus: Sie behandeln auch den Umgang mit akuter Aggression, Eigenschutz und Abläufe im Team. Diese Seite beschreibt Deeskalation in privaten und beruflichen Alltagskonflikten und ersetzt kein solches Training.',
     },
   ],
   relatedConflicts: [

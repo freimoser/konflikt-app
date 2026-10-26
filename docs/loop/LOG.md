@@ -623,3 +623,12 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
 ### Durchlauf 5 – 2026-10-26
 - **Hilfe in Krisen:** alle 8 Notruf-/Hilfetelefonnummern als `tel:`-Links mit 44-px-Tippfläche; „Notruf 110“ im
   Krisenhinweis jeder Tool-Seite ebenfalls antippbar. (Vertrauen/Nutzbarkeit auf YMYL-nahen Seiten, mobil.)
+- **SERP-Abgleich Vier-Ohren-Modell (6.600), Aktives Zuhören (4.400), Deeskalation (4.400)** per Recherche-Agent:
+  - Vier-Ohren: Abschnitt „Übungen zum Vier-Ohren-Modell“, FAQ Watzlawick vs. Schulz von Thun, FAQ Beziehung,
+    Begriffe Nachrichtenquadrat/Sender/Empfänger.
+  - Aktives Zuhören: Abschnitt „Aktives Zuhören üben“, FAQ Carl Rogers (Empathie, Wertschätzung, Echtheit),
+    „Verbalisieren“ als Zweitname.
+  - Deeskalation: Kopfbegriff ist überwiegend Pflege/Polizei-Training – Seite bleibt bewusst „im Streit“; ergänzt
+    Abschnitt „Körpersprache und Abstand“, FAQ Definition (mit Synonymen), FAQ Deeskalationstraining (Abgrenzung).
+    „12 Grundregeln“ eines Anbieters bewusst nicht übernommen.
+  - Alle drei mit `updated: 2026-10-26`.
