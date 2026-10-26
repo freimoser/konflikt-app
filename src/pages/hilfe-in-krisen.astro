@@ -28,35 +28,35 @@ const checkedLabel = new Date(CHECKED).toLocaleDateString('de-DE', { day: 'numer
   <div class="emergency-contacts">
     <h2>Akute Gefahr</h2>
     <ul>
-      <li><strong>Polizei:</strong> 110</li>
-      <li><strong>Rettungsdienst/Feuerwehr:</strong> 112</li>
+      <li><strong>Polizei:</strong> <a class="tel" href="tel:110">110</a></li>
+      <li><strong>Rettungsdienst/Feuerwehr:</strong> <a class="tel" href="tel:112">112</a></li>
     </ul>
 
     <h2>TelefonSeelsorge</h2>
     <p>Kostenlos, anonym und rund um die Uhr erreichbar.</p>
     <ul>
-      <li><strong>Telefon:</strong> 0800 1110111 oder 0800 1110222 oder 116 123</li>
+      <li><strong>Telefon:</strong> <a class="tel" href="tel:08001110111">0800 1110111</a> oder <a class="tel" href="tel:08001110222">0800 1110222</a> oder <a class="tel" href="tel:116123">116 123</a></li>
       <li><strong>Online:</strong> <a href="https://www.telefonseelsorge.de/" target="_blank" rel="noopener noreferrer">www.telefonseelsorge.de</a></li>
     </ul>
 
     <h2>Hilfetelefon „Gewalt gegen Frauen“</h2>
     <p>Rund um die Uhr erreichbar, kostenlos und anonym.</p>
     <ul>
-      <li><strong>Telefon:</strong> 116 016</li>
+      <li><strong>Telefon:</strong> <a class="tel" href="tel:116016">116 016</a></li>
       <li><strong>Online:</strong> <a href="https://www.hilfetelefon.de/" target="_blank" rel="noopener noreferrer">www.hilfetelefon.de</a></li>
     </ul>
 
     <h2>Hilfetelefon „Gewalt an Männern“</h2>
     <p>Unterstützung für Männer, die von Gewalt betroffen sind – Montag bis Donnerstag 8 bis 20 Uhr, Freitag 8 bis 15 Uhr.</p>
     <ul>
-      <li><strong>Telefon:</strong> 0800 1239900</li>
+      <li><strong>Telefon:</strong> <a class="tel" href="tel:08001239900">0800 1239900</a></li>
       <li><strong>Online:</strong> <a href="https://www.maennerhilfetelefon.de/" target="_blank" rel="noopener noreferrer">www.maennerhilfetelefon.de</a></li>
     </ul>
 
     <h2>WEISSER RING Opfer-Telefon</h2>
     <p>Hilfe für Kriminalitätsopfer – kostenfrei und anonym, täglich von 7 bis 22 Uhr.</p>
     <ul>
-      <li><strong>Telefon:</strong> 116 006</li>
+      <li><strong>Telefon:</strong> <a class="tel" href="tel:116006">116 006</a></li>
       <li><strong>Online:</strong> <a href="https://weisser-ring.de/hilfe-fuer-opfer/opfer-telefon" target="_blank" rel="noopener noreferrer">weisser-ring.de/hilfe-fuer-opfer/opfer-telefon</a></li>
     </ul>
   </div>
@@ -78,7 +78,9 @@ const checkedLabel = new Date(CHECKED).toLocaleDateString('de-DE', { day: 'numer
     .emergency-contacts li {
       margin-bottom: 0.5rem;
     }
-  </style>
+    /* Nummern antippbar: große Tippfläche am Handy */
+  .tel { display: inline-block; padding: 0.35rem 0.15rem; min-height: 44px; line-height: 2; font-weight: 700; white-space: nowrap; }
+</style>
   <section class="sources" aria-labelledby="quellen">
     <h2 id="quellen">Quellen</h2>
     <p>Alle Nummern und Erreichbarkeiten haben wir am {checkedLabel} auf den offiziellen Seiten geprüft:</p>

@@ -13,7 +13,7 @@ const hilfeUrl = `${baseUrl}/hilfe-in-krisen/`.replace(/\/\/+/g, '/');
     <>
       <p class="crisis-title"><strong>Ist das noch ein Alltagskonflikt?</strong></p>
       <p>{context}</p>
-      <p class="crisis-link">Bei Gewalt, Bedrohung oder Angst: <a href={hilfeUrl}>Hilfe in Krisen finden</a> · Notruf 110</p>
+      <p class="crisis-link">Bei Gewalt, Bedrohung oder Angst: <a href={hilfeUrl}>Hilfe in Krisen finden</a> · Notruf <a href="tel:110">110</a></p>
     </>
   ) : (
     <p>

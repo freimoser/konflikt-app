@@ -619,3 +619,7 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
 - GFK-Seite ergänzt: Abschnitt **„Giraffensprache und Wolfssprache“** (mit Übersetzungsbeispielen), Abschnitt
   **„Übungen für den Alltag“** (Kamera-Test, Gefühl vs. Deutung, Bedürfnis hinter dem Vorwurf, Bitte vs. Forderung),
   FAQ „Was ist die Giraffensprache?“. `updated: 2026-10-26` (echte inhaltliche Erweiterung).
+
+### Durchlauf 5 – 2026-10-26
+- **Hilfe in Krisen:** alle 8 Notruf-/Hilfetelefonnummern als `tel:`-Links mit 44-px-Tippfläche; „Notruf 110“ im
+  Krisenhinweis jeder Tool-Seite ebenfalls antippbar. (Vertrauen/Nutzbarkeit auf YMYL-nahen Seiten, mobil.)
