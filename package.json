@@ -11,10 +11,11 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "node scripts/check-links.mjs",
-    "verify": "node scripts/validate-data.mjs && astro build && node scripts/check-links.mjs && node scripts/check-launch.mjs",
+    "verify": "node scripts/validate-data.mjs && astro build && node scripts/check-links.mjs && node scripts/check-launch.mjs && node scripts/seo-audit.mjs",
     "validate": "node scripts/validate-data.mjs",
     "icons": "node scripts/gen-icons.mjs",
-    "check:launch": "node scripts/check-launch.mjs"
+    "check:launch": "node scripts/check-launch.mjs",
+    "audit:seo": "node scripts/seo-audit.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

@@ -16,6 +16,8 @@ import mediationEinfachErklaert from './mediation-einfach-erklaert.js';
 import mentalLoad from './mental-load.js';
 import passivAggressivesVerhalten from './passiv-aggressives-verhalten.js';
 import ghosting from './ghosting.js';
+import peoplePleaser from './people-pleaser.js';
+import konfliktarten from './konfliktarten.js';
 
 export const topics = [
   streitAnWeihnachten,
@@ -29,6 +31,8 @@ export const topics = [
   schweigenAlsStrafe,
   passivAggressivesVerhalten,
   ghosting,
+  peoplePleaser,
+  konfliktarten,
   streitPerWhatsapp,
   konflikteImTeamLoesen,
   trennungImGuten,

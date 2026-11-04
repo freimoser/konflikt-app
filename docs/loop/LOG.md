@@ -741,3 +741,14 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
 - Geprüft in der Vorschau bei 375 px: kein seitliches Scrollen, Nav-Links 44 px, Karten ohne Unterstreichung.
 - Nicht umgesetzt (braucht Entscheidung): Gesprächspläne höher auf Tool-Seiten, Krisen-Block nach oben, Reihenfolge
   Startseite/Hubs, Textänderungen (Do/Don't, Etiketten).
+
+### Neue Themen (Entwürfe von Recherche-Agenten mit je 1 SERP-Abfrage, von mir gegengelesen)
+- **`/themen/people-pleaser/`** (22.200/Monat): Muster erkennen, Herkunft ohne Schuldzuweisung, Kosten, neue Sätze für
+  Alltagsmomente (bewusst abgegrenzt von „Nein sagen lernen“ und „Grenzen setzen“), Perspektive des Umfelds, 5 FAQ
+  (u. a. „Ist das eine Störung?“ → keine Diagnose, Hinweis auf Hilfe).
+- **`/themen/konfliktarten/`** (Konfliktarten 1.600 + Konflikt Definition 1.600 + Konfliktlösungsstrategien 390):
+  Definition, sechs Konfliktarten nach Thema mit Beispiel und „was hilft“, nach Beteiligten, heiß/kalt (Glasl) und
+  latent/offen, fünf Konfliktstile (Thomas & Kilmann), Verweis auf Konflikttyp-Test. Symbol und eine FAQ geändert, um
+  Doppelungen zu vermeiden.
+- **Neues Skript `scripts/seo-audit.mjs`** (`npm run audit:seo`, jetzt Teil von `npm run verify`): doppelte
+  Titel/Descriptions, H1, alt, JSON-LD, verklebte Links, Längen, interne Links. Stand: 232 Seiten, keine Befunde.
