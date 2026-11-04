@@ -727,3 +727,17 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   Ghosting (zusammen > 70.000 Suchen/Monat im Kernbegriff).
 - Bewusst nicht: Gaslighting, toxische Beziehung, Love Bombing, Bossing u. a. (Diagnose-/Rechts-/Missbrauchsnähe).
 - Offen für später: People Pleaser, Familienstreit, Geburtstag vergessen, Lästern, Schmollen, Konfliktarten (SERP vorher prüfen).
+
+## Arbeitsstunde 2026-11-04 (Betreiber abwesend)
+
+### Design-/Barrierefreiheits-Fehler aus der unabhängigen Prüfung (Phase 6, nur eindeutige Fehler)
+- Karten „Mehr Hilfe zum Thema“ waren komplett unterstrichen (globale Link-Regel) → Klasse `ml-card`, Unterstreichung
+  nur beim Hover am Titel.
+- Fokusrahmen Orange (~2:1 Kontrast) → Dunkelgrün (≥ 3:1, WCAG 1.4.11). Badge „Allein“ Kontrast auf ≥ 4,5:1.
+- Tippflächen ≥ 44 px: Menülinks (Kopfzeile dafür schmaler gepolstert, Höhe fast unverändert), Fußzeilen-Links,
+  Brotkrumen, Kopieren-Knöpfe, „Verwandte Konflikte“-Pillen. Brotkrumen-Trenner sichtbarer.
+- Startseite mobil: Knöpfe brachen um („Konflikt lösen“ / Pfeil) → unter 420 px untereinander, ohne Umbruch.
+- Ratgeber mobil: doppelter Seitenrand (Text ~40 px eingerückt) → gleicher Rand wie alle Seiten.
+- Geprüft in der Vorschau bei 375 px: kein seitliches Scrollen, Nav-Links 44 px, Karten ohne Unterstreichung.
+- Nicht umgesetzt (braucht Entscheidung): Gesprächspläne höher auf Tool-Seiten, Krisen-Block nach oben, Reihenfolge
+  Startseite/Hubs, Textänderungen (Do/Don't, Etiketten).

@@ -233,6 +233,9 @@ const jsonLd = JSON.stringify([
     justify-content: center;
     gap: 1rem;
   }
+  @media (max-width: 420px) {
+    .hero-actions { flex-direction: column; align-items: stretch; }
+  }
   .btn {
     display: inline-block;
     padding: 0.9rem 2rem;
@@ -242,6 +245,8 @@ const jsonLd = JSON.stringify([
     cursor: pointer;
     transition: all 0.15s;
     border: none;
+    white-space: nowrap;
+    text-align: center;
   }
   .btn-primary {
     background: var(--accent);

@@ -20,7 +20,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     <ul>
       {items.map(m => (
         <li>
-          <a href={`${baseUrl}/${m.href}`}>
+          <a class="ml-card" href={`${baseUrl}/${m.href}`}>
             <span class="ml-title">{m.icon} {m.title}</span>
             <span class="ml-text">{m.summary}</span>
           </a>
@@ -37,6 +37,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   @media (min-width: 600px) { .method-links ul { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
   .method-links a { display: flex; flex-direction: column; gap: 0.25rem; height: 100%; background: #F0F7F4; border: 1px solid #D8EDE2; border-radius: var(--radius-sm); padding: 0.8rem 1rem; color: var(--text); }
   .method-links a:hover { border-color: var(--primary-light); }
+  .method-links a:hover .ml-title { text-decoration: underline; }
   .ml-title { font-weight: 700; font-size: 0.95rem; }
   .ml-text { font-size: 0.85rem; color: var(--text-light); line-height: 1.5; }
 </style>

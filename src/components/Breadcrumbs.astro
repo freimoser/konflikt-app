@@ -48,8 +48,8 @@ const breadcrumbList = {
   .breadcrumbs { margin-bottom: 1.5rem; font-size: 0.85rem; }
   .breadcrumbs ol { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
   .breadcrumbs li { display: flex; align-items: center; gap: 0.5rem; }
-  .breadcrumbs a { color: var(--text-light); text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color 0.2s; }
+  .breadcrumbs a { display: inline-block; padding: 0.6rem 0; color: var(--text-light); text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color 0.2s; }
   .breadcrumbs a:hover { text-decoration-color: var(--text-light); }
   .breadcrumbs span[aria-current="page"] { color: var(--text); font-weight: 500; }
-  .separator { color: var(--border); }
+  .separator { color: var(--text-light); opacity: 0.6; }
 </style>
