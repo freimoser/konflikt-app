@@ -18,6 +18,7 @@ import passivAggressivesVerhalten from './passiv-aggressives-verhalten.js';
 import ghosting from './ghosting.js';
 import peoplePleaser from './people-pleaser.js';
 import konfliktarten from './konfliktarten.js';
+import geburtstagVergessen from './geburtstag-vergessen.js';
 
 export const topics = [
   streitAnWeihnachten,
@@ -33,6 +34,7 @@ export const topics = [
   ghosting,
   peoplePleaser,
   konfliktarten,
+  geburtstagVergessen,
   streitPerWhatsapp,
   konflikteImTeamLoesen,
   trennungImGuten,

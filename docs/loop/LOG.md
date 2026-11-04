@@ -752,3 +752,8 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   Doppelungen zu vermeiden.
 - **Neues Skript `scripts/seo-audit.mjs`** (`npm run audit:seo`, jetzt Teil von `npm run verify`): doppelte
   Titel/Descriptions, H1, alt, JSON-LD, verklebte Links, Längen, interne Links. Stand: 232 Seiten, keine Befunde.
+- **`/themen/geburtstag-vergessen/`** (5.400/Monat): SERP gemischt (etwa die Hälfte Sprüche/Karten, KI-Übersicht und
+  „Ähnliche Fragen“ = Entschuldigen/Wiedergutmachen, Platz 2 = „wenn jemand deinen Geburtstag vergessen hat“). Seite
+  deckt beide Seiten ab: Sätze je Beziehung, was man nicht sagt, Wiedergutmachen ohne Übertreiben, 3 ehrliche
+  Nachträglich-Beispiele, „dein Geburtstag wurde vergessen“; verweist auf „Richtig entschuldigen“ statt zu doppeln.
+- Glossar 49 → 52 (People Pleaser, Latenter Konflikt). Jetzt 233 indexierbare Seiten.

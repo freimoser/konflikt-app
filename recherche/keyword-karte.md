@@ -227,7 +227,7 @@ Volumen = Google-Ads-Monatsmittel DE; eng verwandte Schreibweisen teilen sich ei
 | 5 | Passiv-aggressiv 5.400 · passiv aggressives verhalten 1.600 | Thema (Verhalten beschreiben, keine Diagnose) | ✅ `/themen/passiv-aggressives-verhalten/` |
 | 6 | Drama-Dreieck (Karpman) 2.900 | Methode | ✅ `/methoden/drama-dreieck/` |
 | 7 | Familienstreit 8.100 | Themen-Hub Familie (SERP prüfen: teils News) | offen |
-| 8 | Geburtstag vergessen 5.400 | Konflikt Freunde/Partner (SERP prüfen: teils „Sprüche“) | offen |
+| 8 | Geburtstag vergessen 5.400 | Thema (SERP: gemischt, KI-Übersicht = Entschuldigen) | ✅ `/themen/geburtstag-vergessen/` |
 | 9 | Schlagfertigkeit 2.400 · schlagfertige antworten 320 | Methode „schlagfertig, ohne zu eskalieren“ | ✅ `/methoden/schlagfertig-reagieren/` |
 | 10 | Lästern 3.600 | Thema (über Job hinaus) | offen |
 | 11 | Schmollen 1.900 · beleidigte Leberwurst 1.900 · nachtragend 1.300 | Thema | offen |
