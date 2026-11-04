@@ -757,3 +757,9 @@ Auftrag: App verbessern, kreativ, Fokus auf SEO- und GEO-Wins, gängige SEO-Rege
   deckt beide Seiten ab: Sätze je Beziehung, was man nicht sagt, Wiedergutmachen ohne Übertreiben, 3 ehrliche
   Nachträglich-Beispiele, „dein Geburtstag wurde vergessen“; verweist auf „Richtig entschuldigen“ statt zu doppeln.
 - Glossar 49 → 52 (People Pleaser, Latenter Konflikt). Jetzt 233 indexierbare Seiten.
+- **`DESIGN.md` + `.impeccable/design.json`** (impeccable-documenter, aus dem ausgelieferten Code abgeleitet):
+  Tokens, Typo-Skala, Radien, Komponenten, Regeln („Stripe Means Type“ = Randleisten sind gewollt), Do/Don't.
+- Beim Dokumentieren gefunden und behoben: Textmarkierung und Hover „btn-secondary“ (weiß auf `primary-light` ≈ 3,8:1)
+  → `primary` (≥ 4,5:1); Verwandte-Pillen im Ratgeber und Linklisten in Methoden/Themen auf min. 44 px.
+- Nicht übernommen (bewusst offen): Großbuchstaben-Etiketten über H1, Werbe-/Feedback-Labels – gehören zur offenen
+  Aufbau-Entscheidung.

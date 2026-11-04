@@ -15,7 +15,7 @@ sondern gegen den Bestand geprüft. Lücken werden geschlossen, das vorhandene D
 | 3 | Texte | ➖ | | Inhalte datengetrieben in `src/data/`, Regeln in `docs/loop/CONTENT-LEITFADEN.md` |
 | 4 | Design-Richtung | ✅ | | vorhandenes Design gilt |
 | 5 | Bauen | ✅ | | Astro, 232 indexierbare Seiten, strukturierte Daten |
-| 6 | Prüfen und Feinschliff | 🔄 | 2026-11-04 | unabhängige Prüfung: „fix“; eindeutige Fehler + Barrierefreiheit behoben; offen: Aufbau-Entscheidungen (Sätze höher, Krisenblock, Startseite) |
+| 6 | Prüfen und Feinschliff | 🔄 | 2026-11-04 | unabhängige Prüfung: „fix“; eindeutige Fehler + Barrierefreiheit behoben; `DESIGN.md` erstellt; offen: Aufbau-Entscheidungen (Sätze höher, Krisenblock, Startseite) |
 | 7 | Livegang | ✅ | 2026-10-22 | live, Rechtstexte geprüft; vor AdSense: zertifizierte CMP (TCF) nötig |
 | 8 | Danach | 🔄 | | Search Console verifiziert, IndexNow aktiv; Auswertung offen |
 

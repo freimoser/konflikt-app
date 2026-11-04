@@ -1,0 +1,601 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-04T18:04:29.156Z",
+  "title": "Design System: Konfliktlotse",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Waldgrün",
+        "canonical": "#2D6A4F",
+        "tonalRamp": [
+          "oklch(15% 0.078 162.2)",
+          "oklch(26% 0.078 162.2)",
+          "oklch(37% 0.078 162.2)",
+          "oklch(48% 0.078 162.2)",
+          "oklch(60% 0.078 162.2)",
+          "oklch(72% 0.078 162.2)",
+          "oklch(84% 0.078 162.2)",
+          "oklch(95% 0.078 162.2)"
+        ]
+      },
+      "primary-light": {
+        "role": "primary",
+        "displayName": "Helles Waldgrün",
+        "canonical": "#40916C",
+        "tonalRamp": [
+          "oklch(15% 0.098 161.4)",
+          "oklch(26% 0.098 161.4)",
+          "oklch(37% 0.098 161.4)",
+          "oklch(48% 0.098 161.4)",
+          "oklch(60% 0.098 161.4)",
+          "oklch(72% 0.098 161.4)",
+          "oklch(84% 0.098 161.4)",
+          "oklch(95% 0.098 161.4)"
+        ]
+      },
+      "primary-dark": {
+        "role": "primary",
+        "displayName": "Tiefgrün",
+        "canonical": "#1B4332",
+        "tonalRamp": [
+          "oklch(15% 0.055 163.4)",
+          "oklch(26% 0.055 163.4)",
+          "oklch(37% 0.055 163.4)",
+          "oklch(48% 0.055 163.4)",
+          "oklch(60% 0.055 163.4)",
+          "oklch(72% 0.055 163.4)",
+          "oklch(84% 0.055 163.4)",
+          "oklch(95% 0.055 163.4)"
+        ]
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Apricot",
+        "canonical": "#F4A261",
+        "tonalRamp": [
+          "oklch(15% 0.127 57.9)",
+          "oklch(26% 0.127 57.9)",
+          "oklch(37% 0.127 57.9)",
+          "oklch(48% 0.127 57.9)",
+          "oklch(60% 0.127 57.9)",
+          "oklch(72% 0.127 57.9)",
+          "oklch(84% 0.127 57.9)",
+          "oklch(95% 0.127 57.9)"
+        ]
+      },
+      "accent-light": {
+        "role": "secondary",
+        "displayName": "Helles Apricot",
+        "canonical": "#F8B878",
+        "tonalRamp": [
+          "oklch(15% 0.110 65.3)",
+          "oklch(26% 0.110 65.3)",
+          "oklch(37% 0.110 65.3)",
+          "oklch(48% 0.110 65.3)",
+          "oklch(60% 0.110 65.3)",
+          "oklch(72% 0.110 65.3)",
+          "oklch(84% 0.110 65.3)",
+          "oklch(95% 0.110 65.3)"
+        ]
+      },
+      "mint-wash": {
+        "role": "primary",
+        "displayName": "Mint-Hauch",
+        "canonical": "#F0F7F4",
+        "tonalRamp": [
+          "oklch(15% 0.008 168.8)",
+          "oklch(26% 0.008 168.8)",
+          "oklch(37% 0.008 168.8)",
+          "oklch(48% 0.008 168.8)",
+          "oklch(60% 0.008 168.8)",
+          "oklch(72% 0.008 168.8)",
+          "oklch(84% 0.008 168.8)",
+          "oklch(95% 0.008 168.8)"
+        ]
+      },
+      "mint-border": {
+        "role": "primary",
+        "displayName": "Mint-Rahmen",
+        "canonical": "#D8EDE2",
+        "tonalRamp": [
+          "oklch(15% 0.027 163.2)",
+          "oklch(26% 0.027 163.2)",
+          "oklch(37% 0.027 163.2)",
+          "oklch(48% 0.027 163.2)",
+          "oklch(60% 0.027 163.2)",
+          "oklch(72% 0.027 163.2)",
+          "oklch(84% 0.027 163.2)",
+          "oklch(95% 0.027 163.2)"
+        ]
+      },
+      "mint-badge": {
+        "role": "primary",
+        "displayName": "Mint-Badge",
+        "canonical": "#E8F5E9",
+        "tonalRamp": [
+          "oklch(15% 0.021 147.6)",
+          "oklch(26% 0.021 147.6)",
+          "oklch(37% 0.021 147.6)",
+          "oklch(48% 0.021 147.6)",
+          "oklch(60% 0.021 147.6)",
+          "oklch(72% 0.021 147.6)",
+          "oklch(84% 0.021 147.6)",
+          "oklch(95% 0.021 147.6)"
+        ]
+      },
+      "apricot-wash": {
+        "role": "secondary",
+        "displayName": "Apricot-Hauch",
+        "canonical": "#FFF3E0",
+        "tonalRamp": [
+          "oklch(15% 0.028 79.5)",
+          "oklch(26% 0.028 79.5)",
+          "oklch(37% 0.028 79.5)",
+          "oklch(48% 0.028 79.5)",
+          "oklch(60% 0.028 79.5)",
+          "oklch(72% 0.028 79.5)",
+          "oklch(84% 0.028 79.5)",
+          "oklch(95% 0.028 79.5)"
+        ]
+      },
+      "apricot-border": {
+        "role": "secondary",
+        "displayName": "Apricot-Rahmen",
+        "canonical": "#FFE0B2",
+        "tonalRamp": [
+          "oklch(15% 0.069 77.5)",
+          "oklch(26% 0.069 77.5)",
+          "oklch(37% 0.069 77.5)",
+          "oklch(48% 0.069 77.5)",
+          "oklch(60% 0.069 77.5)",
+          "oklch(72% 0.069 77.5)",
+          "oklch(84% 0.069 77.5)",
+          "oklch(95% 0.069 77.5)"
+        ]
+      },
+      "apricot-text": {
+        "role": "secondary",
+        "displayName": "Apricot-Text",
+        "canonical": "#9A3A00",
+        "tonalRamp": [
+          "oklch(15% 0.141 43.3)",
+          "oklch(26% 0.141 43.3)",
+          "oklch(37% 0.141 43.3)",
+          "oklch(48% 0.141 43.3)",
+          "oklch(60% 0.141 43.3)",
+          "oklch(72% 0.141 43.3)",
+          "oklch(84% 0.141 43.3)",
+          "oklch(95% 0.141 43.3)"
+        ]
+      },
+      "caution-wash": {
+        "role": "tertiary",
+        "displayName": "Vorsichtsgelb-Fläche",
+        "canonical": "#FFF3CD",
+        "tonalRamp": [
+          "oklch(15% 0.051 92.6)",
+          "oklch(26% 0.051 92.6)",
+          "oklch(37% 0.051 92.6)",
+          "oklch(48% 0.051 92.6)",
+          "oklch(60% 0.051 92.6)",
+          "oklch(72% 0.051 92.6)",
+          "oklch(84% 0.051 92.6)",
+          "oklch(95% 0.051 92.6)"
+        ]
+      },
+      "caution-stripe": {
+        "role": "tertiary",
+        "displayName": "Vorsichtsgelb",
+        "canonical": "#FFC107",
+        "tonalRamp": [
+          "oklch(15% 0.160 84.9)",
+          "oklch(26% 0.160 84.9)",
+          "oklch(37% 0.160 84.9)",
+          "oklch(48% 0.160 84.9)",
+          "oklch(60% 0.160 84.9)",
+          "oklch(72% 0.160 84.9)",
+          "oklch(84% 0.160 84.9)",
+          "oklch(95% 0.160 84.9)"
+        ]
+      },
+      "caution-text": {
+        "role": "tertiary",
+        "displayName": "Vorsichts-Text",
+        "canonical": "#664D03",
+        "tonalRamp": [
+          "oklch(15% 0.088 86.6)",
+          "oklch(26% 0.088 86.6)",
+          "oklch(37% 0.088 86.6)",
+          "oklch(48% 0.088 86.6)",
+          "oklch(60% 0.088 86.6)",
+          "oklch(72% 0.088 86.6)",
+          "oklch(84% 0.088 86.6)",
+          "oklch(95% 0.088 86.6)"
+        ]
+      },
+      "caution-link": {
+        "role": "tertiary",
+        "displayName": "Vorsichts-Link",
+        "canonical": "#7A5A00",
+        "tonalRamp": [
+          "oklch(15% 0.100 84.4)",
+          "oklch(26% 0.100 84.4)",
+          "oklch(37% 0.100 84.4)",
+          "oklch(48% 0.100 84.4)",
+          "oklch(60% 0.100 84.4)",
+          "oklch(72% 0.100 84.4)",
+          "oklch(84% 0.100 84.4)",
+          "oklch(95% 0.100 84.4)"
+        ]
+      },
+      "amber-text": {
+        "role": "tertiary",
+        "displayName": "Bernstein-Text",
+        "canonical": "#9C6500",
+        "tonalRamp": [
+          "oklch(15% 0.118 72.2)",
+          "oklch(26% 0.118 72.2)",
+          "oklch(37% 0.118 72.2)",
+          "oklch(48% 0.118 72.2)",
+          "oklch(60% 0.118 72.2)",
+          "oklch(72% 0.118 72.2)",
+          "oklch(84% 0.118 72.2)",
+          "oklch(95% 0.118 72.2)"
+        ]
+      },
+      "alarm": {
+        "role": "tertiary",
+        "displayName": "Alarmrot",
+        "canonical": "#E63946",
+        "tonalRamp": [
+          "oklch(15% 0.160 22.2)",
+          "oklch(26% 0.160 22.2)",
+          "oklch(37% 0.160 22.2)",
+          "oklch(48% 0.160 22.2)",
+          "oklch(60% 0.160 22.2)",
+          "oklch(72% 0.160 22.2)",
+          "oklch(84% 0.160 22.2)",
+          "oklch(95% 0.160 22.2)"
+        ]
+      },
+      "alarm-wash": {
+        "role": "tertiary",
+        "displayName": "Alarm-Hauch",
+        "canonical": "#FFF5F5",
+        "tonalRamp": [
+          "oklch(15% 0.011 17.3)",
+          "oklch(26% 0.011 17.3)",
+          "oklch(37% 0.011 17.3)",
+          "oklch(48% 0.011 17.3)",
+          "oklch(60% 0.011 17.3)",
+          "oklch(72% 0.011 17.3)",
+          "oklch(84% 0.011 17.3)",
+          "oklch(95% 0.011 17.3)"
+        ]
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Papiergrau",
+        "canonical": "#F8F9FA",
+        "tonalRamp": [
+          "oklch(15% 0.002 247.8)",
+          "oklch(26% 0.002 247.8)",
+          "oklch(37% 0.002 247.8)",
+          "oklch(48% 0.002 247.8)",
+          "oklch(60% 0.002 247.8)",
+          "oklch(72% 0.002 247.8)",
+          "oklch(84% 0.002 247.8)",
+          "oklch(95% 0.002 247.8)"
+        ]
+      },
+      "bg-white": {
+        "role": "neutral",
+        "displayName": "Weiß",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(37% 0.000 89.9)",
+          "oklch(48% 0.000 89.9)",
+          "oklch(60% 0.000 89.9)",
+          "oklch(72% 0.000 89.9)",
+          "oklch(84% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Fast-Schwarz",
+        "canonical": "#1B1B1B",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(37% 0.000 89.9)",
+          "oklch(48% 0.000 89.9)",
+          "oklch(60% 0.000 89.9)",
+          "oklch(72% 0.000 89.9)",
+          "oklch(84% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "text-light": {
+        "role": "neutral",
+        "displayName": "Grauton",
+        "canonical": "#5A5A5A",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(37% 0.000 89.9)",
+          "oklch(48% 0.000 89.9)",
+          "oklch(60% 0.000 89.9)",
+          "oklch(72% 0.000 89.9)",
+          "oklch(84% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Rahmengrau",
+        "canonical": "#E0E0E0",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(37% 0.000 89.9)",
+          "oklch(48% 0.000 89.9)",
+          "oklch(60% 0.000 89.9)",
+          "oklch(72% 0.000 89.9)",
+          "oklch(84% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "H1 der Startseite (Tiefgrün) und der Ratgeber-Artikel."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Standard-H1 aller anderen Seiten."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "H2-Abschnittsüberschriften."
+      },
+      "title-sm": {
+        "displayName": "Title klein",
+        "purpose": "H3 und Kartentitel."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Fließtext, Basis 16px."
+      },
+      "body-reading": {
+        "displayName": "Lesetext",
+        "purpose": "Ratgeber- und Methodentext, max. 68ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Navigation, Breadcrumbs, Pills, Badges, Metazeilen."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Footer-Links, Copy-Knöpfe, Hinweise."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hover-hauch",
+        "value": "0 2px 8px rgba(0,0,0,0.06)",
+        "purpose": "Nur Hover klickbarer Karten (Variable --shadow), mit translateY(-2px)."
+      },
+      {
+        "name": "banner",
+        "value": "0 6px 24px rgba(0,0,0,0.12)",
+        "purpose": "Nur das fixierte Consent-Banner."
+      }
+    ],
+    "motion": [
+      {
+        "name": "quick",
+        "value": "0.15s",
+        "purpose": "Farbe/Rahmen/Transform an Links und Karten."
+      },
+      {
+        "name": "standard",
+        "value": "0.2s",
+        "purpose": "Knöpfe, Breadcrumb-Unterstreichung, Feedback-Knöpfe."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition: none !important; animation: none !important; scroll-behavior: auto !important",
+        "purpose": "Global unter prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xxs",
+        "value": "390px"
+      },
+      {
+        "name": "xs",
+        "value": "420px"
+      },
+      {
+        "name": "sm",
+        "value": "500px"
+      },
+      {
+        "name": "nav",
+        "value": "520px"
+      },
+      {
+        "name": "list",
+        "value": "560px"
+      },
+      {
+        "name": "md",
+        "value": "600px"
+      },
+      {
+        "name": "lg",
+        "value": "640px"
+      },
+      {
+        "name": "column",
+        "value": "720px"
+      }
+    ],
+    "focusRing": {
+      "value": "outline: 3px solid var(--primary-dark); outline-offset: 2px; border-radius: 4px",
+      "selector": ":focus-visible"
+    },
+    "tapTarget": {
+      "minHeight": "44px"
+    },
+    "build": {
+      "cssFramework": "none",
+      "stylesheets": "inlined per page (build.inlineStylesheets: 'always')",
+      "icons": "Emoji"
+    }
+  },
+  "components": [
+    {
+      "name": "Hauptknopf",
+      "kind": "button",
+      "refersTo": "button-action",
+      "description": "Apricot-Hauptaktion auf Startseite und in Übungen.",
+      "html": "<a class=\"ds-btn-action\" href=\"#\">Konflikt lösen</a>",
+      "css": ".ds-btn-action{display:inline-block;padding:.9rem 2rem;border-radius:12px;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-weight:600;font-size:1rem;background:#F4A261;color:#1B1B1B;text-decoration:none;transition:all .15s}.ds-btn-action:hover{background:#F8B878;transform:translateY(-1px)}.ds-btn-action:focus-visible{outline:3px solid #1B4332;outline-offset:2px}"
+    },
+    {
+      "name": "Outline-Knopf",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Grüne Zweitaktion neben dem Hauptknopf.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">Ratgeber lesen</a>",
+      "css": ".ds-btn-outline{display:inline-block;padding:.9rem 2rem;border-radius:12px;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-weight:600;background:transparent;border:2px solid #2D6A4F;color:#2D6A4F;text-decoration:none;transition:all .15s}.ds-btn-outline:hover{background:#2D6A4F;color:#fff}.ds-btn-outline:focus-visible{outline:3px solid #1B4332;outline-offset:2px}"
+    },
+    {
+      "name": "Copy-Knopf",
+      "kind": "button",
+      "refersTo": "copy-button",
+      "description": "Kopiert einen Gesprächssatz; Pille mit 44px Tippfläche.",
+      "html": "<button class=\"ds-copy\">📋 Kopieren</button>",
+      "css": ".ds-copy{font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:.8rem;font-weight:600;background:transparent;border:1px solid #E0E0E0;border-radius:20px;padding:.3rem .8rem;min-height:44px;color:#1B4332;cursor:pointer}.ds-copy:hover{border-color:#40916C;background:#F0F7F4}.ds-copy:focus-visible{outline:3px solid #1B4332;outline-offset:2px}"
+    },
+    {
+      "name": "Verwandte-Pill",
+      "kind": "chip",
+      "refersTo": "pill-related",
+      "description": "Weiterführender Link zu verwandtem Konflikt.",
+      "html": "<a class=\"ds-pill\" href=\"#\"><span aria-hidden=\"true\">💼</span> Streit mit Chef:in</a>",
+      "css": ".ds-pill{display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1px solid #E0E0E0;border-radius:20px;padding:.4rem .9rem;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;font-size:.85rem;color:#1B1B1B;min-height:44px;text-decoration:none;transition:all .15s}.ds-pill:hover{border-color:#40916C;background:#F0F7F4}.ds-pill:focus-visible{outline:3px solid #1B4332;outline-offset:2px;border-radius:4px}"
+    },
+    {
+      "name": "Antwortbox „Kurz gesagt\"",
+      "kind": "card",
+      "refersTo": "answer-box",
+      "description": "Direktantwort unter der H1, Mint mit grünem Streifen.",
+      "html": "<div class=\"ds-answer\"><strong>Kurz gesagt:</strong> Sprich das Thema ruhig und konkret an, in einem Satz.</div>",
+      "css": ".ds-answer{font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;line-height:1.6;color:#1B1B1B;background:#F0F7F4;border-left:4px solid #2D6A4F;border-radius:8px;padding:.9rem 1.1rem}"
+    },
+    {
+      "name": "Abschnittskarte mit Sätzen",
+      "kind": "card",
+      "refersTo": "card-section",
+      "description": "Weiße Karte mit Apricot-Streifen und kursivem Skript.",
+      "html": "<section class=\"ds-card ds-card-script\"><h2>Was du sagen kannst</h2><h4>Sanft</h4><div class=\"ds-script\"><p>„Mir ist etwas wichtig, darf ich kurz etwas ansprechen?“</p></div></section>",
+      "css": ".ds-card{font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;background:#fff;border:1px solid #E0E0E0;border-radius:12px;padding:1.5rem}.ds-card h2{margin:0 0 .75rem;font-size:1.35rem;font-weight:600;color:#1B1B1B}.ds-card h4{font-size:.95rem;color:#1B4332;margin:0 0 .4rem}.ds-card-script{border-left:4px solid #F4A261}.ds-script{background:#F8F9FA;border-radius:8px;padding:1rem 1.25rem}.ds-script p{margin:0;font-style:italic;color:#1B1B1B;line-height:1.6}"
+    },
+    {
+      "name": "Krisenhinweis",
+      "kind": "card",
+      "refersTo": "callout-caution",
+      "description": "Gelber Vorsichtskasten mit Verweis auf Hilfsangebote.",
+      "html": "<div class=\"ds-caution\"><p><strong>Bei Gewalt oder Drohungen:</strong> <a href=\"#\">Hilfe in Krisen</a></p></div>",
+      "css": ".ds-caution{font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;background:#FFF3CD;border-left:4px solid #FFC107;border-radius:8px;padding:1rem;font-size:.9rem;line-height:1.5;color:#664D03}.ds-caution p{margin:0}.ds-caution strong{color:#7A5A00}.ds-caution a{color:#7A5A00;font-weight:600;text-decoration:underline}.ds-caution a:hover{color:#664D03}"
+    },
+    {
+      "name": "Modus-Karte",
+      "kind": "custom",
+      "refersTo": "mode-card",
+      "description": "Wahl zwischen Ein- und Zwei-Parteien-Modus.",
+      "html": "<a class=\"ds-mode\" href=\"#\"><span class=\"ds-mode-icon\" aria-hidden=\"true\">🧍</span><span class=\"ds-mode-title\">Ich allein</span><span class=\"ds-mode-desc\">Du bereitest das Gespräch vor.</span></a>",
+      "css": ".ds-mode{display:flex;flex-direction:column;gap:.5rem;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;background:#fff;border:2px solid #E0E0E0;border-radius:12px;padding:1.5rem 1.25rem;text-align:center;color:#1B1B1B;text-decoration:none;transition:all .15s;max-width:260px}.ds-mode:hover{border-color:#40916C;transform:translateY(-2px);box-shadow:0 2px 8px rgba(0,0,0,.06)}.ds-mode:focus-visible{outline:3px solid #1B4332;outline-offset:2px}.ds-mode-icon{font-size:2rem}.ds-mode-title{font-weight:700;font-size:1.05rem}.ds-mode-desc{font-size:.85rem;color:#5A5A5A}"
+    },
+    {
+      "name": "Header-Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Sticky Header mit Logo und 44px-Links.",
+      "html": "<header class=\"ds-header\"><a class=\"ds-logo\" href=\"#\"><span aria-hidden=\"true\">🕊️</span> Konfliktlotse</a><nav class=\"ds-nav\"><a href=\"#\">Konflikte</a><a href=\"#\">Ratgeber</a><a href=\"#\" aria-label=\"Suche\">🔍</a></nav></header>",
+      "css": ".ds-header{display:flex;align-items:center;justify-content:space-between;padding:.25rem 1rem;background:rgba(255,255,255,.95);border-bottom:1px solid #E0E0E0;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif}.ds-logo{display:flex;gap:.5rem;align-items:center;font-weight:700;font-size:1.1rem;color:#1B1B1B;text-decoration:none}.ds-logo:hover{color:#2D6A4F}.ds-nav{display:flex;gap:1rem}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;font-size:.9rem;font-weight:500;color:#5A5A5A;text-decoration:none;transition:color .15s}.ds-nav a:hover{color:#2D6A4F}.ds-nav a:focus-visible,.ds-logo:focus-visible{outline:3px solid #1B4332;outline-offset:2px;border-radius:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Der ruhige Lotse",
+    "overview": "Konfliktlotse sieht aus wie ein aufgeräumter Notizblock auf hellem Grund: eine schmale Lesespalte (720px), weiße Karten mit feinem Rahmen, ein waldgrünes Leitsystem für Links und Struktur und ein warmes Apricot nur für die nächste Handlung. Die Seite will gestresste Besucher am Handy beruhigen, nicht beeindrucken; Dichte ist mittel, Absätze kurz, jedes Element eine klar benannte Box.\n\nFarbige Kästen mit linkem Akzentstreifen sind das Ordnungsmittel des Systems: Die Streifenfarbe sagt, welche Art Inhalt folgt (grün = Antwort, Ziel, Begründung; apricot = Sätze zum Sagen, Problem; gelb = Vorsicht; rot = Grenze). Emoji sind die einzigen Bilder und tragen Kategorien, Modi und Übungen. Es gibt keine Fotos, keine Illustrationen, keine Webfonts und kein CSS-Framework; das Erscheinungsbild ist seit 2026-10-22 vom Betreiber festgeschrieben.",
+    "keyCharacteristics": [
+      "Eine Spalte, max. 720px, mittig; Raster nur innerhalb von Karten-Gruppen.",
+      "Flach: weiße Flächen, 1px-Rahmen `border`, Schatten nur als Hover-Reaktion.",
+      "Linker 4px-Akzentstreifen als semantischer Kastentyp.",
+      "Waldgrün führt, Apricot handelt, Gelb/Rot warnen.",
+      "Systemschrift, Emoji als Icons, CSS pro Seite inline."
+    ],
+    "rules": [
+      {
+        "name": "The Stripe Means Type Rule",
+        "body": "Ein linker Akzentstreifen (4px, bei Reaktionen 3px) kennzeichnet die Art eines Kastens, nie bloß Dekoration: grün = Antwort/Ziel/Begründung/Vereinbarung, apricot = Sätze/Problem, gelb = Vorsicht, rot = Grenze/Sicherheit. Neue Kästen wählen eine bestehende Bedeutung.",
+        "section": "colors"
+      },
+      {
+        "name": "The Apricot Acts Rule",
+        "body": "Apricot als Vollfläche ist dem Hauptknopf vorbehalten; als Hauch markiert es Teaser, die zu einer Übung oder Aktion führen. Grün strukturiert, Apricot fordert auf.",
+        "section": "colors"
+      },
+      {
+        "name": "The Italic Speech Rule",
+        "body": "Wörtlich sagbare Sätze (Skripte, Vergleichsbeispiele, Antwortoptionen im Trainer) stehen kursiv auf eigener Fläche; erklärender Text nie.",
+        "section": "typography"
+      },
+      {
+        "name": "The Underlined Prose Link Rule",
+        "body": "Links im Fließtext (`main p a`, unklassifizierte `li a`) sind unterstrichen (Offset 2px); Karten, Pills und Navigation nicht. Farbe allein kennzeichnet keinen Link.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Column Rule",
+        "body": "Inhalt bleibt in der 720px-Spalte; nichts bricht auf volle Viewport-Breite aus außer Header- und Footer-Hintergrund.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-At-Rest Rule",
+        "body": "Karten ruhen ohne Schatten; Schatten und Anheben (translateY −2px, Hauptknopf −1px) sind ausschließlich Hover-Rückmeldung.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** neue Farben, Radien und Abstände nur über die `:root`-Variablen bzw. die Tokens oben setzen; Mint- und Apricot-Flächen mit ihren festen Hex-Werten.",
+      "**Do** jeden neuen Hinweis-Kasten als Fläche mit linkem 4px-Akzentstreifen in einer bestehenden Bedeutung bauen (The Stripe Means Type Rule).",
+      "**Do** jedem Tipp-Ziel mindestens 44px Höhe geben: Navigation, Footer-Links, Breadcrumbs, Copy-Knöpfe, Pills, Knöpfe, Antwort-Labels, Selects, `summary`.",
+      "**Do** den globalen Fokusrahmen unverändert lassen: `outline: 3px solid var(--primary-dark)`, `outline-offset: 2px`, Radius 4px, über `:focus-visible`.",
+      "**Do** Übergänge kurz halten (0.15–0.2s, Farbe/Rahmen/Transform); `prefers-reduced-motion: reduce` schaltet alle Übergänge und Animationen global ab.",
+      "**Do** Emoji als Icons nutzen und dekorative Emoji mit `aria-hidden=\"true\"` versehen; ein Emoji ohne Textlabel bekommt ein `aria-label`.",
+      "**Do** Druck mitdenken: Header, Footer, Werbung, Feedback, Breadcrumbs und `.no-print` verschwinden; Hintergrund weiß, Links ohne Farbe; Abschnittskarten `break-inside: avoid` mit `#ccc`-Rahmen.",
+      "**Do** Styles komponentennah in `<style>` der Astro-Datei schreiben; der Build inlined sie pro Seite (`inlineStylesheets: 'always'`).",
+      "**Do** Inhalte ohne JavaScript lesbar halten; interaktive Ansichten haben einen noscript-Fallback."
+    ],
+    "donts": [
+      "**Don't** ein CSS-Framework, Utility-Klassen oder externe Stylesheets einführen.",
+      "**Don't** Webfonts oder eine zweite Schriftfamilie laden; es gilt der System-Stack.",
+      "**Don't** die Lesespalte über 720px öffnen oder Inhalte randlos über den Viewport ziehen.",
+      "**Don't** Karten im Ruhezustand Schatten geben oder neue Schattenwerte erfinden.",
+      "**Don't** Apricot-Vollflächen für etwas anderes als die Hauptaktion verwenden.",
+      "**Don't** den Fokusrahmen in Orange zurückholen (erreichte nur ~2:1) oder Fokus per `outline: none` ohne Ersatz entfernen.",
+      "**Don't** Links im Fließtext nur über Farbe kennzeichnen.",
+      "**Don't** Gelb oder Rot für etwas anderes als Vorsicht, Grenze oder Sicherheit einsetzen."
+    ]
+  }
+}
