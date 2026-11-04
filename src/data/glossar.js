@@ -248,6 +248,13 @@ export const glossar = [
     ],
   },
   {
+    slug: 'latenter-konflikt',
+    term: 'Latenter Konflikt',
+    definition:
+      'Ein Konflikt, der bereits besteht, aber noch nicht offen ausgesprochen wird: Unzufriedenheit staut sich an, Bemerkungen werden spitzer, doch niemand benennt das Problem. Latente Konflikte früh und ruhig anzusprechen ist meist leichter, als später einen offenen Streit zu klären.',
+    topic: 'konfliktarten',
+  },
+  {
     slug: 'loyalitaetskonflikt',
     term: 'Loyalitätskonflikt',
     definition:
@@ -329,6 +336,13 @@ export const glossar = [
       { category: 'mitbewohner', slug: 'putzplan-ignoriert' },
       { category: 'kollegen', slug: 'keine-zusammenarbeit' },
     ],
+  },
+  {
+    slug: 'people-pleaser',
+    term: 'People Pleaser',
+    definition:
+      'Alltagsbegriff für Menschen, die es anderen fast immer recht machen wollen und eigene Wünsche, Meinungen und Grenzen dafür zurückstellen – oft aus Angst vor Ablehnung oder Streit. Der Begriff ist keine Diagnose. Ein erster Schritt aus dem Muster ist, vor Zusagen eine kurze Pause einzubauen.',
+    topic: 'people-pleaser',
   },
   {
     slug: 'pseudogefuehl',

@@ -14,8 +14,8 @@ sondern gegen den Bestand geprüft. Lücken werden geschlossen, das vorhandene D
 | 2 | Recherche | ✅ | 2026-10-26 | `recherche/keyword-karte.md`: 174 Begriffe + 12 neue Themen-Cluster; 6 neue Seiten, ~25 Seiten nach SERP-Abgleich erweitert |
 | 3 | Texte | ➖ | | Inhalte datengetrieben in `src/data/`, Regeln in `docs/loop/CONTENT-LEITFADEN.md` |
 | 4 | Design-Richtung | ✅ | | vorhandenes Design gilt |
-| 5 | Bauen | ✅ | | Astro, 228 Seiten, strukturierte Daten |
-| 6 | Prüfen und Feinschliff | 🔄 | | noch keine unabhängige Design-/UX-Abnahme; `DESIGN.md` fehlt |
+| 5 | Bauen | ✅ | | Astro, 232 indexierbare Seiten, strukturierte Daten |
+| 6 | Prüfen und Feinschliff | 🔄 | 2026-11-04 | unabhängige Prüfung: „fix“; eindeutige Fehler + Barrierefreiheit behoben; offen: Aufbau-Entscheidungen (Sätze höher, Krisenblock, Startseite) |
 | 7 | Livegang | ✅ | 2026-10-22 | live, Rechtstexte geprüft; vor AdSense: zertifizierte CMP (TCF) nötig |
 | 8 | Danach | 🔄 | | Search Console verifiziert, IndexNow aktiv; Auswertung offen |
 
